@@ -12,7 +12,7 @@ exclude:
 # Site settings
 title: Onlyhy的小屋
 subtitle: "可后来回忆也剩无几 大风将各自卷至东西"
-email: hystu@163.com
+email: hyuestu@163.com
 name: Onlyhy
 description: >
   人生苦短 总该记录点什么
@@ -21,7 +21,7 @@ description: >
 # root of your server.
 baseurl: "/onlyhy" # the subpath of your site, e.g. /blog/
 url: "http://onlyhy.github.io" # the base hostname & protocol for your site
-cover: "/assets/header_image.jpg"
+cover: "/assets/icons/header_image.jpg"
 logo: "/assets/logo.png"
 
 # Build settings
