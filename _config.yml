@@ -64,7 +64,7 @@ descriptions:
 #
 # Example:
 #
-# social:
+ social:
 #   - name: Twitter                         # Name of the service
 #     icon: twitter                         # Font Awesome icon to use (minus fa- prefix)
 #     username: "@TheBenCentra"             # (User) Name to display in the footer link
