@@ -6,7 +6,8 @@ gems:
   - jekyll-paginate
 
 exclude:
- - "/vendor/"
+  - "/vendor/"
+
 # Site settings
 
 title: Onlyhy的小屋
