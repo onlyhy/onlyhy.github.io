@@ -1,14 +1,14 @@
 # External gems
 # See http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html for making `jekyll archives` work.
-#gems:
- # - jekyll-archives # Sorry, not GitHub pages friendly!
-  #- jekyll-sitemap
-  #- jekyll-paginate
+gems:
+  - jekyll-archives # Sorry, not GitHub pages friendly!
+  - jekyll-sitemap
+  - jekyll-paginate
 
-#exclude:
- # - "/vendor/"
-
+exclude:
+ - "/vendor/"
 # Site settings
+
 title: Onlyhy的小屋
 subtitle: "可后来回忆也剩无几 大风将各自卷至东西"
 email: hyuestu@163.com
@@ -54,7 +54,7 @@ descriptions:
   - cat: dummy
     desc: "Just some placeholder posts, lorem ipsum and the rest."
 
-  - cat: update
+  - cat: smooth
     desc: "just new things."
 
 # Social icons and sharing options
