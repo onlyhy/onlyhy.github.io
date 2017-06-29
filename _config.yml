@@ -66,19 +66,6 @@ descriptions:
 #
 # Example:
 #
-<<<<<<< HEAD
- social:
-   - name: Twitter                         # Name of the service
-     icon: twitter                         # Font Awesome icon to use (minus fa- prefix)
-     username:                             # (User) Name to display in the footer link
-     url: https://twitter.com/TheBenCentra # URL of your profile (leave blank to not display in footer)
-     desc: Follow me on Twitter            # Description to display as link title, etc
-     share: true                           # Include in the "Share" section of posts
-
-  - name: Facebook
-    icon: facebook
-    username: 
-=======
 # social:
 #   - name: Twitter                         # Name of the service
 #     icon: twitter                         # Font Awesome icon to use (minus fa- prefix)
@@ -86,7 +73,7 @@ descriptions:
 #     url: https://twitter.com/TheBenCentra # URL of your profile (leave blank to not display in footer)
 #     desc: Follow me on Twitter            # Description to display as link title, etc
 #     share: true                           # Include in the "Share" section of posts
-social:
+ social:
   - name: Twitter
     icon: twitter
     username: TheBenCentra
@@ -94,13 +81,6 @@ social:
     desc: Follow me on Twitter
     share: true
 
-  - name: Facebook
-    icon: facebook
-    username: thebencentra
->>>>>>> parent of 31a5364... blog
-    url:
-    desc: Friend me on Facebook
-    share: true
 
   - name: GitHub
     icon: github
@@ -108,17 +88,6 @@ social:
     url: https://github.com/onlyhy
     desc: Fork me on GitHub
     share: false
-
-  - name: LinkedIn
-    icon: linkedin
-<<<<<<< HEAD
-    username: 
-=======
-    username: Ben Centra
->>>>>>> parent of 31a5364... blog
-    url: https://www.linkedin.com/pub/ben-centra/47/769/60a
-    desc: Connect with me on LinkedIn
-    share: true
 
   - name: Google+
     icon: google-plus
