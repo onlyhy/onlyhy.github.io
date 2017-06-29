@@ -1,12 +1,12 @@
 # External gems
 # See http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html for making `jekyll archives` work.
-gems:
-  - jekyll-archives # Sorry, not GitHub pages friendly!
-  - jekyll-sitemap
-  - jekyll-paginate
+#gems: 
+  #- jekyll-archives    # Sorry, not GitHub pages friendly!
+  #- jekyll-sitemap
+ # - jekyll-paginate
 
-exclude:
-  - "/vendor/"
+#exclude:
+ # - "/vendor/"
 
 # Site settings
 title: Onlyhy的小屋
@@ -14,7 +14,7 @@ subtitle: "可后来回忆也剩无几 大风将各自卷至东西"
 email: hyuestu@163.com
 name: Onlyhy
 description: >
-  人生只有一次 总该记录点什么..
+  人生只有一次 总该记录点什么
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.
@@ -54,7 +54,7 @@ descriptions:
   - cat: dummy
     desc: "Just some placeholder posts, lorem ipsum and the rest."
 
- - cat: mood
+  - cat: mood
     desc: "Just things."
 
 # Social icons and sharing options
