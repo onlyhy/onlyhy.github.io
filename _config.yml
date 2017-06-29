@@ -5,8 +5,8 @@
   #- jekyll-sitemap
   #- jekyll-paginate
 
-exclude:
-  - "/vendor/"
+#exclude:
+ # - "/vendor/"
 
 # Site settings
 title: Onlyhy的小屋
