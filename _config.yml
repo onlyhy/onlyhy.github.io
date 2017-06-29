@@ -91,7 +91,7 @@ descriptions:
     username: onlyhy
     url: https://github.com/onlyhy
     desc: Fork me on GitHub
-    share: true
+    share: false
 
   #- name: LinkedIn
   #  icon: linkedin
