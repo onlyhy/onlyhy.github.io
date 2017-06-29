@@ -1,7 +1,7 @@
 # External gems
 # See http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html for making `jekyll archives` work.
 gems:
-  - jekyll-archives # Sorry, not GitHub pages friendly!
+  # Sorry, not GitHub pages friendly!
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-feed
@@ -73,15 +73,6 @@ descriptions:
      url: https://twitter.com/TheBenCentra # URL of your profile (leave blank to not display in footer)
      desc: Follow me on Twitter            # Description to display as link title, etc
      share: true                           # Include in the "Share" section of posts
-
-
-
-   - name: Twitter
-     icon: twitter
-     username: 
-     url: https://twitter.com/TheBenCentra
-     desc: Follow me on Twitter
-     share: true
 
   - name: Facebook
     icon: facebook
