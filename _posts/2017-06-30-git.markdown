@@ -118,8 +118,8 @@ Git里*master*分支是主分支，*HEAD*指向当前分支，*master*指向最�
 	Updating d17efd8..fec145a
 	Fast-forward
 	readme.txt |    1 +
- 	1 file changed, 1 insertion(+)
- 	$ git branch -d dev
+	1 file changed, 1 insertion(+)
+	$ git branch -d dev
 	Deleted branch dev (was fec145a).
 	$ git branch
 	* master
