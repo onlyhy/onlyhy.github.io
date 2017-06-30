@@ -6,9 +6,7 @@ categories: mood
 ---
 
 
-# 创建版本库
-
-## 创建一个空目录
+#### 创建一个空目录
 
 	$ mkdir learngit
 	$ cd learngit
@@ -17,3 +15,13 @@ categories: mood
 
 *pwd*用于显示当前目录
 
+#### 通过 `git init` 初始化
+
+#### 添加文件到Git仓库
+1. `git add <file>` 可添加多个
+2. `git commit` 完成
+
+
+
+
+ 
