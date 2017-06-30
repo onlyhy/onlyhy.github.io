@@ -5,14 +5,14 @@ date:   2017-06-29 22:05:00 +00:00
 categories: mood
 ---
 
-> #创建版本库#
->
-> ###创建一个空目录###
+
+ #创建版本库
+> 
+#创建一个空目录
 >
 >	$ mkdir learngit
 	$ cd learngit
 	$ pwd
 	/Users/onlyhy/learngit
 >
-> _*pwd*_
-> 用于显示当前目录
+> *pwd*用于显示当前目录
