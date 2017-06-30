@@ -56,7 +56,8 @@ descriptions:
 
   - cat: mood
     desc: "Just things."
-
+  - cat: Git
+    desc: "about Git"
 # Social icons and sharing options
 #
 # Social settings are used in two places:
