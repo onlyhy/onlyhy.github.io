@@ -58,6 +58,8 @@ descriptions:
     desc: "about PHP" 
   - cat: 前端
     desc: "about 前端"  
+  - cat: AngularJS
+    desc: "about AngularJS"  
 # Social icons and sharing options
 #
 # Social settings are used in two places:
