@@ -9,10 +9,10 @@ categories: mood
 >
 > ###创建一个空目录###
 >
->	`$ mkdir learngit
+>	$ mkdir learngit
 	$ cd learngit
 	$ pwd
-	/Users/onlyhy/learngit`
+	/Users/onlyhy/learngit
 >
-> *pwd*
+> _*pwd*_
 > 用于显示当前目录
