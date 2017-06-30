@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Git常用命令笔记"
+title:  "Git学习笔记"
 date:   2017-06-29 22:05:00 +00:00
-categories: mood
+categories: Git
 ---
 
 
