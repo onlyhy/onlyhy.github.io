@@ -7,15 +7,17 @@ author: onlyhy
 ---
 ### 起步
 1. 设置开发环境
+
 >
 安装node.js和npm，然后全局安装Angular CLI，执行`npm install -g @angular/cli`
 
 2. 创建新项目`ng new my-app`
 
 3. 启动开发服务器
+
 >
 `cd my-app`
->
+
 `ng serve --open`
 4. 编辑组件
 >
