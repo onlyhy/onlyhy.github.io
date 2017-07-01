@@ -6,7 +6,7 @@ categories: AngularJS
 author: onlyhy
 ---
 ### 起步
-1. 设置开发环境</br>
+1. 设置开发环境  
    安装node.js和npm，然后全局安装Angular CLI，执行`npm install -g @angular/cli`
 
 2. 创建新项目
