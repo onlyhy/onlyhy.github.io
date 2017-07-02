@@ -1,0 +1,16 @@
+---
+layout: post
+title: "AngularJS学习笔记（三）"
+date: 2017-07-02 19:00:00 +00:00
+categories: AngularJS
+author: onlyhy
+---
+### 用户输入  
+   用户输入触发 DOM 事件。通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。
+
+#### 绑定到用户输入事件
+   要绑定 DOM 事件，只要把 DOM 事件的名字包裹在圆括号中，然后用放在引号中的模板语句对它赋值就可以。  
+
+    <button (click)="onClickMe()">Click me!</button>  
+
+   
