@@ -28,7 +28,7 @@ author: onlyhy
    用 Angular 扩展语法编写 HTML 模板， 用组件类管理这些模板，用服务添加应用逻辑， 用模块打包发布组件与服务。  
    然后，我们通过引导根模块来启动该应用。 Angular 在浏览器中接管、展现应用的内容，并根据我们提供的操作指令响应用户的交互。  
 
-![全景图]（C:\Users\YellowHappy\onlyhy.github.io\assets\angularjs.png）
+   ![全景图](C:\Users\YellowHappy\onlyhy.github.io\assets\angularjs.png)
 
 
 
