@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "AngularJS学习笔记（二）"
-date:   2017-07-02 12:00:00 +00:00
+title: "AngularJS学习笔记（二）"
+date: 2017-07-02 12:00:00 +00:00
 categories: AngularJS
 author: onlyhy
 ---
