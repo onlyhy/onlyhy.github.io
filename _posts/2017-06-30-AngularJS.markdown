@@ -45,6 +45,7 @@ author: onlyhy
    bootstrap - 指定应用的主视图（称为根组件），它是所有其它视图的宿主。只有根模块才能设置bootstrap属性  
 
    根模块例子：
+
     import { NgModule }      from '@angular/core';
     import { BrowserModule } from '@angular/platform-browser';
     @NgModule({
@@ -57,9 +58,11 @@ author: onlyhy
 
 ##### 模块库  
    Angular 提供了一组 JavaScript 模块。可以把它们看做库模块。每个 Angular 库的名字都带有@angular前缀。用 npm 包管理工具安装它们，用 JavaScript 的import语句导入其中某些部件。
+   
     import { BrowserModule } from '@angular/platform-browser';
 
    要访问这些素材，需要加入加入@NgModule元数据的imports中：  
+    
     imports:      [ BrowserModule ],
 
 #### 组件  
@@ -74,24 +77,31 @@ author: onlyhy
 #### 数据绑定  
    让模板的各部分与组件的各部分相互合作，往模板 HTML 中添加绑定标记，来告诉 Angular 如何把二者联系起来。  
    数据绑定的语法有四种形式，每种形式都有一个方向 —— 绑定到 DOM 、绑定自 DOM 以及双向绑定。  
+
     <li>{{hero.name}}</li>
     <hero-detail [hero]="selectedHero"></hero-detail>
     <li (click)="selectHero(hero)"></li>
+
    {{hero.name}} 插值表达式，[hero]属性绑定，(click)事件绑定  
    双向数据绑定最重要，用ngModel指令组合了属性绑定和事件绑定的功能  
+
     <input [(ngModel)]="hero.name">
 
 #### 指令  
    模板根据指令提供的操作对DOM进行操作。组件是一个带模板的指令；@Component装饰器实际上就是一个@Directive装饰器，只是扩展了一些面向模板的特性。  
    两种其它类型的指令：结构型指令和属性 (attribute) 型指令。  
    结构型指令通过在 DOM 中添加、移除和替换元素来修改布局。  
+
     <li *ngFor="let hero of heroes"></li>
     <hero-detail *ngIf="selectedHero"></hero-detail>
+
    *ngFor告诉 Angular 为heroes列表中的每个英雄生成一个<li>标签。
    *ngIf表示只有在选择的英雄存在时，才会包含HeroDetail组件。  
 
-   属性型 指令修改一个现有元素的外观或行为。 在模板中，它们看起来就像是标准的 HTML 属性。  
+   属性型 指令修改一个现有元素的外观或行为。 在模板中，它们看起来就像是标准的 HTML 属性。 
+
     <input [(ngModel)]="hero.name">
+
    Angular 还有少量指令，它们或者修改结构布局（例如 ngSwitch）， 或者修改 DOM 元素和组件的各个方面（例如 ngStyle和 ngClass），也能自定义指令。  
 
 #### 服务
@@ -123,7 +133,8 @@ author: onlyhy
 
    管道：在模板中使用管道转换成用于显示的值，以增强用户体验。例如，currency管道表达式：
 
-         price | currency:'USD':true
+         price | currency:'USD':true  
+         
    它把价格“42.33”显示为$42.33。
 
    路由器：在应用程序客户端的页面间导航，并且不离开浏览器。
