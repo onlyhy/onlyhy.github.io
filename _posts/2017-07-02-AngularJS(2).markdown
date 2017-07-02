@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title:  "AngularJS学习笔记（二）"
@@ -6,7 +5,6 @@ date:   2017-07-02 12:00:00 +00:00
 categories: AngularJS
 author: onlyhy
 ---
-
 ### 一、根模块
    Angular 模块类描述应用的部件是如何组合在一起的。  
    每个应用都至少有一个 Angular 模块，也就是根模块，用来引导并运行应用，常规名字为AppModule。  
