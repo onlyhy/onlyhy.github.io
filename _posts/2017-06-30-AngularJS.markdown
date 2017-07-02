@@ -78,11 +78,11 @@ author: onlyhy
    让模板的各部分与组件的各部分相互合作，往模板 HTML 中添加绑定标记，来告诉 Angular 如何把二者联系起来。  
    数据绑定的语法有四种形式，每种形式都有一个方向 —— 绑定到 DOM 、绑定自 DOM 以及双向绑定。  
 
-    <li>{{hero.name}}</li>
+    <li> {{hero.name}} </li>
     <hero-detail [hero]="selectedHero"></hero-detail>
     <li (click)="selectHero(hero)"></li>
 
-   {{hero.name}} 插值表达式，[hero]属性绑定，(click)事件绑定  
+   {{hero.name}}  插值表达式，[hero]属性绑定，(click)事件绑定  
    双向数据绑定最重要，用ngModel指令组合了属性绑定和事件绑定的功能  
 
     <input [(ngModel)]="hero.name">
@@ -134,7 +134,7 @@ author: onlyhy
    管道：在模板中使用管道转换成用于显示的值，以增强用户体验。例如，currency管道表达式：
 
          price | currency:'USD':true  
-         
+
    它把价格“42.33”显示为$42.33。
 
    路由器：在应用程序客户端的页面间导航，并且不离开浏览器。
