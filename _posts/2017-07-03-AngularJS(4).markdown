@@ -182,7 +182,7 @@ ngModel指令不仅仅跟踪状态，还使用特定的Angular CSS 类来更新�
     }  
 
 #### 显示和隐藏验证错误信息  
-   在<input>标签中添加:
+   在input标签中添加:
    模板引用变量和"is required"消息，放在邻近的div元素中，当控件无效时显示。
 
     <label for="name">Name</label>
