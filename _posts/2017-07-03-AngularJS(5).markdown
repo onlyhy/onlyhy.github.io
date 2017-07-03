@@ -1,0 +1,137 @@
+---
+layout: post
+title: "AngularJS学习笔记（五）"
+date: 2017-07-03 13:00:00 +00:00
+categories: AngularJS
+author: onlyhy
+---
+### 依赖注入  
+   依赖注入系统能够即时创建和交付所依赖的服务，是重要的程序设计模式，简称为DI(Dependency Injection)。
+   依赖注入是一种编程模式，让类从外部源中获得依赖，不必亲自创建它们。
+   Angular附带了自己的依赖注入框架，此框架也能被当做独立模块用于其它应用和框架中。
+
+#### 配置注入器
+   自动创建了一个应用级注入器，必须通过注册提供商来配置注入器，提供商为应用创建所需服务。在NgModule中或者应用组件中注册提供商。
+
+#### 在NgModule中注册提供商  
+   在AppModule中的providers中注册，如：
+
+    providers: [
+    UserService,
+    { provide: APP_CONFIG, useValue: HERO_DI_CONFIG }
+    ],
+
+#### 在组件中注册提供商  
+   在HerosComponent中，注册到providers数组中。  
+
+    @Component({
+      selector: 'my-heroes',
+      providers: [HeroService],
+      template: `
+      <h2>Heroes</h2>
+      <hero-list></hero-list>
+      `
+    })
+
+#### 不同位置注册的区别
+   在NgModule中时被注册到根注入器，可以被整个应用访问，而在应用组件中注册的只在该组件及其子组件中可用。
+
+#### 为注入准备HeroListComponent  
+   HeroListComponent 应该从注入的HeroService获取数据。组件必须在它的构造函数中请求这些服务。
+
+    constructor(heroService: HeroService) {
+    this.heroes = heroService.getHeroes();
+    }
+
+   
+#### 隐式注入器的创建  
+
+#### 单例服务  
+   在一个注入器的范围内，依赖都是单例的。不过嵌套的注入器可以创建它们自己的服务实例。  
+
+#### 测试组件  
+   要有效的测试应用中的一部分，只需要在构造函数的参数中列出依赖。
+   如可在实例中使用一个模拟（mock）服务，可以在测试中操作它。  
+
+#### 服务需要别的服务  
+   同样用构造函数注入模式  
+
+#### @injectable()  
+   标识一个类可以被注入器实例化，建议为每个服务类都添加@Injectable()。
+@Component是它的子类型，有了就没有必要再添加@Injectable()。   
+   *别忘了带括号！！*
+
+#### 创建和注册日志服务  
+   1. 创建日志服务
+   2. 把它注册到应用中 
+   
+   因为应用的每个角落都可能需要日志服务，所以把它放到项目的app目录，，在应用模块AppModule的元数据providers数组里注册它。
+
+#### 提供商  
+   提供商提供依赖值的一个具体的、运行时的版本，注入器依靠提供商创建服务的实例，注入器再将服务的实例注入组件或其他服务。必须为注入器注册一个服务的提供商。如在AppModule元数据中的providers数组中注册Logger服务：
+
+    providers: [Logger]
+
+#### Provider类和一个提供商的字面量  
+   简写表达式：
+
+     providers: [Logger]
+
+   其实是一个带有两个属性的提供商对象字面量：
+
+    [{ provide: Logger, useClass: Logger }]
+
+   第一个是令牌(token),它作为键值(key),用于定位依赖值和注册提供商
+   第二个是一个提供商定义对象，有很多方式。
+
+#### 备选的类提供商
+   请求一个不同的类来提供服务，如下，当有请求Logger时，返回BetterLogger
+
+    [{ provide: Logger, useClass: BetterLogger }]
+
+#### 带依赖的类提供商  
+   假设EvenBetterLogger可以在日志消息中显示用户名。 这个日志服务从注入的UserService中取得用户， UserService通常也会在应用级注入
+
+#### 别名类提供商  
+   使用useExisting选项指定别名  
+
+    [ NewLogger,
+      // Alias OldLogger w/ reference to NewLogger
+      { provide: OldLogger, useExisting: NewLogger}]  
+
+#### 值提供商
+   预先做好的对象，通过useValue选项来注册提供商，会让这个对象直接扮演logger的角色。
+
+    [{ provide: Logger, useValue: silentLogger }]
+
+#### 工厂提供商  
+   动态创建依赖值，它所需要的信息直到最后才能确定，需要调用工厂提供商。
+   useFactory字段说明这个提供商是一个工厂方法。
+   deps属性是提供商令牌数组
+
+#### 依赖注入令牌  
+   当向注入器注册提供商时，实际上是把这个提供商和一个DI令牌关联起来。注入器维护一个内部的令牌-提供商映射表，这个映射表会在请求依赖时被引用到。令牌就是这个映射表中的键值。
+
+#### 非类依赖  
+   依赖值有时不是一个类，有时想要注入的是一个字符串，函数或者对象。
+   为非类依赖定义和使用InjectionToken 作为提供商令牌。  
+
+    import { InjectionToken } from '@angular/core';
+    export let APP_CONFIG = new InjectionToken<AppConfig>('app.config');  
+
+#### 可选依赖  
+   把构造函数的参数标记为@Optional()，告诉Angular该依赖是可选的
+
+    import { Optional } from '@angular/core';
+
+    constructor(@Optional() private logger: Logger) {
+    if (this.logger) {
+    this.logger.log(some_message);
+    }
+    }  
+
+  
+    
+
+    
+
