@@ -1,0 +1,270 @@
+---
+layout: post
+title: "AngularJS学习笔记（四）"
+date: 2017-07-03 9:00:00 +00:00
+categories: AngularJS
+author: onlyhy
+---  
+###表单
+   表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，显示错误信息。  
+
+#### 模板驱动的表单  
+   本例必填字段在左侧有绿色的竖条用于分辨，醒目的红色样式显示验证错误等。  
+   1. 创建Hero模型类
+   2. 创建控制此表单的组件。
+   3. 创建具有初始表单布局的模板。
+   4. 使用ngModel双向数据绑定语法把数据属性绑定到每个表单输入控件。
+   5. 往每个表单输入控件上添加name属性 (attribute)。
+   6. 添加自定义 CSS 来提供视觉反馈。
+   7. 显示和隐藏有效性验证的错误信息。
+   8. 使用 ngSubmit 处理表单提交。
+   9. 禁用此表单的提交按钮，直到表单变为有效。  
+
+### 搭建  
+#### 创建Hero模型类  
+   最简单的模型是个“属性包”，存放应用中一件事物的事实。  
+
+    export class Hero {
+    constructor(
+    public id: number,
+    public name: string,
+    public power: string,
+    public alterEgo?: string   //可选的属性
+    ) {  }
+    }
+
+   创建新英雄：
+
+    let myHero =  new Hero(42, 'SkyDog',
+                       'Fetch any object at any distance',
+                       'Leslie Rollover');
+    console.log('My hero is called ' + myHero.name); // "My hero is called SkyDog"  
+
+#### 创建表单组件  
+   分为两部分，基于HTML的模板和组件类，用来程序处理数据和用户交互。
+   组件类可以简要说明编辑器能做什么。
+   src/app/hero-form.components.ts:
+
+    import { Component } from '@angular/core';
+    import { Hero }    from './hero';
+    @Component({
+    selector: 'hero-form',  //用该标签把这个表单放进父模板
+    templateUrl: './hero-form.component.html'
+    })
+    export class HeroFormComponent {
+    powers = ['Really Smart', 'Super Flexible',
+            'Super Hot', 'Weather Changer'];
+    model = new Hero(18, 'Dr IQ', this.powers[0], 'Chuck Overstreet');
+    submitted = false;
+    onSubmit() { this.submitted = true; }
+    // TODO: Remove this when we're done
+     get diagnostic() { return JSON.stringify(this.model); }  //返回这个模型的JSON形式，用于调试，最后丢弃。
+    }  
+
+#### 分离模板文件  
+   通常最好将HTML模板放到单独的文件中  
+
+#### 修改app.module.ts  
+   定义了应用的根模块，标识即将用到的外部模块，以及声明属于本模块中的组件。  
+   因为模块驱动的表单位于它们自己的模块，所以在使用表单之前，要将模块添加到应用模块的imports数组中。
+
+    iimport { NgModule }      from '@angular/core';
+    import { BrowserModule } from '@angular/platform-browser';
+    import { FormsModule }   from '@angular/forms';  //导入
+    import { AppComponent }  from './app.component';
+    import { HeroFormComponent } from './hero-form.component';  //导入
+    @NgModule({
+      imports: [
+        BrowserModule,
+        FormsModule   //能访问模板驱动表单的所有特性
+      ],
+      declarations: [
+        AppComponent,
+        HeroFormComponent    //使HeroFormComponent组件在整个模块中可见
+      ],
+      bootstrap: [ AppComponent ]
+    })
+    export class AppModule { }
+
+   如果组件、指令或管道出现在模块的imports数组中，不要把它声明在declarations数组中。如果是你自己写的，并且属于当前模块，就要把它声明在declarations数组中。
+
+#### 修改app.component.ts  
+
+    @Component({
+      selector: 'my-app',
+      template: '<hero-form></hero-form>'
+    })
+
+   template中只剩新的元素标签。
+
+#### 创建初始HTML表单模板  
+  
+    <div class="container">
+    <h1>Hero Form</h1>
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="alterEgo">Alter Ego</label>
+        <input type="text" class="form-control" id="alterEgo">
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    </div>  
+
+   添加样式表，在index.html的head中链入样式表，此处用bootstrap
+
+#### 用ngFor添加英雄的超能力  
+   英雄必须选择一项超能力，这个列表在hero-form.component中。  
+   添加select，用ngFor把powers列表绑定到列表选项，加在alter ego后面 。
+
+    <div class="form-group">
+    <label for="power">Hero Power</label>
+    <select class="form-control" id="power" required>
+    <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+    </select>
+    </div>  
+
+#### 用ngModel进行双向数据绑定  
+   使用[(ngModel)]语法，修改HTML中的标签，必须要定义name属性
+
+    <input type="text" class="form-control" id="name"
+       required
+       [(ngModel)]="model.name" name="name">
+    TODO: remove this: {{model.name}}  //用于诊断，提醒自己完成后移除。
+
+   在表单中声明一个模板变量
+
+    <form #heroForm="ngForm">
+
+*NgForm指令* 为form增补一些额外的特性，控制带有ngModel和name属性的元素，监听它们，它还自有valid属性，只有在包含的每个控件都有效时才为真。  
+   在组件顶部添加diagnostic属性，能确认是否正常工作，正常后就删除它。
+
+    {{diagnostic}}
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name"
+             required
+             [(ngModel)]="model.name" name="name">
+    </div>
+    <div class="form-group">
+      <label for="alterEgo">Alter Ego</label>
+      <input type="text"  class="form-control" id="alterEgo"
+             [(ngModel)]="model.alterEgo" name="alterEgo">
+    </div>
+    <div class="form-group">
+      <label for="power">Hero Power</label>
+      <select class="form-control"  id="power"
+              required
+              [(ngModel)]="model.power" name="power">
+        <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+      </select>
+    </div>
+
+#### 用ngModel跟踪修改状态与有效性验证  
+ngModel指令不仅仅跟踪状态，还使用特定的Angular CSS 类来更新控件以反映当前状态。
+
+状态                  为真时的 CSS 类                为假时的 CSS 类
+控件被访问过。          ng-touched                     ng-untouched
+控件的值变化了。         ng-dirty                      ng-pristine
+控件的值有效。            ng-valid                     ng-invalid
+
+#### 添加用于视觉反馈的自定义CSS
+   如新建forms.css文件，添加两个样式，将文件链入到html的head中。  
+
+    .ng-valid[required], .ng-valid.required  {
+      border-left: 5px solid #42A948; /* green */
+    }
+    .ng-invalid:not(form)  {
+      border-left: 5px solid #a94442; /* red */
+    }  
+
+#### 显示和隐藏验证错误信息  
+   在<input>标签中添加:
+   模板引用变量和"is required"消息，放在邻近的div元素中，当控件无效时显示。
+
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name"
+           required
+            [(ngModel)]="model.name" name="name"
+            #name="ngModel">
+    <div [hidden]="name.valid || name.pristine"//控件是有效的或全新的则隐藏消息
+        class="alert alert-danger">
+     Name is required
+    </div>
+
+   表单底部添加新增按钮，将点击事件绑定到newHero组件中
+   必须清除所有标记，在调用newHero()方法后调用表单的reset()方法
+
+    <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">New Hero</button>
+
+
+    newHero() {
+    this.model = new Hero(42, '', '');
+    }
+
+#### 使用ngSubmit提交该表单  
+   Submit提交按钮有特殊的type值 type="submit"，要把该表单的ngSubmit事件属性绑定到表单组件的onSubmit()方法上。  
+
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+
+   把表单的总体有效性通过heroForm变量绑定到按钮的disabled属性上。
+
+    <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+
+总之，有了Angular：定义模板引用量放在form元素上，然后在很多行之外的按钮上引用这个变量。
+
+#### 切换两个表单区域  
+   把表单包裹在div中，把hidden属性绑定到HeroFormComponent.submitted属性。
+   当点击Submit按钮时，submitted标志会变成 true，并且表单也消失了。
+   当表单已提交后，显示一些其他的，在表单的div下面添加以下：
+
+    <div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row"> 
+    <div class="col-xs-3">Name</div>
+    <div class="col-xs-9  pull-left">{{ model.name }}</div>
+    </div>
+    <div class="row">
+    <div class="col-xs-3">Alter Ego</div>
+    <div class="col-xs-9 pull-left">{{ model.alterEgo }}</div>
+    </div>
+    <div class="row">
+    <div class="col-xs-3">Power</div>
+    <div class="col-xs-9 pull-left">{{ model.power }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+    </div>  
+
+通过插值表达式绑定显示为只读内容，只有在组件提交状态时才会显示。Edit按钮，将click事件绑定到表达式，用于清除submitted标志。点击这个按钮时，这个只读块消失，可编辑的表单重新出现。
+
+
+### 总结  
+
+* Angular HTML 表单模板。
+* 带有@Component装饰器的表单组件类。
+* 通过绑定到NgForm.ngSubmit事件属性来处理表单提交。
+* 模板引用变量，例如#heroForm和#name。
+* [(ngModel)]语法用来实现双向数据绑定。
+* name属性的用途是有效性验证和对表单元素的变更进行追踪。
+* 指向 input 控件的引用变量上的valid属性，可用于检查控件是否有效、是否显示/隐藏错误信息。
+* 通过绑定到NgForm的有效性状态，控制Submit按钮的禁用状态。
+* 定制 CSS 类来给用户提供无效控件的视觉反馈
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
