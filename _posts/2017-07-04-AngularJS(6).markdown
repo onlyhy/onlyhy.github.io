@@ -20,8 +20,8 @@ author: onlyhy
    3. 使用;或,的链式表达式
    4. 自增或自减操作符
    和JS语法显著不同：
-   1. 不支持位运算|和&
-   2. 有新的模板表达式运算符，如|或？
+   1. 不支持位运算'|'和&
+   2. 有新的模板表达式运算符，如'|'或？
 
 #### 表达式上下文  
    典型的表达式上下文就是这个组件实例，是各种绑定值的来源。也可包括组件之外的对象，如模板输入量和模板引用变量。
@@ -74,15 +74,15 @@ author: onlyhy
         <tr>
             <td>单向 从数据源到视图目标</td>
             <td>{{expression}}
-                [target]="expression"
-                bind-target="expression"
+                [target]="expression"&nbsp;&nbsp;&nbsp;&nbsp;
+                           bind-target="expression"
             </td>
             <td>插值表达式，Property，Attribute，类，样式</td>
         </tr>
          <tr>
             <td>单向 从视图目标到数据源</td>
-            <td>（target）="statement"
-                  on-target="statement"
+            <td>（target）="statement"&nbsp;&nbsp;&nbsp;&nbsp;
+                         on-target="statement"
             </td>
             <td>事件</td>
         </tr>
