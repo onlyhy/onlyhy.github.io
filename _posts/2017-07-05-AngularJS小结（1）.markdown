@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "菜鸟教程AngularJS文档小结"
+title: "菜鸟教程AngularJS文档小结（1）"
 date: 2017-07-05 07:00:00 +00:00
 categories: AngularJS
 author: onlyhy
@@ -443,4 +443,5 @@ author: onlyhy
    模块定义中[]参数用于定义模块的依赖关系，有依赖的话在中括号中写上依赖的模块名字。
 
 #### 载入库 
-   所有AngularJS库都在HTML文档的头部载入，因为对module的调用只能在库加载完成后才能运行。若在body中加载库，一定要放在脚本前面。
+   所有AngularJS库都在HTML文档的头部载入，因为对module的调用只能在库加载完成后才能运行。若在body中加载库，一定要放在脚本前面。  
+
