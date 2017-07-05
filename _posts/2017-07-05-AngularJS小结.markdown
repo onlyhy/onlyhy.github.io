@@ -246,4 +246,201 @@ author: onlyhy
     }
     });
 
+### 服务（Service）  
+   服务是一个函数或对象，AngularJS内建了30多个服务。  
+   很多服务，在DOM中有对应的对象，使用服务的原因是，这些服务可以获取到应用声明周期的每一个阶段，并且和$watch整合，可以监控应用，处理事件变化。
 
+#### $location服务
+   返回当前页面的URL地址
+
+#### $http服务
+   向服务器发送请求，应用相应服务器传过来的数据。
+
+#### $timeout服务
+   对应JS的window.setTimeout函数
+
+#### interval服务  
+   对应JS的window.setInterval函数  
+
+#### 自定义服务
+
+要使用自定义服务，需要在定义控制器的时候独立添加，设置依赖关系
+
+    var app = angular.module('myApp', []);
+    app.service('hexafy', function() {
+        this.myFunc = function (x) {
+            return x.toString(16);
+        }
+    });
+    app.controller('myCtrl', function($scope, hexafy) {
+      $scope.hex = hexafy.myFunc(255);
+    });
+
+#### 过滤器中使用服务
+  
+    app.service('hexafy', function() {
+    this.myFunc = function (x) {
+        return x.toString(16);
+    }
+    });
+    app.filter('myFormat',['hexafy', function(hexafy) {
+        return function(x) {
+            return hexafy.myFunc(x);
+        };
+    }]);
+
+### XMLHttpRequest  
+   $http是一个核心服务，用于读取远程服务器的数据
+
+   可读取JSON文件
+
+    app.controller('siteCtrl', function($scope, $http) {
+    $http({
+        method: 'GET',
+        url: 'https://www.runoob.com/try/angularjs/data/sites.php'
+    }).then(function successCallback(response) {
+            $scope.names = response.data.sites;
+        }, function errorCallback(response) {
+            // 请求失败执行代码
+    });
+    }) 
+
+   简写：
+    
+    app.controller('siteCtrl', function($scope, $http) {
+     $http.get("http://www.runoob.com/try/angularjs/data/sites.php")
+    .then(function (response) {$scope.names = response.data.sites;});
+    });
+
+   简写方法：
+    $http.get('/someUrl', config).then(successCallback, errorCallback);
+    $http.post('/someUrl', data, config).then(successCallback, errorCallback);
+
+   还有$http.head,$http.put,$http.delete,$http.jsonp,$http.patch  
+   
+### Select(选择框)  
+   使用数组或对象创建一个下拉列表选项  
+   使用ng-options创建一个下拉列表，列表项通过对象和数组循环输出。
+   ng-repeat是通过数组来循环HTML代码来创建下拉列表，但ng-options更适合，ng-options选项是一个对象，可以获取更多信息，更灵活，ng-repeat是一个字符串，有局限性。
+#### 数组为数据源  
+
+    <select ng-model="selectedSite">
+    <option ng-repeat="x in sites" value="{{x.url}}">{{x.site}}</option>
+    </select>
+    <h1>你选择的是: {{selectedSite}}</h1>
+
+    <select ng-model="selectedSite" ng-options="x.site for x in sites">
+    </select>
+    h1>你选择的是: {{selectedSite.site}}</h1>
+    <p>网址为: {{selectedSite.url}}</p>
+
+#### 数据对象为数据源  
+   
+    $scope.sites = {
+    site01 : "Google",
+    site02 : "Runoob",
+    site03 : "Taobao"
+    };
+    <select ng-model="selectedSite" ng-options="x for (x, y) in sites"></select> //x为键(key)，y为值(value)
+    <h1>你选择的值是: {{selectedSite}}</h1>  
+
+
+### 表格  
+   ng-repeat指令显示表格  
+
+    div ng-app="myApp" ng-controller="customersCtrl"> 
+    <table>
+      <tr ng-repeat="x in names">
+        <td>{{ x.Name }}</td>
+        <td>{{ x.Country }}</td>
+      </tr>
+    </table>
+    </div>
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function($scope, $http) {
+        $http.get("/try/angularjs/data/Customers_JSON.php")
+        .then(function (result) {
+            $scope.names = result.data.records;
+        });
+    });
+    </script> 
+
+   表格显示序号可以在td中添加$index  
+
+    <td>{{ $index + 1 }}</td>   
+
+   使用$even和$odd
+
+    <table>
+    <tr ng-repeat="x in names">
+    <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Name }}</td>
+    <td ng-if="$even">{{ x.Name }}</td>
+    <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Country }}</td>
+    <td ng-if="$even">{{ x.Country }}</td>
+    </tr>
+    </table>
+
+
+### 跨域HTTP请求  
+   如PHP代码运行使用的
+
+    header("Access-Control-Allow-Origin: *");
+
+
+### HTML DOM
+   为HTML DOM元素的属性提供了绑定应用数据的指令  
+
+#### ng-disabled指令  
+   直接绑定应用程序数据到HTML的disabled属性
+
+    <div ng-app="" ng-init="mySwitch=true">
+    <p>
+    <button ng-disabled="mySwitch">点我!</button>
+    </p>
+    <p>
+    <input type="checkbox" ng-model="mySwitch">按钮  //mySwitch为true时按钮不可用
+    </p>
+    </div>
+
+#### ng-show，ng-hide指令  
+   隐藏或显示一个HTML元素，根据value值
+
+### 事件  
+#### ng-click指令  
+   
+    <div ng-app="" ng-controller="myCtrl">
+    <button ng-click="count = count + 1">点我！</button>
+    <p>{{ count }}</p>
+    </div>
+
+### 模块
+#### 创建模块  
+   angular.module函数来创建模块  
+    <div ng-app="myApp">...</div>
+    <script>
+    var app = angular.module("myApp", []); 
+    </script>
+
+#### 添加控制器  
+   ng-controller指令来添加应用的控制器  
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+    {{ firstName + " " + lastName }}
+    </div>
+    <script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope) {
+        $scope.firstName = "John";
+        $scope.lastName = "Doe";
+    });
+    </script>
+
+#### 模块和控制器包含在JS文件中
+
+    var app = angular.module("myApp", []);
+
+   模块定义中[]参数用于定义模块的依赖关系，有依赖的话在中括号中写上依赖的模块名字。
+
+#### 载入库 
+   所有AngularJS库都在HTML文档的头部载入，因为对module的调用只能在库加载完成后才能运行。若在body中加载库，一定要放在脚本前面。
