@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "菜鸟教程AngularJS文档小结（2）"
-date: 2017-07-05 015:00:00 +00:00
+date: 2017-07-05 15:00:00 +00:00
 categories: AngularJS
 author: onlyhy
 ---
@@ -150,10 +150,14 @@ author: onlyhy
     resolve: object<key, function>
     });  
 
-   template:在ng-view中插入简单的HTML内容
-   templateUrl:在ng-view中插入HTML模板文件
-   controller:function、string或数组类型，在当前模板上执行的controller函数，生成新的scope。
-   controllerAs:string类型，为controller指定别名
-   redirectTo:重定向的地址
-   resolve:指定当前controller所依赖的其他模块
+   template:在ng-view中插入简单的HTML内容  
+   templateUrl:在ng-view中插入HTML模板文件  
+   controller:function、string或数组类型，在当前模板上执行的controller函数，生成新的scope。  
+   controllerAs:string类型，为controller指定别名  
+   redirectTo:重定向的地址  
+   resolve:指定当前controller所依赖的其他模块  
+
+
+
+
 
