@@ -133,7 +133,7 @@ author: onlyhy
     $ cnpm install   
 
    angular-quickstart目录下会生成一个node_modules目录，项目的目录结构如下：
-<img src=".\assets\实例目录.jpg" alt="目录">  
+<img src="C:\Users\YellowHappy\onlyhy.github.io\assets\实例目录.jpg" alt="总结构"> 
 
 ###二、创建应用  
    每个应用至少需要一个根模块，这里实例中为AppModule  
@@ -226,8 +226,9 @@ author: onlyhy
 
     npm start  
 
-    访问http://localhost:3000/
-<img src=".\assets\目录2.jpg" alt="总结构">
+   访问http://localhost:3000/
+
+ <img src="C:\Users\YellowHappy\onlyhy.github.io\assets\目录2.jpg" alt="总结构">
 
 
    
