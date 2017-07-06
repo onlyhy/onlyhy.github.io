@@ -60,6 +60,8 @@ descriptions:
     desc: "about 前端"  
   - cat: AngularJS
     desc: "about AngularJS"  
+  - cat: 基础知识
+    desc: "learning" 
 # Social icons and sharing options
 #
 # Social settings are used in two places:
