@@ -228,7 +228,7 @@ author: onlyhy
 
    访问http://localhost:3000/
 
- <img src="C:\Users\YellowHappy\onlyhy.github.io\assets\目录2.jpg" alt="总结构">
+ <img src="C:\Users\YellowHappy\onlyhy.github.io\assets\目录2.jpg"  style="width:300px;height:300px" alt="总结构">
 
 
    
