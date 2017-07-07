@@ -64,6 +64,10 @@ descriptions:
     desc: "learning" 
   - cat: JavaScript
     desc: "JS" 
+  - cat: PHP
+    desc: "PHP"
+  - cat: AJAX
+    desc: "AJAX"
 # Social icons and sharing options
 #
 # Social settings are used in two places:
