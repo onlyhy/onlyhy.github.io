@@ -130,7 +130,7 @@ author: onlyhy
 </table>  
 
 ### 使用回调函数  
-   
+   一种以参数形式传递给另一个函数的函数，当有多个AJAX任务时，为XMLHttpRequest对象写一个标准的函数，包含URL和发生readychange事件时执行的任务，为每个AJAX任务调用函数
 
 
 
