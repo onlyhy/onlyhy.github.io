@@ -6,7 +6,7 @@ categories: AJAX
 author: onlyhy
 ---  
 
-###AJAX （Asynchronous JavaScript and XML）异步的JavaScript和XML  
+### AJAX （Asynchronous JavaScript and XML）异步的JavaScript和XML  
    无需重新加载整个网页的情况下，能够更新部分网页的技术。  
    基于现有的Internet标准：
    1. XMLHttpRequest 对象 (异步的与服务器交换数据)
