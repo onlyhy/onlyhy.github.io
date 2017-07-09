@@ -6,7 +6,7 @@ categories: PHP
 author: onlyhy
 ---  
 <ul>
-    <li><a href="#id"></a></li>
+    <li><a href="#id">表单验证</a></li>
 </ul>
 ### 表单  
    当处理 HTML 表单时，PHP 能把来自 HTML 页面中的表单元素自动变成可供 PHP 脚本使用。  
