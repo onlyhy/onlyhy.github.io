@@ -7,12 +7,13 @@ author: onlyhy
 ---  
 <ul>
     <li><a href="#id">表单验证</a></li>
+    <li><a href="#dw">多维数组</a></li>
+    <li><a href="da">date()数组</a></li>
+    <li><a href="bh">包含文件</a></li>
 </ul>
-### 表单  
-   当处理 HTML 表单时，PHP 能把来自 HTML 页面中的表单元素自动变成可供 PHP 脚本使用。  
 
 ### <span id="bd">表单验证 </span> 
-   HTML表单中代码如下： 
+   当处理 HTML 表单时，PHP 能把来自 HTML 页面中的表单元素自动变成可供 PHP 脚本使用。   
 
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  //超级全局变量，返回当前正在执行脚本的文件名  
 
@@ -72,7 +73,7 @@ author: onlyhy
       $websiteErr = "非法的 URL 的地址"; 
     }
 
-####  $_GET 变量  
+#### $_GET 变量  
    收集来自method="get"的表单中的值，从带有 GET 方法的表单发送的信息，对任何人都是可见的（会显示在浏览器的地址栏），因此在发送密码或其他敏感信息时，不应该使用这个方法，并且对发送信息的量也有限制。
 
     <form action="welcome.php" method="get">
@@ -97,9 +98,43 @@ author: onlyhy
     你的年龄是 <?php echo $_REQUEST["age"]; ?>  岁。  
 
 
-### 多维数组  
+### <span id="dw"></span>多维数组   
 
+    <?php 
+    $sites = array 
+    ( 
+        "runoob"=>array 
+        ( 
+            "菜鸟教程", 
+            "http://www.runoob.com" 
+        ), 
+        "google"=>array 
+        ( 
+            "Google 搜索", 
+            "http://www.google.com" 
+        ), 
+        "taobao"=>array 
+        ( 
+            "淘宝", 
+            "http://www.taobao.com" 
+        ) 
+    ); 
+    print("<pre>"); // 格式化输出数组 
+    print_r($sites); 
+    print("</pre>"); 
+    ?>
 
+### <span id="da">date()函数</span>  
+   用于格式化时间/日期，可把时间戳格式化为可读性更好的日期和时间。  
+
+    string date ( string $format [, int $timestamp ] )  
+
+format规定时间戳的格式，如d：月中的天(01-31)，m：月(01-12)，Y：年(四位数)，如`echo date("Y-m-d");`,timestamp规定时间戳，默认是当前的日期和时间。  
+<a href="http://www.runoob.com/php/php-ref-date.html">查看所有日期函数看这里</a>  
+
+### <span id="bh">包含文件 </span>  
+   include 和 require 语句用于在执行流中插入写在其他文件中的有用的代码，两个语句除了处理错误的方式不同，其他方面都是相同的。  
+   require 生成一个致命错误（E_COMPILE_ERROR），在错误发生后脚本会停止执行，include 生成一个警告（E_WARNING），在错误发生后脚本会继续执行。
 
 
 
