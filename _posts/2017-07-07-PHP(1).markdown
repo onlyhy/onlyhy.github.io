@@ -7,13 +7,57 @@ author: onlyhy
 ---  
 <ul>
     <li>
-        <a href="#sp">面向对象</a>
+        <a href="#yf">语法</a>
     </li>
+    <li>
+        <a href="#bl">变量</a>
+    </li>
+    <li>
+        <a href="#cj">超级全局变量</a>
+    </li>
+    <li>
+        <a href="#ec">echo和print语句  </a>
+    </li>
+    <li>
+        <a href="#sj">数据类型</a>
+    </li>
+    <li>
+        <a href="#cl">常量</a>
+    </li>
+    <li>
+        <a href="#zf">字符串变量</a>
+    </li>
+    <li>
+        <a href="#ys">运算符</a>
+    </li>
+    <li>
+        <a href="#sz">数组</a>
+    </li>
+     <li>
+        <a href="#szp">数组排序</a>
+    </li>
+    <li>
+        <a href="#xh">循环</a>
+    </li>
+    <li>
+        <a href="#hs">函数</a>
+    </li>
+    <li>
+        <a href="#ms">魔术变量</a>
+    </li>
+    <li>
+        <a href="#mm">命名空间</a>
+    </li>
+     <li>
+        <a href="#mx">面向对象</a>
+    </li>
+
+
 </ul>
 ### PHP(Hypertext Preprocessor)超文本预处理器  
   PHP文件包含文本、HTML、JS代码和PHP代码，在服务器上执行，以纯HTML形式返回给浏览器。  
 
-### 语法  
+### <span id="yf">语法  </span>
    PHP脚本可以放在文档中任何位置
 
     <?php
@@ -24,7 +68,7 @@ author: onlyhy
    两种在浏览器输出文本的基础指令：echo和print  
    //单行注释 /**/多行注释  
 
-### 变量  
+### <span id="bl">变量 </span>  
    规则：  
    1. 变量以$符号开始  
    2. 必须以字母或下划线字符开始  
@@ -43,7 +87,7 @@ author: onlyhy
 
    static关键字，当希望局部变量在函数完成时不要被删除，则在第一次声明变量时用static关键字，每次调用该函数，该变量都会保留前一次被调用时的值。  
 
-### 超级全局变量  
+### <span id="cj">超级全局变量 </span> 
    在PHP 4.1.0之后被启用, 是PHP系统中自带的变量，在一个脚本的全部作用域中都可用，PHP中预定义了几个。  
 
 #### $GLOBALS  
@@ -109,14 +153,14 @@ author: onlyhy
 
 
 
-### echo和print语句  
+### <span id="ec">echo和print语句 </span> 
    echo：可以输出一个或多个字符串，速度快,echo或者echo()，字符串可以包含HTML标签  
    print：只允许输出一个字符串，返回值总为 1,print或print()  
 
-### 数据类型   
+### <span id="sj">数据类型  </span> 
    String（字符串）, Integer（整型）八进制、十进制、十六进制, Float（浮点型）是带小数部分的数字或指数形式, Boolean（布尔型）, Array（数组）, Object（对象）必须用class关键字声明类对象,NULL(空值)  
 
-### 常量  
+### <span id="cl">常量</span>  
    值被定义后，不能改变，有字母、下划线、数字组成，默认是全局的
    使用define()设置常量
 
@@ -126,7 +170,7 @@ author: onlyhy
    value:必选参数，常量值  
    case_insensitive:可选参数，true则大小写不敏感，默认敏感  
 
-### 字符串变量  
+### <span id="zf">字符串变量 </span>  
    赋一个文本值给变量时，请记得给文本值加上单引号或者双引号。  
 #### 并置运算符  
    （.）用于把两个字符串链接起来  
@@ -144,7 +188,7 @@ author: onlyhy
    在字符串内查找一个字符或一段指定的文本，如果在字符串中找到匹配，该函数会返回第一个匹配的字符位置。如果未找到匹配，则返回 FALSE  
    字符串的第一个字符的位置是0而不是1  ！！！ 
 
-### 运算符  
+### <span id="ys">运算符 </span> 
   大部分运算符常见。  
   PHP7+ 版本新增整除运算符 intdiv()  
 
@@ -178,7 +222,7 @@ author: onlyhy
 #### 优先级  
    括（号）、单（操作数）、算（术）、移（位）、关（系）；位（运算符）、逻（辑）、条（件）、赋（值）、逗（号）
 
-### 数组  
+### <span id="sz">数组 </span> 
    array();三种类型的数组：
    数值、关联、多维数组。  
 
@@ -223,7 +267,7 @@ author: onlyhy
         echo "<br>";
     }  
 
-### 数组排序  
+### <span id="szp"> 数组排序  </span>
 
 #### sort() - 对数组进行升序排列  
    
@@ -256,7 +300,7 @@ author: onlyhy
 
 #### ksort() - 根据数组的键，对数组进行升序排列  
 
-###  循环  
+###  <span id="xh">循环 </span> 
    while，do...while，for,foreach  
 
 #### foreach  
@@ -275,7 +319,7 @@ author: onlyhy
     three  
 
 
-### 函数  
+### <span id="hs">函数 </span> 
    函数的名称应该提示出它的功能，名称以字母或下划线开头（不能以数字）
 
     function functionName($参数一，$参数二)
@@ -284,7 +328,7 @@ author: onlyhy
     return ...; //需要让函数返回一个值，用return  
     }  
 
-### 魔术变量  
+### <span id="ms">魔术变量 </span> 
    八个魔术变量的值随着它们在代码中的位置改变而改变  
    * __LINE__  ：当前行号 
    * __FILE__  ：文件的完整路劲和文件名  
@@ -295,7 +339,7 @@ author: onlyhy
    * __METHOD__：类的方法名，返回该方法被定义时的名字（区分大小写）  
    * __NAMESPACE__：当前命名空间的名称（区分大小写）
 
-### 命名空间  
+### <span id="mm">命名空间 </span> 
    通过关键字namespace 来声明，如果一个文件中包含命名空间，它必须在其它所有代码之前声明命名空间。  
    在声明命名空间之前唯一合法的代码是用于定义源文件编码方式的 declare 语句
 
@@ -397,10 +441,196 @@ author: onlyhy
      * 尝试自动装载类 A\B\D\E。
      * 为了引用全局命名空间中的全局类，必须使用完全限定名称 new \C()。
 
-### <span id="sp">面向对象</span>
+### <span id="mx">面向对象</span>  
+
+#### 类定义  
+   
+    <?php
+    class phpClass {
+      var $var1;
+      var $var2 = "constant string";
+      function myfunc ($arg1, $arg2) {
+         [..]
+      }
+      [..]
+    }
+    ?>
+
+#### 创建对象  
+   类创建后，可以使用 new 运算符来实例化该类的对象  
+
+    $runoob = new Site;
+
+#### 调用成员方法  
+   该对象的成员方法只能操作该对象的成员变量  
+
+    <?php 
+    class Site { 
+      /* 成员变量 */ 
+      var $url; 
+      var $title; 
+      /* 成员函数 */ 
+      function setUrl($par){ 
+         $this->url = $par; 
+      } 
+      function getUrl(){ 
+         echo $this->url . PHP_EOL; //换行
+      } 
+       function setTitle($par){ 
+         $this->title = $par; 
+      } 
+      function getTitle(){ 
+         echo $this->title . PHP_EOL; 
+      }
+    } 
+    $runoob = new Site; 
+    // 调用成员函数，设置标题和URL 
+    $runoob->setTitle( "菜鸟教程" ); 
+    $runoob->setUrl( 'www.runoob.com' ); 
+    // 调用成员函数，获取标题和URL 
+    $runoob->getTitle(); 
+    $runoob->getUrl(); 
+    ?>  
+
+#### 构造函数  
+   主要用来在创建对象时初始化对象， 为对象成员变量赋初始值，总与new运算符一起使用在创建对象的语句中
+   在类中定义一个方法作为构造函数：
+
+    void __construct ([ mixed $args [, $... ]] )  
+
+   在上面的例子中我们就可以通过构造方法来初始化 $url 和 $title 变量
+
+    function __construct( $par1, $par2 ) {
+       $this->url = $par1;
+       $this->title = $par2;
+    }  
+
+   不需要再调用 setTitle 和 setUrl 方法  
+
+    $runoob = new Site('www.runoob.com', '菜鸟教程');  
+    $runoob->getTitle();  
+    $runoob->getUrl(); 
 
 
+#### 析构函数(destructor)   
+   与构造函数相反，当对象结束其生命周期时（例如对象所在的函数已调用完毕），系统自动执行析构函数，格式： 
+
+    void __destruct ( void )
 
 
+    <?php
+    class MyDestructableClass {
+       function __construct() {
+           print "构造函数\n";
+           $this->name = "MyDestructableClass";
+       }
+       function __destruct() {
+           print "销毁 " . $this->name . "\n";
+       }
+    }
+    $obj = new MyDestructableClass();
+    ?>
+
+结果：构造函数  
+    销毁 MyDestructableClass
+
+#### 继承  
+   使用关键字extends来继承一个类，不支持多继承  
+   class Child extends Parent {
+   // 代码部分，可扩展功能  
+}
+#### 方法重写  
+   从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写  
+
+#### 访问控制  
+   通过在前面添加关键字 public（公有），protected（受保护）或 private（私有）  
+   * public（公有）：公有的类成员可以在任何地方被访问
+   * protected（受保护）：受保护的类成员则可以被其自身以及其子类和父类访问  
+   * private（私有）：私有的类成员则只能被其定义所在的类访问
+
+   继承可以对public,protected重定义，private不行  
+
+#### 接口  
+   通过interface关键字定义，指定某个类必须实现哪些方法，但不需要定义这些方法的具体内容，方法必须是公有。要实现一个接口，使用 implements 操作符。类中必须实现接口中定义的所有方法，类可以实现多个接口，用逗号来分隔多个接口的名称。  
+
+    <?php
+    // 声明一个'iTemplate'接口
+    interface iTemplate
+    {
+        public function setVariable($name, $var);
+        public function getHtml($template);
+    }
+    // 实现接口
+    class Template implements iTemplate
+    {
+        private $vars = array();
+        public function setVariable($name, $var)
+        {
+            $this->vars[$name] = $var;
+        }
+        public function getHtml($template)
+        {
+            foreach($this->vars as $name => $value) {
+                $template = str_replace('{' . $name . '}', $value, $template);
+            }
+            return $template;
+        }
+    }
+
+#### 常量  
+   把在类中始终保持不变的值定义为常量。在定义和使用常量的时候不需要使用 $ 符号。  
+
+#### 抽象类  
+   任何一个类，如果它里面至少有一个方法是被声明为抽象的，那么这个类就必须被声明为抽象的，定义为抽象的类不能被实例化，被定义为抽象的方法只是声明了其调用方式（参数），不能定义其具体的功能实现，继承一个抽象类的时候，子类必须定义父类中的所有抽象方法。
+
+    <?php
+    abstract class AbstractClass
+    {
+     // 强制要求子类定义这些方法
+        abstract protected function getValue();
+        abstract protected function prefixValue($prefix);
+        // 普通方法（非抽象方法）
+        public function printOut() {
+            print $this->getValue() . PHP_EOL;
+        }
+    }
+    class ConcreteClass1 extends AbstractClass
+    {
+        protected function getValue() {
+            return "ConcreteClass1";
+        }
+        public function prefixValue($prefix) {
+            return "{$prefix}ConcreteClass1";
+        }
+    }
+    $class1 = new ConcreteClass1;
+    $class1->printOut();
+    echo $class1->prefixValue('FOO_') . PHP_EOL;
+    ?>  
+    结果： 
+    ConcreteClass1
+    FOO_ConcreteClass1
+
+#### static关键字  
+   声明类属性或方法为 static(静态)，就可以不实例化类而直接访问。  
+   伪变量 $this 在静态方法中不可用，静态属性不可以由对象通过 -> 操作符来访问。
+
+#### Final关键字  
+   PHP 5 新增了一个 final 关键字。如果父类中的方法被声明为 final，则子类无法覆盖该方法。如果一个类被声明为 final，则不能被继承。
+
+#### 调用父类构造方法  
+   PHP 不会在子类的构造方法中自动的调用父类的构造方法。要执行父类的构造方法，需要在子类的构造方法中调用 parent::__construct() 
+
+    class BaseClass {
+    function __construct() {
+    print "BaseClass 类中构造方法" . PHP_EOL;
+       }
+    }
+    class SubClass extends BaseClass {
+    function __construct() {
+        parent::__construct();  // 子类构造方法不能自动调用父类的构造方法
+        print "SubClass 类中构造方法" . PHP_EOL;
+       }
+    }
 
 
