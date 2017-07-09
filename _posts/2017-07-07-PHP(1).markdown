@@ -1,11 +1,15 @@
 ---
 layout: post
-title: "关于PHP"
+title: "关于PHP(1)"
 date: 2017-07-07 12:00:00 +00:00
 categories: PHP
 author: onlyhy
 ---  
-
+<ul>
+    <li>
+        <a href="#sp"></a>
+    </li>
+</ul>
 ### PHP(Hypertext Preprocessor)超文本预处理器  
   PHP文件包含文本、HTML、JS代码和PHP代码，在服务器上执行，以纯HTML形式返回给浏览器。  
 
@@ -393,7 +397,7 @@ author: onlyhy
      * 尝试自动装载类 A\B\D\E。
      * 为了引用全局命名空间中的全局类，必须使用完全限定名称 new \C()。
 
-
+### <span id="sp">面向对象</span>
 
 
 
