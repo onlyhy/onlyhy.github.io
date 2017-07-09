@@ -1,0 +1,107 @@
+---
+layout: post
+title: "关于PHP(2)"
+date: 2017-07-09 08:00:00 +00:00
+categories: PHP
+author: onlyhy
+---  
+<ul>
+    <li><a href="#id"></a></li>
+</ul>
+### 表单  
+   当处理 HTML 表单时，PHP 能把来自 HTML 页面中的表单元素自动变成可供 PHP 脚本使用。  
+
+### <span id="bd">表单验证 </span> 
+   HTML表单中代码如下： 
+
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  //超级全局变量，返回当前正在执行脚本的文件名  
+
+   htmlspecialchars()方法，htmlspecialchars() 函数把一些预定义的字符转换为 HTML 实体。能够避免$_SERVER["PHP_SELF"] 被黑客利用，预定义的字符是：  
+   & （和号） 成为 &amp;   
+   " （双引号） 成为 &quot;  
+   ' （单引号） 成为 &#039;  
+   < （小于） 成为 &lt;  >（大于） 成为 &gt;   
+
+   执行脚本时，可通过$_SERVER["REQUEST_METHOD"]来检测表单是否被提交。  
+
+#### 必需字段  
+   加入了一些新的变量: $nameErr, $emailErr, $genderErr, 和 $websiteErr.。这些错误变量将显示在必需字段上。 为每个$_POST变量增加了一个if else语句。 这些语句将检查 $_POST 变量是 否为空（使用php的 empty() 函数）。如果为空，将显示对应的错误信息。 如果不为空，数据将传递给test_input() 函数。
+
+    <?php
+    // 定义变量并默认设为空值
+    $nameErr = $emailErr = $genderErr = $websiteErr = "";
+    $name = $email = $gender = $comment = $website = "";
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if (empty($_POST["name"])) {
+        $nameErr = "名字是必需的。";
+      } else {
+        $name = test_input($_POST["name"]);
+      }
+      ...
+    }
+    ?>
+
+   在HTML实例中，为字段添加显示错误信息的脚本。  
+
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+    名字: <input type="text" name="name">
+    <span class="error">* <?php echo $nameErr;?></span>
+    <br><br>
+    </form>  
+
+#### 验证名称  
+   preg_match — 进行正则表达式匹配，int preg_match ( string $pattern , string $subject [, array $matches [, int $flags ]] ) ，在 subject 字符串中搜索与 pattern 给出的正则表达式相匹配的内容。如果提供了 matches ，则其会被搜索的结果所填充。$matches[0] 将包含与整个模式匹配的文本，$matches[1] 将包含与第一个捕获的括号中的子模式所匹配的文本，以此类推。  
+ 
+    $name = test_input($_POST["name"]);
+    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+      $nameErr = "只允许字母和空格"; 
+    }  
+
+#### 验证邮件   
+
+     $email = test_input($_POST["email"]);
+    if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email)) {
+      $emailErr = "非法邮箱格式"; 
+    }
+
+#### 验证URL
+
+    $website = test_input($_POST["website"]);
+    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+      $websiteErr = "非法的 URL 的地址"; 
+    }
+
+####  $_GET 变量  
+   收集来自method="get"的表单中的值，从带有 GET 方法的表单发送的信息，对任何人都是可见的（会显示在浏览器的地址栏），因此在发送密码或其他敏感信息时，不应该使用这个方法，并且对发送信息的量也有限制。
+
+    <form action="welcome.php" method="get">
+    名字: <input type="text" name="fname">
+    年龄: <input type="text" name="age">
+    <input type="submit" value="提交">
+    </form>  
+
+"welcome.php" 文件现在可以通过 $_GET 变量来收集表单数据了，表单域的名称会自动成为$_GET数组中的键
+
+    欢迎 <?php echo $_GET["fname"]; ?>!<br>
+    你的年龄是 <?php echo $_GET["age"]; ?>  岁。  
+
+
+#### $_POST 变量  
+   收集来自method="post"的表单中的值,任何人都是不可见的，对发送信息的量也没有限制，默认情况下为8MB，由于变量不显示在 URL 中，所以无法把页面加入书签。  
+
+#### $_REQUEST 变量  
+   包含了 $_GET、$_POST 和 $_COOKIE 的内容，可用来收集通过 GET 和 POST 方法发送的表单数据。
+
+    欢迎 <?php echo $_REQUEST["fname"]; ?>!<br>
+    你的年龄是 <?php echo $_REQUEST["age"]; ?>  岁。  
+
+
+### 多维数组  
+
+
+
+
+
+
+
