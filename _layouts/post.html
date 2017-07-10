@@ -42,11 +42,13 @@ transform:rotate(45deg);
 }
 </style>
 
+<body style="height: 200px;" >
 
 <div class="post">
 <div id="box" class="box">
 <div class="box-in"></div>
 </div> 
+
 <div class="post-header-container {% if page.cover %}has-cover{% endif %}" {% if page.cover %}style="background-image: url({{ page.cover | prepend: site.baseurl }});"{% endif %}>
   <div class="scrim {% if page.cover %}has-cover{% endif %}">
     <header class="post-header">
@@ -197,3 +199,5 @@ transform:rotate(45deg);
 
 </div>
 </div>
+
+</body>
