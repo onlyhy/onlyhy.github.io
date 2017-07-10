@@ -12,7 +12,7 @@ author: onlyhy
     <li><a href="#bh">包含文件</a></li>
     <li><a href="#wj">文件处理</a></li>
     <li><a href="#wjs">文件上传</a></li>
-    <li><a href="#Cookie">Cookie</a></li>
+    <li><a href="#cookie">Cookie</a></li>
     <li><a href="#session">Session</a></li>
     <li><a href="#dz">邮件</a></li>
     <li><a href="#aq">安全邮件</a></li>
