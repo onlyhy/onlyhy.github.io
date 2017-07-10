@@ -1,8 +1,52 @@
 ---
 layout: default
 ---
-<div class="post">
 
+<style>
+.box{
+position:fixed;
+right:10px;
+bottom: 10px;
+height:30px;
+width: 50px; 
+text-align:center;
+padding-top:20px; 
+background-color: lightblue;
+border-radius: 20%;
+overflow: hidden;
+}
+.box:hover:before{
+top:50%
+}
+.box:hover .box-in{
+visibility: hidden;
+}
+.box:before{
+position: absolute;
+top: -50%;
+left: 50%;
+transform: translate(-50%,-50%);
+content:'回到顶部';
+width: 40px;
+color:peru;
+font-weight:bold;
+} 
+.box-in{
+visibility: visible;
+display:inline-block;
+height:20px;
+width: 20px;
+border: 3px solid black;
+border-color: white transparent transparent white;
+transform:rotate(45deg);
+}
+</style>
+
+
+<div class="post">
+<div id="box" class="box">
+<div class="box-in"></div>
+</div> 
 <div class="post-header-container {% if page.cover %}has-cover{% endif %}" {% if page.cover %}style="background-image: url({{ page.cover | prepend: site.baseurl }});"{% endif %}>
   <div class="scrim {% if page.cover %}has-cover{% endif %}">
     <header class="post-header">
@@ -131,6 +175,19 @@ layout: default
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
+    var timer = null;
+    box.onclick = function(){
+    cancelAnimationFrame(timer);
+    timer = requestAnimationFrame(function fn(){
+    var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+    if(oTop > 0){
+    document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+    timer = requestAnimationFrame(fn);
+    }else{
+    cancelAnimationFrame(timer);
+    } 
+    });
+    };
   </script>
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
