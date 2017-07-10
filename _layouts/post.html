@@ -3,7 +3,7 @@ layout: default
 ---
 <head>
 
- <link id="scrollUpTheme" rel="stylesheet" href="css/image.css">
+ <link id="scrollUpTheme" rel="stylesheet" href="css/tab.css">
    <link rel="stylesheet" href="css/labs.css">
 
  <script src="../js/js/jquery-1.11.1.min.js"></script>
@@ -71,7 +71,7 @@ layout: default
                             scrollImg: {
                                 active: true,
                                 type: 'background',
-                                src: 'img/top.png'
+                                src: 'assets/top.png'
                             }
                         });
                     });
@@ -110,12 +110,6 @@ layout: default
                 <li><a href="#" class="link-switch">Link</a></li>
                 <li><a href="#" class="image-switch">Image</a></li>
             </ul>
-            <em class="light">Demo styles can be found in the <code>css/themes/</code> folder.</em>
-
-            <h2>activeOverlay Demo</h2>
-            <p>For demo purposes, toggle the activeOverlay below.</p>
-            <a id="toggleActive">Show activeOverlay</a>
-
 <div class="post-header-container {% if page.cover %}has-cover{% endif %}" {% if page.cover %}style="background-image: url({{ page.cover | prepend: site.baseurl }});"{% endif %}>
   <div class="scrim {% if page.cover %}has-cover{% endif %}">
     <header class="post-header">
