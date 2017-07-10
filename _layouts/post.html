@@ -3,7 +3,7 @@ layout: default
 ---
 <head>
 
- <link id="scrollUpTheme" rel="stylesheet" href="css/tab.css">
+ <link id="scrollUpTheme" rel="stylesheet" href="../css/tab.css">
    <link rel="stylesheet" href="css/labs.css">
 
  <script src="../js/js/jquery-1.11.1.min.js"></script>
@@ -53,7 +53,7 @@ layout: default
                         });
                     });
                     $('.pill-switch').addClass('active');
-                    $('#scrollUpTheme').attr('href', 'css/pill.css?1.1');
+                    $('#scrollUpTheme').attr('href', '../css/pill.css?1.1');
                 } else if ($.getQuery('theme') === 'link') {
                     $(function () {
                         $.scrollUp({
@@ -61,7 +61,7 @@ layout: default
                             activeOverlay: '#00FFFF'
                         });
                     });
-                    $('#scrollUpTheme').attr('href', 'css/link.css?1.1');
+                    $('#scrollUpTheme').attr('href', '../css/link.css?1.1');
                     $('.link-switch').addClass('active');
                 } else if ($.getQuery('theme') === 'image') {
                     $(function () {
@@ -75,7 +75,7 @@ layout: default
                             }
                         });
                     });
-                    $('#scrollUpTheme').attr('href', 'css/image.css?1.1');
+                    $('#scrollUpTheme').attr('href', '../css/image.css?1.1');
                     $('.image-switch').addClass('active');
                 } else {
                     $(function () {
@@ -84,7 +84,7 @@ layout: default
                             activeOverlay: '#00FFFF'
                         });
                     });
-                    $('#scrollUpTheme').attr('href', 'css/tab.css?1.1');
+                    $('#scrollUpTheme').attr('href', '../css/tab.css?1.1');
                     $('.tab-switch').addClass('active');
                 }
 
