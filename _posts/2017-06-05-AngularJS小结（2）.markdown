@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "菜鸟教程AngularJS文档小结（2）"
-date: 2017-07-05 15:00:00 +00:00
+date: 2017-06-05 15:00:00 +00:00
 categories: AngularJS
 author: onlyhy
 ---
