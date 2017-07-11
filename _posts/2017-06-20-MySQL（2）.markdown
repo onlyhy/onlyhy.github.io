@@ -10,7 +10,7 @@ author: onlyhy
     <li><a href="#alter">ALTER命令</a></li>
     <li><a href="#sy">索引</a></li>
     <li><a href="#ls">临时表</a></li>
-    <li><a href="#fz">复制表<</a></li>
+    <li><a href="#fz">复制表</a></li>
     <li><a href="#ysj">元数据</a></li>
     <li><a href="#xl">序列使用</a></li>
     <li><a href="#cfsj">处理重复数据</a></li>
