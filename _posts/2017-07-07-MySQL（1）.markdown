@@ -9,15 +9,15 @@ author: onlyhy
     <li><a href="#gl">管理MySQL的命令</a></li>
     <li><a href="#lj">MySQL 连接</a></li>
     <li><a href="#sjk">数据库</a></li>
-    <li><a href="#sj">数据类型</a></li>
+    <li><a href="#sjl">数据类型</a></li>
     <li><a href="#sjb">数据表<</a></li>
-    <li><a href="#cookie">Cookie</a></li>
-    <li><a href="#session">Session</a></li>
-    <li><a href="#dz">邮件</a></li>
-    <li><a href="#aq">安全邮件</a></li>
-    <li><a href="#error">错误处理</a></li>
-    <li><a href="#yc">异常处理</a></li>
-    <li><a href="#gl">过滤</a></li>
+    <li><a href="#sj">数据</a></li>
+    <li><a href="#zj">WHERE、UPDATE、DELETE、LIKE子句</a></li>
+    <li><a href="#UNION">UNION操作符</a></li>
+    <li><a href="#ORDER BY排序">ORDER BY排序</a></li>
+    <li><a href="#Group by">Group by分组</a></li>
+    <li><a href="#JOIN">JOIN连接的使用 </a></li>
+    <li><a href="#NULL">NULL值处理</a></li>
     <li><a href="#JSON">JSON</a></li>
 </ul>
 
@@ -176,7 +176,7 @@ author: onlyhy
     mysqli_close($conn);
     ?>  
 
-### <span id="sj">数据类型/<span>  
+### <span id="sjl">数据类型/<span>  
  MySQL支持多种类型，大致可以分为三类：数值、日期/时间和字符串(字符)类型。  
 #### 数值类型  
  支持所有标准SQL数值数据类型，包括严格数值数据类型(INTEGER、SMALLINT、DECIMAL和NUMERIC)，以及近似数值数据类型(FLOAT、REAL和DOUBLE PRECISION)，关键字INT是INTEGER的同义词，关键字DEC是DECIMAL的同义词，BIT数据类型保存位字段值，并且支持MyISAM、MEMORY、InnoDB和BDB表，也支持整数类型TINYINT、MEDIUMINT和BIGINT。
@@ -249,8 +249,8 @@ author: onlyhy
 
     mysqli_query(connection,query,resultmode);  
 
-
-### 插入数据  
+### <span id="sj">数据</span>
+#### 插入数据  
 
     INSERT INTO table_name ( field1, field2,...fieldN )
                        VALUES
@@ -329,7 +329,7 @@ author: onlyhy
     // 释放内存
     mysqli_free_result($retval);  
 
-### WHERE、UPDATE、DELETE、LIKE子句
+### <span id="zj">WHERE、UPDATE、DELETE、LIKE子句</span> 
 
 SELECT field1, field2,...fieldN FROM table_name1, table_name2...
 [WHERE condition1 [AND [OR]] condition2..... 
@@ -382,7 +382,7 @@ WHERE field1 LIKE condition1 [AND [OR]] filed2 = 'somevalue'
 
  如果是 DELETE 或者 UPDATE 中使用 WHERE...LIKE 子句的S QL 语句，则无需使用 mysqli_fetch_array() 函数  
 
-### UNION操作符  
+### <span id="UNION">UNION操作符 </span> 
  用于连接两个以上的 SELECT 语句的结果组合到一个结果集合中  
 
     SELECT expression1, expression2, ... expression_n
@@ -394,12 +394,12 @@ WHERE field1 LIKE condition1 [AND [OR]] filed2 = 'somevalue'
     [WHERE conditions];  
 
 
-### ORDER BY排序  
+### <span id="ORDER BY">ORDER BY排序  </span> 
 
 SELECT field1, field2,...fieldN table_name1, table_name2...
 ORDER BY field1, [field2...] `[ASC [DESC]]`  //ASC或DESC用来设置升序或降序
 
-### Group by分组  
+### <span id="Group by">Group by分组 </span> 
  在分组的列上我们可以使用 COUNT, SUM, AVG,等函数。  
 
     SELECT column_name, function(column_name)
@@ -413,13 +413,13 @@ ORDER BY field1, [field2...] `[ASC [DESC]]`  //ASC或DESC用来设置升序或�
 
 `select coalesce(a,b,c);`,如果a==null,则选择b；如果b==null,则选择c；如果a!=null,则选择a；如果a b c 都为null ，则返回为null（没意义）。
 
-### JOIN连接的使用   
+### <span id="JOIN">JOIN连接的使用 </span>  
 
 * INNER JOIN（内连接,或等值连接）：获取两个表中字段匹配关系的记录,INNER可省，效果一样
 * LEFT JOIN（左连接）：获取左表所有记录，即使右表没有对应匹配的记录
 * RIGHT JOIN（右连接）： 与 LEFT JOIN 相反，用于获取右表所有记录，即使左表没有对应匹配的记录  
 
-### NULL值 处理 
+### <span id="NULL">NULL值处理 </span>
 当提供的查询条件字段为NULL时，该命令可能就无法正常工作  
 
 * IS NULL: 当列的值是 NULL,此运算符返回 true
@@ -427,7 +427,9 @@ ORDER BY field1, [field2...] `[ASC [DESC]]`  //ASC或DESC用来设置升序或�
 * <=>: 比较操作符（不同于=运算符），当比较的的两个值为 NULL 时返回 true 
  
 SELECT * FROM runoob_test_tbl WHERE runoob_count IS NULL;
-SELECT * from runoob_test_tbl WHERE runoob_count IS NOT NULL;
+SELECT * from runoob_test_tbl WHERE runoob_count IS NOT NULL;  
+
+
 
 
 
