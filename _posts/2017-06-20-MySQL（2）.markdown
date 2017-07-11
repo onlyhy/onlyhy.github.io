@@ -127,9 +127,7 @@ SHOW INDEX 命令来列出表中的相关的索引信息，可以通过添加 \G
 
 ### <span id="fz">复制表</span>  
 完整的复制MySQL数据表：
-1. 使用 SHOW CREATE TABLE 命令获取创建数据表(CREATE TABLE) 语句，该语句包含了原数据表的结构，索引等。
-2. 复制以下命令显示的SQL语句，修改数据表名，并执行SQL语句，通过以上命令 将完全的复制数据表结构。
-3. 如果你想复制表的内容，你就可以使用 INSERT INTO ... SELECT 语句来实现
+
 
     mysql> SHOW CREATE TABLE runoob_tbl \G;
     *************************** 1. row ***************************
@@ -163,6 +161,11 @@ SHOW INDEX 命令来列出表中的相关的索引信息，可以通过添加 \G
     -> FROM runoob_tbl;
     Query OK, 3 rows affected (0.07 sec)
     Records: 3  Duplicates: 0  Warnings: 0
+
+
+1. 使用 SHOW CREATE TABLE 命令获取创建数据表(CREATE TABLE) 语句，该语句包含了原数据表的结构，索引等。
+2. 复制以下命令显示的SQL语句，修改数据表名，并执行SQL语句，通过以上命令 将完全的复制数据表结构。
+3. 如果你想复制表的内容，你就可以使用 INSERT INTO ... SELECT 语句来实现
 
 ### <span id="ysj">元数据</span>  
 #### 获取查询语句影响的记录数  
