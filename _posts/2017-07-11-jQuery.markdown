@@ -10,7 +10,7 @@ author: onlyhy
 
 百度CDN:`https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js`  
 
-###语法、样式、DOM、事件、动画
+### 语法、样式、DOM、事件、动画
 ## 语法  
 选取 HTML 元素，并对选取的元素执行某些操作：$(selector).action()  
 文档就绪后执行 jQuery 方法：
