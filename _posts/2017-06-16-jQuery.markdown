@@ -1,0 +1,338 @@
+---
+layout: post
+title: "jQuery回顾随笔"
+date: 2017-06-12 08:00:00 +00:00
+categories: 基础知识
+author: onlyhy
+---
+## 叨叨
+没用博客之前，看视频教程都是手写的笔记，嗨呀，虽然说好读书不如烂笔头，现在觉得写在博客上或者是一种更好的选择..回顾一下笔记就顺便写在博客上了  
+
+百度CDN:`https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js`  
+
+###语法、样式、DOM、事件、动画
+## 语法  
+选取 HTML 元素，并对选取的元素执行某些操作：$(selector).action()  
+文档就绪后执行 jQuery 方法：
+
+    $(document).ready(function(){
+    // 开始写 jQuery 代码...
+    });
+    简介版：
+    $(function(){
+    // 开始写 jQuery 代码...
+    });
+
+jQuery方法包装后的对象，是一个类数组对象，与DOM对象完全不同，唯一相似是都能操作DOM，DOM对象是一个单独的DOM元素  
+
+    var $div = $('div');//jQuery对象
+    var div = $div[0];//转化为DOM对象，数组索引从0开始
+    var div = $div.get(0);//通过get()方法
+    div.style.color = 'red';操作DOM对象的属性  
+
+通过$(DOM)方法将DOM对象加工成为jQuery对象之后，调用jQuery方法 
+
+## 样式篇
+### 选择器
+#### id选择器
+$("#id") 唯一一个id  
+
+#### 类选择器
+$(".class") 可多选  
+
+#### 元素选择器
+$("element")  
+
+#### 全选择器
+$("*")  
+
+#### 层级选择器
+子元素，后代元素，兄弟元素，相邻元素
+$("parent > child) 子选择器  
+$("ancestor descendant") 后代选择器  
+$("prev + next") 相邻兄弟选择器 紧接在prev元素后的 next元素  
+$("prev ~ siblings")一般兄弟选择器 prev之后的所有兄弟元素，过滤siblings选择器  
+
+层级选择器都有一个参考点，后代选择器包含子选择器中内容，一般兄弟选择器包含相邻兄弟  
+
+#### 基本筛选选择器
+选择器用“:”开头  
+$(":first")  匹配第一个元素  
+$(":last")  匹配最后一个元素  
+$(":not(selector)")  选择所有元素，过滤不匹配的元素
+$("eq(index)")  索引值为index的元素
+$(":lt(index)")  所有小于给定index的元素
+$(":gt(index)")  所有大于给定inedx的元素
+$(":even")  索引值为偶数的元素，从0开始计数
+$(":odd")  索引值为奇数的元素，从0开始计数
+$(":header")  所有标题元素 
+$(":lang(language)")  指定语言的所有元素
+$(":root")  文档的根元素
+$(":animated")  正在执行动画效果的元素
+
+#### 内容筛选选择器  
+$(":contains(text)")  包含指定文本的元素
+$(":parent")  所有含有子元素或文本的元素
+$(":empty")  所有没有子元素的元素（包含文本节点）
+$(":has(selector)")  至少包含指定选择器的元素  
+
+#### 可见性筛选选择器  
+元素有显示和隐藏的状态
+$(":visible")  所有显示的元素
+$(":hidden")  所有隐藏的元素  
+:hidden选择器不仅包含样式是display="none"元素，还包含隐藏表单，visibility等。
+元素的visibility:hidden或opacity:o被认为可见，因为仍占用空间布局  
+
+#### 属性筛选选择器
+$("[attribute |= 'value']")  属性值等于给定字符串或以该字符串为前缀
+$("[attribute *= 'value']")  属性具有包含一个给定的子字符串的元素（包含某些值）
+$("[attribute ~= 'value']")  属性用空格分隔的值中包含一个给定值 
+$("[attribute = 'value']")   属性是给定值
+$("[attribute != 'value']")  不存在指定属性或指定属性值不等
+$("[attribute ^= 'value']")  以给定字符开始
+$("[attribute $= 'value']")  以给定字符结尾，区分大小写
+$("[attribute]")  具有指定属性的元素
+多项选择器把多个选择器组合起来
+
+#### 子元素筛选选择器  
+不常用  
+$(":first-child")  所有父级元素的第一个子元素，可匹配多个相当于 :nth-child(1) 
+$(":last-child")  所有父级元素下的最后一个子元素
+$(":only-child")  某父元素的唯一子元素
+$(":nth-child")  所有子元素的第n个子元素
+$(":nth-last-child")  所有父元素的第n个子元素，技术从最后一个元素开始到第一个
+
+:nth-child(n) 索引从1开始，从前往后
+:nth-last-child(n)  从后往前
+
+#### 表单元素 选择器  
+$(":input")  选择所有input,textarea,select,button元素  
+$(":text")  文本框  
+$(":password")  密码框  
+$(":radio")  单选按钮  
+$(":chexkbox")  复选框  
+$(":submit")  提交按钮  
+$(":image")  图像域  
+$(":reset")  重置按钮  
+$(":button")  所有按钮  
+$(":file")  文件域  
+大部分表单类筛选器可用属性筛选器替换，如$(':password')==$('[input = password]')
+
+#### 表单对象属性筛选选择器  
+主要用在表单元素，也可用在其他选择器
+$(":enabled")  可用的表单元素  
+$(":disabled")  不可用的表单元素
+$(":checked")  被选中的input元素 保险起见，input:checked确保只选到input元素
+$(":selected")  被选中的option元素  
+
+#### 特殊选择器  this  
+this指当前上下文对象，简单说就是方法/属性的所有者  
+DOM中this指向这个html元素对象  
+通过$()方法传入当前的元素对象的引用this
+this:表示当前上下文对象是一个html对象，调用html对象拥有的属性和方法  
+$(this):代表上下文对象是一个jquery的上下文对象，调用jQuery的方法和属性
+
+### 属性与样式
+#### .attr()与.removeAttr()
+操作特性的DOM方法有3中：getAttribute,setAttribute,removeAttribute
+
+attr()获取和设置元素属性：  
+attr(属性名)：获取属性值  
+attr(属性名，属性值)：设置属性值  
+attr(属性名，函数值)：设置属性的函数值  
+attr(attributes)：指定元素设置多个属性值
+
+removeAttr()删除方法  
+* DOM中attribute和property都是属性，attribute是节点自带的属性如id,class,title等，property是DOM元素作为对象，附加的内容如tagName,nodeName等，获取property使用prop()
+
+#### .html()与.text()
+.html()获取第一个匹配元素的HTML内容或设置每一个匹配元素的html内容，针对整个html内容，不只是文本内容  
+
+.text()匹配元素集合中每个元素的文本内容结合，包括后代或设置匹配元素集合中每个元素的文本内容为指定的文本内容
+#### .val()
+处理表单元素的值，只能用在表单上
+.val()  获取匹配的元素集合中第一个元素的当前值
+.val(value)  设置匹配的元素集合中每个元素的值   
+
+#### .addClass()
+增加样式，动态改变类名  
+
+#### .removeClass()
+删除样式  
+
+#### .toggleClass()
+切换样式，动态添加删除样式，保留原有class名，空格隔开  
+.toggle(className,switch) switch是布尔值  
+
+#### 元素的数据存储  
+jQuery.data(element,key,value)  静态接口，存数据
+jQuery.data(element,key)  静态接口，取数据  
+
+## DOM篇
+节点创建，属性设置，如：
+`$(html结构)`
+`$("<div class='right'><div class='arron'>动态创建节点</div></div>")`
+### DOM节点插入  
+1. 内部插入
+append(),appendTo(),prepend(),prependTo()  
+追加：append()前面是被插入对象，后面是要插入的内容，appendTo()与之相反
+前置：prepend(),prependTo()都是添加到最前面，用法同上 
+2. 外部插入  
+对相对选中元素外部增加相邻的兄弟节点
+after(),before(),insertAfter(),insertBefore()
+after()向元素后面添加，before()向元素前面添加
+
+### DOM节点删除  
+1. empty()
+移除指定元素的所有子节点包括元素里文本，本身元素没有被删除！
+2. remove()
+有参与无参，元素自身也会被删除！
+3. detach()
+保留数据的删除操作，仅仅是显示效果没了，内存中还是存在的，append后会重新回到文档流  
+
+### DOM节点复制与替换  
+1. 拷贝clone() 克隆节点  
+* 插入到文档前，可修改克隆后的元素或元素内容
+* 传递布尔值
+* 只能处理jQuery绑定的事件与数据
+* 元素数据内对象和数组不会被赋值，共享
+
+2. 替换replaceWith(),replaceAll()  
+两个功能相似，主要是目标和源的位置区别，会删除与节点相关的所有数据和事件处理程序  
+replaceWith()返回被替换的元素组合
+
+3. 包裹wrap()
+增加一个父元素，针对单个DOM  
+
+4. unwrap()  将父元素删除，保留自身与兄弟元素
+5. wrapAll()  将集合中的元素包裹，最内层只能有一个元素
+6. wrapInner()  给集合中匹配的元素内部，增加包裹的HTML结构
+
+### 遍历
+children()父子关系；find()后代关系，包含父子；parent()父子关系，向上找一级；parents()往上查找所有祖辈元素；  
+closest()开始于当前元素 向上查，找到第一个符合的就停止；  
+next()指定元素集合中每一个元素紧邻的后面同辈元素的元素集合；
+prev()指定元素集合中每一个元素紧邻的前面同辈元素的元素集合；  
+siblings()指定元素集合中每一个元素同辈元素的元素集合；
+each()  
+* for循环的迭代器
+* 通过回调，有两个固定的实参，索引与元素
+* 回调方法中的this指向当前迭代的dom元素  
+
+## 事件篇
+### 鼠标事件  
+1. click与dbclick
+·$("#test").([...,]function([e]){...})·
+2. mousedown和mouseup
+这两个动作构成click
+3. mousemove移动
+4. mouseover,mouseout 移入移出
+5. mouseenter,mouseleave 冒泡方式的处理，只在绑定的元素上调用，不会再后代节点触发
+6. hover事件 
+`$(selector).hover(handlerIn,handlerOut)`
+
+### 表单事件
+
+1. focusin事件 
+元素获得焦点时，捕获动作，在元素包含的元素中产生
+2. focusout事件 
+失去焦点时，捕获动作
+3. blur focus焦点事件，区别在于是否支持冒泡，focus只在元素本身产生
+4. change  
+想用代码触发change事件则调用无参的change()方法
+5. select  
+只能用于input和textarea
+6. submit  
+form元素有默认提交表单的行为，要禁止默认行为，传统方式调用对象e.preveb=ntDefault(),jQuery中可直接在函数中最后结尾处return false  
+
+### 键盘事件  
+1. keydown()和keyup() 最适合表单元素
+keydown获取的内容是之前输入的，当前输入的获取不到
+处理任何不被keypress识别的键
+2. keypress()  
+* 用来接收字母，数字等ANSI字符，只能是单个字符
+* 无法响应系统功能键（delete,bcakspace...）
+* 不区分小键盘，主键盘的数字字符
+
+### 事件的绑定与解绑  
+1. .on()的多事件绑定
+.on(events,[selector],[data])
+2. .on的高级用法
+.on(events,[selector],[data],handler(eventObject))  
+事件绑定在最上层元素上，会往上冒泡，一直冒到div上  
+如果提供了第二个参数，则当冒泡遇到这个selector时，会触发回调函数
+3. off()移除绑定
+
+### 事件对象  
+只有事件发生时才产生，event.target代表当前触发事件的元素  
+1. event.type   获取事件的类型
+2. event.pageX,event.pageY   获取鼠标当前相对于页面的坐标
+3. event.preventDefault()  阻止默认行为
+4. event.stopProgation()   阻止冒泡行为  
+5. event.which  获取单击时点的哪个键
+6. event.currentTarget 事件冒泡过程中的当前DOM元素
+7. this和event.target的区别  
+js事件会冒泡，this是可变化的，而event.tarf=get永远是直接接受事件的DOM元素  
+两个都是DOM对象，使用jquery方法都要先转换为jquery对象
+
+### 自定义事件  
+1. trigger
+如$('#elem').trigger('click')  
+trigger会在DOM树冒泡
+2. triggerHandler
+不冒泡，触发通过jQuery绑定的事件处理函数，不触发原生的事件
+
+两者的不同：
+* triggerHandler不会触发浏览器默认行为
+* triggerHatriggerHandler()  ndler只影响第一个匹配到的元素，trigger会影响所有与jQuery对象相匹配的元素
+* triggerHandler() 返回最后一个处理的事件的返回值  
+ 
+## 动画篇  
+
+### 动画基础隐藏和显示
+show  和 hide  从左上角开始，修改display属性
+1. hide  
+.hide("fast/slow")对应200ms 和 600ms 
+hide操作会保存原始属性值，还原后还是初始值
+2. show  
+$("elem").hide(3000).show(3000)，3秒隐藏3秒显示
+3. toggle 显示与隐藏切换  
+
+### 上拉下卷效果   
+垂直效果
+1. 下拉 slideDown()
+`.slideDown([duration],[complete])`  持续时间以ms为单位，一开始元素display设置为none
+2. 上卷slideUp()
+`.slideDown([duration],[easing],[complete])`  
+动画是异步的，在动画之后执行的操作要写到回调函数里
+3. 切换 slideToggle()  
+获取元素高度，使高度发生变化，隐藏后高度为0，display为none
+### 淡入淡出效果  
+1. 淡出 fadeOut()  
+2. 淡入 fadeIn() 操作元素的不透明度从0%到100%
+3. 淡入淡出切换 fadeToggle()
+4. fadeTo 淡入效果  
+.fadeTo(duration,opacity,callback)   opacity是不透明度，0~1  
+
+### 动画切换比较  
+toggle与slideToggle:  
+toggle从右至左，横向动作，通过display判断  
+slideToggle从下至上，竖向动作，通过高度变化来切换
+### 自定义动画  
+1. animate  
+.animate(properties,[duration],[easing],[complete])
+.animate(properties,options)  
+properties:一个或多个css属性的值键对  
+* 所有用于动画的属性必须是数字的或show,hide,toggle
+* css样式使用DOM名称，非css名称  
+step:每个动画每一步完成之后要执行的函数  
+progress:每一次动画调用执行回调，是一个进度的概念  
+complete:动画完成回调 ，多个元素执行回调，将在每个元素上执行一次，不是整个动画执行一次！！！  
+
+2. stop 停止动画  
+.stop([clearQueue],[jumpToEnd])
+.stop([queue],[clearQueue],[jumpToEnd])  
+.stop()停止当前动画，点击在暂停处继续开始  
+.stop(true)多个动画，尚未执行的在队列中，不会指向，直到第一个完成  
+clearQueue为true则队列中动画被删除，不执行  
+.stop(true,true)当前动画停止，该元素的css属性会被立刻修改成动画目标值
