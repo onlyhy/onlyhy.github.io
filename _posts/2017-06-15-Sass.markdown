@@ -1,0 +1,272 @@
+---
+layout: post
+title: "Sass回顾随笔"
+date: 2017-07-12 08:00:00 +00:00
+categories: 基础知识
+author: onlyhy
+---
+## 叨叨
+没用博客之前，看视频教程都是手写的笔记，嗨呀，虽然说好读书不如烂笔头，现在觉得写在博客上或者是一种更好的选择..回顾一下笔记就顺便写在博客上了
+
+### Sass
+### sass -h 查看所有帮助  
+ 
+### 编译  
+1. 单文件
+`sass input.scss output.css`
+2. 单文件监听
+`sass --watch input.scss:output.css`
+3. 监听整个目录
+`sass --watch app/sass:public/stylesheets`
+
+### 四种编译排版格式  
+1. 嵌套输出：nested
+2. 展开输出：expanded
+3. 紧凑输出：compact
+4. 压缩输出：compressed  
+
+### 变量
+1. `$`开头，如`$width: 300px;`  
+2. 默认变量 加`!default`设置默认值，可在之前重新声明使用
+3. 局部变量：元素内部；全局变量：元素外部
+
+### 嵌套
+#### 选择器嵌套
+尽可能避免使用
+
+       nav{
+         a{
+           color:red;
+            header &{  //&就代表 nav a
+                     color:green;
+                     }
+           }
+       }
+
+#### 属性嵌套  
+有些属性前缀相同，后缀不一样  
+
+    .box{
+        border:{
+                top: 1px solid red;
+                bottom: 1px solid green;
+    }
+    }// 相当于border-top，border-bottom  
+
+#### 伪类嵌套  
+借助`&`符号  
+
+    .clearfix{
+        &:before,
+        &:after{...}
+        &:after{...}
+    }
+
+### 混合宏
+需要重复使用大段样式  
+
+1. 声明混合宏
+`@mixin` 声明  
+如不带参数`@mixin border-radius{...}`，带参数`@mixin border-radius{$radius:5px}`    
+复杂的混合宏，可在大括号中带逻辑关系  
+
+2. 调用混合宏
+`@include`调用一个声明好的混合宏  
+
+3. 混合宏参数
+不带值的参数、带值的参数、多个参数（当参数过多可用...来替代）  
+
+4. 不足
+冗余，相同样式代码不能合并在一起
+
+### 扩展/继承  
+继承用`extend`  
+
+    .btn{...}
+    .btn-primary{
+                ...
+                @extend .btn;
+    }  
+
+### 占位符  %placeholder  
+占位符声明的代码，不被@extend调用，不产生任何代码  
+被@extend调用的占位符，编译出来的代码会将相同的合并  
+
+    %mt5{...}
+    %pt5{...}
+    .btn{
+        @extend %mt5;
+        @extend %pt5;
+    }
+
+### 插值 #{}  
+
+    $properties:(margin,padding);
+    @mixin set-value($side,$value){
+        @each $prop in $properties{
+            #{$prop}-#{$side}: $value;
+        }
+    }
+    .login-box{
+        @include set-value(top,14px);
+    }
+
+### 注释 
+1. //在CSS中不会显示
+2. /**/在CSS中显示  
+
+### 数据类型  
+数值，字符串（有引号或无），颜色，布尔，空值，值列表（用空格或逗号隔开）  
+插值中有引号被编译为无引号，不清楚情况时都被编译为无引号。  
+
+### 运算  
+1. 加法
+   变量或属性都可以做加法，不同类型时会报错
+2. 减法
+   同加法
+3. 乘法
+   单位相同时，提供一个单位就行
+4. 除法
+   不可以直接用`/` ，需要在表达式外面加`()`号
+5. 颜色运算  
+   分段运算，红、绿、蓝分段单独运算
+6. 字符运算
+   通过`+`对字符串或字符连接  
+   有引号字符串被添加无引号的，结果还是有引号的；无引号的被添加有引号的结果没有引号  
+
+### 指令  
+1. @if 
+2. @for 循环
+`@for $i from <start> through <end>`  
+`@for $i from <start> to <end>`  
+through包含end这个数，to不包含
+3. @while循环  
+
+4. @each循环
+`@each $var in <list>`
+5. @import  
+根据文件名引入，默认寻找sass文件并直接引入  
+如无以下情况：
+* 文件扩展名是.css
+* 文件名以http://开头
+* 文件名是url()
+* @import包含了任何媒体查询
+
+将文件名前加一个下划线，避免sass编译为css，同一个目录不能同时存在带和不带下划线的同名文件  
+
+6. @media
+可嵌套在css规则中，类似JS冒泡功能，样式中加入本指令，会冒泡到外面
+7. @at-root
+跳出根元素
+8. @debug
+用来调试，编译错误时，终端会输出设置的提示Bug
+9. @warn
+和@debug类似
+10. @error
+和@debug类似  
+
+### 函数  
+ 1. 字符串函数  
+*  unquote()函数，quote()函数
+   unquote()函数删除字符串中的引号，只删除最前和最后的引号  
+   quote()函数给字符串添加引号，字符串自身带引号则统一为双引号，只能增加双引号，且必须将单引号、空格、特殊符号都要用双引号括起来  
+*  To-upper-case()
+*  To-lower-case()
+
+ 2. 数字函数
+* percentage() 将不带单位的数字转换成百分比形式
+* round() 将一个数四舍五入为一个最接近的整数
+* ceil() 转为整数，只入不舍
+* floor()去除小数，值舍，不入
+* abs()绝对值
+* min()最小，不同单位会报错
+* max()最大，不同单位会报错
+* random()随机数
+
+ 3. 列表函数
+* length() 返回列表中有几个值，参数之间用空格隔开，逗号会报错
+* nth()  nth($list,$n)指定列表中某个位置的值 n是大于0的整数
+* join() 两个列表合并为一个，多个列表合并用多个join(),参数$separator分隔符号，comma是逗号，space是空格
+* append() 插入值到最末位
+* zip() 将多个列表转成一个多维的列表 单一列表的个数值要相同
+* index() 找某个值在列表中的位置 第一个为1
+
+ 4. Introspection函数
+* type-of() 判断值的类型
+* unit() 获取一个值使用的单位
+* unitless() 判断是否带单位，不带单位返回true
+* comparable()
+* Miscellaneous函数  三元条件函数
+  如if($condition,$if-true,$if-false)，condition成立返回值为$if-true,否则返回$if-false 
+
+ 5. Map函数
+  数据地图或数组，以key:value成对出现，可嵌套，即一个key可当成map
+  $map:(key1:value1,key2:value2)
+
+ 6. Sass Maps的函数
+* map-get($map,$key)根据 $key返回value值
+* map-has-key($map,$key) 返回一个布尔值
+* map-keys($map)返回所有key
+* map-values($map)获取所有value值
+* map-merge($map1,$map2)将两个map合并为一个新map，相同key名，用map2取代map1
+* map-remove($map,$key)删除一个key
+* keywords($args)动态创建map的函数，通过混合宏或函数参数创建map,$args变成key
+
+ 7. RGB颜色函数
+* rgb($red,$green,$blue)
+* rgba()将一个颜色根据透明度转换成rgba颜色
+  rgba($red,$green,$blue,$alpha)
+  rgba($color,$alpha)知道实际颜色，增加透明度
+* Red()获取一个颜色中的红色值，命令终端需要先输入sass -i命令
+  Green()同上
+  Blue()同上
+* Mix()将两种颜色根据一定比例混合，生成另外一种颜色
+  mix($color-1,$color-2,$weight)$weight默认50%各占一半，若为25%，则第一个25%，第二个75%
+
+ 8. HSL函数
+* lighten(),darken()调整亮度值，0-1之间
+* saturate(),desaturate()改变颜色饱和度
+* adjust-hue()调整色相 -360deg~360deg 可以是百分数
+* grayscale()不同程度的灰色，会将颜色的饱和度直接调至0%
+
+ 9. Opacity函数
+* alpha(),opacity()获取颜色的透明度值
+* rgba()接受两个参数，颜色，颜色透明值
+* opacity(),fade-in()对已有的透明度做加法 运算，让颜色更不透明
+* transparentize(),fade-out()做减法运算，让颜色更透明
+
+
+### Less
+### lessc  
+执行lessc不带任何参数，会在命令行输出所有可用选项的列表
+
+### 注释同Sass  
+### 变量  
+用`@`定义  
+### 混合
+与Sass相似,为所有混合宏加上!important
+### 匹配模式  
+相当于JS中if,但不完全是，满足条件后才能匹配  
+`.pos(r){position:relative;}`
+有属性不论匹配哪一个都需要:
+·.pos(@__){...}·
+### 运算  
+数字，颜色，变量都可参加运算，运算被包裹在括号中  
+### 嵌套  
+#### &对类的使用  
+    a{
+        ...
+        &:hover{...}
+    }//&代表上一层选择器
+#### 对连接的使用
+
+### @arguments变量  
+包含了所有传递进来的参数
+
+### 避免编译  
+在字符串前加一个`~`形如 ~'...';
+
+### 引用
+less中引less  ：  @import"less名";
+less中引css   ：  @import(less) "a.css";写在哪出现在哪
+
