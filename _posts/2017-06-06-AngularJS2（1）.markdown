@@ -53,7 +53,7 @@ author: onlyhy
     });
     })(window.app || (window.app = {}));
 
-   ng.core中的Conponent和Class方法创建了一个名为AppComponent的可视化组件。  
+   ng.core中的Component和Class方法创建了一个名为AppComponent的可视化组件。  
    Component方法接受一个包含两个属性的配置对象，Class方法是实现组件本身的地方，在Class中给组件添加属性和方法，会绑定到相应的视图和行为。  
 
 #### 模块  
@@ -124,18 +124,18 @@ author: onlyhy
     $ cd angular-quickstart   
 
 #### 创建配置文件  
-   package.json 标记本项目所需要的npm依赖包
-   tsconfig.json定义了TS编译器如何从项目源文件生成JS代码
-   typings.json为TS编译器无法识别的库提供额外的定义文件
-   systemjs.config.js为模块加载器提供了该到哪里查找应用模块的消息，注册所有必备的依赖包，还包括文档中后面的例子需要用到的包 
-   安装依赖包：
+package.json 标记本项目所需要的npm依赖包  
+tsconfig.json定义了TS编译器如何从项目源文件生成JS代码  
+typings.json为TS编译器无法识别的库提供额外的定义文件  
+systemjs.config.js为模块加载器提供了该到哪里查找应用模块的消息，注册所有必备的依赖包，还包括文档中后面的例子需要用到的包   
+安装依赖包：
 
     $ cnpm install   
 
    angular-quickstart目录下会生成一个node_modules目录，项目的目录结构如下：
 <img src="C:\Users\YellowHappy\onlyhy.github.io\assets\实例目录.jpg" alt="总结构"> 
 
-###二、创建应用  
+### 二、创建应用  
    每个应用至少需要一个根模块，这里实例中为AppModule  
    接下来我们在 angular-quickstart 目录下创建 app 目录：  
    
