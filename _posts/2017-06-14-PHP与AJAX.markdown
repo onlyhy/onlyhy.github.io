@@ -1,0 +1,314 @@
+---
+layout: post
+title: "PHP与AJAX"
+date: 2017-06-14 10:00:00 +00:00
+categories: PHP
+author: onlyhy
+--- 
+
+### AJAX 
+Asynchronous JavaScript and XML
+无需重新加载整个网页的情况下，能够更新部分网页的技术  
+### 技术  
+* XMLHttpRequest 对象（与服务器异步交互数据）
+* JavaScript/DOM（显示/取回信息）
+* CSS（设置数据的样式）
+* XML（常用作数据传输的格式）
+
+### AJAX 与 MySQL  
+实现一个网页通过 AJAX 从数据库读取信息
+#### HTML页面  
+
+    <script>
+    function showSite(str)
+    {
+        if (str=="")//是否有网站被选择
+        {
+            document.getElementById("txtHint").innerHTML="";
+            return;
+        } 
+        if (window.XMLHttpRequest)//创建XMLHttpRequest对象
+        {
+            // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()//服务器响应就绪时执行的函数
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("GET","getsite_mysql.php?q="+str,true);//发送请求，注意参数
+        xmlhttp.send();
+    }
+    </script>   
+
+    <form>
+    <select name="users" onchange="showSite(this.value)">
+    <option value="">选择一个网站:</option>
+    <option value="1">Google</option>
+    <option value="2">淘宝</option>
+    <option value="3">菜鸟教程</option>
+    <option value="4">微博</option>
+    <option value="5">Facebook</option>
+    </select>
+    </form>
+    <br>
+    <div id="txtHint"><b>网站信息显示在这里……</b></div>    
+
+#### PHP文件  
+
+    <?php
+    $q = isset($_GET["q"]) ? intval($_GET["q"]) : '';//变量是否设置，获取变量的整数值，允许以使用特定的进制返回，默认为10进制
+    if(empty($q)) {
+        echo '请选择一个网站';
+        exit;
+    }
+     
+    $con = mysqli_connect('localhost','root','123456');//打开一个到 MySQL 数据库的连接
+    if (!$con)
+    {
+        die('Could not connect: ' . mysqli_error($con));
+    }
+    // 选择数据库
+    mysqli_select_db($con,"test");
+    // 设置编码，防止中文乱码
+    mysqli_set_charset($con, "utf8");
+     
+    $sql="SELECT * FROM Websites WHERE id = '".$q."'";
+     
+    $result = mysqli_query($con,$sql);
+     
+    echo "<table border='1'>
+    <tr>
+    <th>ID</th>
+    <th>网站名</th>
+    <th>网站 URL</th>
+    <th>Alexa 排名</th>
+    <th>国家</th>
+    </tr>";
+     
+    while($row = mysqli_fetch_array($result))
+    {
+        echo "<tr>";
+        echo "<td>" . $row['id'] . "</td>";
+        echo "<td>" . $row['name'] . "</td>";
+        echo "<td>" . $row['url'] . "</td>";
+        echo "<td>" . $row['alexa'] . "</td>";
+        echo "<td>" . $row['country'] . "</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+     
+    mysqli_close($con);
+    ?>
+
+### AJAX 与 XML  
+AJAX 可用来与 XML 文件进行交互式通信  
+
+
+#### PHP使用DOMDocument读取XML文件  
+方法：  
+1. 读取xml文件：load()
+2. 获取标签的对象数组：getElementByTagName()  
+3. 对象数组的索引：item()  
+
+属性：
+1. 获取属性或节点的文本：nodeValue  
+2. 获取属性名或者节点名：nodeName  
+3. 获取该节点的子节点集合：childNodes  
+4. 获取该节点的属性集合：attributes  
+
+#### 实例  
+HTML页面与上例相似
+PHP 脚本加载 XML 文档，运行针对 XML 文件的查询，并以 HTML 返回结果  
+
+    <?php
+    $q=$_GET["q"];//收集来自 method="get" 的表单中的值
+    $xmlDoc = new DOMDocument();//创建 XML DOM对象
+    $xmlDoc->load("cd_catalog.xml");
+    $x=$xmlDoc->getElementsByTagName('ARTIST');
+    for ($i=0; $i<=$x->length-1; $i++)
+    {
+        // 处理元素节点
+        if ($x->item($i)->nodeType==1)
+        {
+            if ($x->item($i)->childNodes->item(0)->nodeValue == $q)//查找所有 <artist> 元素中与 JavaScript 所传数据相匹配的名字
+            {
+                $y=($x->item($i)->parentNode);
+            }
+        }
+    }
+    $cd=($y->childNodes);
+    for ($i=0;$i<$cd->length;$i++)
+    { 
+        // 处理元素节点
+        if ($cd->item($i)->nodeType==1)
+        {
+            echo("<b>" . $cd->item($i)->nodeName . ":</b> ");
+            echo($cd->item($i)->childNodes->item(0)->nodeValue);
+            echo("<br>");
+        }
+    }
+    ?>  
+
+
+### AJAX实时搜索  
+#### HTML与以上类似
+#### PHP页面  
+
+    <?php
+    $xmlDoc=new DOMDocument();
+    $xmlDoc->load("links.xml");
+    $x=$xmlDoc->getElementsByTagName('link');
+    // 从 URL 中获取参数 q 的值
+    $q=$_GET["q"];
+    // 如果 q 参数存在则从 xml 文件中查找数据
+    if (strlen($q)>0)
+    {
+        $hint="";
+        for($i=0; $i<($x->length); $i++)
+        {
+            $y=$x->item($i)->getElementsByTagName('title');
+            $z=$x->item($i)->getElementsByTagName('url');
+            if ($y->item(0)->nodeType==1)
+            {
+                // 找到匹配搜索的链接
+                if (stristr($y->item(0)->childNodes->item(0)->nodeValue,$q))
+                {//stristr() 函数搜索字符串在另一字符串中的第一次出现,不区分大小写
+                    if ($hint=="")
+                    {
+                        $hint="<a href='" . 
+                        $z->item(0)->childNodes->item(0)->nodeValue . 
+                        "' target='_blank'>" . 
+                        $y->item(0)->childNodes->item(0)->nodeValue . "</a>";
+                    }
+                    else
+                    {
+                        $hint=$hint . "<br /><a href='" . 
+                        $z->item(0)->childNodes->item(0)->nodeValue . 
+                        "' target='_blank'>" . 
+                        $y->item(0)->childNodes->item(0)->nodeValue . "</a>";
+                    }
+                }
+            }
+        }
+    }
+    // 如果没找到则返回 "no suggestion"
+    if ($hint=="")
+    {
+        $response="no suggestion";
+    }
+    else
+    {
+        $response=$hint;
+    }
+    // 输出结果
+    echo $response;
+    ?>  
+
+
+### AJAX RSS 阅读器  
+RSS 阅读器用于阅读 RSS Feed  
+
+    <?php
+    // rss 文件
+    $xml="rss_demo.xml";
+    $xmlDoc = new DOMDocument();
+    $xmlDoc->load($xml);
+    // 从 "<channel>" 中读取元素
+    $channel=$xmlDoc->getElementsByTagName('channel')->item(0);
+    $channel_title = $channel->getElementsByTagName('title')
+    ->item(0)->childNodes->item(0)->nodeValue;
+    $channel_link = $channel->getElementsByTagName('link')
+    ->item(0)->childNodes->item(0)->nodeValue;
+    $channel_desc = $channel->getElementsByTagName('description')
+    ->item(0)->childNodes->item(0)->nodeValue;
+    // 输出 "<channel>" 中的元素
+    echo("<p><a href='" . $channel_link
+      . "'>" . $channel_title . "</a>");
+    echo("<br>");
+    echo($channel_desc . "</p>");
+    // 输出 "<item>" 中的元素
+    $x=$xmlDoc->getElementsByTagName('item');
+    for ($i=0; $i<=1; $i++) {
+        $item_title=$x->item($i)->getElementsByTagName('title')
+        ->item(0)->childNodes->item(0)->nodeValue;
+        $item_link=$x->item($i)->getElementsByTagName('link')
+        ->item(0)->childNodes->item(0)->nodeValue;
+        $item_desc=$x->item($i)->getElementsByTagName('description')
+        ->item(0)->childNodes->item(0)->nodeValue;
+        echo ("<p><a href='" . $item_link
+        . "'>" . $item_title . "</a>");
+        echo ("<br>");
+        echo ($item_desc . "</p>");
+    }
+    ?>
+
+当 RSS feed 的请求从 JavaScript 发送到 PHP 文件时：
+1. 检查哪个 RSS feed 被选中
+2. 创建一个新的 XML DOM 对象
+3. 在 xml 变量中加载 RSS 文档
+4. 从 channel 元素中提取并输出元素
+5. 从 item 元素中提取并输出元素
+
+
+### AJAX投票  
+通过radio控件投票  
+PHP:  
+
+    <?php
+    $vote = htmlspecialchars($_REQUEST['vote']);//把预定义的字符转换为 HTML 实体
+    // 获取文件中存储的数据
+    $filename = "poll_result.txt";//存储来自投票程序的数据
+    $content = file($filename);//file() 函数把整个文件读入一个数组中。
+    // 将数据分割到数组中
+    $array = explode("||", $content[0]);//将字符串打散为数组，以||为分隔符，文本文件中存储数据如: 3||4
+    $yes = $array[0];
+    $no = $array[1];
+    if ($vote == 0)
+    {
+      $yes = $yes + 1;
+    }
+    if ($vote == 1)
+    {
+      $no = $no + 1;
+    }
+    // 插入投票数据
+    $insertvote = $yes."||".$no;
+    $fp = fopen($filename,"w");
+    fputs($fp,$insertvote);
+    fclose($fp);
+    ?>
+    <h2>结果:</h2>
+    <table>
+      <tr>
+      <td>是:</td>
+      <td>
+      <span style="display: inline-block; background-color:green;
+          width:<?php echo(100*round($yes/($no+$yes),2)); ?>px;
+          height:20px;" ></span>
+      <?php echo(100*round($yes/($no+$yes),2)); ?>%
+      </td>
+      </tr>
+      <tr>
+      <td>否:</td>
+      <td>
+      <span style="display: inline-block; background-color:red;
+          width:<?php echo(100*round($no/($no+$yes),2)); ?>px;
+          height:20px;"></span>
+      <?php echo(100*round($no/($no+$yes),2)); ?>%
+      </td>
+      </tr>
+    </table>  
+
+1. 获取 "poll_result.txt" 文件的内容  
+2. 把文件内容放入变量，并向被选变量累加 1  
+3. 把结果写入 "poll_result.txt" 文件
+4. 输出图形化的投票结果
