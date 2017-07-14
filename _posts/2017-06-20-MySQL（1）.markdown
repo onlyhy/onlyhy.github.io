@@ -173,6 +173,7 @@ author: onlyhy
     }
     echo '连接成功';
     mysqli_select_db($conn, 'RUNOOB' );
+    mysqli_set_charset($con, "utf8");//设置编码，防止中文乱码
     mysqli_close($conn);
     ?>  
 
