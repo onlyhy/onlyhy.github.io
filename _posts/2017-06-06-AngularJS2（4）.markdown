@@ -124,7 +124,7 @@ NgStyle 通过把它绑定到一个key:value控制对象的形式，可以让我
 
 
 #### 模板引用变量  
-模板中对 DOM 元素或指令的引用，它可以和任何自定义 Web 组件协同工作，（#）前缀
+模板中对 DOM 元素或指令的引用，它可以和任何自定义 Web 组件协同工作
 
     <!-- phone 引用了 input 元素，并将 `value` 传递给事件句柄 -->
     <input #phone placeholder="phone number">
