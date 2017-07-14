@@ -82,7 +82,7 @@ author: onlyhy
   除了可依赖一个固定版本号外，还可依赖于某个范围的版本号，如"argv":"0.0.x"表示依赖于0.0.x系列的最新版argv。  
 
 ### NPM 常用命令  
-  1. instal和publish,使用`npm help` 可查看所有命令
+  1. install和publish,使用`npm help` 可查看所有命令
   2. `npm help <command>` 可查看某条命令的详细帮助
   3. 在package.json所在目录下使用`npm install，-g`可现在本地安装当前命令行程序，可用于发布前的本地测试  
   4. `npm update <package>` 可以把当前目录下node_modules子目录里面的对应模块更新到最新版本  
