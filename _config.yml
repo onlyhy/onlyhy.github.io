@@ -70,6 +70,8 @@ descriptions:
     desc: "AJAX"
   - cat: MySQL
     desc: "MySQL"
+  - cat: APP
+    desc: "APP"  
 # Social icons and sharing options
 #
 # Social settings are used in two places:
