@@ -72,6 +72,8 @@ descriptions:
     desc: "MySQL"
   - cat: APP
     desc: "APP"  
+  - cat: MUI
+    desc: "MUI"
 # Social icons and sharing options
 #
 # Social settings are used in two places:
