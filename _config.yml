@@ -60,6 +60,8 @@ descriptions:
     desc: "about 前端"  
   - cat: AngularJS
     desc: "about AngularJS"  
+  - cat: NodeJS
+    desc: "about NodeJS"
   - cat: 基础知识
     desc: "learning" 
   - cat: JavaScript
