@@ -8,5 +8,5 @@ permalink: /about/
 
 * 哈喽，想要了解我更多的话请[Github](https://github.com/onlyhy).或者[新浪微博](http://weibo.com/xxxxonlyhy).
 
-* 很高兴认识你。
+* 很高兴遇见你。
 
