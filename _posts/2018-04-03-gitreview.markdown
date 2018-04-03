@@ -6,7 +6,7 @@ categories: Git
 author: onlyhy
 ---
 
-*复习廖雪峰老师的[Git教程]<https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000>所记的笔记*
+*复习廖雪峰老师的[Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)所记的笔记*
 
 #### Git是分布式版本控制系统
 
@@ -28,7 +28,7 @@ author: onlyhy
 
 #### 远程仓库
 
-16. 创建SSH Key ：
+创建SSH Key ：
  
     `$ ssh-keygen -t rsa -C "youremail@example.com" `
 
