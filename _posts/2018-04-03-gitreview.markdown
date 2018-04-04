@@ -75,3 +75,6 @@ author: onlyhy
 
 #### 标签管理
 31. 标签tag名字易记，跟某个commit绑在一起
+32. `git tag <name>` 可打一个新标签，默认HEAD,也可指定commit id
+33. `git tag `查看所有标签，`git show <tagname>`查看标签信息
+34. `-a `指定标签名 ， `-m`指定说明文字， `-s`用PGP签名标签
