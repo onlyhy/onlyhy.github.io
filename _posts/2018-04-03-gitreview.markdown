@@ -81,3 +81,6 @@ author: onlyhy
 35. `git tag -d <tagname>`删除本地标签
 36. 推送标签 `git push origin <tagname>`，一次性推送全部`git push origin --tags`
 37. 删除远程标签：先从本地删除 `git tag -d <tagname>`再从远程删除：`git push origin：refs/tags/<tagname>`
+38. 忽略某些文件时，要写.gitignore文件，文件本身要放在版本库
+39. 配置别名：`git config --global alias.别名 <被起别名的操作>`
+40. 每个仓库的Git配置文件在 *.git/config*中，用户的Git配置文件在主目录的一个隐藏文件 *.gitconfig* 中，别名在[alias]后面，可直接删除对应行来删除别名
