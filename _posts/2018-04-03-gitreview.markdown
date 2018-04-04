@@ -84,3 +84,5 @@ author: onlyhy
 38. 忽略某些文件时，要写.gitignore文件，文件本身要放在版本库
 39. 配置别名：`git config --global alias.别名 <被起别名的操作>`
 40. 每个仓库的Git配置文件在 *.git/config*中，用户的Git配置文件在主目录的一个隐藏文件 *.gitconfig* 中，别名在[alias]后面，可直接删除对应行来删除别名
+
+To Be Continued…
