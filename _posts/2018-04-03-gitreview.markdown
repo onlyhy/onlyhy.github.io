@@ -6,6 +6,8 @@ categories: Git
 author: onlyhy
 ---
 
+黄黄说：“好记性不如烂笔头”
+
 *复习廖雪峰老师的[Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)所记的笔记*
 
 #### Git是分布式版本控制系统
