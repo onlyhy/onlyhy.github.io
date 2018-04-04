@@ -78,3 +78,6 @@ author: onlyhy
 32. `git tag <name>` 可打一个新标签，默认HEAD,也可指定commit id
 33. `git tag `查看所有标签，`git show <tagname>`查看标签信息
 34. `-a `指定标签名 ， `-m`指定说明文字， `-s`用PGP签名标签
+35. `git tag -d <tagname>`删除本地标签
+36. 推送标签 `git push origin <tagname>`，一次性推送全部`git push origin --tags`
+37. 删除远程标签：先从本地删除 `git tag -d <tagname>`再从远程删除：`git push origin：refs/tags/<tagname>`
