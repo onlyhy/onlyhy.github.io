@@ -51,7 +51,7 @@ descriptions:
   - cat: mood
     desc: "Just things."
     - cat: Create
-    desc: "Create."
+    desc: "Create World."
   - cat: Git
     desc: "about Git"
   - cat: JavaScript
