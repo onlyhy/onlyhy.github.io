@@ -18,17 +18,17 @@ author: onlyhy
 
 JS中真值示例：
 
-    `if (true)`
-    `if ({})`
-    `if ([])`
-    `if (42)`
-    `if ("foo")`
-    `if (new Date())`
-    `if (-42)`
-    `if (3.14)`
-    `if (-3.14)`
-    `if (Infinity)`
-    `if (-Infinity)`
+    if (true)
+    if ({})
+    if ([])
+    if (42)
+    if ("foo")
+    if (new Date())
+    if (-42)
+    if (3.14)
+    if (-3.14)
+    if (Infinity)
+    if (-Infinity)
 
 
 
