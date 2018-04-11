@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Truthy与True的不同"
-date:   2018-04-10 09:30:00 +00:00
+date:   2018-04-11 09:30:00 +00:00
 categories: 基础知识
 author: onlyhy
 ---
