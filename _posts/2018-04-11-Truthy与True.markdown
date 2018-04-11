@@ -9,6 +9,7 @@ author: onlyhy
 黄黄说：“点点滴滴都是真”
 
 读Vue.js的官方文档，注意到了Truthy，记一下[MDN](https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy)的解释。
+
 ###Truthy（真值）
 
 在JS中，Truthy指在Boolean（布尔型）上下文中转换后的值为真的值，*布尔型是一种逻辑数据类型，只能有true或false值*。
