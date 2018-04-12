@@ -1,0 +1,105 @@
+---
+layout: post
+title:  "Vue组件学习笔记"
+date:   2018-04-12 09:00:00 +00:00
+categories: JavaScript
+author: onlyhy
+---
+
+读[Vue.js官方文档组件部分](https://cn.vuejs.org/v2/guide/components.html)所记
+
+## 组件（Component）
+
+  * 可以扩展HTML元素，封装可重用的代码。
+  * 有些情况下，也可表现为用is特性进行扩展的原生HTML元素。
+  * Vue 组件同时也都是 Vue 的实例，所以可接受相同的选项对象 (除了一些根级特有的选项) 并提供相同的 *生命周期钩子* （不懂含义，后期学习）
+
+### 使用组件
+
+#### 全局注册
+
+    Vue.component(tagName,options)
+
+  1. tagName最优是遵循W3C规则（小写，包含一个短杠）
+  2. 组件在实例模板中使用，要确保在初始化根实例<strong>之前</strong>注册组件
+
+#### 局部注册
+
+可用某个Vue实例或组件的实例选项 *components* 注册仅在其作用域可用的组件
+
+    var Child = {
+    template: '<div>A custom component!</div>'
+    }
+    new Vue({
+      // ...
+      components: {
+        // <my-component> 将只在父组件模板中可用
+        'my-component': Child
+    }
+    })
+
+#### DOM模板解析注意事项
+
+DOM作为模板时，会受到HTML本身的限制，像`<ul>` `<ol>` `<table>`这种元素允许包含的内容有限制等，对于这些受限制的元素使用自定义组件有时会导致被当做无效内容等问题，<strong>可用`is` 特性解决</strong>。
+
+    <table>
+    <tr is="my-row"></tr>
+    </table>
+
+***注：使用如下字符串模板，则无限制!***
+
+  1. `<script type="text/x-template">`
+  2. JavaScript 内联模板字符串
+  3. `.vue` 组件
+  
+#### data必须是函数
+
+在组件实例中 `data` 必须是一个函数
+
+#### 组件组合
+
+ 常见的父子组件，之间相互通信，但需要一个接口将父子组件解耦，保证每个组件的相对隔离，提高维护性和复用性。
+ Vue中，父子组件prop向下传递，事件向上传递。父组件通过prop给子组件下发数据，子组件通过事件给父组件发消息。
+
+###Prop 
+
+#### Prop传递数据
+子组件显式地用props选项声明它预期的数据
+
+    Vue.component('child', {
+    // 声明 props
+    props: ['message'],
+    // 就像 data 一样，prop 也可以在模板中使用
+    // 同样也可以在 vm 实例中通过 this.message 来使用
+    template: '<span>{{ message }}</span>'
+    })
+
+ 传入一个普通字符串：
+    <child message="hello!"></child>
+
+ 结果：
+    hello!
+
+#### camelCase(驼峰式命名) vs. kebab-case(短横线分隔式命名)
+ HTML特性不区分大小写，则当不是使用字符串模板（字符串模板，无限制）时，camelCase的prop需要转换为对应的kebab-case
+
+    Vue.component('child', {
+    // 在 JavaScript 中使用 camelCase
+    props: ['myMessage'],
+     template: '<span>{{ myMessage }}</span>'
+    })
+
+    <!-- 在 HTML 中使用 kebab-case -->
+    <child my-message="hello!"></child> 
+
+
+
+
+
+
+
+
+
+
+
+
