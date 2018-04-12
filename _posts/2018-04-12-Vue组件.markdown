@@ -56,12 +56,13 @@ DOM作为模板时，会受到HTML本身的限制，像`<ul>` `<ol>` `<table>`�
 
 在组件实例中 `data` 必须是一个函数
 
+
 #### 组件组合
 
  常见的父子组件，之间相互通信，但需要一个接口将父子组件解耦，保证每个组件的相对隔离，提高维护性和复用性。
  Vue中，父子组件prop向下传递，事件向上传递。父组件通过prop给子组件下发数据，子组件通过事件给父组件发消息。
 
-###Prop 
+### Prop 
 
 #### Prop传递数据
 子组件显式地用props选项声明它预期的数据
@@ -78,7 +79,7 @@ DOM作为模板时，会受到HTML本身的限制，像`<ul>` `<ol>` `<table>`�
     <child message="hello!"></child>
 
  结果：
-    hello!
+    `hello!`
 
 #### camelCase(驼峰式命名) vs. kebab-case(短横线分隔式命名)
  HTML特性不区分大小写，则当不是使用字符串模板（字符串模板，无限制）时，camelCase的prop需要转换为对应的kebab-case
@@ -91,6 +92,123 @@ DOM作为模板时，会受到HTML本身的限制，像`<ul>` `<ol>` `<table>`�
 
     <!-- 在 HTML 中使用 kebab-case -->
     <child my-message="hello!"></child> 
+
+#### 动态Prop
+
+ 用`v-bind`动态的将prop绑定到父组件的数据，当父组件数据变化时，该变化也会传给子组件
+
+    <div id="prop-example-2">
+    <input v-model="parentMsg">
+    <br>
+    <child v-bind:my-message="parentMsg"></child>
+    </div>
+
+    new Vue({
+    el: '#prop-example-2',
+    data: {
+    parentMsg: 'Message from parent'
+    }
+    })
+
+ 想把一个对象的所有属性作为`prop`传递，用不带任何参数的`v-bind`
+
+    todo: {
+    text: 'Learn Vue',
+    isComplete: false
+    }
+
+ 直接v-bind:
+
+    <todo-item v-bind="todo"></todo-item>
+
+ 等价于：
+
+    <todo-item
+    v-bind:text="todo.text"
+    v-bind:is-complete="todo.isComplete"
+    </todo-item>
+
+#### 字面量语法vs动态语法
+
+**常见错误** ：使用字面量语法传递数值。
+
+    <!-- 传递了一个字符串 "1" -->
+    <comp some-prop="1"></comp>
+    <!-- 传递真正的数值 -->
+    <comp v-bind:some-prop="1"></comp>
+
+1. 这是一个字面量prop，值是字符串"1"，而不是数值1。
+2. 需要用<strong>`v-bind`</strong>传JS的数值 
+
+#### 单向数据流
+Prop是单向绑定，父组件属性--->子组件，子组件--X-->父组件。
+子组件随父组件的更新而更新，<strong>不该在子组件内部改prop</strong>
+
+想要修改prop中数据：
+
+1. Prop 作为初始值传入后，子组件想把它当作局部数据来用；
+2. Prop 作为原始数据传入，由子组件处理成其它数据输出。
+
+则对应解决方法：
+
+1. 定义一个局部变量，并用 prop 的值初始化它
+2. 定义一个计算属性，处理 prop 的值并返回
+
+**注：JavaScript 中对象和数组是引用类型，指向同一个内存空间，如果 prop 是一个对象或数组，在子组件内部改变它会影响父组件的状态。**
+
+#### Prop验证
+为组件的prop指定验证规则，若传入数据不符合要求则警告
+<strong>指定规则要用对象的形式定义prop,不能用字符串数组</strong>
+
+`type`可以是原生或自定义构造器
+`prop`验证在组件实例创建之前，则data、computed、methods等实例属性不可使用
+
+    Vue.component('example', {
+    props: {
+    // 基础类型检测 (`null` 指允许任何类型)
+    propA: Number,
+    // 可能是多种类型
+    propB: [String, Number],
+    // 必传且是字符串
+    propC: {
+      type: String,
+      required: true
+    },
+    // 数值且有默认值
+    propD: {
+      type: Number,
+      default: 100
+    },
+    // 数组/对象的默认值应当由一个工厂函数返回
+    propE: {
+      type: Object,
+      default: function () {
+        return { message: 'hello' }
+      }
+    },
+    // 自定义验证函数
+    propF: {
+      validator: function (value) {
+        return value > 10
+      }
+    }
+    }
+    })
+
+### 非Prop特性
+可直接传入组件，不需要定义prop。组件可以接收任意传入的特性，这些特性都会被添加到组件的根元素上。
+
+#### 替换/合并现有特性
+比如当定义了不同的class值，分别来自组件自身和父组件，Vue对`class`和`style`这两个特性的值会做合并（merge）操作
+
+
+
+
+
+
+    
+
+
 
 
 
