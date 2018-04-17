@@ -8,7 +8,7 @@ author: onlyhy
 
 黄黄说：“不会的就多看几遍”
 
-读[Vue.js官方文档组件部分](https://cn.vuejs.org/v2/guide/components.html)所记
+读[Vue.js官方文档](https://cn.vuejs.org/v2/guide/instance.html)所记
 
 ### Vue官方教程基础部分
 
