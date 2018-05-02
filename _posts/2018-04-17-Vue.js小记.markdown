@@ -8,10 +8,11 @@ author: onlyhy
 
 黄黄说：“不会的就多看几遍”
 
-读[Vue.js官方文档](https://cn.vuejs.org/v2/guide/instance.html)所记
+
 
 ### Vue官方教程基础部分
 
+读[Vue.js官方文档](https://cn.vuejs.org/v2/guide/instance.html)所记
 
 1. 计算属性(`computed`)有缓存，方法(`methods`)无缓存
 2. 需要在数据变化时执行异步或开销较大的操作，自定义侦听器, `watch`
@@ -22,6 +23,11 @@ author: onlyhy
 7. 如果要频繁的切换用`v-show`，很少改变用`v-if`
 8. `v-for`比`v-if`有更高优先级，意味着`v-if`将分别重复运行于每个`v-for`循环中
 9. `v-model`双向数据绑定，监听用户的输入事件以更新数据
+10. 可以用`<style scoped></style>`来声明样式只在本模板中起作用
+
+
+ 
+
 
 
 
