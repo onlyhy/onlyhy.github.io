@@ -24,36 +24,45 @@ author: onlyhy
 ### 移动设备的模态框和下拉组件
 
 #### Overflow溢出和scroll滚动
+
 iOS和安卓中，对于`<body>`元素中使用`overflow: hidden;`的支持很有限。因此在这两种设备中，当你滚动超过一个模态窗口的顶部或底部，`<body>`内容也会开始滚动
 
 #### iOS文本字段和滚动
+
 从IOS9.2开始，当一个模态启用，如果手势触模在一个`<input>`文本或`<textarea>`文本框内，则`<body>`中的内容将被滚动，而不是模态本身滚动
 
-#### Navbar导航栏下拉菜单
-.dropdown-backdrop 在IOS上无法生态（受Z-indexinge属性影响），因此，要关闭导航栏中的下拉列表，必须再次单击下拉元素（或iOS中合法的触发点击事件他元素）
-
-#### Android安卓内置浏览器
-在Android安卓4.1及之后的一些版本中会内置一个浏览器，而不是Chrome，这二者有一定的差异，因此也会造成一些错误呈现和脚本错误，这种情况下推荐在Android安卓系统上部署Chrome浏览器。
-这其中包括：
-Select选择菜单问题
-<select>元素在安卓内置浏览器（不是Chrome）中，如果其元素内存在border-radius 和(或） border,网页上不会显示边缘属性（参阅this StackOverflow question问题描述）。
-推荐用户使用下面的JS代码来移除内置浏览器的这个CSS冲突BUG，并将该<select>渲染成未样式化元素（这个方法还使用了浏览器的Agent属性嗅探避免了干扰Chrome、Safari 和 Mozilla 浏览器）：
-<script>
-$(function () {
-var nua = navigator.userAgent
-var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1)
-if (isAndroid) {
-$('select.form-control').removeClass('form-control').css('width', '100%')
-}})
-</script>
-
 #### 无冲突处理
+
 有时，必须使用Bootstrap插件和其他UI框架,偶尔会发生命名空间冲突,可以调用`.noConflict`恢复插件的值：
 
     var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
     $.fn.bootstrapBtn = bootstrapButton // give $().bootstrapBtn the Bootstrap functionality
 
 ## 布局
+
+### 栅格 
+
+* 不同于旧版3.0，新版是完全基于`flexbox`流式布局构建的，完全支持响应式标准。
+* `flexbox`布局不需要指定列的宽度就能实现网页自动等宽排列。
+* 指定一列进行宽度定义，其他列将自动调整大小。
+* 使用`.col-{breakpoint}-auto`断点方法，可以实现根据其内容的自然宽度来对列进行大小调整。
+* 等宽多行：创建跨多个行的等宽列，方法是插入 `.w-100` 的div
+* `flexbox`可轻松实现div空间布局的垂直(align)与水平(justify)对齐
+* 使用 `.order-* `选择符，可对div进行排序
+* 使用 `.offset-*`， `.offset-md-*`栅格偏移
+* 使用 `.ml-auto` 与 `.mr-auto` 来强制隔离两边的距离
+* 使用 `.no-gutters` 类来消除间隙沟槽
+* 使用BootStrap v4内置的栅格系统之Sass变量和 maps文件，可以完全自定义自己的栅格环境、并可以更改DIV层次、媒体查询维度和container容器宽度，然后重新编译。
+
+### 媒体对象
+
+* 只需要两个Class选择器，分别引用`.media`和`.media-body`来装载的内容
+* 媒体对象可以无限嵌套，建议尽量减少嵌套
+* 媒体对象中的媒体可以与flexbox流式布局一样，实现对齐到顶部、中间、底部
+* 设置`order`属性可以更改媒体对象中内容顺序
+* 可以在ul，li中添加媒体对象
+
+
 
 
 ## 内容
