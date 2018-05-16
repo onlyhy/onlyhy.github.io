@@ -50,6 +50,8 @@ jekyll-archives:
 descriptions:
   - cat: mood
     desc: "Just things."
+  - cat: Bootstrap
+    desc: "about Bootstrap."
   - cat: Create
     desc: "Create World."
   - cat: Git
