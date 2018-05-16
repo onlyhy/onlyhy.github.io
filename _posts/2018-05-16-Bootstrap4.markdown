@@ -116,4 +116,44 @@ iOS和安卓中，对于`<body>`元素中使用`overflow: hidden;`的支持很�
 
 ## 组件
 
+### 警告提示框（Alerts）
 
+### 徽章(Badge)
+
+### 面包屑（breadcrumb）
+
+### 按钮（Button）
+
+### 按钮组（Button-group）
+
+### 卡片(card)
+
+### 轮播效果(Carousel)
+
+### 折叠面板(Collapse)
+
+### 下拉菜单(Dropdowns)
+
+### 表单(Forms)
+
+### 输入框(input-group)
+
+### 大块屏(Jumbotron)
+
+### 列表组(list-group)
+
+### 模态框(Modal)
+
+### 导航(nav)
+
+### 导航栏(navbar)
+
+### 分页(Pagination)
+
+### POP提示(popover)
+
+### 进度条(progress)
+
+### 滚动监听(Scrollspy)
+
+### 提示冒泡(Tooltip)
