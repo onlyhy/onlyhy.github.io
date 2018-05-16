@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "Bootstrap4手册笔记"
+date:   2018-05-16 09:00:00 +00:00
+categories: Bootstrap
+author: onlyhy
+---
+
+黄黄说：“少说话，多做事”
+
+读[Bootstrap4中文文档](https://v4.bootcss.com/docs/4.0/getting-started/introduction/)所记
+
+# 目录
+
+- [浏览器与设备调优](#浏览器与设备调优)
+- [布局](#布局)
+- [内容](#内容)
+- [组件](#组件)
+
+## 浏览器与设备调优
+
+## 布局
+
+## 内容
+
+## 组件
+
+
