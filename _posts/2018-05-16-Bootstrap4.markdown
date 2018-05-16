@@ -116,7 +116,7 @@ iOS和安卓中，对于`<body>`元素中使用`overflow: hidden;`的支持很�
 
 ## 组件
 
-- [警告提示框](#警告提示框Alerts)
+- [警告提示框](###警告提示框Alerts)
 - [徽章](#徽章(Badge))
 - [面包屑](#面包屑（breadcrumb）)
 - [按钮](#按钮（Button）)
