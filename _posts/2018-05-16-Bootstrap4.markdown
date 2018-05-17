@@ -249,7 +249,7 @@ iOS和安卓中，对于`<body>`元素中使用`overflow: hidden;`的支持很�
 
 ### 输入框input-group
 
-*`.input-group-prepend`,`.input-group-append`可在组件前后放组件或按钮（不仅仅是文本）， 不支持单个输入组合中有多个表单控制项， `<label>`必须在输入框组之外
+* `.input-group-prepend`,`.input-group-append`可在组件前后放组件或按钮（不仅仅是文本）， 不支持单个输入组合中有多个表单控制项， `<label>`必须在输入框组之外
 * 如`.input-group-lg`、`.input-group-sm` 加到 `.input-group`中，其内容会自动调整大小， 不需要在每个元素上重复使用样式控制其大小。
 * 尽管可视化支持多个 `<input>`但验证样式仅适用于具有单个`<input>`的输入组
 * 支持多种控件结合，比如 **复选框和、文本、input框**混合使用
