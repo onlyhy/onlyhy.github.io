@@ -141,42 +141,225 @@ iOS和安卓中，对于`<body>`元素中使用`overflow: hidden;`的支持很�
 
 ### 警告提示框Alerts
 
+* 系统提供8个可用的正确的样式（如，`.alert-success`）
+* `.alert-link` 可为带颜色的警告文本框中的链接加上合适的颜色
+* 警报还可以包含其他HTML元素，如标、段落和分隔符
+* 关闭警告：
+        * 确保正确加载了`.alert`警报组件或 编译后的 Bootstrap JavaScript代码组
+        * 自行编译JS组件要引入util.js
+        * `<button>`元素添加`.close`关闭按钮效果，在容器中引用 `.alert-dismissible`* 增加`data-dismiss="alert"` 触发 JavaScript 动作，要使用`<button>`元素
+        * 添加`.fade`和`.show`样式（关闭警报时生成警报提示）  
+
 ### 徽章Badge
+
+* `.badge`可以嵌在标题， 通过标题样式来适配其元素大小
+* 可用作链接或按钮的一部分，提供统计数字样式
+* 添加如`.badge-primary`等可定义样式
+* `.badge-pill`更加圆润
+* 可用在 ` <a> `元素上， 实现悬停、焦点、状态
 
 ### 面包屑breadcrumb
 
+* `.breadcrumb`,`.breadcrumb-item`
+* 建议添加一个有意义的标签即`aria-label="breadcrumb"`來描述`<nav>`元素，以及使用 `aria-current="page`"到这组导航的最后一个项目，以标明当前页面名称（路径）
+
+
 ### 按钮Button
+
+* `.btn-primary`多个预定义按钮样式
+* `.btn-outline-*`设置边框颜色，没有大背景颜色
+* `.btn-lg` 、 `.btn-sm` 设置大小， `.btn-block`块级按钮
+* `.active`， `aria-pressed="true"` 属性使按钮固定为启用状态
+* `disabled` 属性使按钮处于非活动的禁用状态， <a>标签不支持 `disabled` 属性，需要增加 `.disabled`类
+
 
 ### 按钮组Button-group
 
+* 一系列的 .btn 包裹在.btn-group内
+* .btn-group-lg,.btn-group-sm控制大小尺寸
+* 可嵌套实现按钮组与下拉菜单的组合
+* .btn-group-vertical垂直排列
+
+
 ### 卡片card
+
+* 卡片代替了版本3中旧的 **panel**、 **well**和 **thumbnail**样式
+* `.card-body` 是卡片的内容主体， `.card-title`和 `<h*>`组合，可以添加卡片标题，  `.card-subtitle` 和 `<h*>`结合，可以添加副标题， `.card-link` 与 `<a>`结合，添加平行的链接， `.card-img-top` 定义一张图片在卡片的顶部， `.card-text`定义文字在卡片中
+* `.card-header`,`.card-footer`页眉页脚
+* 使用文本对齐类来更改或特定部份的文本对齐
+* `.card-img-overlay`将图像转为卡片背景
+* `.bg-primary`等样式设置背景色
+* `.border-primary` 等样式设置边框色
+* `.bg-transparent`删除其`background-color`背景颜色
+* `.card-group` 多个卡片结为群组
+* 当使用带页脚的卡片图时，他们的内容会自动水平对齐和栅格式布局。
+* 使用卡片阵列`Card decks（.card-deck）`：一套相互不相连，但宽度和高度相同的卡片，页脚也会自动排列
+* `.card-columns` ：多列卡片浮动排版，不再基于 **flexbox** 而是使用 **column** 属性
+
 
 ### 轮播效果Carousel
 
+* `.carousel`引入轮播组件，并设置唯一ID
+* `data-ride="carousel"` 从页面加载开始动画
+* 在`.carousel-inner`中放入`.carousel-item`
+* `.carousel-control-prev`,`.carousel-control-next` 左右控制器
+* `.carousel-indicators` 状态指示器
+* `.carousel-caption` 添加字幕， `.d-none` 使得在小屏幕隐藏文字, `.d-md-block `在中型屏幕则显示
+
+
 ### 折叠面板Collapse
+
+* 使用带`href` 属性的链接,、或者带 `data-target` 属性的按钮来创建折叠效果，  `data-toggle="collapse"` 属性是必须的
+* 可控制显示和隐藏多个元素
+* 结合`card`扩展折叠组件为手风琴效果
+* 自定义手风琴样式，只需添加 `data-children` 属性,指定一组元素来切换
+* 如果折叠块元素默认是闭合的，它必须拥有一个 `aria-expanded="false"`值。如果用`.show`类设置则可以定义折叠控件为默认打开，在控制器上设置`aria-expanded="true"`即可
+
 
 ### 下拉菜单Dropdowns
 
+* 使用时确保 **popper.min.js** 文件放在 **Bootstrap JS**之前
+* 将下拉列表的切换（按钮或链接）和下拉菜单都包含在`.dropdown`中，按钮或链接使用`data-toggle="dropdown"`
+* `.dropdown-divider`  在子菜单中添加分隔线
+* `.dropdown-toggle-split` 分列式按钮下拉菜单
+* `.dropup` 向上展开， `.dropright`  向右展开  `.dropleft` 向左展开
+* **Bootstrap v3**中子菜单项必须是链接，而 **Bootstrap v4**中可选择 `<button>` ，而不是仅仅 `<a>`标签
+* 默认情况下，一个下拉菜单自动从顶部和左侧的父级100％定位。添加`.dropdown-menu-right`到`.dropdown-menu`右侧轻松对齐下拉菜单。
+* `.dropdown-header` 在子菜单中添加标题
+* 可将表单放在下拉菜单中
+* `.active`添加到子菜单中的项目以将其设置为活动状态，  `.disabled` 是禁用状态
+
+
 ### 表单Forms
+
+* 文本控件（如 `<input>、<select>、 <textarea>`）统一采用 `.form-control` 样式进行处理优化
+*  **input文件选择控件**，**Bootstrap v4**采用`.form-control-file` 取代了`.form-control`
+* 使用 `.form-control-lg`  和 `.form-control-sm` 属性定控件大小高度
+* 在input控件上增加 `readonly` （布尔值）标签定义，以防止修改input中的值
+* 显示为纯文本（没有控件框），引用 `.form-control-plaintext` 
+* `.form-check` 格式化复选框和单选框按钮，默认垂直堆叠
+* `.form-check-inline` 使加到任何`.form-check`中的选取框平行排列
+* `.form-group`  群组可以向为表单赋予一些结构样式，也可在其它元素中使用
+* 可使用栅格系统， 可用 `.form-row`来取代`.row`，有更小的沟槽缝隙
+* 添加`.col-form-label` 到`<label>`上，以便他们垂直居中与他们相关的表单控件
+* `.col-form-label-sm` 、 `.col-form-label-lg` 控制label大小， `.form-control-lg` 、 `.form-control-sm` 控制控件大小
+* `.form-text` 表单下方帮助提示文本
+* `novalidate`添加到`<form>`，这将禁用浏览器默认的反馈工具提示
+
 
 ### 输入框input-group
 
-### 大块屏Jumbotron
+    * .input-group-prepend,.input-group-append可在组件前后放组件或按钮（不仅仅是文本）， 不支持单个输入组合中有多个表单控制项， <label>必须在输入框组之外
+    * 
+如.input-group-lg、.input-group-sm 加到 .input-group中，其内容会自动调整大小， 不需要在每个元素上重复使用样式控制其大小。
+    * 
+尽管可视化支持多个 <input>但验证样式仅适用于具有单个<input>的输入组
+    * 
+支持多种控件结合，比如复选框和、文本、input框混合使用
 
+
+### 大块屏Jumbotron
+.jumbotron, .jumbotron -fluid 扩展视口，展示关键信息
 ### 列表组list-group
+
+    * .list-group,.list-group-item
+    * 
+.active 有效选择状态   .disabled 禁用状态（有些还需配合JS）
+    * 
+使用 <a>或 <button>来创建具有 hover、禁用、悬停和活动状态的列表组.list-group-item-action，不要用.btn样式
+    * 
+.list-group-flush， 移除部分边框以及圆角， 产生边缘贴齐的列表组，在如Card卡片等容器中很实用
+    * 
+.list-group-item-primary等样式设置背景色
+    * 
+可引入badge徽章
+    * 
+列表组中几乎可以添加任意的HTML内容，包括标签、内容、链接
+    * 
+使用数据属性，可以指定 data-toggle="list" 或在元素上编写任意的JavaScript事件来激活列表组导航
+
 
 ### 模态框Modal
 
+    * 控制元素上data-toggle="modal" ，data-target="#foo" 或 href="#foo"指定动态视窗
+    * 
+将 .modal-dialog-centered 添加到 .modal-dialog 对话框以垂直居中模式
+    * 
+在.modal-body中可加入 .container-fluid 栅格系统
+    * 
+触发的模态框相同，但内容不同， 使用event.relatedTarget 和 HTML data-* 属性， 依据所点按钮的定义来动态加载弹出窗口中的内容
+    * 
+$('#myModal').data('bs.modal').handleUpdate() 或 $('#myModal').modal('handleUpdate') 可调整模态框的位置，以防滚动条出现
+
+
 ### 导航nav
 
-### 导航栏navbar
+    * .nav  默认情况下，导航按左对齐，可 .justify-content-center居中， .justify-content-end右对齐
+    * 
+.flex-column 垂直排列导航
+    * 
+.nav-tabs  选项卡标签
+    * 
+ .nav-pills 胶囊标签
+    * 
+.nav-fill会将 .nav-item按照比例分配空间
+    * 
+当使用<nav>基于导航时，请确保包含 .nav-item 在a链接上
+    * 
+.nav-justified 等宽
+    * 
+ role="tablist"、role="tab"、 role="tabpanel"、 aria-*动态选项卡
 
+
+### 导航栏navbar
+Navbar下的Toggler是切换触发器（即手机模式下的MENU下拉项），它们默认是左对齐的， 如果在它们中间定义一个同级的兄弟元素.navbar-brand，它们会自动对齐到窗口右边
 ### 分页Pagination
+
+    * 网页可能有不止一个这样的导航部分（存在多个导航组件），建议为<nav>提供一个aria-label的描述，以反映其功能
+    * 
+使用 aria 属性和 .sr-only 使用图标
+    * 
+.disabled  禁用，再加上 tabindex="-1" 并自定义JS更保险
+    * 
+.pagination-lg 或 .pagination-sm 样式定义可以获得大规格或小规格尺寸的分页组件
+    * 
+.justify-content-center，.justify-content-end可更改对齐方式
+
 
 ### POP提示popover
 
+    * data-toggle="popover"
+    * 
+data-placement控制四个方向
+
+
 ### 进度条progress
+
+    * .progress-bar 中放置文字內容,可将标签添加到进度条中
+    * 
+改变 .progress的height值，  .progress-bar 高度会自动调整大小
+    * 
+.bg-success 等可定义外观
+    * 
+可在进度组件中包含（嵌套）多个进度条
+    * 
+.progress-bar-striped 添加到 .progress-bar 上，条纹效果
+    * 
+.progress-bar-animated 加到 .progress-bar 上，即实现CSS3绘制的从右到左的动画效果
+
 
 ### 滚动监听Scrollspy
 
+    * 添加 data-spy="scroll"到要窥探的元素（通常是<body>）。然后添加data-target属性到任何Bootstrap .nav组件的父元素ID或类的Class属性
+    * 
+Scrollspy滚动监控也适用于嵌套的 .nav。如果是一个嵌套. .nav是的.active状态，其父母也将是.active状态
+    * 
+Scrollspy 滚动监听也适用于 .list-group列表组
+
+
 ### 提示冒泡Tooltip
+
+    * data-toggle="tooltip" data-placement="top"设置4个方向
+    * 
+如果使用数据属性，将选项名称附加到data- ,如 data-animation=""
+
