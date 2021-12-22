@@ -1,12 +1,12 @@
 # External gems
 # See http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html for making `jekyll archives` work.
-#gems: 
-  #- jekyll-archives    # Sorry, not GitHub pages friendly!
-  #- jekyll-sitemap
- # - jekyll-paginate
+#gems:
+#- jekyll-archives    # Sorry, not GitHub pages friendly!
+#- jekyll-sitemap
+# - jekyll-paginate
 
 #exclude:
- # - "/vendor/"
+# - "/vendor/"
 
 # Site settings
 title: Onlyhy
@@ -35,10 +35,10 @@ jekyll-archives:
   enabled:
     - categories
     - tags
-  layout: 'archive'
+  layout: "archive"
   permalinks:
-    category: '/category/:name/'
-    tag: '/tag/:name/'
+    category: "/category/:name/"
+    tag: "/tag/:name/"
 
 # Disqus comments
 # disqus_shortname: bencentra
@@ -48,6 +48,8 @@ jekyll-archives:
 
 # Category descriptions (for archive pages)
 descriptions:
+  - cat: Notes
+    desc: "学习笔记 温故而知新"
   - cat: mood
     desc: "Just things."
   - cat: Bootstrap
@@ -59,17 +61,17 @@ descriptions:
   - cat: JavaScript
     desc: "about JavaScript"
   - cat: PHP
-    desc: "about PHP" 
+    desc: "about PHP"
   - cat: 前端
-    desc: "about 前端"  
+    desc: "about 前端"
   - cat: AngularJS
-    desc: "about AngularJS"  
+    desc: "about AngularJS"
   - cat: NodeJS
     desc: "about NodeJS"
   - cat: 基础知识
-    desc: "learning" 
+    desc: "learning"
   - cat: JavaScript
-    desc: "JS" 
+    desc: "JS"
   - cat: PHP
     desc: "PHP"
   - cat: AJAX
@@ -77,7 +79,7 @@ descriptions:
   - cat: MySQL
     desc: "MySQL"
   - cat: APP
-    desc: "APP"  
+    desc: "APP"
   - cat: MUI
     desc: "MUI"
 # Social icons and sharing options
@@ -99,14 +101,14 @@ social:
   # - name: Twitter
   #   icon: twitter
   #   username: TheBenCentra
-  #   url: 
+  #   url:
   #   desc: Follow me on Twitter
   #   share: true
 
   # - name: Facebook
   #   icon: facebook
   #   username: thebencentra
-  #   url: 
+  #   url:
   #   desc: Friend me on Facebook
   #   share: true
 
@@ -120,42 +122,42 @@ social:
   # - name: LinkedIn
   #   icon: linkedin
   #   username: Ben Centra
-  #   url: 
+  #   url:
   #   desc: Connect with me on LinkedIn
   #   share: true
 
   # - name: Google+
   #   icon: google-plus
-  #   username: 
-  #   url: 
+  #   username:
+  #   url:
   #   desc: Add me to your Circles
   #   share: true
 
   # - name: YouTube
   #   icon: youtube
-  #   username: 
-  #   url: 
+  #   username:
+  #   url:
   #   desc: Subscribe on YouTube
   #   share: false
 
   # - name: Instagram
   #   icon: instagram
-  #   username: 
-  #   url: 
+  #   username:
+  #   url:
   #   desc: Follow me on Instagram
   #   share: false
 
   # - name: Pinterest
   #   icon: pinterest
-  #   username: 
-  #   url: 
+  #   username:
+  #   url:
   #   desc: Follow me on Pinterest
   #   share: true
 
   # - name: SoundCloud
   #   icon: soundcloud
-  #   username: 
-  #   url: 
+  #   username:
+  #   url:
   #   desc: Follow me on SoundCloud
   #   share: false
 
@@ -212,15 +214,15 @@ social:
 # These are for automatically generating sharing metadata for FB and Twitter
 # OS Protocol is for sharing the source of your site, if you're interested. For more, see osprotocol.com
 protocols:
-    fb_image: "/assets/logo.png"
-    fb_image_width: 612
-    fb_image_height: 605
-    fb_image_type: "image/png"
+  fb_image: "/assets/logo.png"
+  fb_image_width: 612
+  fb_image_height: 605
+  fb_image_type: "image/png"
 
-    twitter_image: "/assets/logo.png"
+  twitter_image: "/assets/logo.png"
 
-    os_repo: "https://github.com/bencentra/centrarium.com"
-    os_rcs_type: "git"
-    os_src: "git@github.com:bencentra/centrarium.com.git"
+  os_repo: "https://github.com/bencentra/centrarium.com"
+  os_rcs_type: "git"
+  os_src: "git@github.com:bencentra/centrarium.com.git"
 
 theme: jekyll-theme-slate
