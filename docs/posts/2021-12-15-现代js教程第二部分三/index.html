@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="OnlyHy">
+    <meta name="description" content="事件简介    浏览器事件简介    3 种分配事件处理程序的方式：
+ HTML 特性（attribute）：onclick=&quot;&hellip;&quot;。 DOM 属性（property）：elem.onclick = function。 方法（method）：elem.addEventListener(event, handler[, phase]) 用于添加，removeEventListener 用于移除。要移除处理程序需要存储对它的引用。  有些事件无法通过 DOM 属性进行分配。只能使用 addEventListener，比如DOMContentLoaded、transtionend element.addEventListener(event, handler[, options]); handler可以是函数或对象，如果是对象就会调用对象的handleEvent方法，这样可以在方法中根据event实现同一个对象处理多个事件等
+事件对象event：
+ event.type 事件类型 event.currentTarget 处理事件的元素 event.clientX / event.clientY 指针事件（pointer event）的指针的窗口相对坐标 &hellip;  冒泡和捕获    冒泡：当一个事件发生在一个元素上，它会首先运行在该元素上的处理程序，然后运行其父元素上的处理程序，然后一直向上到其他祖先上的处理程序。（“几乎”所有事件都会冒泡）
+event.target与this(=event.currentTarget)的区别：
+ event.target —— 是引发事件的“目标”元素，它在冒泡过程中不会发生变化。 this —— 是“当前”元素，其中有一个当前正在运行的处理程序。  停止传播：
+ event.stopPropagation() 冒泡、捕获阶段都可以用 event.stopImmediatePropagation() 还能阻止当前元素上的处理程序运行  DOM事件标准描述了事件传播的3个阶段：
+ 捕获阶段 （Capturing phase）—— 事件（从 Window）向下走近元素。 目标阶段 （Target phase）—— 事件到达目标元素。 冒泡阶段 （Bubbling phase）—— 事件从元素上开始冒泡。  event.">
+    <meta name="keywords" content="onlyhy">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="现代JS教程[第二部分（三）]"/>
+<meta name="twitter:description" content="事件简介    浏览器事件简介    3 种分配事件处理程序的方式：
+ HTML 特性（attribute）：onclick=&quot;&hellip;&quot;。 DOM 属性（property）：elem.onclick = function。 方法（method）：elem.addEventListener(event, handler[, phase]) 用于添加，removeEventListener 用于移除。要移除处理程序需要存储对它的引用。  有些事件无法通过 DOM 属性进行分配。只能使用 addEventListener，比如DOMContentLoaded、transtionend element.addEventListener(event, handler[, options]); handler可以是函数或对象，如果是对象就会调用对象的handleEvent方法，这样可以在方法中根据event实现同一个对象处理多个事件等
+事件对象event：
+ event.type 事件类型 event.currentTarget 处理事件的元素 event.clientX / event.clientY 指针事件（pointer event）的指针的窗口相对坐标 &hellip;  冒泡和捕获    冒泡：当一个事件发生在一个元素上，它会首先运行在该元素上的处理程序，然后运行其父元素上的处理程序，然后一直向上到其他祖先上的处理程序。（“几乎”所有事件都会冒泡）
+event.target与this(=event.currentTarget)的区别：
+ event.target —— 是引发事件的“目标”元素，它在冒泡过程中不会发生变化。 this —— 是“当前”元素，其中有一个当前正在运行的处理程序。  停止传播：
+ event.stopPropagation() 冒泡、捕获阶段都可以用 event.stopImmediatePropagation() 还能阻止当前元素上的处理程序运行  DOM事件标准描述了事件传播的3个阶段：
+ 捕获阶段 （Capturing phase）—— 事件（从 Window）向下走近元素。 目标阶段 （Target phase）—— 事件到达目标元素。 冒泡阶段 （Bubbling phase）—— 事件从元素上开始冒泡。  event."/>
+
+    <meta property="og:title" content="现代JS教程[第二部分（三）]" />
+<meta property="og:description" content="事件简介    浏览器事件简介    3 种分配事件处理程序的方式：
+ HTML 特性（attribute）：onclick=&quot;&hellip;&quot;。 DOM 属性（property）：elem.onclick = function。 方法（method）：elem.addEventListener(event, handler[, phase]) 用于添加，removeEventListener 用于移除。要移除处理程序需要存储对它的引用。  有些事件无法通过 DOM 属性进行分配。只能使用 addEventListener，比如DOMContentLoaded、transtionend element.addEventListener(event, handler[, options]); handler可以是函数或对象，如果是对象就会调用对象的handleEvent方法，这样可以在方法中根据event实现同一个对象处理多个事件等
+事件对象event：
+ event.type 事件类型 event.currentTarget 处理事件的元素 event.clientX / event.clientY 指针事件（pointer event）的指针的窗口相对坐标 &hellip;  冒泡和捕获    冒泡：当一个事件发生在一个元素上，它会首先运行在该元素上的处理程序，然后运行其父元素上的处理程序，然后一直向上到其他祖先上的处理程序。（“几乎”所有事件都会冒泡）
+event.target与this(=event.currentTarget)的区别：
+ event.target —— 是引发事件的“目标”元素，它在冒泡过程中不会发生变化。 this —— 是“当前”元素，其中有一个当前正在运行的处理程序。  停止传播：
+ event.stopPropagation() 冒泡、捕获阶段都可以用 event.stopImmediatePropagation() 还能阻止当前元素上的处理程序运行  DOM事件标准描述了事件传播的3个阶段：
+ 捕获阶段 （Capturing phase）—— 事件（从 Window）向下走近元素。 目标阶段 （Target phase）—— 事件到达目标元素。 冒泡阶段 （Bubbling phase）—— 事件从元素上开始冒泡。  event." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://onlyhy.github.io/posts/2021-12-15-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E4%B8%89/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-15T09:00:00+08:00" />
+<meta property="article:modified_time" content="2021-12-15T09:00:00+08:00" />
+
+
+
+    <title>
+  现代JS教程[第二部分（三）] · oooonlyhy
+</title>
+
+    
+      <link rel="canonical" href="http://onlyhy.github.io/posts/2021-12-15-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E4%B8%89/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.91.0" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      oooonlyhy
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">首页</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">归档</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://onlyhy.github.io/posts/2021-12-15-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E4%B8%89/">
+              现代JS教程[第二部分（三）]
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-12-15T09:00:00&#43;08:00'>
+                December 15, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：2 分钟
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/onlyhy/">onlyhy</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B/">现代JS教程</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <h3 id="事件简介">
+  事件简介
+  <a class="heading-link" href="#%e4%ba%8b%e4%bb%b6%e7%ae%80%e4%bb%8b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h5 id="浏览器事件简介">
+  浏览器事件简介
+  <a class="heading-link" href="#%e6%b5%8f%e8%a7%88%e5%99%a8%e4%ba%8b%e4%bb%b6%e7%ae%80%e4%bb%8b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>3 种分配事件处理程序的方式：</p>
+<ol>
+<li>HTML 特性（attribute）：onclick=&quot;&hellip;&quot;。</li>
+<li>DOM 属性（property）：elem.onclick = function。</li>
+<li>方法（method）：elem.addEventListener(event, handler[, phase]) 用于添加，removeEventListener 用于移除。要移除处理程序需要存储对它的引用。</li>
+</ol>
+<p>有些事件无法通过 DOM 属性进行分配。只能使用 addEventListener，比如DOMContentLoaded、transtionend
+<code>element.addEventListener(event, handler[, options]);</code>
+handler可以是函数或对象，如果是对象就会调用对象的<code>handleEvent</code>方法，这样可以在方法中根据event实现同一个对象处理多个事件等</p>
+<p>事件对象<strong>event</strong>：</p>
+<ul>
+<li>event.type 事件类型</li>
+<li>event.currentTarget 处理事件的元素</li>
+<li>event.clientX / event.clientY 指针事件（pointer event）的指针的窗口相对坐标</li>
+<li>&hellip;</li>
+</ul>
+<h5 id="冒泡和捕获">
+  冒泡和捕获
+  <a class="heading-link" href="#%e5%86%92%e6%b3%a1%e5%92%8c%e6%8d%95%e8%8e%b7">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>冒泡：当一个事件发生在一个元素上，它会首先运行在该元素上的处理程序，然后运行其父元素上的处理程序，然后一直向上到其他祖先上的处理程序。（“几乎”所有事件都会冒泡）</p>
+<p><strong>event.target</strong>与this(=<strong>event.currentTarget</strong>)的区别：</p>
+<ul>
+<li>event.target —— 是引发事件的“目标”元素，它在冒泡过程中不会发生变化。</li>
+<li>this —— 是“当前”元素，其中有一个当前正在运行的处理程序。</li>
+</ul>
+<p>停止传播：</p>
+<ul>
+<li>event.<strong>stopPropagation</strong>() 冒泡、捕获阶段都可以用</li>
+<li>event.stopImmediatePropagation() 还能阻止当前元素上的处理程序运行</li>
+</ul>
+<p>DOM事件标准描述了事件传播的3个阶段：</p>
+<ol>
+<li>捕获阶段 （Capturing phase）—— 事件（从 Window）向下走近元素。</li>
+<li>目标阶段 （Target phase）—— 事件到达目标元素。</li>
+<li>冒泡阶段 （Bubbling phase）—— 事件从元素上开始冒泡。</li>
+</ol>
+<p>event.eventPhase 表明当前阶段：（capturing=1，target=2，bubbling=3）</p>
+<p>如果 addEventListener(&hellip;, true)，那么应该在 removeEventListener(&hellip;, true) 中提到同一阶段，以正确删除处理程序   （<strong>true代表在捕获阶段捕获事件</strong>）</p>
+<h5 id="事件委托">
+  事件委托
+  <a class="heading-link" href="#%e4%ba%8b%e4%bb%b6%e5%a7%94%e6%89%98">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>如果有许多以类似方式处理的元素，那么就不必为每个元素分配一个处理程序 —— 而是将单个处理程序放在它们的共同祖先上</p>
+<ol>
+<li>在容器上放一个处理程序</li>
+<li>在处理程序中 —— 检查源元素 event.target。</li>
+<li>如果事件发生在感兴趣的元素内，那么处理该事件。</li>
+</ol>
+<p>行为模式：使用事件委托将“行为（behavior）”以 声明方式 添加到具有特殊特性（attribute）和类的元素中。</p>
+<ol>
+<li>将自定义特性添加到描述其行为的元素（比如添加 data-* ）</li>
+<li>用文档范围级的处理程序追踪事件，如果事件发生在具有特定特性的元素上 —— 则执行行为（action）</li>
+</ol>
+<p>好处：</p>
+<ul>
+<li>简化初始化并节省内存：无需添加许多处理程序。</li>
+<li>更少的代码：添加或移除元素时，无需添加/移除处理程序。</li>
+<li>DOM 修改 ：我们可以使用 innerHTML 等，来批量添加/移除元素。</li>
+</ul>
+<p>局限性：</p>
+<ul>
+<li>首先，事件必须冒泡。而有些事件不会冒泡。此外，低级别的处理程序不应该使用 event.stopPropagation()</li>
+<li>委托可能会增加 CPU 负载，因为容器级别的处理程序会对容器中任意位置的事件做出反应，而不管我们是否对该事件感兴趣。但是，通常负载可以忽略不计，所以我们不考虑它</li>
+</ul>
+<h5 id="浏览器默认行为">
+  浏览器默认行为
+  <a class="heading-link" href="#%e6%b5%8f%e8%a7%88%e5%99%a8%e9%bb%98%e8%ae%a4%e8%a1%8c%e4%b8%ba">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>阻止浏览器行为：</p>
+<ol>
+<li>event.preventDefault()</li>
+<li>如果处理程序是使用 on<event>（而不是 addEventListener）分配的，那就返回 false</li>
+</ol>
+<p>addEventListener 的可选项 <strong>passive</strong>: true 向浏览器表明处理程序将不会调用 preventDefault()。
+比如touchmove默认情况下会滚动，浏览器检测到没有调用preventDefault()时会继续滚动，可能会造成延迟或抖动，因此可以直接告诉浏览器不会取消，则浏览器会立即滚动页面。</p>
+<p>如果默认行为被阻止，那么 event.<strong>defaultPrevented</strong> 属性为 true，可以通知其他事件处理程序该事件已经被处理。（在冒泡时可以利用该属性）</p>
+<h5 id="创建自定义事件">
+  创建自定义事件
+  <a class="heading-link" href="#%e5%88%9b%e5%bb%ba%e8%87%aa%e5%ae%9a%e4%b9%89%e4%ba%8b%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p><code>new Event(type[,options])</code></p>
+<ul>
+<li>
+<p>type —— 事件类型，可以是像这样 &ldquo;click&rdquo; 的字符串，或者我们自己的像这样 &ldquo;my-event&rdquo; 的参数。</p>
+</li>
+<li>
+<p>options —— 具有两个可选属性的对象：</p>
+<ol>
+<li>bubbles: true/false —— 如果为 true，那么事件会冒泡。</li>
+<li>cancelable: true/false —— 如果为 true，表示该事件能被取消</li>
+<li>默认情况下两个属性都为false</li>
+</ol>
+</li>
+</ul>
+<p>对于不同的事件类型要用不同的方法
+<code>new MouseEvent(&quot;click&quot;,{...})</code>&hellip;</p>
+<p>全新事件类型：
+<code>new CustomEvent('hello',{...})</code>，与new Event相比，它可以在第二个参数中添加一个附加的属性<strong>detail</strong>可以用来存放一些信息</p>
+<p><code>elem.dispatchEvent(event)</code> 在元素上运行</p>
+<p><code>event.isTrusted</code>：区分“真实”用户事件 true和通过脚本生成的事件 false</p>
+<p>自定义事件只能使用addEventListener，因为on<event>仅存在于内建事件中</p>
+<p>事件中的事件是同步的：一个事件是在另一个事件中发起的。例如使用 dispatchEvent。这类事件将会被立即处理，等被调用之后，恢复到当前的事件处理程序。</p>
+<h3 id="ui事件">
+  UI事件
+  <a class="heading-link" href="#ui%e4%ba%8b%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h5 id="鼠标事件">
+  鼠标事件
+  <a class="heading-link" href="#%e9%bc%a0%e6%a0%87%e4%ba%8b%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>mousedown → mouseup → click</p>
+<p>与点击相关的事件有<strong>button</strong>属性，可以获取鼠标按钮
+<img src="evernotecid://AD55C2FF-DB70-4AF5-9F57-2A1073AF7668/appyinxiangcom/17648251/ENResource/p1064" alt="18331fb9b552c2e25441553ff58c41dc.png"></p>
+<p>组合键：shift、alt、ctrl、meta
+事件都包含对应属性，如果在事件期间按下了相应的键则为true：</p>
+<ul>
+<li>shiftKey：Shift</li>
+<li>altKey：Alt（或对于 Mac 是 Opt）</li>
+<li>ctrlKey：Ctrl</li>
+<li>metaKey：对于 Mac 是 Cmd</li>
+</ul>
+<p>Mac上通常用Cmd代替Ctrl，因此应该将ctrlKey与metaKey一起检查</p>
+<p>鼠标事件提供了两种坐标：</p>
+<ol>
+<li>相对于窗口的坐标：clientX 和 clientY。</li>
+<li>相对于文档的坐标：pageX 和 pageY。</li>
+</ol>
+<p>防止鼠标按下时的选择行为：
+比如在双击时会选择文本，可以用onmousedown=&ldquo;return false&rdquo;
+比如防止复制，可以oncopy=&quot;&hellip;;return false&quot;</p>
+<h5 id="移动鼠标">
+  移动鼠标
+  <a class="heading-link" href="#%e7%a7%bb%e5%8a%a8%e9%bc%a0%e6%a0%87">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p><img src="evernotecid://AD55C2FF-DB70-4AF5-9F57-2A1073AF7668/appyinxiangcom/17648251/ENResource/p1065" alt="497972977c5397239b0b429f13d703d8.png">
+mouseover：
+event.target —— 是鼠标移过的那个元素。
+event.<strong>relatedTarget</strong> —— 是鼠标来自哪个元素（<strong>relatedTarget → target</strong>）
+mouseout：
+event.target —— 是鼠标离开的元素。
+event.<strong>relatedTarget</strong> —— 是鼠标移动到的，当前指针位置下的元素（<strong>target → relatedTarget</strong>）</p>
+<p>relatedTarget可以为null，例如来自窗口之外，或离开窗口</p>
+<p><strong>1. 在鼠标快速移动的情况下，中间元素可能会被忽略。
+2. 如果mouseover被触发了，一旦离开，则一定会有mouseout！
+3. 即使从父元素转到子元素时，也会触发 mouseover/out 事件</strong></p>
+<p>mouseenter和mouseleave与mouseover/mouseou类似，但有两个重要区别：
+<strong>1. 元素内部与后代之间的转换不会产生影响（在后代之间的移动会被忽略）
+2. 事件mouseenter/mouseleave 不会冒泡。（不能用来事件委托，要使用mouseover/mouseout）</strong></p>
+<h5 id="鼠标拖放事件">
+  鼠标拖放事件
+  <a class="heading-link" href="#%e9%bc%a0%e6%a0%87%e6%8b%96%e6%94%be%e4%ba%8b%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>基础的拖放算法：</p>
+<ol>
+<li>事件流：ball.mousedown → document.mousemove → ball.mouseup（不要忘记取消原生 ondragstart）。</li>
+<li>在拖动开始时 —— 记住鼠标指针相对于元素的初始偏移（shift）：shiftX/shiftY，并在拖动过程中保持它不变。</li>
+<li>使用 document.<strong>elementFromPoint（clientX, clientY）</strong> 检测鼠标指针下的 “droppable” 的元素。</li>
+</ol>
+<p>成熟的框架：DragZone，Droppable，Draggable&hellip;</p>
+<h5 id="指针事件-pointer-events">
+  指针事件 Pointer Events
+  <a class="heading-link" href="#%e6%8c%87%e9%92%88%e4%ba%8b%e4%bb%b6-pointer-events">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>处理来自各种输入设备（例如鼠标、触控笔和触摸屏等）的输入信息
+鼠标事件、触摸事件 -&gt; 指针事件
+<img src="evernotecid://AD55C2FF-DB70-4AF5-9F57-2A1073AF7668/appyinxiangcom/17648251/ENResource/p1066" alt="cf24d941087604f3d8b92080b246708d.png"></p>
+<p>指针事件属性：
+具备和鼠标事件完全相同的属性，包括 clientX/Y 和 target 等</p>
+<ul>
+<li>pointerId —— 触发当前事件的指针唯一标识符。</li>
+<li>pointerType —— 指针的设备类型。必须为字符串，可以是：“mouse”、“pen” 或 “touch”。</li>
+<li>isPrimary —— 当指针为首要指针（多点触控时按下的第一根手指）时为 true。</li>
+</ul>
+<p>很少被使用的属性：</p>
+<ul>
+<li>width —— 指针（例如手指）接触设备的区域的宽度。对于不支持的设备（如鼠标），这个值总是 1。</li>
+<li>height —— 指针（例如手指）接触设备的区域的长度。对于不支持的设备，这个值总是 1。</li>
+<li>pressure —— 触摸压力，是一个介于 0 到 1 之间的浮点数。对于不支持压力检测的设备，这个值总是 0.5（按下时）或 0。</li>
+<li>tangentialPressure —— 归一化后的切向压力（tangential pressure）。</li>
+<li>tiltX, tiltY, twist —— 针对触摸笔的几个属性，用于描述笔和屏幕表面的相对位置。</li>
+</ul>
+<p><strong>多点触控</strong></p>
+<ol>
+<li>第一个手指触摸：
+pointerdown 事件触发，isPrimary=true，并且被指派了一个 pointerId。</li>
+<li>第二个和后续的更多个手指触摸（假设第一个手指仍在触摸）：
+pointerdown 事件触发，isPrimary=false，并且每一个触摸都被指派了不同的 pointerId。</li>
+</ol>
+<p>如果 5 根手指同时触摸屏幕，会得到 5 个 pointerdown 事件和相应的坐标以及 5 个不同的 pointerId。
+当用户移动或抬起某根手指时，会得到和 pointerdown 事件具有相同 pointerId 的 pointermove 或 pointerup 事件。</p>
+<p>pointercancel 事件将会在  ”一个正处于活跃状态的指针交互，由于某些原因被中断时“  触发。
+中断原因：</p>
+<ul>
+<li>指针设备硬件在物理层面上被禁用。</li>
+<li>设备方向旋转（例如给平板转了个方向）。</li>
+<li>浏览器打算自行处理这一交互，比如将其看作是一个专门的鼠标手势或缩放操作等</li>
+</ul>
+<p><strong>阻止浏览器的默认行为来防止 pointercancel 触发。</strong></p>
+<ol>
+<li>阻止原生的拖放操作，比如 ball.ondragstart=()=&gt; false</li>
+<li>触屏设备：在css中设置如{touch-action: none}</li>
+</ol>
+<p><strong>指针捕获</strong>
+elem.<strong>setPointerCapture</strong>(pointerId) 将所有具有给定 pointerId 的后续事件重新定位到 elem。（不需要在整个document上添加处理程序了，也不会意外触发其它的指针事件处理程序）
+绑定解除：</p>
+<ul>
+<li>当 pointerup 或 pointercancel 事件出现时，绑定会被自动地移除。</li>
+<li>当 elem 被从文档中移除后，绑定会被自动地移除。</li>
+<li>当 elem.releasePointerCapture(pointerId) 被调用，绑定会被移除</li>
+</ul>
+<h5 id="键盘keydown和keyup">
+  键盘：keydown和keyup
+  <a class="heading-link" href="#%e9%94%ae%e7%9b%98keydown%e5%92%8ckeyup">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>event.key获取字符，event.code获取”物理按键代码“
+<img src="evernotecid://AD55C2FF-DB70-4AF5-9F57-2A1073AF7668/appyinxiangcom/17648251/ENResource/p1067" alt="b25ed5ee5935ac0827a2aff3c00653ed.png">
+<img src="evernotecid://AD55C2FF-DB70-4AF5-9F57-2A1073AF7668/appyinxiangcom/17648251/ENResource/p1068" alt="f49b596b81db0e3b94bda84079e93104.png"></p>
+<p><strong>大小写敏感</strong>：</p>
+<ul>
+<li>字符键的代码为 &ldquo;Key<letter>&quot;：&ldquo;KeyA&rdquo;，&ldquo;KeyB&rdquo; 等。</li>
+<li>数字键的代码为：&ldquo;Digit<number>&quot;：&ldquo;Digit0&rdquo;，&ldquo;Digit1&rdquo; 等。</li>
+<li>特殊按键的代码为按键的名字：&ldquo;Enter&rdquo;，&ldquo;Backspace&rdquo;，&ldquo;Tab&rdquo; 等。</li>
+</ul>
+<p><strong>自动重复</strong>：如果按下一个键足够长的时间，它就会开始“自动重复”：keydown 会被一次又一次地触发，然后当按键被释放时，会得到 keyup。自动重复触发的事件的<strong>event.repeat</strong>为true</p>
+<h5 id="滚动">
+  滚动
+  <a class="heading-link" href="#%e6%bb%9a%e5%8a%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>scroll事件
+防止滚动：可以在导致滚动的事件上加event.preventDefault()，比如pageUp、pageDown</p>
+<p>可以用在按需加载图像，节省流量，设置一个初始图像，当滚动到一定位置时jiang src改为data-src的src</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2017 -
+    
+    2021
+     OnlyHy 
+    ·
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

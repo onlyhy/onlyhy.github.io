@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="OnlyHy">
+    <meta name="description" content="###表单 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，显示错误信息。
+模板驱动的表单    本例必填字段在左侧有绿色的竖条用于分辨，醒目的红色样式显示验证错误等。
+ 创建Hero模型类 创建控制此表单的组件。 创建具有初始表单布局的模板。 使用ngModel双向数据绑定语法把数据属性绑定到每个表单输入控件。 往每个表单输入控件上添加name属性 (attribute)。 添加自定义 CSS 来提供视觉反馈。 显示和隐藏有效性验证的错误信息。 使用 ngSubmit 处理表单提交。 禁用此表单的提交按钮，直到表单变为有效。  搭建    创建Hero模型类    最简单的模型是个“属性包”，存放应用中一件事物的事实。
+export class Hero { constructor( public id: number, public name: string, public power: string, public alterEgo?: string //可选的属性 ) { } }  创建新英雄：
+let myHero = new Hero(42, &#39;SkyDog&#39;, &#39;Fetch any object at any distance&#39;, &#39;Leslie Rollover&#39;); console.">
+    <meta name="keywords" content="onlyhy">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AngularJS学习笔记（四）"/>
+<meta name="twitter:description" content="###表单 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，显示错误信息。
+模板驱动的表单    本例必填字段在左侧有绿色的竖条用于分辨，醒目的红色样式显示验证错误等。
+ 创建Hero模型类 创建控制此表单的组件。 创建具有初始表单布局的模板。 使用ngModel双向数据绑定语法把数据属性绑定到每个表单输入控件。 往每个表单输入控件上添加name属性 (attribute)。 添加自定义 CSS 来提供视觉反馈。 显示和隐藏有效性验证的错误信息。 使用 ngSubmit 处理表单提交。 禁用此表单的提交按钮，直到表单变为有效。  搭建    创建Hero模型类    最简单的模型是个“属性包”，存放应用中一件事物的事实。
+export class Hero { constructor( public id: number, public name: string, public power: string, public alterEgo?: string //可选的属性 ) { } }  创建新英雄：
+let myHero = new Hero(42, &#39;SkyDog&#39;, &#39;Fetch any object at any distance&#39;, &#39;Leslie Rollover&#39;); console."/>
+
+    <meta property="og:title" content="AngularJS学习笔记（四）" />
+<meta property="og:description" content="###表单 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，显示错误信息。
+模板驱动的表单    本例必填字段在左侧有绿色的竖条用于分辨，醒目的红色样式显示验证错误等。
+ 创建Hero模型类 创建控制此表单的组件。 创建具有初始表单布局的模板。 使用ngModel双向数据绑定语法把数据属性绑定到每个表单输入控件。 往每个表单输入控件上添加name属性 (attribute)。 添加自定义 CSS 来提供视觉反馈。 显示和隐藏有效性验证的错误信息。 使用 ngSubmit 处理表单提交。 禁用此表单的提交按钮，直到表单变为有效。  搭建    创建Hero模型类    最简单的模型是个“属性包”，存放应用中一件事物的事实。
+export class Hero { constructor( public id: number, public name: string, public power: string, public alterEgo?: string //可选的属性 ) { } }  创建新英雄：
+let myHero = new Hero(42, &#39;SkyDog&#39;, &#39;Fetch any object at any distance&#39;, &#39;Leslie Rollover&#39;); console." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://onlyhy.github.io/posts/2017-06-03-angularjs4/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-06-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-06-03T00:00:00+00:00" />
+
+
+
+    <title>
+  AngularJS学习笔记（四） · oooonlyhy
+</title>
+
+    
+      <link rel="canonical" href="http://onlyhy.github.io/posts/2017-06-03-angularjs4/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.91.0" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      oooonlyhy
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">首页</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">归档</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://onlyhy.github.io/posts/2017-06-03-angularjs4/">
+              AngularJS学习笔记（四）
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2017-06-03T00:00:00Z'>
+                June 3, 2017
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：3 分钟
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/onlyhy/">onlyhy</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/angularjs/">AngularJS</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <p>###表单
+表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，显示错误信息。</p>
+<h4 id="模板驱动的表单">
+  模板驱动的表单
+  <a class="heading-link" href="#%e6%a8%a1%e6%9d%bf%e9%a9%b1%e5%8a%a8%e7%9a%84%e8%a1%a8%e5%8d%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>本例必填字段在左侧有绿色的竖条用于分辨，醒目的红色样式显示验证错误等。</p>
+<ol>
+<li>创建Hero模型类</li>
+<li>创建控制此表单的组件。</li>
+<li>创建具有初始表单布局的模板。</li>
+<li>使用ngModel双向数据绑定语法把数据属性绑定到每个表单输入控件。</li>
+<li>往每个表单输入控件上添加name属性 (attribute)。</li>
+<li>添加自定义 CSS 来提供视觉反馈。</li>
+<li>显示和隐藏有效性验证的错误信息。</li>
+<li>使用 ngSubmit 处理表单提交。</li>
+<li>禁用此表单的提交按钮，直到表单变为有效。</li>
+</ol>
+<h3 id="搭建">
+  搭建
+  <a class="heading-link" href="#%e6%90%ad%e5%bb%ba">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="创建hero模型类">
+  创建Hero模型类
+  <a class="heading-link" href="#%e5%88%9b%e5%bb%bahero%e6%a8%a1%e5%9e%8b%e7%b1%bb">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>最简单的模型是个“属性包”，存放应用中一件事物的事实。</p>
+<pre><code>export class Hero {
+constructor(
+public id: number,
+public name: string,
+public power: string,
+public alterEgo?: string   //可选的属性
+) {  }
+}
+</code></pre>
+<p>创建新英雄：</p>
+<pre><code>let myHero =  new Hero(42, 'SkyDog',
+                   'Fetch any object at any distance',
+                   'Leslie Rollover');
+console.log('My hero is called ' + myHero.name); // &quot;My hero is called SkyDog&quot;  
+</code></pre>
+<h4 id="创建表单组件">
+  创建表单组件
+  <a class="heading-link" href="#%e5%88%9b%e5%bb%ba%e8%a1%a8%e5%8d%95%e7%bb%84%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>分为两部分，基于HTML的模板和组件类，用来程序处理数据和用户交互。
+组件类可以简要说明编辑器能做什么。
+src/app/hero-form.components.ts:</p>
+<pre><code>import { Component } from '@angular/core';
+import { Hero }    from './hero';
+@Component({
+selector: 'hero-form',  //用该标签把这个表单放进父模板
+templateUrl: './hero-form.component.html'
+})
+export class HeroFormComponent {
+powers = ['Really Smart', 'Super Flexible',
+        'Super Hot', 'Weather Changer'];
+model = new Hero(18, 'Dr IQ', this.powers[0], 'Chuck Overstreet');
+submitted = false;
+onSubmit() { this.submitted = true; }
+// TODO: Remove this when we're done
+ get diagnostic() { return JSON.stringify(this.model); }  //返回这个模型的JSON形式，用于调试，最后丢弃。
+}  
+</code></pre>
+<h4 id="分离模板文件">
+  分离模板文件
+  <a class="heading-link" href="#%e5%88%86%e7%a6%bb%e6%a8%a1%e6%9d%bf%e6%96%87%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>通常最好将HTML模板放到单独的文件中</p>
+<h4 id="修改appmodulets">
+  修改app.module.ts
+  <a class="heading-link" href="#%e4%bf%ae%e6%94%b9appmodulets">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>定义了应用的根模块，标识即将用到的外部模块，以及声明属于本模块中的组件。<br>
+因为模块驱动的表单位于它们自己的模块，所以在使用表单之前，要将模块添加到应用模块的imports数组中。</p>
+<pre><code>iimport { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule }   from '@angular/forms';  //导入
+import { AppComponent }  from './app.component';
+import { HeroFormComponent } from './hero-form.component';  //导入
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule   //能访问模板驱动表单的所有特性
+  ],
+  declarations: [
+    AppComponent,
+    HeroFormComponent    //使HeroFormComponent组件在整个模块中可见
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+</code></pre>
+<p>如果组件、指令或管道出现在模块的imports数组中，不要把它声明在declarations数组中。如果是你自己写的，并且属于当前模块，就要把它声明在declarations数组中。</p>
+<h4 id="修改appcomponentts">
+  修改app.component.ts
+  <a class="heading-link" href="#%e4%bf%ae%e6%94%b9appcomponentts">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>@Component({
+  selector: 'my-app',
+  template: '&lt;hero-form&gt;&lt;/hero-form&gt;'
+})
+</code></pre>
+<p>template中只剩新的元素标签。</p>
+<h4 id="创建初始html表单模板">
+  创建初始HTML表单模板
+  <a class="heading-link" href="#%e5%88%9b%e5%bb%ba%e5%88%9d%e5%a7%8bhtml%e8%a1%a8%e5%8d%95%e6%a8%a1%e6%9d%bf">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+&lt;h1&gt;Hero Form&lt;/h1&gt;
+&lt;form&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;name&quot; required&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;alterEgo&quot;&gt;Alter Ego&lt;/label&gt;
+    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;alterEgo&quot;&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;btn btn-success&quot;&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+&lt;/div&gt;  
+</code></pre>
+<p>添加样式表，在index.html的head中链入样式表，此处用bootstrap</p>
+<h4 id="用ngfor添加英雄的超能力">
+  用ngFor添加英雄的超能力
+  <a class="heading-link" href="#%e7%94%a8ngfor%e6%b7%bb%e5%8a%a0%e8%8b%b1%e9%9b%84%e7%9a%84%e8%b6%85%e8%83%bd%e5%8a%9b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>英雄必须选择一项超能力，这个列表在hero-form.component中。<br>
+添加select，用ngFor把powers列表绑定到列表选项，加在alter ego后面 。</p>
+<pre><code>&lt;div class=&quot;form-group&quot;&gt;
+&lt;label for=&quot;power&quot;&gt;Hero Power&lt;/label&gt;
+&lt;select class=&quot;form-control&quot; id=&quot;power&quot; required&gt;
+&lt;option *ngFor=&quot;let pow of powers&quot; [value]=&quot;pow&quot;&gt;{{pow}}&lt;/option&gt;
+&lt;/select&gt;
+&lt;/div&gt;  
+</code></pre>
+<h4 id="用ngmodel进行双向数据绑定">
+  用ngModel进行双向数据绑定
+  <a class="heading-link" href="#%e7%94%a8ngmodel%e8%bf%9b%e8%a1%8c%e5%8f%8c%e5%90%91%e6%95%b0%e6%8d%ae%e7%bb%91%e5%ae%9a">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>使用[(ngModel)]语法，修改HTML中的标签，必须要定义name属性</p>
+<pre><code>&lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;name&quot;
+   required
+   [(ngModel)]=&quot;model.name&quot; name=&quot;name&quot;&gt;
+TODO: remove this: {{model.name}}  //用于诊断，提醒自己完成后移除。
+</code></pre>
+<p>在表单中声明一个模板变量</p>
+<pre><code>&lt;form #heroForm=&quot;ngForm&quot;&gt;
+</code></pre>
+<p><em>NgForm指令</em> 为form增补一些额外的特性，控制带有ngModel和name属性的元素，监听它们，它还自有valid属性，只有在包含的每个控件都有效时才为真。<br>
+在组件顶部添加diagnostic属性，能确认是否正常工作，正常后就删除它。</p>
+<pre><code>{{diagnostic}}
+&lt;div class=&quot;form-group&quot;&gt;
+  &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+  &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;name&quot;
+         required
+         [(ngModel)]=&quot;model.name&quot; name=&quot;name&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+  &lt;label for=&quot;alterEgo&quot;&gt;Alter Ego&lt;/label&gt;
+  &lt;input type=&quot;text&quot;  class=&quot;form-control&quot; id=&quot;alterEgo&quot;
+         [(ngModel)]=&quot;model.alterEgo&quot; name=&quot;alterEgo&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+  &lt;label for=&quot;power&quot;&gt;Hero Power&lt;/label&gt;
+  &lt;select class=&quot;form-control&quot;  id=&quot;power&quot;
+          required
+          [(ngModel)]=&quot;model.power&quot; name=&quot;power&quot;&gt;
+    &lt;option *ngFor=&quot;let pow of powers&quot; [value]=&quot;pow&quot;&gt;{{pow}}&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="用ngmodel跟踪修改状态与有效性验证">
+  用ngModel跟踪修改状态与有效性验证
+  <a class="heading-link" href="#%e7%94%a8ngmodel%e8%b7%9f%e8%b8%aa%e4%bf%ae%e6%94%b9%e7%8a%b6%e6%80%81%e4%b8%8e%e6%9c%89%e6%95%88%e6%80%a7%e9%aa%8c%e8%af%81">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>ngModel指令不仅仅跟踪状态，还使用特定的Angular CSS 类来更新控件以反映当前状态。</p>
+<p>状态                  为真时的 CSS 类                为假时的 CSS 类
+控件被访问过。          ng-touched                     ng-untouched
+控件的值变化了。         ng-dirty                      ng-pristine
+控件的值有效。            ng-valid                     ng-invalid</p>
+<h4 id="添加用于视觉反馈的自定义css">
+  添加用于视觉反馈的自定义CSS
+  <a class="heading-link" href="#%e6%b7%bb%e5%8a%a0%e7%94%a8%e4%ba%8e%e8%a7%86%e8%a7%89%e5%8f%8d%e9%a6%88%e7%9a%84%e8%87%aa%e5%ae%9a%e4%b9%89css">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>如新建forms.css文件，添加两个样式，将文件链入到html的head中。</p>
+<pre><code>.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}  
+</code></pre>
+<h4 id="显示和隐藏验证错误信息">
+  显示和隐藏验证错误信息
+  <a class="heading-link" href="#%e6%98%be%e7%a4%ba%e5%92%8c%e9%9a%90%e8%97%8f%e9%aa%8c%e8%af%81%e9%94%99%e8%af%af%e4%bf%a1%e6%81%af">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>在input标签中添加:
+模板引用变量和&quot;is required&quot;消息，放在邻近的div元素中，当控件无效时显示。</p>
+<pre><code>&lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+&lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;name&quot;
+       required
+        [(ngModel)]=&quot;model.name&quot; name=&quot;name&quot;
+        #name=&quot;ngModel&quot;&gt;
+&lt;div [hidden]=&quot;name.valid || name.pristine&quot;//控件是有效的或全新的则隐藏消息
+    class=&quot;alert alert-danger&quot;&gt;
+ Name is required
+&lt;/div&gt;
+</code></pre>
+<p>表单底部添加新增按钮，将点击事件绑定到newHero组件中
+必须清除所有标记，在调用newHero()方法后调用表单的reset()方法</p>
+<pre><code>&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; (click)=&quot;newHero(); heroForm.reset()&quot;&gt;New Hero&lt;/button&gt;
+
+
+newHero() {
+this.model = new Hero(42, '', '');
+}
+</code></pre>
+<h4 id="使用ngsubmit提交该表单">
+  使用ngSubmit提交该表单
+  <a class="heading-link" href="#%e4%bd%bf%e7%94%a8ngsubmit%e6%8f%90%e4%ba%a4%e8%af%a5%e8%a1%a8%e5%8d%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>Submit提交按钮有特殊的type值 type=&ldquo;submit&rdquo;，要把该表单的ngSubmit事件属性绑定到表单组件的onSubmit()方法上。</p>
+<pre><code>&lt;form (ngSubmit)=&quot;onSubmit()&quot; #heroForm=&quot;ngForm&quot;&gt;
+</code></pre>
+<p>把表单的总体有效性通过heroForm变量绑定到按钮的disabled属性上。</p>
+<pre><code>&lt;button type=&quot;submit&quot; class=&quot;btn btn-success&quot; [disabled]=&quot;!heroForm.form.valid&quot;&gt;Submit&lt;/button&gt;
+</code></pre>
+<p>总之，有了Angular：定义模板引用量放在form元素上，然后在很多行之外的按钮上引用这个变量。</p>
+<h4 id="切换两个表单区域">
+  切换两个表单区域
+  <a class="heading-link" href="#%e5%88%87%e6%8d%a2%e4%b8%a4%e4%b8%aa%e8%a1%a8%e5%8d%95%e5%8c%ba%e5%9f%9f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>把表单包裹在div中，把hidden属性绑定到HeroFormComponent.submitted属性。
+当点击Submit按钮时，submitted标志会变成 true，并且表单也消失了。
+当表单已提交后，显示一些其他的，在表单的div下面添加以下：</p>
+<pre><code>&lt;div [hidden]=&quot;!submitted&quot;&gt;
+&lt;h2&gt;You submitted the following:&lt;/h2&gt;
+&lt;div class=&quot;row&quot;&gt; 
+&lt;div class=&quot;col-xs-3&quot;&gt;Name&lt;/div&gt;
+&lt;div class=&quot;col-xs-9  pull-left&quot;&gt;{{ model.name }}&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-xs-3&quot;&gt;Alter Ego&lt;/div&gt;
+&lt;div class=&quot;col-xs-9 pull-left&quot;&gt;{{ model.alterEgo }}&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-xs-3&quot;&gt;Power&lt;/div&gt;
+&lt;div class=&quot;col-xs-9 pull-left&quot;&gt;{{ model.power }}&lt;/div&gt;
+&lt;/div&gt;
+&lt;br&gt;
+&lt;button class=&quot;btn btn-primary&quot; (click)=&quot;submitted=false&quot;&gt;Edit&lt;/button&gt;
+&lt;/div&gt;  
+</code></pre>
+<p>通过插值表达式绑定显示为只读内容，只有在组件提交状态时才会显示。Edit按钮，将click事件绑定到表达式，用于清除submitted标志。点击这个按钮时，这个只读块消失，可编辑的表单重新出现。</p>
+<h3 id="总结">
+  总结
+  <a class="heading-link" href="#%e6%80%bb%e7%bb%93">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ul>
+<li>Angular HTML 表单模板。</li>
+<li>带有@Component装饰器的表单组件类。</li>
+<li>通过绑定到NgForm.ngSubmit事件属性来处理表单提交。</li>
+<li>模板引用变量，例如#heroForm和#name。</li>
+<li>[(ngModel)]语法用来实现双向数据绑定。</li>
+<li>name属性的用途是有效性验证和对表单元素的变更进行追踪。</li>
+<li>指向 input 控件的引用变量上的valid属性，可用于检查控件是否有效、是否显示/隐藏错误信息。</li>
+<li>通过绑定到NgForm的有效性状态，控制Submit按钮的禁用状态。</li>
+<li>定制 CSS 类来给用户提供无效控件的视觉反馈</li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2017 -
+    
+    2021
+     OnlyHy 
+    ·
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BootStrap on oooonlyhy</title>
+    <link>http://onlyhy.github.io/categories/bootstrap/</link>
+    <description>Recent content in BootStrap on oooonlyhy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 16 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://onlyhy.github.io/categories/bootstrap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bootstrap4手册笔记(一)</title>
+      <link>http://onlyhy.github.io/posts/2018-05-16-bootstrap4/</link>
+      <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2018-05-16-bootstrap4/</guid>
+      <description>黄黄说：“少说话，多做事”
+读Bootstrap4中文文档所记
+目录     浏览器与设备调优 布局 内容 组件  浏览器与设备调优    不支持IE9    移动设备的模态框和下拉组件    Overflow溢出和scroll滚动    iOS和安卓中，对于&amp;lt;body&amp;gt;元素中使用overflow: hidden;的支持很有限。因此在这两种设备中，当你滚动超过一个模态窗口的顶部或底部，&amp;lt;body&amp;gt;内容也会开始滚动
+iOS文本字段和滚动    从IOS9.2开始，当一个模态启用，如果手势触模在一个&amp;lt;input&amp;gt;文本或&amp;lt;textarea&amp;gt;文本框内，则&amp;lt;body&amp;gt;中的内容将被滚动，而不是模态本身滚动
+无冲突处理    有时，必须使用Bootstrap插件和其他UI框架,偶尔会发生命名空间冲突,可以调用.noConflict恢复插件的值：
+var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value $.fn.bootstrapBtn = bootstrapButton // give $().bootstrapBtn the Bootstrap functionality  布局    栅格     不同于旧版3.</description>
+    </item>
+    
+    <item>
+      <title>BootStrap回顾随笔</title>
+      <link>http://onlyhy.github.io/posts/2017-07-12-bootstrap/</link>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-07-12-bootstrap/</guid>
+      <description>CDN    &amp;lt;&amp;ndash; 新 Bootstrap 核心 CSS 文件 &amp;ndash;&amp;gt; &amp;lt;link href=&amp;quot;https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
+&amp;lt;&amp;ndash; 可选的Bootstrap主题文件（一般不使用） &amp;ndash;&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;&amp;ndash; jQuery文件。务必在bootstrap.min.js 之前引入 &amp;ndash;&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;&amp;ndash; 最新的 Bootstrap 核心 JavaScript 文件 &amp;ndash;&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+container 与 container-fluid    /0-768px以上宽度container为100%/ .container { padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; } /768-992px以上宽度container为750px/ @media (min-width: 768px) { .container { width: 750px; } } /992-1200px以上宽度container为970px/ @media (min-width: 992px) { .container { width: 970px; } } /1200px以上宽度container为1170px/ @media (min-width: 1200px) { .</description>
+    </item>
+    
+  </channel>
+</rss>

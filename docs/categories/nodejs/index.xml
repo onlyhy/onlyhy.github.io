@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NodeJS on oooonlyhy</title>
+    <link>http://onlyhy.github.io/categories/nodejs/</link>
+    <description>Recent content in NodeJS on oooonlyhy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 17 Oct 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://onlyhy.github.io/categories/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NodeJS学习笔记</title>
+      <link>http://onlyhy.github.io/posts/2017-10-17-nodejs%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-10-17-nodejs%E7%AC%94%E8%AE%B0/</guid>
+      <description>1.Node中文文档 2.《我所认识的 Node —— Node 好在哪里？学习路径是怎样？》 3.《七天学会NodeJS》
+Node 简单可至使用命令交互模式调试JS代码片段，复杂可至编写工具提升工作效率。
+Node 并不是运营在服务器端的 JavaScript，而是在服务器端的 JavaScript runtime(运行环境)。
+Node 使用了事件驱动和非阻塞的 I/O 模型，使 Node 轻量高效，非常适合 I/O 密集的 Web 场景。
+基础    稍大的程序一般都会将代码模块化（大块拆小块），拆到不同JS文件中，每个文件是一个模块，模块名是文件路径。
+每个模块有三个预先定义好的变量：require,exports,module。
+模块    require    在当前模块中加载和使用别的模块，传入一个模块名，返回一个模块导出对象,模块名可使用相对路径（以./开头），或者是绝对路径（以/或C:之类的盘符开头），模块名中的.js扩展名可以省略，本方式也适用于JSON文件。
+var foo2 = require(&#39;./foo.js&#39;);  exports    当前模块的导出对象，用于导出模块公有方法和属性。
+ exports.hello = function () { console.log(&#39;Hello World!&#39;); };  module    访问到当前模块的一些相关信息，但最多的用途是替换当前模块的导出对象。
+module.exports = function () { console.log(&#39;Hello World!</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PHP on oooonlyhy</title>
+    <link>http://onlyhy.github.io/categories/php/</link>
+    <description>Recent content in PHP on oooonlyhy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 14 Jul 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://onlyhy.github.io/categories/php/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PHP与AJAX</title>
+      <link>http://onlyhy.github.io/posts/2017-07-14-php%E4%B8%8Eajax/</link>
+      <pubDate>Fri, 14 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-07-14-php%E4%B8%8Eajax/</guid>
+      <description>AJAX    Asynchronous JavaScript and XML 无需重新加载整个网页的情况下，能够更新部分网页的技术
+技术     XMLHttpRequest 对象（与服务器异步交互数据） JavaScript/DOM（显示/取回信息） CSS（设置数据的样式） XML（常用作数据传输的格式）  AJAX 与 MySQL    实现一个网页通过 AJAX 从数据库读取信息
+HTML页面    &amp;lt;script&amp;gt; function showSite(str) { if (str==&amp;quot;&amp;quot;)//是否有网站被选择 { document.getElementById(&amp;quot;txtHint&amp;quot;).innerHTML=&amp;quot;&amp;quot;; return; } if (window.XMLHttpRequest)//创建XMLHttpRequest对象 { // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码 xmlhttp=new XMLHttpRequest(); } else { // IE6, IE5 浏览器执行代码 xmlhttp=new ActiveXObject(&amp;quot;Microsoft.XMLHTTP&amp;quot;); } xmlhttp.onreadystatechange=function()//服务器响应就绪时执行的函数 { if (xmlhttp.readyState==4 &amp;amp;&amp;amp; xmlhttp.</description>
+    </item>
+    
+    <item>
+      <title>PHP与MySQL</title>
+      <link>http://onlyhy.github.io/posts/2017-07-14-php%E4%B8%8Emysql/</link>
+      <pubDate>Fri, 14 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-07-14-php%E4%B8%8Emysql/</guid>
+      <description>连接MySQL     MySQLi extension 只针对MySQL数据库 PDO(PHP Data Objects) 能应用在12种不同数据库中  访问数据库前，先连接到数据库服务器
+如：（MySQLi-面向对象）
+&amp;lt;?php $servername = &amp;quot;localhost&amp;quot;; $username = &amp;quot;username&amp;quot;; $password = &amp;quot;password&amp;quot;; // 创建连接 $conn = new mysqli($servername, $username, $password); // 检测连接 if ($conn-&amp;gt;connect_error) { die(&amp;quot;连接失败: &amp;quot; . $conn-&amp;gt;connect_error); } echo &amp;quot;连接成功&amp;quot;; ?&amp;gt;  创建数据库    必须为 mysqli 对象指定三个参数 (servername, username 和 password)
+// 创建数据库 $sql = &amp;quot;CREATE DATABASE myDB&amp;quot;; if ($conn-&amp;gt;query($sql) === TRUE) { echo &amp;quot;数据库创建成功&amp;quot;; } else { echo &amp;quot;Error creating database: &amp;quot; .</description>
+    </item>
+    
+    <item>
+      <title>关于PHP(2)</title>
+      <link>http://onlyhy.github.io/posts/2017-06-13-php2/</link>
+      <pubDate>Tue, 13 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-13-php2/</guid>
+      <description>表单验证 多维数组 date()数组 包含文件 文件处理 文件上传 Cookie Session 邮件 安全邮件 错误处理 异常处理 过滤 JSON  表单验证     当处理 HTML 表单时，PHP 能把来自 HTML 页面中的表单元素自动变成可供 PHP 脚本使用。
+&amp;lt;form method=&amp;quot;post&amp;quot; action=&amp;quot;&amp;lt;?php echo htmlspecialchars($_SERVER[&amp;quot;PHP_SELF&amp;quot;]);?&amp;gt;&amp;quot;&amp;gt; //超级全局变量，返回当前正在执行脚本的文件名  htmlspecialchars()方法，htmlspecialchars() 函数把一些预定义的字符转换为 HTML 实体。能够避免$_SERVER[&amp;ldquo;PHP_SELF&amp;rdquo;] 被黑客利用，预定义的字符是：
+&amp;amp; （和号） 成为 &amp;amp;
+&amp;quot; （双引号） 成为 &amp;quot;
+&#39; （单引号） 成为 &#39;
+&amp;lt; （小于） 成为 &amp;lt; &amp;gt;（大于） 成为 &amp;gt;
+执行脚本时，可通过$_SERVER[&amp;ldquo;REQUEST_METHOD&amp;rdquo;]来检测表单是否被提交。
+必需字段    加入了一些新的变量: $nameErr, $emailErr, $genderErr, 和 $websiteErr.</description>
+    </item>
+    
+    <item>
+      <title>关于PHP(1)</title>
+      <link>http://onlyhy.github.io/posts/2017-06-12-php1/</link>
+      <pubDate>Mon, 12 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-12-php1/</guid>
+      <description>语法   变量   超级全局变量   echo和print语句    数据类型   常量   字符串变量   运算符   数组   数组排序   循环   函数   魔术变量   命名空间   面向对象   ### PHP(Hypertext Preprocessor)超文本预处理器 PHP文件包含文本、HTML、JS代码和PHP代码，在服务器上执行，以纯HTML形式返回给浏览器。 语法     PHP脚本可以放在文档中任何位置
+&amp;lt;?php // PHP 代码 ?&amp;gt;  每个代码行都必须以分号结束。
+两种在浏览器输出文本的基础指令：echo和print
+//单行注释 /**/多行注释
+变量     规则：</description>
+    </item>
+    
+  </channel>
+</rss>

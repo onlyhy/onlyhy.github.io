@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="OnlyHy">
+    <meta name="description" content="Web components    从星球轨道的高度讲起    组件化架构 只有让复杂的事情简单化的架构才是好架构。 一个组件有：
+ 自己的 JavaScript 类。 DOM 结构，并且只由自己的类管理，无法被外部代码操作。（「封装」原则）。 CSS 样式，作用在这个组件上。 API：事件，类方法等等，让组件可以与其他组件交互。  浏览器已原生支持 Web Components：
+ Custom elements —— 用于自定义 HTML 元素. Shadow DOM —— 为组件创建内部 DOM，它对外部是不可见的。 CSS Scoping —— 申明仅应用于组件的 Shadow DOM 内的样式。 Event retargeting 以及更多的小东西，让自定义组件更适用于开发工作。  Custom elements    Custom elements 有两种：
+ Autonomous custom elements （自主自定义标签） —— “全新的” 元素, 继承自 HTMLElement 抽象类. Customized built-in elements （自定义内建元素） —— 继承内建的 HTML 元素，比如自定义 HTMLButtonElement 等，是已有元素的扩展。   Custom element 名称必须包括一个短横线 -，如 my-element 为了确保 custom element 和内建 HTML 元素之间不会发生命名冲突">
+    <meta name="keywords" content="onlyhy">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="现代JS教程[第三部分（五）]"/>
+<meta name="twitter:description" content="Web components    从星球轨道的高度讲起    组件化架构 只有让复杂的事情简单化的架构才是好架构。 一个组件有：
+ 自己的 JavaScript 类。 DOM 结构，并且只由自己的类管理，无法被外部代码操作。（「封装」原则）。 CSS 样式，作用在这个组件上。 API：事件，类方法等等，让组件可以与其他组件交互。  浏览器已原生支持 Web Components：
+ Custom elements —— 用于自定义 HTML 元素. Shadow DOM —— 为组件创建内部 DOM，它对外部是不可见的。 CSS Scoping —— 申明仅应用于组件的 Shadow DOM 内的样式。 Event retargeting 以及更多的小东西，让自定义组件更适用于开发工作。  Custom elements    Custom elements 有两种：
+ Autonomous custom elements （自主自定义标签） —— “全新的” 元素, 继承自 HTMLElement 抽象类. Customized built-in elements （自定义内建元素） —— 继承内建的 HTML 元素，比如自定义 HTMLButtonElement 等，是已有元素的扩展。   Custom element 名称必须包括一个短横线 -，如 my-element 为了确保 custom element 和内建 HTML 元素之间不会发生命名冲突"/>
+
+    <meta property="og:title" content="现代JS教程[第三部分（五）]" />
+<meta property="og:description" content="Web components    从星球轨道的高度讲起    组件化架构 只有让复杂的事情简单化的架构才是好架构。 一个组件有：
+ 自己的 JavaScript 类。 DOM 结构，并且只由自己的类管理，无法被外部代码操作。（「封装」原则）。 CSS 样式，作用在这个组件上。 API：事件，类方法等等，让组件可以与其他组件交互。  浏览器已原生支持 Web Components：
+ Custom elements —— 用于自定义 HTML 元素. Shadow DOM —— 为组件创建内部 DOM，它对外部是不可见的。 CSS Scoping —— 申明仅应用于组件的 Shadow DOM 内的样式。 Event retargeting 以及更多的小东西，让自定义组件更适用于开发工作。  Custom elements    Custom elements 有两种：
+ Autonomous custom elements （自主自定义标签） —— “全新的” 元素, 继承自 HTMLElement 抽象类. Customized built-in elements （自定义内建元素） —— 继承内建的 HTML 元素，比如自定义 HTMLButtonElement 等，是已有元素的扩展。   Custom element 名称必须包括一个短横线 -，如 my-element 为了确保 custom element 和内建 HTML 元素之间不会发生命名冲突" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://onlyhy.github.io/posts/2021-12-22-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%BA%94/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-22T09:00:00+08:00" />
+<meta property="article:modified_time" content="2021-12-22T09:00:00+08:00" />
+
+
+
+    <title>
+  现代JS教程[第三部分（五）] · oooonlyhy
+</title>
+
+    
+      <link rel="canonical" href="http://onlyhy.github.io/posts/2021-12-22-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%BA%94/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.91.0" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      oooonlyhy
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">首页</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">归档</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://onlyhy.github.io/posts/2021-12-22-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%BA%94/">
+              现代JS教程[第三部分（五）]
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-12-22T09:00:00&#43;08:00'>
+                December 22, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：3 分钟
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/onlyhy/">onlyhy</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B/">现代JS教程</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <h3 id="web-components">
+  Web components
+  <a class="heading-link" href="#web-components">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h5 id="从星球轨道的高度讲起">
+  从星球轨道的高度讲起
+  <a class="heading-link" href="#%e4%bb%8e%e6%98%9f%e7%90%83%e8%bd%a8%e9%81%93%e7%9a%84%e9%ab%98%e5%ba%a6%e8%ae%b2%e8%b5%b7">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p><strong>组件化架构</strong>
+只有让复杂的事情简单化的架构才是好架构。
+一个组件有：</p>
+<ul>
+<li>自己的 JavaScript 类。</li>
+<li>DOM 结构，并且只由自己的类管理，无法被外部代码操作。（「封装」原则）。</li>
+<li>CSS 样式，作用在这个组件上。</li>
+<li>API：事件，类方法等等，让组件可以与其他组件交互。</li>
+</ul>
+<p>浏览器已原生支持 <code>Web Components</code>：</p>
+<ul>
+<li>Custom elements —— 用于自定义 HTML 元素.</li>
+<li>Shadow DOM —— 为组件创建内部 DOM，它对外部是不可见的。</li>
+<li>CSS Scoping —— 申明仅应用于组件的 Shadow DOM 内的样式。</li>
+<li>Event retargeting 以及更多的小东西，让自定义组件更适用于开发工作。</li>
+</ul>
+<h5 id="custom-elements">
+  Custom elements
+  <a class="heading-link" href="#custom-elements">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>Custom elements 有两种：</p>
+<ol>
+<li><code>Autonomous custom elements</code> （自主自定义标签） —— “全新的” 元素, 继承自 <code>HTMLElement</code> 抽象类.</li>
+<li><code>Customized built-in elements</code> （自定义内建元素） —— 继承内建的 HTML 元素，比如自定义 HTMLButtonElement 等，是已有元素的扩展。</li>
+</ol>
+<blockquote>
+<p>Custom element 名称必须包括一个短横线 <code>-</code>，如 <code>my-element</code>
+为了确保 custom element 和内建 HTML 元素之间不会发生命名冲突</p>
+</blockquote>
+<hr>
+<p><strong>Autonomous custom elements：</strong></p>
+<ol>
+<li>创建类</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">class MyElement extends HTMLElement <span style="color:#f92672">{</span>
+  constructor<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    super<span style="color:#f92672">()</span>;
+    // 元素在这里创建
+  <span style="color:#f92672">}</span>
+
+  connectedCallback<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    // 在元素被添加到文档之后，浏览器会调用这个方法
+    //（如果一个元素被反复添加到文档／移除文档，那么这个方法会被多次调用）
+  <span style="color:#f92672">}</span>
+
+  disconnectedCallback<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    // 在元素从文档移除的时候，浏览器会调用这个方法
+    // （如果一个元素被反复添加到文档／移除文档，那么这个方法会被多次调用）
+  <span style="color:#f92672">}</span>
+
+  static get observedAttributes<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">[</span>/* 属性数组，这些属性的变化会被监视 */<span style="color:#f92672">]</span>;
+  <span style="color:#f92672">}</span>
+
+  attributeChangedCallback<span style="color:#f92672">(</span>name, oldValue, newValue<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    // 当上面数组中的属性发生变化的时候，这个方法会被调用
+  <span style="color:#f92672">}</span>
+
+  adoptedCallback<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    // 在元素被移动到新的文档的时候，这个方法会被调用
+    // （document.adoptNode 会用到, 非常少见）
+  <span style="color:#f92672">}</span>
+
+  // 还可以添加更多的元素方法和属性
+<span style="color:#f92672">}</span>
+</code></pre></div><ol start="2">
+<li>注册元素：
+<code>customElements.define(&quot;my-element&quot;, MyElement);</code></li>
+<li>当使用<my-element>的时候，一个MyElement的实例也会被创建；还可以在js里使用<code>document.createElement('my-element')</code></li>
+</ol>
+<blockquote>
+<p>如果在元素注册之前，浏览器就见到了这个元素，并不会报错，只是会当作未知元素。:not(:defined)选择器可以给元素加上样式。
+等元素注册之后，就会变成:defined</p>
+</blockquote>
+<blockquote>
+<p>在 <code>connectedCallback</code> 中渲染，而不是 constructor 中</p>
+</blockquote>
+<p><strong>监视属性</strong>：</p>
+<ol>
+<li>在 <code>observedAttributes</code>() static getter 中提供属性列表</li>
+<li>当以上的属性改变时，<code>attributeChangedCallback</code> 会被调用</li>
+</ol>
+<p><strong>渲染顺序</strong>：
+HTML解析器构建DOM的时候，会按照先后顺序处理元素，先处理父级元素再处理子元素。
+对 <code>custom elements</code> 产生了重要影响，如果一个 <code>custom element</code> 想要在 <code>connectedCallback</code> 内访问 <code>innerHTML</code>，它什么也拿不到。</p>
+<p>并没有任何内建的回调方法可以在嵌套元素渲染好之后通知我们。但我们可以自己实现这样的回调。比如，内层元素可以分派像 initialized 这样的事件，同时外层的元素监听这样的事件并做出响应。</p>
+<hr>
+<p><strong>Customized built-in elements：</strong>
+<code>Autonomous</code>元素没有相关的语义，搜索引擎不知道它们的存在，无障碍设备也无法处理它们。</p>
+<p>继承内建元素的类来扩展和定制：</p>
+<ol>
+<li><code>class HelloButton extends HTMLButtonElement { /* custom element 方法 */ }</code></li>
+<li><code>customElements.define('hello-button', HelloButton, {extends: 'button'});</code>第三个参数是必要的</li>
+<li><code>&lt;button is=&quot;hello-button&quot;&gt;...&lt;/button&gt;</code> 通过 <code>is=&quot;&quot;</code>使用</li>
+</ol>
+<h5 id="影子-domshadow-dom">
+  影子 DOM（Shadow DOM）
+  <a class="heading-link" href="#%e5%bd%b1%e5%ad%90-domshadow-dom">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>为封装而生。它可以让一个组件拥有自己的「影子」DOM 树，这个 DOM 树不能在主文档中被任意访问，可能拥有局部样式规则，还有其他特性。</p>
+<p><strong>内建 shadow DOM</strong>
+在 Chrome 里，打开「Show user agent shadow DOM」选项，就可以看到比如<code>如 &lt;input type=&quot;range&quot;</code>的shadow DOM</p>
+<p><strong>Shadow tree</strong>
+一个 DOM 元素可以有以下两类 DOM 子树：</p>
+<ol>
+<li><strong>Light tree</strong>（光明树） —— 一个常规 DOM 子树，由 HTML 子元素组成。我们在之前章节看到的所有子树都是「光明的」。</li>
+<li><strong>Shadow tree</strong>（影子树） —— 一个隐藏的 DOM 子树，不在 HTML 中反映，无法被察觉。</li>
+</ol>
+<p><code>elem.attachShadow({mode: …})</code>可以创建一个 shadow tree。</p>
+<p>attachShadow 返回的 shadow root，和任何元素一样：可以使用 innerHTML 或者 DOM 方法，比如 append 来扩展它。</p>
+<p>拥有 shadow root 的元素叫做「shadow tree host」，可以通过 shadow root 的 <code>host</code> 属性访问：<code>elem.shadowRoot.host === elem</code></p>
+<blockquote>
+<p><code>mode</code>选项：</p>
+</blockquote>
+<ul>
+<li><code>open</code> ：shadow root 可以通过 <code>elem.shadowRoot</code> 访问。任何代码都可以访问 elem 的 shadow tree。</li>
+<li><code>closed</code> ：elem.shadowRoot 永远是 <code>null</code></li>
+</ul>
+<blockquote>
+<p>TIPS</p>
+</blockquote>
+<ol>
+<li>在每个元素中，只能创建一个 shadow root。</li>
+<li>elem 必须是自定义元素，或者是以下元素的其中一个：「article」、「aside」、「blockquote」、「body」、「div」、「footer」、「h1…h6」、「header」、「main」、「nav」、「p」、「section」或者「span」。其他元素，比如 <img>，不能容纳 shadow tree。</li>
+</ol>
+<h5 id="模板元素">
+  模板元素
+  <a class="heading-link" href="#%e6%a8%a1%e6%9d%bf%e5%85%83%e7%b4%a0">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p><code>template</code>元素用来存储HTML模板，会完全保留写入的内容（不像浏览器会检测到无效的 DOM 结构并对其进行“修复”）</p>
+<blockquote>
+<p>浏览器认为 <code>&lt;template&gt;</code> 的内容“不在文档中”：样式不会被应用，脚本也不会被执行， <code>&lt;video autoplay&gt;</code>也不会运行，等。</p>
+</blockquote>
+<blockquote>
+<p>但是，当将内容插入文档时，该内容将变为活动状态（应用样式，运行脚本等）</p>
+</blockquote>
+<p>模板的 <code>content</code> 属性可看作 <code>DocumentFragment</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&lt;template id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tmpl&#34;</span>&gt;
+  &lt;style&gt; p <span style="color:#f92672">{</span> font-weight: bold; <span style="color:#f92672">}</span> &lt;/style&gt;
+  &lt;p id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;message&#34;</span>&gt;&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;div id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;elem&#34;</span>&gt;Click me&lt;/div&gt;
+
+&lt;script&gt;
+  elem.onclick <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    elem.attachShadow<span style="color:#f92672">({</span>mode: <span style="color:#e6db74">&#39;open&#39;</span><span style="color:#f92672">})</span>;
+
+    elem.shadowRoot.append<span style="color:#f92672">(</span>tmpl.content.cloneNode<span style="color:#f92672">(</span>true<span style="color:#f92672">))</span>; // <span style="color:#f92672">(</span>*<span style="color:#f92672">)</span>
+
+    elem.shadowRoot.getElementById<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;message&#39;</span><span style="color:#f92672">)</span>.innerHTML <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello from the shadows!&#34;</span>;
+  <span style="color:#f92672">}</span>;
+&lt;/script&gt;
+</code></pre></div><p><img src="evernotecid://AD55C2FF-DB70-4AF5-9F57-2A1073AF7668/appyinxiangcom/17648251/ENResource/p1081" alt="21e9a8851bcb7c24a6de13550e84943a.png">
+在 (*) 行，将 <code>tmpl.content</code> 作为 <code>DocumentFragment</code> 克隆和插入，它的子节点（<code>&lt;style&gt;</code>，<code>&lt;p&gt;</code>）将代为插入。</p>
+<h5 id="shadow-dom-插槽组成">
+  Shadow DOM 插槽，组成
+  <a class="heading-link" href="#shadow-dom-%e6%8f%92%e6%a7%bd%e7%bb%84%e6%88%90">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>Shadow DOM 支持 <code>&lt;slot&gt;</code> 元素，由 light DOM 中的内容自动填充。</p>
+<ol>
+<li>shadow DOM 中，<code>&lt;slot name=&quot;X&quot;&gt;</code> 定义了一个“插入点”</li>
+<li>light DOM中，带有 <code>slot=&quot;X&quot;</code> 的元素被渲染在“插入点”这里</li>
+</ol>
+<blockquote>
+<ul>
+<li>只有 shadow host 的<strong>直接子代</strong> 才能设置<code>slot=&quot;&quot;</code>特性，嵌套的元素将被忽略</li>
+<li>如果在 light DOM 里有多个相同插槽名的元素，那么它们会被一个接一个地添加到插槽中。</li>
+<li><slot>内部放的内容作为<strong>后备内容</strong>，如果 light DOM 中没有相应填充物的话浏览器就展示它</li>
+</ul>
+</blockquote>
+<p><strong>默认插槽</strong>
+shadow DOM 中第一个没有名字的 <slot> 是一个默认插槽， light DOM中所有没放到其他位置(unslotted)的节点都会放在这里。</p>
+<p><strong>更新插槽</strong>
+如果 添加/删除 了插槽元素，浏览器将监视插槽并更新渲染。
+如果组件想知道插槽的更改，那么可以用 <code>slotchange</code> 事件</p>
+<p><strong>插槽API</strong></p>
+<ul>
+<li>node.assignedSlot – 返回 一个节点的插槽</li>
+<li>slot.assignedNodes({flatten: true/false}) – 分配给插槽的 <strong>DOM 节点</strong>。默认情况下，flatten 选项为 false。如果显式地设置为 true，则它将更深入地查看扁平化 DOM ，如果嵌套了组件，则返回嵌套的插槽，如果未分配节点，则返回备用内容。</li>
+<li>slot.assignedElements({flatten: true/false}) – 分配给插槽的 <strong>DOM 元素</strong>（与上面相同，但仅元素节点）。</li>
+</ul>
+<h5 id="给-shadow-dom-添加样式">
+  给 Shadow DOM 添加样式
+  <a class="heading-link" href="#%e7%bb%99-shadow-dom-%e6%b7%bb%e5%8a%a0%e6%a0%b7%e5%bc%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>shadow DOM 可以包含 <code>&lt;style&gt;</code> 和 <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;…&quot;&gt;</code> 标签
+<strong>:host</strong>
+选择 shadow 宿主（包含 shadow 树的元素）</p>
+<blockquote>
+<p>因为宿主元素是在light DOM中，因此它会受到CSS规则的影响，如果局部的<code>:host</code>和文档中都设置了样式，那么是<strong>文档样式优先</strong>的（除非<code>:host</code>里标记了<code>!important</code>）</p>
+</blockquote>
+<p><strong>:host(selector)</strong>
+当<strong>宿主</strong>与 <code>selector</code> 匹配时才应用样式
+例如：<code>:host([centered]) {...}</code> 会应用在<code>&lt;custom-dialog centered&gt;&lt;/custom-dialog&gt;</code></p>
+<p><strong>:host-context(selector)</strong>
+仅当<strong>宿主或它的任何祖先节点</strong>与 selector 匹配时才应用样式
+如：<code>:host-context(.dark-theme)</code> 只应用于 .dark-theme 内部的 custom-dialog</p>
+<p><strong>给占槽（slotted）内容添加样式</strong></p>
+<ol>
+<li><code>slot[name=&quot;xxx&quot;] {...}</code></li>
+<li>::slotted(selector)，只能是元素本身，不能是子元素，选择器不能用于插槽中更深层的内容</li>
+</ol>
+<p><strong>CSS变量（自定义CSS属性）</strong>
+自定义 CSS 属性穿透 shadow DOM，它们在任何地方都可见
+内部：<code>.field { color: var(--user-card-field-color, black); }</code>
+外部：<code> user-card { --user-card-field-color: green; }</code></p>
+<h5 id="shadow-dom-和事件events">
+  Shadow DOM 和事件（events）
+  <a class="heading-link" href="#shadow-dom-%e5%92%8c%e4%ba%8b%e4%bb%b6events">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ul>
+<li>当事件在组件外部捕获时，shadow DOM 中发生的事件将会以 host 元素（宿主）作为目标。</li>
+<li>如果事件发生在 slotted 元素上，实际存在于 light DOM 上（是 light DOM 中的元素），则不会发生重定向。</li>
+</ul>
+<p><strong>冒泡、event.composedPath()</strong>
+事件发生在slot元素的内部某个地方，那么它就会冒泡到 <slot> 并继续向上。</p>
+<p><code>event.composedPath()</code> 获得原始事件目标的完整路径以及所有 shadow 元素，返回一个数组。路径是在light DOM 和 shadow DOM 组合（composition）之后获取的。是扁平 DOM 中目标元素的父链。</p>
+<blockquote>
+<p>如果 shadow 树是用<code>{mode: 'closed'}</code>创建的，那么组合路径就从 host 开始：host 及其更上层。详细信息只提供给 <code>{mode:'open'} </code>树</p>
+</blockquote>
+<p><strong>event.composed</strong>
+如果 <code>composed</code> 是 <code>true</code>，那么事件就能<strong>穿过边界</strong>。否则它仅能在 shadow DOM <strong>内部捕获</strong>。</p>
+<p>大部分事件是 <code>composed: true</code>：UI事件、Touch事件、Pointed事件..</p>
+<p>有些内建事件是 <code>composed: false</code>：
+这些事件仅能在同一 DOM 中的元素上捕获</p>
+<ul>
+<li>mouseenter，mouseleave（也不冒泡），</li>
+<li>load，unload，abort，error，</li>
+<li>select，</li>
+<li>slotchange</li>
+</ul>
+<p><strong>自定义事件（Custom events）</strong>
+设置 bubbles 和 composed 属性都为 true 以使其冒泡并从组件中冒泡出来。</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2017 -
+    
+    2021
+     OnlyHy 
+    ·
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="OnlyHy">
+    <meta name="description" content="Promise,async/await    回调    Promise     new Promise(function(resolve, reject) {});，传递给 new Promise 的函数被称为 executor执行器。当 new Promise 被创建，executor 会自动运行。executor 应该执行一项工作（通常是需要花费一些时间的事儿），然后调用 resolve 或 reject 来改变对应的 promise 对象的状态 executor 只能调用一个 resolve 或一个 reject，其它的调用会被忽略 resolve/reject 只需要一个参数（或不包含任何参数），并且将忽略额外的参数 resolve/reject可以立即执行 建议以Error对象来reject .then 的第一个参数是一个函数，该函数将在 promise resolved 后运行并接收结果；.then 的第二个参数也是一个函数，该函数将在 promise rejected 后运行并接收 error。可以只提供一个参数表示只处理成功的情况 .catch(f) 调用是 .then(null, f) 的完全的模拟，只是简写形式 .finally(f) 总是在 promise 被 settled 时运行：即 promise 被 resolve 或 reject   finally 处理程序（handler）没有参数，不知道 promise 是否成功 finally 处理程序将 成功结果或 error 传递给下一个处理程序 Promise 的处理程序（handlers）.">
+    <meta name="keywords" content="onlyhy">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="现代JS教程[第一部分（五）]"/>
+<meta name="twitter:description" content="Promise,async/await    回调    Promise     new Promise(function(resolve, reject) {});，传递给 new Promise 的函数被称为 executor执行器。当 new Promise 被创建，executor 会自动运行。executor 应该执行一项工作（通常是需要花费一些时间的事儿），然后调用 resolve 或 reject 来改变对应的 promise 对象的状态 executor 只能调用一个 resolve 或一个 reject，其它的调用会被忽略 resolve/reject 只需要一个参数（或不包含任何参数），并且将忽略额外的参数 resolve/reject可以立即执行 建议以Error对象来reject .then 的第一个参数是一个函数，该函数将在 promise resolved 后运行并接收结果；.then 的第二个参数也是一个函数，该函数将在 promise rejected 后运行并接收 error。可以只提供一个参数表示只处理成功的情况 .catch(f) 调用是 .then(null, f) 的完全的模拟，只是简写形式 .finally(f) 总是在 promise 被 settled 时运行：即 promise 被 resolve 或 reject   finally 处理程序（handler）没有参数，不知道 promise 是否成功 finally 处理程序将 成功结果或 error 传递给下一个处理程序 Promise 的处理程序（handlers）."/>
+
+    <meta property="og:title" content="现代JS教程[第一部分（五）]" />
+<meta property="og:description" content="Promise,async/await    回调    Promise     new Promise(function(resolve, reject) {});，传递给 new Promise 的函数被称为 executor执行器。当 new Promise 被创建，executor 会自动运行。executor 应该执行一项工作（通常是需要花费一些时间的事儿），然后调用 resolve 或 reject 来改变对应的 promise 对象的状态 executor 只能调用一个 resolve 或一个 reject，其它的调用会被忽略 resolve/reject 只需要一个参数（或不包含任何参数），并且将忽略额外的参数 resolve/reject可以立即执行 建议以Error对象来reject .then 的第一个参数是一个函数，该函数将在 promise resolved 后运行并接收结果；.then 的第二个参数也是一个函数，该函数将在 promise rejected 后运行并接收 error。可以只提供一个参数表示只处理成功的情况 .catch(f) 调用是 .then(null, f) 的完全的模拟，只是简写形式 .finally(f) 总是在 promise 被 settled 时运行：即 promise 被 resolve 或 reject   finally 处理程序（handler）没有参数，不知道 promise 是否成功 finally 处理程序将 成功结果或 error 传递给下一个处理程序 Promise 的处理程序（handlers）." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://onlyhy.github.io/posts/2021-12-08-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%BA%94/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-08T09:00:00+08:00" />
+<meta property="article:modified_time" content="2021-12-08T09:00:00+08:00" />
+
+
+
+    <title>
+  现代JS教程[第一部分（五）] · oooonlyhy
+</title>
+
+    
+      <link rel="canonical" href="http://onlyhy.github.io/posts/2021-12-08-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%BA%94/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.91.0" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      oooonlyhy
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">首页</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">归档</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://onlyhy.github.io/posts/2021-12-08-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%BA%94/">
+              现代JS教程[第一部分（五）]
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-12-08T09:00:00&#43;08:00'>
+                December 8, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：4 分钟
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/onlyhy/">onlyhy</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B/">现代JS教程</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <h3 id="promiseasyncawait">
+  Promise,async/await
+  <a class="heading-link" href="#promiseasyncawait">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h5 id="回调">
+  回调
+  <a class="heading-link" href="#%e5%9b%9e%e8%b0%83">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<h5 id="promise">
+  Promise
+  <a class="heading-link" href="#promise">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ol>
+<li><code>new Promise(function(resolve, reject) {});</code>，传递给 new Promise 的函数被称为 executor执行器。当 new Promise 被创建，executor 会自动运行。executor 应该执行一项工作（通常是需要花费一些时间的事儿），然后调用 resolve 或 reject 来改变对应的 promise 对象的状态</li>
+<li>executor 只能调用一个 resolve 或一个 reject，其它的调用会被忽略</li>
+<li>resolve/reject 只需要一个参数（或不包含任何参数），并且将忽略额外的参数</li>
+<li>resolve/reject可以立即执行</li>
+<li>建议以Error对象来reject</li>
+<li>.then 的第一个参数是一个函数，该函数将在 promise resolved 后运行并接收结果；.then 的第二个参数也是一个函数，该函数将在 promise rejected 后运行并接收 error。可以只提供一个参数表示只处理成功的情况</li>
+<li>.catch(f) 调用是 .then(null, f) 的完全的模拟，只是简写形式</li>
+<li>.finally(f) 总是在 promise 被 settled 时运行：即 promise 被 resolve 或 reject
+<blockquote>
+<ol>
+<li>finally 处理程序（handler）没有参数，不知道 promise 是否成功</li>
+<li>finally 处理程序将 成功结果或 error 传递给下一个处理程序</li>
+<li>Promise 的处理程序（handlers）.then、.catch 和 .finally 都是<strong>异步</strong>的。即便一个 promise 立即被 resolve，.then、.catch 和 .finally 后面 的代码也会在这些处理程序（handler）之前被执行</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<h5 id="promise链">
+  Promise链
+  <a class="heading-link" href="#promise%e9%93%be">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ol start="9">
+<li>将 result 通过 .then 处理程序（handler）链进行传递</li>
+<li>确切地说，处理程序（handler）返回的不完全是一个 promise，而是返回的被称为 “thenable” 对象 — 一个具有方法 .then 的任意对象。它会被当做一个 promise 来对待</li>
+<li>如果 .then（或 catch/finally 都可以）处理程序（handler）返回一个 promise，那么链的其余部分将会等待，直到它状态变为 settled。当它被 settled 后，其 result（或 error）将被进一步传递下去</li>
+<li><code>promise.then(f1).catch(f2);</code>和<code>promise.then(f1, f2);</code><strong>不相等</strong>，如果 f1 中出现 error，那么在第一种它会被 .catch 处理，第二种则不会被处理；因为 error 是<strong>沿着链传递</strong>的，而在第二种代码中，f1 下面没有链。（.then 将 result/error 传递给下一个 .then/.catch）</li>
+</ol>
+<h5 id="使用promise进行错误处理">
+  使用promise进行错误处理
+  <a class="heading-link" href="#%e4%bd%bf%e7%94%a8promise%e8%bf%9b%e8%a1%8c%e9%94%99%e8%af%af%e5%a4%84%e7%90%86">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ol start="13">
+<li>捕获所有 error 的最简单的方法是，将 .catch 附加到链的末尾</li>
+<li>最后的 .catch 不仅会捕获显式的 rejection，还会捕获它上面的处理程序（handler）中意外出现的 error，如throw或其它编程错误</li>
+<li>.catch也可以<strong>再次抛出</strong>，如果在 .catch 中 throw，那么控制权就会被移交到下一个最近的.catch。如果处理该 error 并正常完成，那么它将继续到最近的 .then</li>
+<li>如果没有catch去处理error，那会生成一个全局的error，可以用监听<strong>unhandledrejection</strong>事件来捕获这类error</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">window.addEventListener<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;unhandledrejection&#39;</span>, <span style="color:#66d9ef">function</span><span style="color:#f92672">(</span>event<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  // 这个事件对象有两个特殊的属性：
+  alert<span style="color:#f92672">(</span>event.promise<span style="color:#f92672">)</span>; // <span style="color:#f92672">[</span>object Promise<span style="color:#f92672">]</span> - 生成该全局 error 的 promise
+  alert<span style="color:#f92672">(</span>event.reason<span style="color:#f92672">)</span>; // Error: Whoops! - 未处理的 error 对象
+<span style="color:#f92672">})</span>;
+
+new Promise<span style="color:#f92672">(</span><span style="color:#66d9ef">function</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+  throw new Error<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Whoops!&#34;</span><span style="color:#f92672">)</span>;
+<span style="color:#f92672">})</span>; // 没有用来处理 error 的 catch
+</code></pre></div><ol start="17">
+<li>因为函数代码周围有个“隐式的 try..catch”。所以，所有同步错误都会得到处理。</li>
+<li><strong>以下catch不会触发！！！</strong> 这里的错误并不是在 executor 运行时生成的，而是在稍后生成的，这时引擎已经离开了 try..catch 结构。因此，promise 无法处理它。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">new Promise<span style="color:#f92672">(</span><span style="color:#66d9ef">function</span><span style="color:#f92672">(</span>resolve, reject<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  setTimeout<span style="color:#f92672">(()</span> <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+    throw new Error<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Whoops!&#34;</span><span style="color:#f92672">)</span>;
+  <span style="color:#f92672">}</span>, 1000<span style="color:#f92672">)</span>;
+<span style="color:#f92672">})</span>.catch<span style="color:#f92672">(</span>alert<span style="color:#f92672">)</span>;
+</code></pre></div><ol start="19">
+<li><strong>以下catch会被触发!!</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">new Promise<span style="color:#f92672">(</span><span style="color:#66d9ef">function</span><span style="color:#f92672">(</span>resolve, reject<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    setTimeout<span style="color:#f92672">(()</span> <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+        reject<span style="color:#f92672">(</span>new Error<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Whoops!&#34;</span><span style="color:#f92672">))</span>;
+    <span style="color:#f92672">}</span>, 1000<span style="color:#f92672">)</span>;
+<span style="color:#f92672">})</span>.catch<span style="color:#f92672">(</span>alert<span style="color:#f92672">)</span>;
+</code></pre></div><h5 id="promise-api">
+  Promise API
+  <a class="heading-link" href="#promise-api">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ol>
+<li>Promise.all()，等待所有 promise 都被 resolve，返回结果数组
+<blockquote>
+<p>Tips:</p>
+<ol>
+<li>结果数组中元素的顺序与其在源 promise 中的顺序相同。即使第一个 promise 花费了最长的时间才 resolve，但它仍是结果数组中的第一个。</li>
+<li><strong>如果其中一个 promise 被 reject，Promise.all 就会立即被 reject</strong>，完全忽略列表中其他的 promise。它们的结果也被忽略。被 reject 的 error 成为了整个 Promise.all 的结果</li>
+<li>Promise.all(&hellip;) 接受含有 promise 项的可迭代对象（大多数情况下是数组）作为参数。但是，如果这些对象中的任何一个不是 promise，那么它将被“按原样”传递给结果数组，比如传入2，结果还是2</li>
+</ol>
+</blockquote>
+</li>
+<li>Promise.allSettled（） 等待所有的 promise 都被 settled，<strong>无论结果如何</strong>。对于每个 promise，我们都得到了其状态（status）和 value/reason。
+<blockquote>
+<p>以包含以下内容的对象数组的形式返回结果：</p>
+<ul>
+<li>{status:&ldquo;fulfilled&rdquo;, value:result} 对于成功的响应</li>
+<li>{status:&ldquo;rejected&rdquo;, reason:error} 对于 error</li>
+</ul>
+</blockquote>
+</li>
+<li>Promise.race()，只等待第一个 settled 的 promise 并获取其结果，其它的结果会被忽略</li>
+<li>Promise.any()，返回第一个<strong>成功的 promise</strong> 。只要有一个 promise 成功此方法就会终止，不会等待其他的 promise 全部完成；如果没有一个成功的，就返回一个失败的 promise 和AggregateError类型的实例</li>
+<li>Promise.resolve(value) 用结果 value 创建一个 resolved 的 promise</li>
+<li>Promise.reject(error) 用 error 创建一个 rejected 的 promise</li>
+</ol>
+<h5 id="promisification">
+  Promisification
+  <a class="heading-link" href="#promisification">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ol>
+<li>&ldquo;Promisification&quot;是将一个接受回调的函数转换为一个返回 promise 的函数。将基于回调的函数和库 promisify （promise化）更加方便</li>
+<li>创建一个通用helper（辅助函数）来实现promisify：接受一个需要被 promisify 的函数 f，并返回一个包装（wrapper）函数</li>
+<li>有一些具有更灵活一点的 promisification 函数的模块（module），例如 <a href="https://github.com/mikehall314/es6-promisify">es6-promisify</a>。在 Node.js 中，有一个内建的 promisify 函数 util.promisify</li>
+</ol>
+<h5 id="asyncawait">
+  Async/await
+  <a class="heading-link" href="#asyncawait">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ol>
+<li>函数前的async关键字
+<blockquote>
+<ol>
+<li>让这个函数总是返回一个 promise</li>
+<li>允许在该函数内使用 await</li>
+</ol>
+</blockquote>
+</li>
+<li>await使JS引擎等待直到 promise 完成（settle）并返回结果，如果有error就会抛出异常（类似于throw error）可用try..catch捕获或用async函数返回的promise的catch处理</li>
+<li>await只在async函数中有效</li>
+<li>await 接收thenable对象</li>
+<li>非async函数中调用async函数：将函数调用看作promise就好，在后面加上then&hellip;</li>
+</ol>
+<h3 id="generator高级iteration">
+  Generator,高级iteration
+  <a class="heading-link" href="#generator%e9%ab%98%e7%ba%a7iteration">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>Generator 是通过 generator 函数 function* f(…) {…} 创建的</li>
+<li>在 generator（仅在）内部，存在 yield 操作</li>
+<li>一个 generator 的主要方法就是 next()，执行直到最近的 yield <value> 语句，然后函数执行暂停，并将产出的（yielded）值返回到外部代码
+<blockquote>
+<p>next()的结果：</p>
+<ul>
+<li>value: 产出的（yielded）的值。</li>
+<li>done: 如果 generator 函数已执行完成则为 true，否则为 false。</li>
+</ul>
+</blockquote>
+</li>
+<li>Generator是可迭代的，可用for..of遍历</li>
+<li>Generator可组合：可以使用 <strong>yield</strong>* 这个特殊的语法来将一个 generator “嵌入”（组合）到另一个 generator 中</li>
+<li>generator.next(arg)：不仅可以向外返回结果，而且还可以将外部的值传递到 generator 内；arg会成为当前yield的结果</li>
+<li>generator.throw(err)：可以传递error</li>
+<li>异步可迭代对象：
+<ol>
+<li>使用 <strong>Symbol.asyncIterator</strong> 取代 Symbol.iterator</li>
+<li>next() 方法应该返回一个 promise（带有下一个值，并且状态为 fulfilled）。关键字 async 可以实现这一点，可以简单地使用 async next()。</li>
+<li>使用 for await (let item of iterable) 循环来迭代这样的对象，注意关键字await</li>
+</ol>
+</li>
+<li>Iterator与异步Iterator之间的区别：
+<img src="evernotecid://AD55C2FF-DB70-4AF5-9F57-2A1073AF7668/appyinxiangcom/17648251/ENResource/p1055" alt="a958e475af8fe17405716d0ae0203105.png"></li>
+<li>Generator与异步Generator之间的区别：
+<img src="evernotecid://AD55C2FF-DB70-4AF5-9F57-2A1073AF7668/appyinxiangcom/17648251/ENResource/p1056" alt="307836e6615fae67557666a469bd673e.png"></li>
+<li>Spread语法&hellip;和for..of 不能用于异步，因为它们使用的是<strong>Symbol.iterator</strong></li>
+</ol>
+<h3 id="模块">
+  模块
+  <a class="heading-link" href="#%e6%a8%a1%e5%9d%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>一个模块就是一个文件。浏览器需要使用 <script type="module"> 以使 import/export 可以工作。模块（译注：相较于常规脚本）有几点差别：</li>
+</ol>
+<blockquote>
+<ul>
+<li>默认是延迟解析的（deferred）。</li>
+<li>Async 可用于内联脚本。</li>
+<li>要从另一个源（域/协议/端口）加载外部脚本，需要 CORS header。
+重复的外部脚本会被忽略</li>
+</ul>
+</blockquote>
+<ol start="2">
+<li>模块具有自己的本地顶级作用域，并可以通过 import/export 交换功能</li>
+<li>模块始终使用 <strong>use strict</strong></li>
+<li>模块代码只执行一次。导出仅创建一次，然后会在导入之间共享</li>
+<li>导出class/function后面不用加分号</li>
+<li>虽然可以import * as <obj> 导入所有内容，但是通常还是要明确列出所需导入的内容：
+<blockquote>
+<ol>
+<li>现代的构建工具（webpack 和其他工具）将模块打包到一起并对其进行优化，以加快加载速度并删除未使用的代码，这就是所谓的“摇树（tree-shaking）</li>
+<li>明确列出要导入的内容会使得名称较短</li>
+<li>导入的显式列表可以更好地概述代码结构：使用的内容和位置。重构更容易</li>
+</ol>
+</blockquote>
+</li>
+<li>default 关键词可被用于引用默认的导出</li>
+</ol>
+<blockquote>
+<p><code>import {default as User, sayHi} from './user.js';</code>
+<code>import * as user from './user.js';let User = user.default;</code></p>
+</blockquote>
+<ol start="8">
+<li>重新导出：export &hellip; from &hellip;，导入内容并立即导出</li>
+<li><strong>重新导出默认导出</strong>时需要注意：
+<blockquote>
+<ol>
+<li>要重新导出默认导出，必须明确写出 <code>export {default as User} from '...'</code></li>
+<li><code>export * from './user.js'</code> 重新导出只导出了命名的导出，但是忽略了默认的导出。需要两条语句：
+- <code>export * from './user.js'; // 重新导出命名的导出</code>
+- <code>export {default} from './user.js'; // 重新导出默认的导出</code></li>
+</ol>
+</blockquote>
+</li>
+<li><strong>动态导入：import(module)表达式</strong>加载模块并<strong>返回一个 promise</strong>，该 promise resolve 为一个包含其<strong>所有导出的模块对象</strong>。可以在代码中的任意位置调用这个表达式</li>
+<li>动态导入在常规脚本中工作时，不需要 script type=&ldquo;module&rdquo;</li>
+<li>import()不是一个函数，只是一种特殊语法，是使用了括号（类似于super()）</li>
+</ol>
+<h3 id="杂项">
+  杂项
+  <a class="heading-link" href="#%e6%9d%82%e9%a1%b9">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h5 id="proxy">
+  Proxy
+  <a class="heading-link" href="#proxy">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ol>
+<li>
+<p><code>let proxy = new Proxy(target, handler)</code></p>
+<blockquote>
+<ol>
+<li>target —— 是要包装的对象，可以是任何东西，包括函数。</li>
+<li>handler —— 代理配置：带有“捕捉器”（“traps”，即拦截操作的方法）的对象。比如 get 捕捉器用于读取 target 的属性，set 捕捉器用于写入 target 的属性，等等
+<img src="evernotecid://AD55C2FF-DB70-4AF5-9F57-2A1073AF7668/appyinxiangcom/17648251/ENResource/p1057" alt="7843acc3a59c8f3eb943126be937e9dd.png"></li>
+</ol>
+</blockquote>
+</li>
+<li>
+<p><code>dictionary = new Proxy(dictionary, ...);</code>,代理应该<strong>在所有地方都完全替代目标对象</strong>。目标对象被代理后，任何人都不应该再引用目标对象。否则很容易搞砸。</p>
+</li>
+<li>
+<p>JS强制执行某些<strong>不变量</strong> — 内部方法和捕捉器必须满足的条件，大多数用于返回值:</p>
+</li>
+</ol>
+<blockquote>
+<p>[[Set]] 如果值已成功写入，则必须返回 true，否则返回 false
+[[Delete]] 如果已成功删除该值，则必须返回 true，否则返回 false
+&hellip;
+[[GetPrototypeOf]] 读取代理对象的原型必须始终返回被代理对象的原型</p>
+</blockquote>
+<ol start="4">
+<li>类的私有属性（以#为前缀）无需代理</li>
+<li>包装函数不会转发属性读取/写入操作或者任何其他操作。进行包装后，就失去了对原始函数属性的访问，例如 name，length（函数声明中的参数个数） 和其他属性。而Proxy可以将所有东西都转发到目标对象。</li>
+<li>Proxy有局限性：</li>
+</ol>
+<blockquote>
+<ol>
+<li>内建对象：内部插槽</li>
+</ol>
+<ul>
+<li>内建对象如Map，Set，Date，Promise等都使用了（Array没有），例如Map：将项目（item）存储在 [[MapData]] 中。内建方法可以直接访问它们，而不通过 [[Get]]/[[Set]] 内部方法。所以 Proxy 无法拦截它们。</li>
+<li>解决方法：将函数属性（map.set）绑定到了map本身</li>
+</ul>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">    let map <span style="color:#f92672">=</span> new Map<span style="color:#f92672">()</span>;
+    let proxy <span style="color:#f92672">=</span> new Proxy<span style="color:#f92672">(</span>map, <span style="color:#f92672">{</span>
+        get<span style="color:#f92672">(</span>target, prop, receiver<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            let value <span style="color:#f92672">=</span> Reflect.get<span style="color:#f92672">(</span>...arguments<span style="color:#f92672">)</span>;
+            <span style="color:#66d9ef">return</span> typeof value <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;function&#39;</span> ? value.bind<span style="color:#f92672">(</span>target<span style="color:#f92672">)</span> : value;
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">})</span>;
+
+    proxy.set<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;test&#39;</span>, 1<span style="color:#f92672">)</span>;
+    alert<span style="color:#f92672">(</span>proxy.get<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;test&#39;</span><span style="color:#f92672">))</span>; // 1（工作了！）
+</code></pre></div><blockquote>
+<ol start="2">
+<li>私有字段
+私有字段是通过内部插槽实现的。JavaScript 在访问它们时不使用 [[Get]]/[[Set]]，也可通过bind解决</li>
+<li>Proxy != target
+代理和原始对象是不同的对象</li>
+<li>Proxy 无法拦截严格相等性检查 ===</li>
+</ol>
+</blockquote>
+<ol start="7">
+<li>可撤销Proxy
+<blockquote>
+<p><code>let {proxy, revoke} = Proxy.revocable(target, handler)</code>，稍后在代码中执行<code>revoke()</code>就可以从代理中删除对目标对象的所有内部引用，可以将revoke 存储在 WeakMap（不会阻止垃圾回收） 中，以更便于通过代理对象轻松找到它</p>
+</blockquote>
+</li>
+</ol>
+<h5 id="reflect">
+  Reflect
+  <a class="heading-link" href="#reflect">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ol>
+<li>Reflect API 旨在补充 Proxy，Reflect的方法是内部方法的最小包装，对于每个可被 Proxy 捕获的<strong>内部方法</strong>，在 Reflect 中都有一个对应的方法，其名称和参数与 Proxy 捕捉器相同
+<img src="evernotecid://AD55C2FF-DB70-4AF5-9F57-2A1073AF7668/appyinxiangcom/17648251/ENResource/p1058" alt="35d91d874b27c4ef899c6824d18a09be.png"></li>
+</ol>
+<h5 id="eval执行代码字符串">
+  Eval：执行代码字符串
+  <a class="heading-link" href="#eval%e6%89%a7%e8%a1%8c%e4%bb%a3%e7%a0%81%e5%ad%97%e7%ac%a6%e4%b8%b2">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ol>
+<li>内建函数 eval 允许执行一个代码字符串<code>let result = eval(code);</code></li>
+<li>eval 的结果是最后一条语句的结果</li>
+<li>eval 内的代码在当前词法环境（lexical environment）中执行，因此它能访问外部变量，也可以更改外部变量</li>
+<li>严格模式下，eval 有属于自己的词法环境。因此我们不能从外部访问在 eval 中声明的函数和变量，非严格模式下可以</li>
+<li>**副作用：压缩工具不会对所有可能会被从 eval 中访问的变量进行重命名。这样会导致代码压缩率降低。**避免方法：
+<blockquote>
+<p>如果 eval 中的代码没有使用外部变量，以 <code>window.eval(...)</code> 的形式调用 eval
+如果 eval 中的代码需要访问局部变量，可以使用 <code>new Function</code> 替代 eval，并将它们作为参数传递。<code>let f = new Function('a', 'alert(a)'); f(5); // 5</code></p>
+</blockquote>
+</li>
+</ol>
+<h5 id="柯里化currying">
+  柯里化（Currying）
+  <a class="heading-link" href="#%e6%9f%af%e9%87%8c%e5%8c%96currying">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ol>
+<li>柯里化是一种函数的转换，它是指将一个函数从可调用的 f(a, b, c) 转换为可调用的 f(a)(b)(c)。JS实现通常都保持该函数可以被正常调用，并且如果参数数量不足，则返回偏函数。</li>
+<li>柯里化不会调用函数。它只是对函数进行转换。</li>
+<li>柯里化之后，没有丢失任何东西</li>
+<li>可以轻松地生成偏函数，例如用于生成今天的日志的偏函数</li>
+<li>柯里化要求函数具有固定数量的参数</li>
+<li>概括柯里化：把接收多参的函数转化成可以逐个调用单个参数并返回（接收剩下参数的）函数</li>
+</ol>
+<h5 id="reference-type">
+  Reference Type
+  <a class="heading-link" href="#reference-type">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ol>
+<li>Reference Type 是 ECMA 中的一个“规范类型”。不能直接使用它，但它被用在 JavaScript 语言内部。</li>
+<li>Reference Type 的值是一个三个值的组合 (base, name, strict)
+<blockquote>
+<p>base 是对象。
+name 是属性名。
+strict 在 use strict 模式下为 true</p>
+</blockquote>
+</li>
+<li><code>user.hi</code>访问的结果不是一个函数，而是一个 Reference Type 的值：<code>(user, &quot;hi&quot;, true)</code>，当 () 被在 Reference Type 上调用时，它们会接收到关于对象和对象的方法的完整信息，然后可以设置正确的 this（在此处 =user）。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">let user <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+  name: <span style="color:#e6db74">&#34;John&#34;</span>,
+  hi<span style="color:#f92672">()</span> <span style="color:#f92672">{</span> alert<span style="color:#f92672">(</span>this.name<span style="color:#f92672">)</span>; <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+user.hi<span style="color:#f92672">()</span>; // 正常运行
+
+// 现在基于 name 来选择调用 user.hi 或 user.bye
+<span style="color:#f92672">(</span>user.name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;John&#34;</span> ? user.hi : user.bye<span style="color:#f92672">)()</span>; // Error!
+</code></pre></div><ol start="4">
+<li>任何例如赋值 <code>hi = user.hi</code> 等其他的操作，都会将 Reference Type 作为一个整体丢弃掉，而会取 <code>user.hi</code>（一个函数）的值并继续传递。所以任何后续操作都“丢失”了 this</li>
+<li>Reference Type 是一个特殊的“中间人”内部类型，目的是从 . 传递信息给 () 调用。</li>
+</ol>
+<h5 id="bigint">
+  BigInt
+  <a class="heading-link" href="#bigint">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ol>
+<li>BigInt 是一种特殊的数字类型，它提供了对任意长度整数的支持</li>
+<li>创建 bigint 的方式有两种
+<ol>
+<li>在一个整数字面量后面加 n</li>
+<li>调用 BigInt 函数</li>
+</ol>
+</li>
+<li>对 bigint 的所有操作，返回的结果也是 bigint</li>
+<li>不可以把 bigint 和常规数字类型混合使用</li>
+<li>BigInt 不支持一元加法，应该用 Number() 来将一个 bigint 转换成一个数字类型</li>
+<li>比较运算符，例如 &lt; 和 &gt;，使用它们来对 bigint 和 number 类型的数字进行比较没有问题；但由于 number 和 bigint 属于不同类型，它们可能在进行 == 比较时相等，但在进行 ===（严格相等）比较时不相等</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">alert<span style="color:#f92672">(</span> 1 <span style="color:#f92672">==</span> 1n <span style="color:#f92672">)</span>; // true
+
+alert<span style="color:#f92672">(</span> 1 <span style="color:#f92672">===</span> 1n <span style="color:#f92672">)</span>; // false
+</code></pre></div><ol start="7">
+<li>在 if 或其他布尔运算中时，bigint 的行为类似于 number</li>
+<li>polyfill：<a href="https://github.com/GoogleChromeLabs/jsbi">JSBI</a>库</li>
+</ol>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2017 -
+    
+    2021
+     OnlyHy 
+    ·
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

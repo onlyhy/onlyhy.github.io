@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="OnlyHy">
+    <meta name="description" content="模板语法    模板中HTML    script元素被禁用，html,body,base元素无意义，剩下的元素基本一样用。
+插值表达式 （{{&hellip;}}）    一般，括号间的素材是一个模板表达式，Angular先对它求值，再将其转换成字符串。
+模板表达式    产生一个值，将它赋给绑定目标的属性，如{{1&#43;1}}的模板表达式就是1&#43;1。
+所用语言看起来像JS，但有些是被禁止的，包括：
+ 赋值（=，&#43;=，-=，&hellip;） new运算符 使用;或,的链式表达式 自增或自减操作符 和JS语法显著不同： 不支持位运算 有新的模板表达式运算符  表达式上下文    典型的表达式上下文就是这个组件实例，是各种绑定值的来源。也可包括组件之外的对象，如模板输入量和模板引用变量。 表达式上下文变量是由模板变量、指令的上下文变量和组件的成员变量叠加而成。引用变量名时，模板变量最优先，其次是上下文变量，最后是组件的成员。
+模板表达式不能引用全局命名空间中的任何东西，只能引用表达式上下文中的成员。
+表达式指南     没有可见的副作用 执行迅速 非常简单 幂等性  没有可见的副作用    除了目标属性的值以外，不应该改变应用的任何状态。
+执行迅速    表达式应快速结束，计算代价较高时，应考虑缓存那些从其它值计算得出的值。
+非常简单    常规是属性名或方法调用，应在组件中实现应用和业务逻辑。
+幂等性    最好使用幂等的表达式，幂等表达式总是返回完全相同的东西，直到某个依赖值发生改变。
+模板语句    响应由绑定目标触发的事件，出现在=号右侧的引号中。 语言也像JS，但是它支持基本赋值（=）和表达式链（;和，）">
+    <meta name="keywords" content="onlyhy">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AngularJS学习笔记（六）"/>
+<meta name="twitter:description" content="模板语法    模板中HTML    script元素被禁用，html,body,base元素无意义，剩下的元素基本一样用。
+插值表达式 （{{&hellip;}}）    一般，括号间的素材是一个模板表达式，Angular先对它求值，再将其转换成字符串。
+模板表达式    产生一个值，将它赋给绑定目标的属性，如{{1&#43;1}}的模板表达式就是1&#43;1。
+所用语言看起来像JS，但有些是被禁止的，包括：
+ 赋值（=，&#43;=，-=，&hellip;） new运算符 使用;或,的链式表达式 自增或自减操作符 和JS语法显著不同： 不支持位运算 有新的模板表达式运算符  表达式上下文    典型的表达式上下文就是这个组件实例，是各种绑定值的来源。也可包括组件之外的对象，如模板输入量和模板引用变量。 表达式上下文变量是由模板变量、指令的上下文变量和组件的成员变量叠加而成。引用变量名时，模板变量最优先，其次是上下文变量，最后是组件的成员。
+模板表达式不能引用全局命名空间中的任何东西，只能引用表达式上下文中的成员。
+表达式指南     没有可见的副作用 执行迅速 非常简单 幂等性  没有可见的副作用    除了目标属性的值以外，不应该改变应用的任何状态。
+执行迅速    表达式应快速结束，计算代价较高时，应考虑缓存那些从其它值计算得出的值。
+非常简单    常规是属性名或方法调用，应在组件中实现应用和业务逻辑。
+幂等性    最好使用幂等的表达式，幂等表达式总是返回完全相同的东西，直到某个依赖值发生改变。
+模板语句    响应由绑定目标触发的事件，出现在=号右侧的引号中。 语言也像JS，但是它支持基本赋值（=）和表达式链（;和，）"/>
+
+    <meta property="og:title" content="AngularJS学习笔记（六）" />
+<meta property="og:description" content="模板语法    模板中HTML    script元素被禁用，html,body,base元素无意义，剩下的元素基本一样用。
+插值表达式 （{{&hellip;}}）    一般，括号间的素材是一个模板表达式，Angular先对它求值，再将其转换成字符串。
+模板表达式    产生一个值，将它赋给绑定目标的属性，如{{1&#43;1}}的模板表达式就是1&#43;1。
+所用语言看起来像JS，但有些是被禁止的，包括：
+ 赋值（=，&#43;=，-=，&hellip;） new运算符 使用;或,的链式表达式 自增或自减操作符 和JS语法显著不同： 不支持位运算 有新的模板表达式运算符  表达式上下文    典型的表达式上下文就是这个组件实例，是各种绑定值的来源。也可包括组件之外的对象，如模板输入量和模板引用变量。 表达式上下文变量是由模板变量、指令的上下文变量和组件的成员变量叠加而成。引用变量名时，模板变量最优先，其次是上下文变量，最后是组件的成员。
+模板表达式不能引用全局命名空间中的任何东西，只能引用表达式上下文中的成员。
+表达式指南     没有可见的副作用 执行迅速 非常简单 幂等性  没有可见的副作用    除了目标属性的值以外，不应该改变应用的任何状态。
+执行迅速    表达式应快速结束，计算代价较高时，应考虑缓存那些从其它值计算得出的值。
+非常简单    常规是属性名或方法调用，应在组件中实现应用和业务逻辑。
+幂等性    最好使用幂等的表达式，幂等表达式总是返回完全相同的东西，直到某个依赖值发生改变。
+模板语句    响应由绑定目标触发的事件，出现在=号右侧的引号中。 语言也像JS，但是它支持基本赋值（=）和表达式链（;和，）" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://onlyhy.github.io/posts/2017-06-04-angularjs6/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-06-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-06-04T00:00:00+00:00" />
+
+
+
+    <title>
+  AngularJS学习笔记（六） · oooonlyhy
+</title>
+
+    
+      <link rel="canonical" href="http://onlyhy.github.io/posts/2017-06-04-angularjs6/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.91.0" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      oooonlyhy
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">首页</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">归档</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://onlyhy.github.io/posts/2017-06-04-angularjs6/">
+              AngularJS学习笔记（六）
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2017-06-04T00:00:00Z'>
+                June 4, 2017
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：1 分钟
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/onlyhy/">onlyhy</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/angularjs/">AngularJS</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <h3 id="模板语法">
+  模板语法
+  <a class="heading-link" href="#%e6%a8%a1%e6%9d%bf%e8%af%ad%e6%b3%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="模板中html">
+  模板中HTML
+  <a class="heading-link" href="#%e6%a8%a1%e6%9d%bf%e4%b8%adhtml">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>script元素被禁用，html,body,base元素无意义，剩下的元素基本一样用。</p>
+<h4 id="插值表达式--">
+  插值表达式  （{{&hellip;}}）
+  <a class="heading-link" href="#%e6%8f%92%e5%80%bc%e8%a1%a8%e8%be%be%e5%bc%8f--">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>一般，括号间的素材是一个模板表达式，Angular先对它求值，再将其转换成字符串。</p>
+<h3 id="模板表达式">
+  模板表达式
+  <a class="heading-link" href="#%e6%a8%a1%e6%9d%bf%e8%a1%a8%e8%be%be%e5%bc%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>产生一个值，将它赋给绑定目标的属性，如{{1+1}}的模板表达式就是1+1。<br>
+所用语言看起来像JS，但有些是被禁止的，包括：</p>
+<ol>
+<li>赋值（=，+=，-=，&hellip;）</li>
+<li>new运算符</li>
+<li>使用;或,的链式表达式</li>
+<li>自增或自减操作符
+和JS语法显著不同：</li>
+<li>不支持位运算</li>
+<li>有新的模板表达式运算符</li>
+</ol>
+<h4 id="表达式上下文">
+  表达式上下文
+  <a class="heading-link" href="#%e8%a1%a8%e8%be%be%e5%bc%8f%e4%b8%8a%e4%b8%8b%e6%96%87">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>典型的表达式上下文就是这个组件实例，是各种绑定值的来源。也可包括组件之外的对象，如模板输入量和模板引用变量。
+表达式上下文变量是由模板变量、指令的上下文变量和组件的成员变量叠加而成。引用变量名时，模板变量最优先，其次是上下文变量，最后是组件的成员。<br>
+模板表达式不能引用全局命名空间中的任何东西，只能引用表达式上下文中的成员。</p>
+<h4 id="表达式指南">
+  表达式指南
+  <a class="heading-link" href="#%e8%a1%a8%e8%be%be%e5%bc%8f%e6%8c%87%e5%8d%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<ol>
+<li>没有可见的副作用</li>
+<li>执行迅速</li>
+<li>非常简单</li>
+<li>幂等性</li>
+</ol>
+<h4 id="没有可见的副作用">
+  没有可见的副作用
+  <a class="heading-link" href="#%e6%b2%a1%e6%9c%89%e5%8f%af%e8%a7%81%e7%9a%84%e5%89%af%e4%bd%9c%e7%94%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>除了目标属性的值以外，不应该改变应用的任何状态。</p>
+<h4 id="执行迅速">
+  执行迅速
+  <a class="heading-link" href="#%e6%89%a7%e8%a1%8c%e8%bf%85%e9%80%9f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>表达式应快速结束，计算代价较高时，应考虑缓存那些从其它值计算得出的值。</p>
+<h4 id="非常简单">
+  非常简单
+  <a class="heading-link" href="#%e9%9d%9e%e5%b8%b8%e7%ae%80%e5%8d%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>常规是属性名或方法调用，应在组件中实现应用和业务逻辑。</p>
+<h4 id="幂等性">
+  幂等性
+  <a class="heading-link" href="#%e5%b9%82%e7%ad%89%e6%80%a7">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>最好使用幂等的表达式，幂等表达式总是返回完全相同的东西，直到某个依赖值发生改变。</p>
+<h3 id="模板语句">
+  模板语句
+  <a class="heading-link" href="#%e6%a8%a1%e6%9d%bf%e8%af%ad%e5%8f%a5">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>响应由绑定目标触发的事件，出现在=号右侧的引号中。
+语言也像JS，但是它支持基本赋值（=）和表达式链（;和，）</p>
+<h4 id="语句上下文">
+  语句上下文
+  <a class="heading-link" href="#%e8%af%ad%e5%8f%a5%e4%b8%8a%e4%b8%8b%e6%96%87">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>只能引用语句上下文中，通常是正在绑定事件的那个组件实例。<br>
+语句上下文可以引用模板自身上下文中的属性。
+模板上下文的变量名的优先级高于组件上下文中的变量名。
+模板语句不能引用全局命名空间的任何东西。</p>
+<h4 id="语句指南">
+  语句指南
+  <a class="heading-link" href="#%e8%af%ad%e5%8f%a5%e6%8c%87%e5%8d%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>和表达式一样，常规是函数调用或者属性赋值。</p>
+<h3 id="绑定语法">
+  绑定语法
+  <a class="heading-link" href="#%e7%bb%91%e5%ae%9a%e8%af%ad%e6%b3%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>绑定的类型从根据数据流的方向分成三类：从数据源到视图、从视图到数据源、双向的从视图到数据源再到视图。</p>
+<table>
+    <thead>
+        <tr>
+            <td>数据方向</td>
+            <td>语法</td>
+            <td>绑定类型</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>单向 从数据源到视图目标</td>
+            <td>{{expression}}
+                [target]="expression"&nbsp;&nbsp;&nbsp;&nbsp;
+                           bind-target="expression"
+            </td>
+            <td>插值表达式，Property，Attribute，类，样式</td>
+        </tr>
+         <tr>
+            <td>单向 从视图目标到数据源</td>
+            <td>（target）="statement"&nbsp;&nbsp;&nbsp;&nbsp;
+                         on-target="statement"
+            </td>
+            <td>事件</td>
+        </tr>
+         <tr>
+            <td>双向</td>
+            <td>[(target)]="expression"
+                 bindon-target="expression"
+            </td>
+            <td>双向</td>
+        </tr>
+    </tbody>
+</table> 
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2017 -
+    
+    2021
+     OnlyHy 
+    ·
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

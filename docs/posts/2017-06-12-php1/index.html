@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="OnlyHy">
+    <meta name="description" content="语法   变量   超级全局变量   echo和print语句    数据类型   常量   字符串变量   运算符   数组   数组排序   循环   函数   魔术变量   命名空间   面向对象   ### PHP(Hypertext Preprocessor)超文本预处理器 PHP文件包含文本、HTML、JS代码和PHP代码，在服务器上执行，以纯HTML形式返回给浏览器。 语法     PHP脚本可以放在文档中任何位置
+&lt;?php // PHP 代码 ?&gt;  每个代码行都必须以分号结束。
+两种在浏览器输出文本的基础指令：echo和print
+//单行注释 /**/多行注释
+变量     规则：">
+    <meta name="keywords" content="onlyhy">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="关于PHP(1)"/>
+<meta name="twitter:description" content="语法   变量   超级全局变量   echo和print语句    数据类型   常量   字符串变量   运算符   数组   数组排序   循环   函数   魔术变量   命名空间   面向对象   ### PHP(Hypertext Preprocessor)超文本预处理器 PHP文件包含文本、HTML、JS代码和PHP代码，在服务器上执行，以纯HTML形式返回给浏览器。 语法     PHP脚本可以放在文档中任何位置
+&lt;?php // PHP 代码 ?&gt;  每个代码行都必须以分号结束。
+两种在浏览器输出文本的基础指令：echo和print
+//单行注释 /**/多行注释
+变量     规则："/>
+
+    <meta property="og:title" content="关于PHP(1)" />
+<meta property="og:description" content="语法   变量   超级全局变量   echo和print语句    数据类型   常量   字符串变量   运算符   数组   数组排序   循环   函数   魔术变量   命名空间   面向对象   ### PHP(Hypertext Preprocessor)超文本预处理器 PHP文件包含文本、HTML、JS代码和PHP代码，在服务器上执行，以纯HTML形式返回给浏览器。 语法     PHP脚本可以放在文档中任何位置
+&lt;?php // PHP 代码 ?&gt;  每个代码行都必须以分号结束。
+两种在浏览器输出文本的基础指令：echo和print
+//单行注释 /**/多行注释
+变量     规则：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://onlyhy.github.io/posts/2017-06-12-php1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-06-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-06-12T00:00:00+00:00" />
+
+
+
+    <title>
+  关于PHP(1) · oooonlyhy
+</title>
+
+    
+      <link rel="canonical" href="http://onlyhy.github.io/posts/2017-06-12-php1/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.91.0" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      oooonlyhy
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">首页</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">归档</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://onlyhy.github.io/posts/2017-06-12-php1/">
+              关于PHP(1)
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2017-06-12T00:00:00Z'>
+                June 12, 2017
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：6 分钟
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/onlyhy/">onlyhy</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/php/">PHP</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <ul>
+    <li>
+        <a href="#yf">语法</a>
+    </li>
+    <li>
+        <a href="#bl">变量</a>
+    </li>
+    <li>
+        <a href="#cj">超级全局变量</a>
+    </li>
+    <li>
+        <a href="#ec">echo和print语句  </a>
+    </li>
+    <li>
+        <a href="#sj">数据类型</a>
+    </li>
+    <li>
+        <a href="#cl">常量</a>
+    </li>
+    <li>
+        <a href="#zf">字符串变量</a>
+    </li>
+    <li>
+        <a href="#ys">运算符</a>
+    </li>
+    <li>
+        <a href="#sz">数组</a>
+    </li>
+     <li>
+        <a href="#szp">数组排序</a>
+    </li>
+    <li>
+        <a href="#xh">循环</a>
+    </li>
+    <li>
+        <a href="#hs">函数</a>
+    </li>
+    <li>
+        <a href="#ms">魔术变量</a>
+    </li>
+    <li>
+        <a href="#mm">命名空间</a>
+    </li>
+     <li>
+        <a href="#mx">面向对象</a>
+    </li>
+</ul>
+### PHP(Hypertext Preprocessor)超文本预处理器  
+  PHP文件包含文本、HTML、JS代码和PHP代码，在服务器上执行，以纯HTML形式返回给浏览器。  
+<h3 id="span-idyf语法--span">
+  <span id="yf">语法  </span>
+  <a class="heading-link" href="#span-idyf%e8%af%ad%e6%b3%95--span">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>PHP脚本可以放在文档中任何位置</p>
+<pre><code>&lt;?php
+// PHP 代码
+?&gt;  
+</code></pre>
+<p>每个代码行都必须以分号结束。<br>
+两种在浏览器输出文本的基础指令：echo和print<br>
+//单行注释 /**/多行注释</p>
+<h3 id="span-idbl变量-span">
+  <span id="bl">变量 </span>
+  <a class="heading-link" href="#span-idbl%e5%8f%98%e9%87%8f-span">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>规则：</p>
+<ol>
+<li>变量以$符号开始</li>
+<li>必须以字母或下划线字符开始</li>
+<li>只能包含字母、数字、字符、下划线</li>
+<li>不能包含空格</li>
+<li>区分大小写</li>
+</ol>
+<p>没有声明变量的命令，在第一次赋值给它的时候变量被创建。<br>
+OHP是弱类型语言，不必声明该变量的数据类型，PHP会根据变量的值，自动把变量转换为正确的数据类型。</p>
+<h4 id="作用域">
+  作用域
+  <a class="heading-link" href="#%e4%bd%9c%e7%94%a8%e5%9f%9f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>变量的作用域是脚本中变量可被引用/使用的部分<br>
+4种作用域：local,global.static,parameter</p>
+<p>global关键字用于函数内访问全局变量，所有全局变量存储在一个名为$GLOBALS[index]数组中，index保存变量的名称，可以在函数内直接访问如$GLOBALS[&lsquo;y&rsquo;]。</p>
+<p>static关键字，当希望局部变量在函数完成时不要被删除，则在第一次声明变量时用static关键字，每次调用该函数，该变量都会保留前一次被调用时的值。</p>
+<h3 id="span-idcj超级全局变量-span">
+  <span id="cj">超级全局变量 </span>
+  <a class="heading-link" href="#span-idcj%e8%b6%85%e7%ba%a7%e5%85%a8%e5%b1%80%e5%8f%98%e9%87%8f-span">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>在PHP 4.1.0之后被启用, 是PHP系统中自带的变量，在一个脚本的全部作用域中都可用，PHP中预定义了几个。</p>
+<h4 id="globals">
+  $GLOBALS
+  <a class="heading-link" href="#globals">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>是一个包含了全部变量的全局组合数组。变量的名字就是数组的键。</p>
+<pre><code>&lt;?php 
+$x = 75; 
+$y = 25;
+function addition() 
+{ 
+$GLOBALS['z'] = $GLOBALS['x'] + $GLOBALS['y']; 
+}
+addition(); 
+echo $z; 
+?&gt;
+</code></pre>
+<h4 id="_server">
+  $_SERVER
+  <a class="heading-link" href="#_server">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>是一个包含了如头信息(header)、路径(path)、以及脚本位置(script locations)等等信息的数组</p>
+<pre><code>&lt;?php 
+echo $_SERVER['PHP_SELF'];
+echo &quot;&lt;br&gt;&quot;;
+echo $_SERVER['SERVER_NAME'];
+?&gt;  
+</code></pre>
+<h4 id="_request">
+  $_REQUEST
+  <a class="heading-link" href="#_request">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>用于收集HTML表单提交的数据</p>
+<pre><code>&lt;form method=&quot;post&quot; action=&quot;&lt;?php echo $_SERVER['PHP_SELF'];?&gt;&quot;&gt;
+Name: &lt;input type=&quot;text&quot; name=&quot;fname&quot;&gt;
+&lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;
+&lt;?php 
+$name = $_REQUEST['fname']; 
+echo $name; 
+?&gt;  
+</code></pre>
+<h4 id="_post">
+  $_POST
+  <a class="heading-link" href="#_post">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>被广泛应用于收集表单数据，在HTML form标签的指定该属性：&ldquo;method=&ldquo;post&rdquo;</p>
+<pre><code>&lt;form method=&quot;post&quot; action=&quot;&lt;?php echo $_SERVER['PHP_SELF'];?&gt;&quot;&gt;
+Name: &lt;input type=&quot;text&quot; name=&quot;fname&quot;&gt;
+&lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;  
+&lt;?php 
+$name = $_POST['fname']; 
+echo $name; 
+?&gt;  
+</code></pre>
+<h4 id="_get">
+  $_GET
+  <a class="heading-link" href="#_get">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>被广泛应用于收集表单数据，在HTML form标签的指定该属性：&ldquo;method=&ldquo;get&rdquo;，也可以收集URL中发送的数据</p>
+<pre><code>&lt;html&gt;
+&lt;body&gt;
+&lt;a href=&quot;test_get.php?subject=PHP&amp;web=runoob.com&quot;&gt;Test $GET&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;  
+//在test_get.php中  
+&lt;?php 
+echo &quot;Study &quot; . $_GET['subject'] . &quot; at &quot; . $_GET['web'];
+?&gt;
+</code></pre>
+<h3 id="span-idececho和print语句-span">
+  <span id="ec">echo和print语句 </span>
+  <a class="heading-link" href="#span-idececho%e5%92%8cprint%e8%af%ad%e5%8f%a5-span">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>echo：可以输出一个或多个字符串，速度快,echo或者echo()，字符串可以包含HTML标签<br>
+print：只允许输出一个字符串，返回值总为 1,print或print()</p>
+<h3 id="span-idsj数据类型--span">
+  <span id="sj">数据类型  </span>
+  <a class="heading-link" href="#span-idsj%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b--span">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>String（字符串）, Integer（整型）八进制、十进制、十六进制, Float（浮点型）是带小数部分的数字或指数形式, Boolean（布尔型）, Array（数组）, Object（对象）必须用class关键字声明类对象,NULL(空值)</p>
+<h3 id="span-idcl常量span">
+  <span id="cl">常量</span>
+  <a class="heading-link" href="#span-idcl%e5%b8%b8%e9%87%8fspan">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>值被定义后，不能改变，有字母、下划线、数字组成，默认是全局的
+使用define()设置常量</p>
+<pre><code>define ( string $name , mixed $value [, bool $case_insensitive = false ] )  
+</code></pre>
+<p>name:必选参数，常量名<br>
+value:必选参数，常量值<br>
+case_insensitive:可选参数，true则大小写不敏感，默认敏感</p>
+<h3 id="span-idzf字符串变量-span">
+  <span id="zf">字符串变量 </span>
+  <a class="heading-link" href="#span-idzf%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%8f%98%e9%87%8f-span">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>赋一个文本值给变量时，请记得给文本值加上单引号或者双引号。</p>
+<h4 id="并置运算符">
+  并置运算符
+  <a class="heading-link" href="#%e5%b9%b6%e7%bd%ae%e8%bf%90%e7%ae%97%e7%ac%a6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>（.）用于把两个字符串链接起来</p>
+<pre><code>&lt;?php 
+$txt1=&quot;Hello world!&quot;; 
+$txt2=&quot;What a nice day!&quot;; 
+echo $txt1 . &quot; &quot; . $txt2; 
+?&gt;  
+</code></pre>
+<h4 id="strlen函数">
+  strlen()函数
+  <a class="heading-link" href="#strlen%e5%87%bd%e6%95%b0">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>返回字符串的长度（字符数）</p>
+<h4 id="strpos函数">
+  strpos()函数
+  <a class="heading-link" href="#strpos%e5%87%bd%e6%95%b0">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>在字符串内查找一个字符或一段指定的文本，如果在字符串中找到匹配，该函数会返回第一个匹配的字符位置。如果未找到匹配，则返回 FALSE<br>
+字符串的第一个字符的位置是0而不是1  ！！！</p>
+<h3 id="span-idys运算符-span">
+  <span id="ys">运算符 </span>
+  <a class="heading-link" href="#span-idys%e8%bf%90%e7%ae%97%e7%ac%a6-span">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>大部分运算符常见。<br>
+PHP7+ 版本新增整除运算符 intdiv()</p>
+<pre><code>&lt;?php
+var_dump(intdiv(10, 3));
+?&gt;  
+</code></pre>
+<p>x and y：与 ，x or y：或，x xor y 异或<br>
+x&lt;&gt;y 不等于，x!== 不绝对等于不恒等，x===y 恒等</p>
+<h4 id="三元运算符">
+  三元运算符
+  <a class="heading-link" href="#%e4%b8%89%e5%85%83%e8%bf%90%e7%ae%97%e7%ac%a6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>(expr1) ? (expr2) : (expr3)   
+</code></pre>
+<p>PHP 5.3 起，可以省略三元运算符中间那部分。表达式 expr1 ?: expr3 在 expr1 求值为 TRUE 时返回 expr1，否则返回 expr3<br>
+PHP7+ 版本多了一个 NULL 合并运算符</p>
+<pre><code>&lt;?php
+// 如果 $_GET['user'] 不存在返回 'nobody'，否则返回 $_GET['user'] 的值
+$username = $_GET['user'] ?? 'nobody';
+// 类似的三元运算符
+$username = isset($_GET['user']) ? $_GET['user'] : 'nobody';
+?&gt;  
+</code></pre>
+<h4 id="组合运算符">
+  组合运算符
+  <a class="heading-link" href="#%e7%bb%84%e5%90%88%e8%bf%90%e7%ae%97%e7%ac%a6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>  $c = $a &lt;=&gt; $b;  
+</code></pre>
+<p>如果 $a &gt; $b, $c 的值为 1，如果 $a == $b, $c 的值为 0，如果 $a &lt; $b, $c 的值为-1</p>
+<h4 id="优先级">
+  优先级
+  <a class="heading-link" href="#%e4%bc%98%e5%85%88%e7%ba%a7">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>括（号）、单（操作数）、算（术）、移（位）、关（系）；位（运算符）、逻（辑）、条（件）、赋（值）、逗（号）</p>
+<h3 id="span-idsz数组-span">
+  <span id="sz">数组 </span>
+  <a class="heading-link" href="#span-idsz%e6%95%b0%e7%bb%84-span">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>array();三种类型的数组：
+数值、关联、多维数组。</p>
+<h4 id="数值数组">
+  数值数组
+  <a class="heading-link" href="#%e6%95%b0%e5%80%bc%e6%95%b0%e7%bb%84">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>自动分配 ID 键（ID 键总是从 0 开始）：</p>
+<pre><code>$cars=array(&quot;Volvo&quot;,&quot;BMW&quot;,&quot;Toyota&quot;);  
+</code></pre>
+<p>人工分配ID键</p>
+<pre><code>$cars[0]=&quot;Volvo&quot;;
+$cars[1]=&quot;BMW&quot;;
+$cars[2]=&quot;Toyota&quot;;  
+</code></pre>
+<p>count()函数返回数组的长度</p>
+<pre><code>&lt;?php
+$cars=array(&quot;Volvo&quot;,&quot;BMW&quot;,&quot;Toyota&quot;);
+echo count($cars);
+?&gt;  
+</code></pre>
+<p>遍历用for循环</p>
+<h4 id="关联数组">
+  关联数组
+  <a class="heading-link" href="#%e5%85%b3%e8%81%94%e6%95%b0%e7%bb%84">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>使用分配给数组的指定键的数组</p>
+<pre><code>$age=array(&quot;Peter&quot;=&gt;&quot;35&quot;,&quot;Ben&quot;=&gt;&quot;37&quot;,&quot;Joe&quot;=&gt;&quot;43&quot;);
+//或者
+$age['Peter']=&quot;35&quot;;
+$age['Ben']=&quot;37&quot;;
+$age['Joe']=&quot;43&quot;;  
+&lt;?php
+$age=array(&quot;Peter&quot;=&gt;&quot;35&quot;,&quot;Ben&quot;=&gt;&quot;37&quot;,&quot;Joe&quot;=&gt;&quot;43&quot;);
+echo &quot;Peter is &quot; . $age['Peter'] . &quot; years old.&quot;;
+?&gt;  
+</code></pre>
+<p>遍历用foreach循环，</p>
+<pre><code>foreach($age as $x=&gt;$x_value)
+{
+    echo &quot;Key=&quot; . $x . &quot;, Value=&quot; . $x_value;
+    echo &quot;&lt;br&gt;&quot;;
+}  
+</code></pre>
+<h3 id="span-idszp-数组排序--span">
+  <span id="szp"> 数组排序  </span>
+  <a class="heading-link" href="#span-idszp-%e6%95%b0%e7%bb%84%e6%8e%92%e5%ba%8f--span">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="sort---对数组进行升序排列">
+  sort() - 对数组进行升序排列
+  <a class="heading-link" href="#sort---%e5%af%b9%e6%95%b0%e7%bb%84%e8%bf%9b%e8%a1%8c%e5%8d%87%e5%ba%8f%e6%8e%92%e5%88%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>&lt;?php
+$cars=array(&quot;Volvo&quot;,&quot;BMW&quot;,&quot;Toyota&quot;);
+sort($cars);
+?&gt;  
+</code></pre>
+<h4 id="rsort---对数组进行降序排列">
+  rsort() - 对数组进行降序排列
+  <a class="heading-link" href="#rsort---%e5%af%b9%e6%95%b0%e7%bb%84%e8%bf%9b%e8%a1%8c%e9%99%8d%e5%ba%8f%e6%8e%92%e5%88%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>&lt;?php
+$numbers=array(4,6,2,22,11);
+rsort($numbers);
+?&gt;
+</code></pre>
+<h4 id="asort---根据数组的值对数组进行升序排列">
+  asort() - 根据数组的值，对数组进行升序排列
+  <a class="heading-link" href="#asort---%e6%a0%b9%e6%8d%ae%e6%95%b0%e7%bb%84%e7%9a%84%e5%80%bc%e5%af%b9%e6%95%b0%e7%bb%84%e8%bf%9b%e8%a1%8c%e5%8d%87%e5%ba%8f%e6%8e%92%e5%88%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>&lt;?php
+$age=array(&quot;Peter&quot;=&gt;&quot;35&quot;,&quot;Ben&quot;=&gt;&quot;37&quot;,&quot;Joe&quot;=&gt;&quot;43&quot;);
+asort($age);
+print_r($age);
+?&gt;
+</code></pre>
+<p>输出结果：Array<br>
+(<br>
+[Peter] =&gt; 35<br>
+[Ben] =&gt; 37<br>
+[Joe] =&gt; 43<br>
+)</p>
+<h4 id="ksort---根据数组的键对数组进行升序排列">
+  ksort() - 根据数组的键，对数组进行升序排列
+  <a class="heading-link" href="#ksort---%e6%a0%b9%e6%8d%ae%e6%95%b0%e7%bb%84%e7%9a%84%e9%94%ae%e5%af%b9%e6%95%b0%e7%bb%84%e8%bf%9b%e8%a1%8c%e5%8d%87%e5%ba%8f%e6%8e%92%e5%88%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<h3 id="span-idxh循环-span">
+  <span id="xh">循环 </span>
+  <a class="heading-link" href="#span-idxh%e5%be%aa%e7%8e%af-span">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>while，do&hellip;while，for,foreach</p>
+<h4 id="foreach">
+  foreach
+  <a class="heading-link" href="#foreach">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>用于遍历数组，每一次循环，当前数组元素的值就会被赋值给$value变量，进行下一次循环时，将看到数组中的下一个值。</p>
+<pre><code>&lt;?php
+$x=array(&quot;one&quot;,&quot;two&quot;,&quot;three&quot;);
+foreach ($x as $value)
+{
+echo $value . &quot;&lt;br&gt;&quot;;
+}
+?&gt;  
+//输出：
+one  
+two  
+three  
+</code></pre>
+<h3 id="span-idhs函数-span">
+  <span id="hs">函数 </span>
+  <a class="heading-link" href="#span-idhs%e5%87%bd%e6%95%b0-span">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>函数的名称应该提示出它的功能，名称以字母或下划线开头（不能以数字）</p>
+<pre><code>function functionName($参数一，$参数二)
+{
+要执行的代码;
+return ...; //需要让函数返回一个值，用return  
+}  
+</code></pre>
+<h3 id="span-idms魔术变量-span">
+  <span id="ms">魔术变量 </span>
+  <a class="heading-link" href="#span-idms%e9%ad%94%e6%9c%af%e5%8f%98%e9%87%8f-span">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>八个魔术变量的值随着它们在代码中的位置改变而改变</p>
+<ul>
+<li><strong>LINE</strong>  ：当前行号</li>
+<li><strong>FILE</strong>  ：文件的完整路劲和文件名</li>
+<li><strong>DIR</strong>   ：文件所在目录</li>
+<li><strong>FUNCTION</strong> ：函数名称</li>
+<li><strong>CLASS</strong> ：类的名称</li>
+<li><strong>TRAIT</strong> ：Trait的名字，Trait名包括其被声明的作用区域</li>
+<li><strong>METHOD</strong>：类的方法名，返回该方法被定义时的名字（区分大小写）</li>
+<li><strong>NAMESPACE</strong>：当前命名空间的名称（区分大小写）</li>
+</ul>
+<h3 id="span-idmm命名空间-span">
+  <span id="mm">命名空间 </span>
+  <a class="heading-link" href="#span-idmm%e5%91%bd%e5%90%8d%e7%a9%ba%e9%97%b4-span">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>通过关键字namespace 来声明，如果一个文件中包含命名空间，它必须在其它所有代码之前声明命名空间。<br>
+在声明命名空间之前唯一合法的代码是用于定义源文件编码方式的 declare 语句</p>
+<pre><code>declare(encoding='UTF-8'); //定义多个命名空间和不包含在命名空间中的代码
+</code></pre>
+<p>可以定义多个不同的命名空间</p>
+<pre><code>&lt; ?php  
+namespace MyProject1;  
+// MyProject1 命名空间中的PHP代码  
+namespace MyProject2;  
+// MyProject2 命名空间中的PHP代码    
+// 另一种语法
+namespace MyProject3 {  
+ // MyProject3 命名空间中的PHP代码    
+}  
+?&gt; 
+</code></pre>
+<h4 id="子命名空间">
+  子命名空间
+  <a class="heading-link" href="#%e5%ad%90%e5%91%bd%e5%90%8d%e7%a9%ba%e9%97%b4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>创建了常量 MyProject\Sub\Level\CONNECT_OK，类 MyProject\Sub\Level\Connection 和函数 MyProject\Sub\Level\Connect</p>
+<pre><code>&lt;?php
+namespace MyProject\Sub\Level;  //声明分层次的单个命名空间
+const CONNECT_OK = 1;
+class Connection { /* ... */ }
+function Connect() { /* ... */  }
+?&gt;  
+</code></pre>
+<h4 id="命名空间使用">
+  命名空间使用
+  <a class="heading-link" href="#%e5%91%bd%e5%90%8d%e7%a9%ba%e9%97%b4%e4%bd%bf%e7%94%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>命名空间中的类名可以通过三种方式引用：</p>
+<ol>
+<li>非限定名称，不包含前缀的类名称</li>
+<li>限定名称，包含前缀的名称</li>
+<li>完全限定名称，包含了全局前缀操作符的名称</li>
+</ol>
+<p>访问任意全局类、函数或常量，都可以使用完全限定名称，如\strlen() 或 \Exception 或 \INI_ALL</p>
+<pre><code>&lt;?php
+namespace Foo;
+function strlen() {}
+const INI_ALL = 3;
+class Exception {}
+$a = \strlen('hi'); // 调用全局函数strlen
+$b = \INI_ALL; // 访问全局常量 INI_ALL
+$c = new \Exception('error'); // 实例化全局类 Exception
+?&gt;  
+</code></pre>
+<p>动态访问元素必须使用完全限定名称（包括命名空间前缀的类名称），因为在动态的类名称、函数名称或常量名称中，限定名称和完全限定名称没有区别，因此其前导的反斜杠是不必要的</p>
+<h4 id="namespace关键字和__namespace__常量">
+  namespace关键字和__NAMESPACE__常量
+  <a class="heading-link" href="#namespace%e5%85%b3%e9%94%ae%e5%ad%97%e5%92%8c__namespace__%e5%b8%b8%e9%87%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>都是抽象的访问当前命名空间内部元素的方法，__NAMESPACE__常量包含当前命名空间名称的字符串，没有代码则包含一个空的字符串。关键字 namespace 可用来显式访问当前命名空间或子命名空间中的元素。它等价于类中的 self 操作符。</p>
+<h4 id="使用命名空间别名-导入">
+  使用命名空间：别名 /导入
+  <a class="heading-link" href="#%e4%bd%bf%e7%94%a8%e5%91%bd%e5%90%8d%e7%a9%ba%e9%97%b4%e5%88%ab%e5%90%8d-%e5%af%bc%e5%85%a5">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>有两种方法：为类名称使用别名，或为命名空间名称使用别名，PHP不支持导入函数或常量。导入只影响非限定名称和限定名称。完全限定名称由于是确定的，故不受导入的影响。
+PHP中，别名通过use实现，一行可包含多个use语句</p>
+<pre><code>&lt;?php
+namespace foo;
+use My\Full\Classname as Another;
+// 下面的例子与 use My\Full\NSname as NSname 相同
+use My\Full\NSname;
+// 导入一个全局类
+use \ArrayObject;
+$obj = new namespace\Another; // 实例化 foo\Another 对象
+$obj = new Another; // 实例化 My\Full\Classname　对象
+NSname\subns\func(); // 调用函数 My\Full\NSname\subns\func
+$a = new ArrayObject(array(1)); // 实例化 ArrayObject 对象
+// 如果不使用 &quot;use \ArrayObject&quot; ，则实例化一个 foo\ArrayObject 对象
+?&gt;
+</code></pre>
+<h4 id="使用命名空间后备全局函数常量">
+  使用命名空间：后备全局函数/常量
+  <a class="heading-link" href="#%e4%bd%bf%e7%94%a8%e5%91%bd%e5%90%8d%e7%a9%ba%e9%97%b4%e5%90%8e%e5%a4%87%e5%85%a8%e5%b1%80%e5%87%bd%e6%95%b0%e5%b8%b8%e9%87%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>在一个命名空间中，当 PHP 遇到一个非限定的类、函数或常量名称时，它使用不同的优先策略来解析该名称。类名称总是解析到当前命名空间中的名称。因此在访问系统内部或不包含在命名空间中的类名称时，必须使用完全限定名称。<br>
+对于函数和常量来说，如果当前命名空间中不存在该函数或常量，PHP 会退而使用全局空间中的函数或常量。</p>
+<h4 id="全局空间">
+  全局空间
+  <a class="heading-link" href="#%e5%85%a8%e5%b1%80%e7%a9%ba%e9%97%b4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>如果没有定义任何命名空间，所有的类与函数的定义都是在全局空间，在名称前加上前缀 \ 表示该名称是全局空间中的名称，即使该名称位于其它的命名空间中时也是如此</p>
+<h4 id="命名空间的顺序">
+  命名空间的顺序
+  <a class="heading-link" href="#%e5%91%bd%e5%90%8d%e7%a9%ba%e9%97%b4%e7%9a%84%e9%a1%ba%e5%ba%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>使用类的时候，类的寻找路径很容易出错。</p>
+<p>名称解析：</p>
+<ol>
+<li>
+<p>对完全限定名称的函数，类和常量的调用在编译时解析。例如 new \A\B 解析为类 A\B。</p>
+</li>
+<li>
+<p>所有的非限定名称和限定名称（非完全限定名称）根据当前的导入规则在编译时进行转换。例如，如果命名空间 A\B\C 被导入为 C，那么对 C\D\e() 的调用就会被转换为 A\B\C\D\e()。</p>
+</li>
+<li>
+<p>在命名空间内部，所有的没有根据导入规则转换的限定名称均会在其前面加上当前的命名空间名称。例如，在命名空间 A\B 内部调用 C\D\e()，则 C\D\e() 会被转换为 A\B\C\D\e() 。</p>
+</li>
+<li>
+<p>非限定类名根据当前的导入规则在编译时转换（用全名代替短的导入名称）。例如，如果命名空间 A\B\C 导入为C，则 new C() 被转换为 new A\B\C() 。</p>
+</li>
+<li>
+<p>在命名空间内部（例如A\B），对非限定名称的函数调用是在运行时解析的。例如对函数 foo() 的调用是这样解析的：</p>
+<ul>
+<li>在当前命名空间中查找名为 A\B\foo() 的函数</li>
+<li>尝试查找并调用 全局(global) 空间中的函数 foo()。</li>
+</ul>
+</li>
+<li>
+<p>在命名空间（例如A\B）内部对非限定名称或限定名称类（非完全限定名称）的调用是在运行时解析的。下面是调用 new C() 及 new D\E() 的解析过程： new C()的解析:</p>
+<ul>
+<li>在当前命名空间中查找A\B\C类。</li>
+<li>尝试自动装载类A\B\C。
+new D\E()的解析:</li>
+<li>在类名称前面加上当前命名空间名称变成：A\B\D\E，然后查找该类。</li>
+<li>尝试自动装载类 A\B\D\E。</li>
+<li>为了引用全局命名空间中的全局类，必须使用完全限定名称 new \C()。</li>
+</ul>
+</li>
+</ol>
+<h3 id="span-idmx面向对象span">
+  <span id="mx">面向对象</span>
+  <a class="heading-link" href="#span-idmx%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1span">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="类定义">
+  类定义
+  <a class="heading-link" href="#%e7%b1%bb%e5%ae%9a%e4%b9%89">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>&lt;?php
+class phpClass {
+  var $var1;
+  var $var2 = &quot;constant string&quot;;
+  function myfunc ($arg1, $arg2) {
+     [..]
+  }
+  [..]
+}
+?&gt;
+</code></pre>
+<h4 id="创建对象">
+  创建对象
+  <a class="heading-link" href="#%e5%88%9b%e5%bb%ba%e5%af%b9%e8%b1%a1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>类创建后，可以使用 new 运算符来实例化该类的对象</p>
+<pre><code>$runoob = new Site;
+</code></pre>
+<h4 id="调用成员方法">
+  调用成员方法
+  <a class="heading-link" href="#%e8%b0%83%e7%94%a8%e6%88%90%e5%91%98%e6%96%b9%e6%b3%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>该对象的成员方法只能操作该对象的成员变量</p>
+<pre><code>&lt;?php 
+class Site { 
+  /* 成员变量 */ 
+  var $url; 
+  var $title; 
+  /* 成员函数 */ 
+  function setUrl($par){ 
+     $this-&gt;url = $par; 
+  } 
+  function getUrl(){ 
+     echo $this-&gt;url . PHP_EOL; //换行
+  } 
+   function setTitle($par){ 
+     $this-&gt;title = $par; 
+  } 
+  function getTitle(){ 
+     echo $this-&gt;title . PHP_EOL; 
+  }
+} 
+$runoob = new Site; 
+// 调用成员函数，设置标题和URL 
+$runoob-&gt;setTitle( &quot;菜鸟教程&quot; ); 
+$runoob-&gt;setUrl( 'www.runoob.com' ); 
+// 调用成员函数，获取标题和URL 
+$runoob-&gt;getTitle(); 
+$runoob-&gt;getUrl(); 
+?&gt;  
+</code></pre>
+<h4 id="构造函数">
+  构造函数
+  <a class="heading-link" href="#%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>主要用来在创建对象时初始化对象， 为对象成员变量赋初始值，总与new运算符一起使用在创建对象的语句中
+在类中定义一个方法作为构造函数：</p>
+<pre><code>void __construct ([ mixed $args [, $... ]] )  
+</code></pre>
+<p>在上面的例子中我们就可以通过构造方法来初始化 $url 和 $title 变量</p>
+<pre><code>function __construct( $par1, $par2 ) {
+   $this-&gt;url = $par1;
+   $this-&gt;title = $par2;
+}  
+</code></pre>
+<p>不需要再调用 setTitle 和 setUrl 方法</p>
+<pre><code>$runoob = new Site('www.runoob.com', '菜鸟教程');  
+$runoob-&gt;getTitle();  
+$runoob-&gt;getUrl(); 
+</code></pre>
+<h4 id="析构函数destructor">
+  析构函数(destructor)
+  <a class="heading-link" href="#%e6%9e%90%e6%9e%84%e5%87%bd%e6%95%b0destructor">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>与构造函数相反，当对象结束其生命周期时（例如对象所在的函数已调用完毕），系统自动执行析构函数，格式：</p>
+<pre><code>void __destruct ( void )
+
+
+&lt;?php
+class MyDestructableClass {
+   function __construct() {
+       print &quot;构造函数\n&quot;;
+       $this-&gt;name = &quot;MyDestructableClass&quot;;
+   }
+   function __destruct() {
+       print &quot;销毁 &quot; . $this-&gt;name . &quot;\n&quot;;
+   }
+}
+$obj = new MyDestructableClass();
+?&gt;
+</code></pre>
+<p>结果：构造函数<br>
+销毁 MyDestructableClass</p>
+<h4 id="继承">
+  继承
+  <a class="heading-link" href="#%e7%bb%a7%e6%89%bf">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>使用关键字extends来继承一个类，不支持多继承<br>
+class Child extends Parent {
+// 代码部分，可扩展功能<br>
+}</p>
+<h4 id="方法重写">
+  方法重写
+  <a class="heading-link" href="#%e6%96%b9%e6%b3%95%e9%87%8d%e5%86%99">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写</p>
+<h4 id="访问控制">
+  访问控制
+  <a class="heading-link" href="#%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>通过在前面添加关键字 public（公有），protected（受保护）或 private（私有）</p>
+<ul>
+<li>public（公有）：公有的类成员可以在任何地方被访问</li>
+<li>protected（受保护）：受保护的类成员则可以被其自身以及其子类和父类访问</li>
+<li>private（私有）：私有的类成员则只能被其定义所在的类访问</li>
+</ul>
+<p>继承可以对public,protected重定义，private不行</p>
+<h4 id="接口">
+  接口
+  <a class="heading-link" href="#%e6%8e%a5%e5%8f%a3">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>通过interface关键字定义，指定某个类必须实现哪些方法，但不需要定义这些方法的具体内容，方法必须是公有。<br>
+要实现一个接口，使用 implements 操作符。类中必须实现接口中定义的所有方法，类可以实现多个接口，用逗号来分隔多个接口的名称。</p>
+<pre><code>&lt;?php
+// 声明一个'iTemplate'接口
+interface iTemplate
+{
+    public function setVariable($name, $var);
+    public function getHtml($template);
+}
+// 实现接口
+class Template implements iTemplate
+{
+    private $vars = array();
+    public function setVariable($name, $var)
+    {
+        $this-&gt;vars[$name] = $var;
+    }
+    public function getHtml($template)
+    {
+        foreach($this-&gt;vars as $name =&gt; $value) {
+            $template = str_replace('{' . $name . '}', $value, $template);
+        }
+        return $template;
+    }
+}
+</code></pre>
+<h4 id="常量">
+  常量
+  <a class="heading-link" href="#%e5%b8%b8%e9%87%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>把在类中始终保持不变的值定义为常量。在定义和使用常量的时候不需要使用 $ 符号。</p>
+<pre><code>class MyClass
+{
+  const constant = '常量值';
+  function showConstant() {
+      echo  self::constant . PHP_EOL;//::是调用类中的静态方法或者常量,属性的符号
+  }
+}
+</code></pre>
+<h4 id="抽象类">
+  抽象类
+  <a class="heading-link" href="#%e6%8a%bd%e8%b1%a1%e7%b1%bb">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>任何一个类，如果它里面至少有一个方法是被声明为抽象的，那么这个类就必须被声明为抽象的，定义为抽象的类不能被实例化。<br>
+被定义为抽象的方法只是声明了其调用方式（参数），不能定义其具体的功能实现，继承一个抽象类的时候，子类必须定义父类中的所有抽象方法。</p>
+<pre><code>&lt;?php
+abstract class AbstractClass
+{
+ // 强制要求子类定义这些方法
+    abstract protected function getValue();
+    abstract protected function prefixValue($prefix);
+    // 普通方法（非抽象方法）
+    public function printOut() {
+        print $this-&gt;getValue() . PHP_EOL;
+    }
+}
+class ConcreteClass1 extends AbstractClass
+{
+    protected function getValue() {
+        return &quot;ConcreteClass1&quot;;
+    }
+    public function prefixValue($prefix) {
+        return &quot;{$prefix}ConcreteClass1&quot;;
+    }
+}
+$class1 = new ConcreteClass1;
+$class1-&gt;printOut();
+echo $class1-&gt;prefixValue('FOO_') . PHP_EOL;
+?&gt;  
+结果： 
+ConcreteClass1
+FOO_ConcreteClass1
+</code></pre>
+<h4 id="static关键字">
+  static关键字
+  <a class="heading-link" href="#static%e5%85%b3%e9%94%ae%e5%ad%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>声明类属性或方法为 static(静态)，就可以不实例化类而直接访问。<br>
+伪变量 $this 在静态方法中不可用，静态属性不可以由对象通过 -&gt; 操作符来访问。</p>
+<h4 id="final关键字">
+  Final关键字
+  <a class="heading-link" href="#final%e5%85%b3%e9%94%ae%e5%ad%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>PHP 5 新增了一个 final 关键字。<br>
+如果父类中的方法被声明为 final，则子类无法覆盖该方法。<br>
+如果一个类被声明为 final，则不能被继承。</p>
+<h4 id="调用父类构造方法">
+  调用父类构造方法
+  <a class="heading-link" href="#%e8%b0%83%e7%94%a8%e7%88%b6%e7%b1%bb%e6%9e%84%e9%80%a0%e6%96%b9%e6%b3%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>PHP 不会在子类的构造方法中自动的调用父类的构造方法。要执行父类的构造方法，需要在子类的构造方法中调用 parent::__construct()</p>
+<pre><code>class BaseClass {
+function __construct() {
+print &quot;BaseClass 类中构造方法&quot; . PHP_EOL;
+   }
+}
+class SubClass extends BaseClass {
+function __construct() {
+    parent::__construct();  // 子类构造方法不能自动调用父类的构造方法
+    print &quot;SubClass 类中构造方法&quot; . PHP_EOL;
+   }
+}
+</code></pre>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2017 -
+    
+    2021
+     OnlyHy 
+    ·
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AJAX on oooonlyhy</title>
+    <link>http://onlyhy.github.io/categories/ajax/</link>
+    <description>Recent content in AJAX on oooonlyhy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 10 Jun 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://onlyhy.github.io/categories/ajax/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于AJAX</title>
+      <link>http://onlyhy.github.io/posts/2017-06-10-ajax/</link>
+      <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-10-ajax/</guid>
+      <description>AJAX （Asynchronous JavaScript and XML）异步的JavaScript和XML    无需重新加载整个网页的情况下，能够更新部分网页的技术。
+基于现有的Internet标准：
+ XMLHttpRequest 对象 (异步的与服务器交换数据) JavaScript/DOM (信息显示/交互) CSS (给数据定义样式) XML (作为转换数据的格式)  创建对象    创建XMLHttpRequest 对象，用于后台与服务器交换数据
+variable=new XMLHttpRequest(); //现代浏览器 variable=new ActiveXObject(&amp;quot;Microsoft.XMLHTTP&amp;quot;); //IE5、6  创建之前都要先检查
+var xmlhttp; if (window.XMLHttpRequest) { // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码 xmlhttp=new XMLHttpRequest(); } else { // IE6, IE5 浏览器执行代码 xmlhttp=new ActiveXObject(&amp;quot;Microsoft.XMLHTTP&amp;quot;); }  向服务器发送请求    使用 XMLHttpRequest 对象的 open() 和 send() 方法</description>
+    </item>
+    
+  </channel>
+</rss>

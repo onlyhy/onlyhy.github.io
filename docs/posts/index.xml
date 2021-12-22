@@ -1,19 +1,768 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on ONLYHY</title>
+    <title>Posts on oooonlyhy</title>
     <link>http://onlyhy.github.io/posts/</link>
-    <description>Recent content in Posts on ONLYHY</description>
+    <description>Recent content in Posts on oooonlyhy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 22 Dec 2021 14:47:25 +0800</lastBuildDate><atom:link href="http://onlyhy.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Dec 2021 09:00:00 +0800</lastBuildDate><atom:link href="http://onlyhy.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title></title>
-      <link>http://onlyhy.github.io/posts/my-first-post/</link>
-      <pubDate>Wed, 22 Dec 2021 14:47:25 +0800</pubDate>
+      <title>现代JS教程[第三部分（五）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-22-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%BA%94/</link>
+      <pubDate>Wed, 22 Dec 2021 09:00:00 +0800</pubDate>
       
-      <guid>http://onlyhy.github.io/posts/my-first-post/</guid>
-      <description>test    testtesttest</description>
+      <guid>http://onlyhy.github.io/posts/2021-12-22-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%BA%94/</guid>
+      <description>Web components    从星球轨道的高度讲起    组件化架构 只有让复杂的事情简单化的架构才是好架构。 一个组件有：
+ 自己的 JavaScript 类。 DOM 结构，并且只由自己的类管理，无法被外部代码操作。（「封装」原则）。 CSS 样式，作用在这个组件上。 API：事件，类方法等等，让组件可以与其他组件交互。  浏览器已原生支持 Web Components：
+ Custom elements —— 用于自定义 HTML 元素. Shadow DOM —— 为组件创建内部 DOM，它对外部是不可见的。 CSS Scoping —— 申明仅应用于组件的 Shadow DOM 内的样式。 Event retargeting 以及更多的小东西，让自定义组件更适用于开发工作。  Custom elements    Custom elements 有两种：
+ Autonomous custom elements （自主自定义标签） —— “全新的” 元素, 继承自 HTMLElement 抽象类. Customized built-in elements （自定义内建元素） —— 继承内建的 HTML 元素，比如自定义 HTMLButtonElement 等，是已有元素的扩展。   Custom element 名称必须包括一个短横线 -，如 my-element 为了确保 custom element 和内建 HTML 元素之间不会发生命名冲突</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第三部分（四）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-21-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E5%9B%9B/</link>
+      <pubDate>Tue, 21 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-21-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E5%9B%9B/</guid>
+      <description>在浏览器中存储数据    Cookie，document.cookie    Cookie 通常是由 Web 服务器使用响应 Set-Cookie HTTP-header 设置的。然后浏览器使用 Cookie HTTP-header 将它们自动添加到（几乎）每个对相同域的请求中。
+document.cookie可以访问cookie：
+ 写入操作只会修改其中提到的 cookie，因为它是一个访问器（getter/setter） document.cookie 的值由 name=value 对组成，以 ; 分隔 name/value必须被 encodeURIComponent 编码 一个 cookie 最大为 4KB，每个网站最多有 20+ 个左右的 cookie（具体取决于浏览器）  Cookie选项，列在key=value后，以 ; 分割：
+ path=/，默认为当前路径，使 cookie 仅在该路径下可见。 domain=site.com，默认 cookie 仅在当前域下可见，如果显式设置了域，可以使 cookie 在子域下也可见。 expires 或 max-age 设置 cookie 过期时间，如果没有设置，则当浏览器关闭时 cookie 就失效了。  expires 必须完全采用 GMT 时区的格式，使用 date.toUTCString 来获取 max-age 指明 cookie 的过期时间距离当前时间的秒数   secure 使 cookie 仅在 HTTPS 下有效。 samesite，如果请求来自外部网站，禁止浏览器发送 cookie，这有助于防止 XSRF 攻击。  值为 strict (和没有值的samesite一样)，如果用户来自同一网站之外，则不会被发送。 值为 lax ，与strict相比增加了一个例外：满足两个条件即可发送：一是HTTP方法是“安全的”（如GET）；二是该操作执行顶级导航。    如果cookie 设置了 httpOnly，那么 document.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第三部分（三）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-20-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%B8%89/</link>
+      <pubDate>Mon, 20 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-20-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%B8%89/</guid>
+      <description>可恢复的文件上传    要恢复上传，需要 确切地 知道服务器接收的字节数。而且只有服务器能告诉我们，因此，要发出一个额外的请求。
+  创建一个文件id，标识要上传的文件： let fileId = file.name + &#39;-&#39; + file.size + &#39;-&#39; + +file.lastModifiedDate;
+  向服务器发送一个请求，询问该文件已经有了多少字节，将文件id放在X-File-Idheader中（假设服务器通过 X-File-Id header 跟踪文件上传，要在服务端实现）：
+  let response = await fetch(&amp;#39;status&amp;#39;, { headers: { &amp;#39;X-File-Id&amp;#39;: fileId } }); // 服务器已有的字节数(不存在该文件则服务器响应为0) let startByte = +await response.text(); 使用 Blob 和 slice 方法来发送从 startByte 开始的文件：  xhr.open(&amp;#34;POST&amp;#34;, &amp;#34;upload&amp;#34;, true); // 文件 id，以便服务器知道我们要恢复的是哪个文件 xhr.setRequestHeader(&amp;#39;X-File-Id&amp;#39;, fileId); // 发送我们要从哪个字节开始恢复，因此服务器知道我们正在恢复 xhr.setRequestHeader(&amp;#39;X-Start-Byte&amp;#39;, startByte); xhr.upload.onprogress = (e) =&amp;gt; { console.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第三部分（二）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-19-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%BA%8C/</link>
+      <pubDate>Sun, 19 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-19-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%BA%8C/</guid>
+      <description>网络请求    Fetch    典型的fetch请求：
+ let response = await fetch(url, [options]) // 解析 response header let result = await response.json(); // 将 body 读取为 json 或以Promise形式： fetch(url, options) .then(response =&amp;gt; response.json()) .then(result =&amp;gt; /* process result */)  响应的属性：
+  response.status —— response 的 HTTP 状态码， response.ok —— HTTP 状态码为 200-299，则为 true。 response.headers —— 类似于 Map 的带有 HTTP header 的对象。   获取response body：</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第三部分其他（一）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-17-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E5%85%B6%E4%BB%96%E4%B8%80/</link>
+      <pubDate>Fri, 17 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-17-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E5%85%B6%E4%BB%96%E4%B8%80/</guid>
+      <description>Frame和window    弹窗和 window 的方法    阻止弹窗：如果弹窗是在用户触发的事件处理程序（如 onclick）之外调用的，大多数浏览器都会阻止此类弹窗。
+如果弹窗是从 onclick 打开的，但是在 setTimeout 之后，弹窗在 Chrome 中会被打开，但是在 Firefox 中会被阻止。（Firefox 可以接受 2000ms 或更短的延迟）。
+window.open(url, name, params)
+ open调用会返回对新窗口的引用，可以用来操纵属性，修改内容等。 弹窗也可以使用window.opener来访问opener窗口（打开弹窗的窗口）。 因此窗口之间的连接是双向的：主窗口和弹窗之间相互引用。  xxx.close()关闭一个弹窗 xxx.closed检查窗口是否被关闭
+focus/blur事件可以跟踪窗口的切换
+跨窗口通信    同源：协议、域、端口都相同 非同源：无法访问该窗口中的内容，唯一例外是可以修改location但是无法读取location
+iframe window：iframe.contentWindow document：iframe.contentDocument(iframe.contentWindow.document的简写)
+ 不要对尚未加载完成的 iframe 的文档进行处理，因为那是 错误的文档不同于加载到其中的文档。
+ 获取&amp;lt;iframe&amp;gt;的window对象：
+ 通过索引获取：window.frames[0] —— 文档中的第一个 iframe 的 window 对象。 通过名称获取：window.frames.iframeName —— 获取 name=&amp;ldquo;iframeName&amp;rdquo; 的 iframe 的 window 对象。  iframe可以嵌套，相应的window对象会形成一个层次结构</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第二部分（四）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-16-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E5%9B%9B/</link>
+      <pubDate>Thu, 16 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-16-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E5%9B%9B/</guid>
+      <description>表单，控件    文档中的表单是document.forms的成员，既可以使用名字，也可以使用在文档中的编号来获取表单。 document.forms.my- name=&amp;ldquo;my&amp;rdquo; 的表单 document.forms[0]- 文档中的第一个表单
+表单中的元素可以通过表单的elements属性获取，也可以通过form[index/name]来获取，如 form.elements.login 和 form.login。
+一个小问题：如果我们访问一个元素，然后修改它的 name，之后它仍然可以被通过旧的 name 访问到
+&amp;lt;fieldset&amp;gt;元素作为表单的”子表单“，它也有elements属性
+还可以反向引用：element.form访问元素对应的表单
+要使用textarea.value而不是textarea.innerHTML
+&amp;lt;select&amp;gt;：
+ select.options —— &amp;lt;option&amp;gt; 的子元素的集合 select.value —— 当前所选择的 &amp;lt;option&amp;gt; 的 value select.selectedIndex —— 当前所选择的 &amp;lt;option&amp;gt; 的编号  为&amp;lt;select&amp;gt;设置value的方式：
+ 找到对应的 &amp;lt;option&amp;gt; 元素，并将 option.selected 设置为 true。 将 select.value 设置为对应的 value。 将 select.selectedIndex 设置为对应 &amp;lt;option&amp;gt; 的编号  select具有multiple特性
+简短创建&amp;lt;option&amp;gt;元素：new Option(text, value, defaultSelected, selected)
+focus/blur事件    元素聚焦：focus，元素失焦：blur elem.onfocus = ()=&amp;gt;{}; elem.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第二部分（三）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-15-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E4%B8%89/</link>
+      <pubDate>Wed, 15 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-15-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E4%B8%89/</guid>
+      <description>事件简介    浏览器事件简介    3 种分配事件处理程序的方式：
+ HTML 特性（attribute）：onclick=&amp;quot;&amp;hellip;&amp;quot;。 DOM 属性（property）：elem.onclick = function。 方法（method）：elem.addEventListener(event, handler[, phase]) 用于添加，removeEventListener 用于移除。要移除处理程序需要存储对它的引用。  有些事件无法通过 DOM 属性进行分配。只能使用 addEventListener，比如DOMContentLoaded、transtionend element.addEventListener(event, handler[, options]); handler可以是函数或对象，如果是对象就会调用对象的handleEvent方法，这样可以在方法中根据event实现同一个对象处理多个事件等
+事件对象event：
+ event.type 事件类型 event.currentTarget 处理事件的元素 event.clientX / event.clientY 指针事件（pointer event）的指针的窗口相对坐标 &amp;hellip;  冒泡和捕获    冒泡：当一个事件发生在一个元素上，它会首先运行在该元素上的处理程序，然后运行其父元素上的处理程序，然后一直向上到其他祖先上的处理程序。（“几乎”所有事件都会冒泡）
+event.target与this(=event.currentTarget)的区别：
+ event.target —— 是引发事件的“目标”元素，它在冒泡过程中不会发生变化。 this —— 是“当前”元素，其中有一个当前正在运行的处理程序。  停止传播：
+ event.stopPropagation() 冒泡、捕获阶段都可以用 event.stopImmediatePropagation() 还能阻止当前元素上的处理程序运行  DOM事件标准描述了事件传播的3个阶段：
+ 捕获阶段 （Capturing phase）—— 事件（从 Window）向下走近元素。 目标阶段 （Target phase）—— 事件到达目标元素。 冒泡阶段 （Bubbling phase）—— 事件从元素上开始冒泡。  event.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第二部分（二）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-14-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E4%BA%8C/</link>
+      <pubDate>Tue, 14 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-14-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E4%BA%8C/</guid>
+      <description>修改文档（document）    document.createElement(tag) document.createTextNode(text) 作为文本插入：node.append/prepend/before/after/replaceWith 作为HTML代码插入：elem.insertAdjacentHTML(where, html) where：beforebegin、afterbegin、beforeend、afterend 作为文本插入：elem.insertAdjacentText(where, text) 插入元素：elem.insertAdjacentElement(where, elem) 移除节点：node.remove() 所有插入方法都会自动从旧位置删除该节点 elem.cloneNode(true/false) true：深克隆包括所有特性和子元素 false：不包括子元素 new DocumentFragment() 传递节点列表的包装器 document.write 调用只在页面加载时工作，如果加载完成后调用，那现有的文档内容会被擦除
+样式和类    className classList(add,remove,toggle,contains) style.cssText 完全重写样式 getComputedStyle(element,[pseudo伪元素]) 读取样式
+元素大小和滚动    offsetParent是最接近的祖先：
+ CSS 定位的（position 为 absolute，relative 或 fixed） 或 ，，， 或    offsetLeft/offsetTop 提供相对于 offsetParent 左上角的 x/y 坐标 offsetWidth/Height：完整大小（包括边框） 未显示的元素，offsetWidth/Height为0 clientTop/Left 内侧与外侧的相对坐标（如果滚动条在左边，clientLeft还包括滚动条的宽度） clientWidth/Height content+padding 不包括滚动条 scrollWidth/Height 类似clientWidth/Height但还包括滚动出（隐藏）的部分 scrollLeft/scrollTop 元素隐藏、滚动部分的width/height （就是已经滚动了多少）是可修改的，浏览器会滚动该元素  除了 scrollLeft/scrollTop 外，所有属性都是只读的</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第二部分浏览器（一）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-13-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%80/</link>
+      <pubDate>Mon, 13 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-13-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%80/</guid>
+      <description>浏览器
+Document     DOM 规范，描述文档的结构、操作和事件 CSSOM 规范，描述样式表和样式规则，对它们进行的操作，以及它们与文档的绑定 HTML 规范，描述 HTML 语言（例如标签）以及 BOM（浏览器对象模型）— 各种浏览器函数：setTimeout，alert，location 等。  DOM树     按照 DOM 规范，表格必须具有  ，但 HTML 文本却（官方的）忽略了它。然后浏览器在创建 DOM 时，自动地创建了  HTML 中的所有内容，甚至注释，都会成为 DOM 的一部分。 一共有 12 种节点类型，通常用到的是其中的 4 种：   document — DOM 的“入口点”。 元素节点 — HTML 标签，树构建块。 文本节点 — 包含文本。 注释 — 有时我们可以将一些信息放入其中，它不会显示，但 JS 可以从 DOM 中读取它。    控制台交互：   在元素(Elements)选项卡中选中一个元素，在控制台中通过 $0 对节点来进行操作，前一个选择的通过 $1 等 如果存在引用 DOM 节点的变量，可以在控制台中使用命令 inspect(node)，来在元素选项卡中查看它     遍历DOM       = document.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第一部分（五）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-08-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%BA%94/</link>
+      <pubDate>Wed, 08 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-08-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%BA%94/</guid>
+      <description>Promise,async/await    回调    Promise     new Promise(function(resolve, reject) {});，传递给 new Promise 的函数被称为 executor执行器。当 new Promise 被创建，executor 会自动运行。executor 应该执行一项工作（通常是需要花费一些时间的事儿），然后调用 resolve 或 reject 来改变对应的 promise 对象的状态 executor 只能调用一个 resolve 或一个 reject，其它的调用会被忽略 resolve/reject 只需要一个参数（或不包含任何参数），并且将忽略额外的参数 resolve/reject可以立即执行 建议以Error对象来reject .then 的第一个参数是一个函数，该函数将在 promise resolved 后运行并接收结果；.then 的第二个参数也是一个函数，该函数将在 promise rejected 后运行并接收 error。可以只提供一个参数表示只处理成功的情况 .catch(f) 调用是 .then(null, f) 的完全的模拟，只是简写形式 .finally(f) 总是在 promise 被 settled 时运行：即 promise 被 resolve 或 reject   finally 处理程序（handler）没有参数，不知道 promise 是否成功 finally 处理程序将 成功结果或 error 传递给下一个处理程序 Promise 的处理程序（handlers）.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第一部分（四）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-07-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E5%9B%9B/</link>
+      <pubDate>Tue, 07 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-07-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E5%9B%9B/</guid>
+      <description>类    class基本语法     new 会自动调用 constructor() 方法，因此我们可以在 constructor() 中初始化对象 类的方法之间没有逗号 在JS中，类是一种函数  class User { constructor(name) { this.name = name; } sayHi() { alert(this.name); } } // 佐证：User 是一个函数 alert(typeof User); // function  class User {&amp;hellip;} 构造实际上做了如下的事：
+ 创建一个名为 User 的函数，该函数成为类声明的结果。该函数的代码来自于 constructor 方法（如果我们不编写这种方法，那么它就被假定为空）。 存储类中的方法到prototype，例如 User.prototype 中的 sayHi。   class不仅是语法糖，与纯函数之间存在重大差异    通过 class 创建的函数具有特殊的内部属性标记 [[IsClassConstructor]]: true，与普通函数不同，class只能通过 new 来调用，大多数 JavaScript 引擎中的类构造器的字符串表示形式都以 “class…” 开头 类的方法不可枚举，类定义将 &amp;ldquo;prototype&amp;rdquo; 中的所有方法的 enumerable 标志设置为 false 类总是使用 use strict。 在类构造中的所有代码都将自动进入严格模式   类可以在表达式中被定义，类似于命名函数表达式，类表达式也可以有名字，该名字仅在类内部可见 类中可以包括getter/setter，计算属性名称[&amp;hellip;]等 class字段(field)：允许添加任何属性，会在每个独立对象上设置，而不是prototype上；类字段创建方法可以避免this的丢失问题click = () =&amp;gt; { alert(this.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第一部分（三）]</title>
+      <link>http://onlyhy.github.io/posts/2021-11-26-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%B8%89/</link>
+      <pubDate>Fri, 26 Nov 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-11-26-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%B8%89/</guid>
+      <description>函数进阶    递归和堆栈     递归表示从自身调用函数，即自调用 递归定义的数据结构是指可以使用自身来定义的数据结构，如链表 最大的嵌套调用次数（包括首次）被称为 递归深度，最大递归深度受限于 JavaScript 引擎。引擎在最大迭代深度为 10000 及以下时是可靠的  Rest参数和Spread语法    当在代码中看到 &amp;ldquo;&amp;hellip;&amp;rdquo; 时，要么是 Rest 参数，要么就是 Spread 语法   若 &amp;hellip; 出现在函数参数列表的最后，那么它就是 Rest 参数，它会把参数列表中剩余的参数收集到一个数组中 若 &amp;hellip; 出现在函数调用或类似的表达式中，那它就是 Spread 语法，它会把一个数组展开为列表
+ &amp;hellip;args将函数剩余参数收集到一个数组中，必须放在参数列表的末尾（旧式的arguments存储了函数所有参数，是一个类数组对象；箭头函数没有arguments对象，在箭头函数中访问到的arguments是属于箭头函数外部的普通函数的） Spread语法只适用于可迭代对象，不适用于类数组对象；Array.from 适用于类数组对象也适用于可迭代对象 Spread还可以用来浅拷贝let clone = { ...obj }，比Object.assign()写起来更简洁  变量作用域、闭包    JS中，每个运行的函数，代码块 {&amp;hellip;} 以及整个脚本，都有一个被称为 词法环境（Lexical Environment） 的内部（隐藏）的关联对象，词法环境包括：    环境记录（Environment Record） —— 一个存储所有局部变量作为其属性（包括一些其他信息，例如 this 的值）的对象。 对 外部词法环境 的引用，与外部代码相关联。   闭包 是指内部函数总是可以访问其所在的外部函数中声明的变量和参数，即使在其外部函数被返回（寿命终结）了之后。因为JavaScript 中的函数会自动通过隐藏的 [[Environment]] 属性记住创建它们的位置，所以它们都可以访问外部变量 词法环境仅在可达时会保留在内存中 实际开发中：如果从代码中可以明显看出有未使用的外部变量，那么就会将其删除，在V8（Chrome，Edge，Opera）中，此类变量在调试中将不可用；因此要注意，可能访问到的是外部的一个同名变量，而不是预期中的变量  var    var 声明的变量只有函数作用域和全局作用域，没有块级作用域 var允许重复声明 var声明会被提升（可以在声明语句前被调用），但是赋值不会（赋值始终在它出现的地方才起作用） IIFE(立即调用函数表达式)，可以模仿块级作用域  全局对象    浏览器：window；Node.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第一部分（二）]</title>
+      <link>http://onlyhy.github.io/posts/2021-11-25-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%BA%8C/</link>
+      <pubDate>Thu, 25 Nov 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-11-25-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%BA%8C/</guid>
+      <description>数据类型    原始类型     原始类型不是对象；不能存储数据；所有的属性/方法操作都是在临时对象的帮助下执行的。   如str.toUpperCase()
+ 字符串 str 是一个原始值。因此，在访问其属性时，会创建一个包含字符串字面值的特殊对象，并且具有有用的方法，例如 toUpperCase()。 该方法运行并返回一个新的字符串。 最终特殊对象被销毁，只留下原始值 str。   特殊的原始类型 null 和 undefined 是例外。它们没有对应的“对象包装器”，也没有提供任何方法。从某种意义上说，它们是“最原始的”。 num.toString(base) 返回在给定 base 进制数字系统中 num 的字符串表示形式  数字类型    直接在一个数字上调用方法时需要用两个点，如123456..toString(36)，或者(123456).toString(36)，因为 JavaScript 语法隐含了第一个点之后的部分为小数部分。如果我们再放一个点，那么 JavaScript 就知道小数部分为空，现在使用该方法 数字舍入:  Math.floor 向下舍入 Math.ceil 向上舍入 Math.round 向最近的整数舍入，0..4 会被舍去，而 5..9 会进一位 Math.trunc 移除小数点及其后所有内容没有舍入（ie不支持） 舍入到小数点后n位：   乘除法：比如乘以100调用舍入，再除回 toFixed(n)：舍入到最接近的值，若小数部分比较短则添加0以满足位数，注意返回的是一个字符串    6.35.toFixed(1)==6.3是因为6.35的小数部分是一个无限的二进制造成了精度损失，利用乘除法使6.35更接近整数   精度的缺失：0.1 + 0.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第一部分JS编程语言（一）]</title>
+      <link>http://onlyhy.github.io/posts/2021-11-22-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86js%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%80/</link>
+      <pubDate>Mon, 22 Nov 2021 14:47:25 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-11-22-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86js%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%80/</guid>
+      <description>现代JS教程
+基础知识     Number(null) 结果为0；Number(undefined) 结果为NaN;Number(&#39;&#39;)结果为0;Number([])结果为0 Boolean(0)为false;而Boolean(&amp;ldquo;0&amp;rdquo;)和Boolean(&amp;quot; &amp;ldquo;)都是非空字符串都为true +号运算符 优先级表 一元运算符优先级高于二元运算符 一元运算符加号，如果运算元不是数字，加号会将其转化为数字,如+&amp;ldquo;&amp;ldquo;为0 +号也可用来连接字符串，如果任何一个操作数是一个字符串，那么另一个操作数也将被转换为字符串 &amp;quot; \t \n&amp;rdquo; - 2 = -2，字符串转为数字时，会忽略字符串首尾处的空格字符，这里包括\t,\n以及它们之间的空格 a**b 求幂运算 幂可以是非整数 如b为1/2就是求平方根 null == undefined，非严格模式下，它们仅仅等于对方而不等于其它任何的值 null&amp;gt;0为false,null==0为false,null&amp;gt;=0为true(相等性检查==和普通比较符&amp;gt; &amp;lt; &amp;gt;= &amp;lt;=逻辑相互独立；做普通比较时，null被转化为数字0，所以null&amp;gt;0为false,null&amp;gt;=0为true;而相等性检查，只存在null == undefined) 字符串的比较规则是逐个字符比较 对不同类型的值进行比较时，JavaScript 会首先将其转化为数字（number）再判定大小 一个或运算 || 的链，将返回第一个真值，如果不存在真值，就返回该链的最后一个值；如 undefined || null || 0 返回0 与运算&amp;amp;&amp;amp;返回第一个假值，如果没有假值就返回最后一个值 与运算 &amp;amp;&amp;amp; 的优先级比或运算 || 要高 两个非运算 !! 有时候用来将某个值转化为布尔类型 非运算符 ! 的优先级在所有逻辑运算符里面最高 空值合并运算符??，如果第一个参数不是 null/undefined，则 ?? 返回第一个参数。否则，返回第二个参数 ??和||的区别在于：|| 返回第一个 真 值，?? 返回第一个 已定义的 值。|| 无法区分 false、0、空字符串 &amp;quot;&amp;rdquo; 和 null/undefined，而?</description>
+    </item>
+    
+    <item>
+      <title>React全家桶视频笔记</title>
+      <link>http://onlyhy.github.io/posts/2021-10-12-react%E5%85%A8%E5%AE%B6%E6%A1%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 12 Oct 2021 10:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-10-12-react%E5%85%A8%E5%AE%B6%E6%A1%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/</guid>
+      <description>视频
+基础     jsx的标签首字母：小写字母开头，转为html同名元素；大写字母开头，去渲染对应的组件 在jsx中写注释{/* */} 标签中是表达式时才用{}，表达式：会产生一个值，可放在任何需要值的地方 类继承的时候，在constructor()里必须要调用super()，且必须要放在最前面 类式组件必须继承React.Componet，必须要写render()，render必须要有返回值，render里的this是实例对象 state值是对象 state必须通过setState进行更新，且更新是合并，不是替换 类中直接写赋值语句，就是往类实例上添加属性并赋值 类简写：直接写赋值语句初始化状态，render()，自定义方法（用赋值语句+箭头函数） render中通过this.props拿到props static propTypes ={add:PropTypes.func.isRequired} 对标签传入的属性props进行类型、必要性的限制，注意propTypes的大小写 static defaultProps = {} 对标签传入的属性props指定默认值 如果要在constructor中使用this.props，就一定要接收props，并super(props) 函数式组件通过函数的参数接收props，但是propTypes和defaultProps得写在函数外面，Person.propTypes 字符串形式的ref(已经不推荐使用)，ref=“input1”，取ref的时候从this.refs上取，const {input1} = this.refs 回调函数形式的ref，ref={c =&amp;gt; this.input1 = c}，回调函数的参数就是ref所在的节点，这样取ref可以直接从this上取，不需要this.refs了 如果ref回调函数是内联的，则在更新时会执行两次：第一次传参是null，第二次是DOM元素；因为更新时创建新的实例会清空旧的ref建新的，将回调函数定义成class的绑定函数，即将回调写在实例上，照样能接受c参数，ref={this.showInfo}，这样可以避免，但是直接写内联也没啥影响，还是用内联 React.createRef()这种方式“专人专用”，myRef = React.createRef()，ref={this.myRef}，这时候会把节点直接存储在myRef里面，取的时候是this.myRef.current onXxx指定事件处理函数：React使用的是自定义（合成）事件，不是原生的，为了兼容性；事件使用了事件委托，为了高效 不要过度使用ref，事件处理函数里可以通过event.target里获取到对象 非受控组件：现用现取 受控组件：输入类的dom，值存在状态state里，等需要的时候再从state取，能够省略掉ref 高阶函数：A函数，接收的参数是一个函数；A函数，调用的返回值是一个函数；常见的：Promise、setTimeout、arr.map() 函数柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式 卸载组件：React.unmountComponentAtNode(document.getElementById(’test&#39;)) 生命周期（旧）：将要挂载componentWillMount(){}，挂载完毕componentDidMount(){}，控制组件是否更新，默认返回true：shouldComponentUpdate(){}，组件将要更新componentWillUpdate(){}，组件更新完毕componentDidUpdate(){}，将要卸载componentWillUnmount(){}，子组件将要接收props的钩子：componentWillReceiveProps(props){}第一次传的不会触发，后面再传props才会触发 生命周期（新）：名字带will的除了将要卸载的另外3个生命周期已经不推荐使用即将废弃（可在前面加UNSAFE_），提出了两个新的getDerivedStateFromProps和getSnapshotBeforeUpdate 不更改任何数据想要强制更新，调用this.forceUpdate()，会跳过shouldComponnetUpdate() getDerivedStateFromProps：入参是props，返回的值是给了state，只有在state的值在任何时候都取决于props时才用，了解即可，罕见 getSnapshotBeforeUpdate返回的值传给了componentDidUpdate(prevProps,prevState,snapshotValue)，使用概率也很低，用在滚动啥的 index作为key很危险，首先可能会产生没必要的真实DOM更新（逆序添加或删除等破坏顺序的操作）；如果结构中有输入类的DOM还会产生错误更新；（如果不是数据的逆序添加、删除等破坏顺序的行为，仅用于渲染列表展示，是可以用Index的，最好使用每条数据的唯一标识作为key） 在引入React的时候可以再引入一下{Component}，import React, {Componnet}from ‘react’，这样定义类组件的时候可以直接export default class App extends Component{} 样式模块化，样式文件命名为xxx.module.css，引入的时候可以import xxx from ‘./….’，使用样式的时候就xxx.title react脚手架配置代理：src下创建setupProxy.js文件，使用http-proxy-middleware包，进行代理配置 组件沟通：消息订阅与发布：使用pubsub-js包，PubSub.publish(‘xxx’, {数据})发布消息，通知订阅的组件；组件挂载后this.token = PubSub.</description>
+    </item>
+    
+    <item>
+      <title>Bootstrap4手册笔记(一)</title>
+      <link>http://onlyhy.github.io/posts/2018-05-16-bootstrap4/</link>
+      <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2018-05-16-bootstrap4/</guid>
+      <description>黄黄说：“少说话，多做事”
+读Bootstrap4中文文档所记
+目录     浏览器与设备调优 布局 内容 组件  浏览器与设备调优    不支持IE9    移动设备的模态框和下拉组件    Overflow溢出和scroll滚动    iOS和安卓中，对于&amp;lt;body&amp;gt;元素中使用overflow: hidden;的支持很有限。因此在这两种设备中，当你滚动超过一个模态窗口的顶部或底部，&amp;lt;body&amp;gt;内容也会开始滚动
+iOS文本字段和滚动    从IOS9.2开始，当一个模态启用，如果手势触模在一个&amp;lt;input&amp;gt;文本或&amp;lt;textarea&amp;gt;文本框内，则&amp;lt;body&amp;gt;中的内容将被滚动，而不是模态本身滚动
+无冲突处理    有时，必须使用Bootstrap插件和其他UI框架,偶尔会发生命名空间冲突,可以调用.noConflict恢复插件的值：
+var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value $.fn.bootstrapBtn = bootstrapButton // give $().bootstrapBtn the Bootstrap functionality  布局    栅格     不同于旧版3.</description>
+    </item>
+    
+    <item>
+      <title>Vue学习小记</title>
+      <link>http://onlyhy.github.io/posts/2018-04-17-vue.js%E5%B0%8F%E8%AE%B0/</link>
+      <pubDate>Tue, 17 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2018-04-17-vue.js%E5%B0%8F%E8%AE%B0/</guid>
+      <description>黄黄说：“不会的就多看几遍”
+Vue官方教程基础部分    读Vue.js官方文档所记
+ 计算属性(computed)有缓存，方法(methods)无缓存 需要在数据变化时执行异步或开销较大的操作，自定义侦听器, watch css属性可用 驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用单引号括起来) 来命名 v-bind:style使用需要添加浏览器引擎前缀的CSS属性时，如transform，Vue.js会自动侦测并添加相应前缀 添加具有唯一值的key属性表达元素是完全独立的，不需要复用 v-show元素始终会被渲染并保留在DOM,只是简单切换元素的CSS属性display 如果要频繁的切换用v-show，很少改变用v-if v-for比v-if有更高优先级，意味着v-if将分别重复运行于每个v-for循环中 v-model双向数据绑定，监听用户的输入事件以更新数据 可以用&amp;lt;style scoped&amp;gt;&amp;lt;/style&amp;gt;来声明样式只在本模板中起作用  To Be Continued…</description>
+    </item>
+    
+    <item>
+      <title>Vue组件</title>
+      <link>http://onlyhy.github.io/posts/2018-04-12-vue%E7%BB%84%E4%BB%B6/</link>
+      <pubDate>Thu, 12 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2018-04-12-vue%E7%BB%84%E4%BB%B6/</guid>
+      <description>读Vue.js官方文档组件部分所记
+组件（Component）     可以扩展HTML元素，封装可重用的代码。 有些情况下，也可表现为用is特性进行扩展的原生HTML元素。 Vue 组件同时也都是 Vue 的实例，所以可接受相同的选项对象 (除了一些根级特有的选项) 并提供相同的 生命周期钩子 （不懂含义，后期学习）  一、使用组件    1.1 全局注册    Vue.component(tagName,options)   tagName最优是遵循W3C规则（小写，包含一个短杠） 组件在实例模板中使用，要确保在初始化根实例之前注册组件  1.2 局部注册    可用某个Vue实例或组件的实例选项 components 注册仅在其作用域可用的组件
+var Child = { template: &#39;&amp;lt;div&amp;gt;A custom component!&amp;lt;/div&amp;gt;&#39; } new Vue({ // ... components: { // &amp;lt;my-component&amp;gt; 将只在父组件模板中可用 &#39;my-component&#39;: Child } })  1.3 DOM模板解析注意事项    DOM作为模板时，会受到HTML本身的限制，像&amp;lt;ul&amp;gt; &amp;lt;ol&amp;gt; &amp;lt;table&amp;gt;这种元素允许包含的内容有限制等，对于这些受限制的元素使用自定义组件有时会导致被当做无效内容等问题，可用is 特性解决。</description>
+    </item>
+    
+    <item>
+      <title>Truthy与True的不同</title>
+      <link>http://onlyhy.github.io/posts/2018-04-11-truthy%E4%B8%8Etrue/</link>
+      <pubDate>Wed, 11 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2018-04-11-truthy%E4%B8%8Etrue/</guid>
+      <description>黄黄说：“点点滴滴都是真”
+读Vue.js的官方文档，注意到了Truthy，记一下MDN的解释。
+Truthy（真值）    在JS中，Truthy指在Boolean（布尔型）上下文中转换后的值为真的值，布尔型是一种逻辑数据类型，只能有true或false值。
+除非被定义为falsy（false,0,&amp;quot;&amp;quot;,undefined,NaN）,否则所有值都为真值。
+JS中真值示例：
+if (true) if ({}) if ([]) if (42) if (&amp;quot;foo&amp;quot;) if (new Date()) if (-42) if (3.14) if (-3.14) if (Infinity) if (-Infinity)  To Be Continued…</description>
+    </item>
+    
+    <item>
+      <title>Git基础知识复习</title>
+      <link>http://onlyhy.github.io/posts/2018-04-03-gitreview/</link>
+      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2018-04-03-gitreview/</guid>
+      <description>黄黄说：“好记性不如烂笔头”
+复习廖雪峰老师的Git教程所记的笔记
+Git是分布式版本控制系统     git init 将当前目录变成Git可以管理的仓库，会多一个用来跟踪管理版本库的.git目录（默认隐藏，ls -ah可看） git add 将文件添加到仓库 git commit 将文件提交到仓库 commit可一次提交很多文件，即可多次add不同文件然后一起commit git status 掌握仓库动态 git diff 查看difference，查看修改内容，也可比较两个版本内容之间的不同 提交修改与提交新文件是相同的两个步骤 git log 查看历史记录（从最近到最远显示） git reflog 记录每一次命令，找到相对应的commit id 就能去相应的版本 git reset回退版本 HEAD 表示当前版本，HEAD^表示上一个版本，HEAD^^上上一个版本，依次类推往上100个则HEAD~100 也可通过版本号返回 git add其实就是把要commit的内容放到暂存区，每次修改内容，如果不add到暂存区，就不会加入到commit中 git checkout -- file 可以丢弃工作区的修改，让文件回到最近一次git commit 或 git add状态 改乱内容且添加到暂存区后，想丢弃修改则git reset HAED file 然后 git checkout -- file 改错东西且已提交到版本库则git reset 版本号，前提是未推送到远程 rm删除文件后， 若也要删版本库中文件则 git rm 文件 且 git commit， 而若是rm 文件后发现删错文件可git checkout -- 文件， 用版本库里的版本替换工作区版本（rm了之后并没有commit）。若版本库中也不包含这个文件了，则执行版本回退 git reset --head HEAD^ 或commit id  远程仓库    创建SSH Key ：</description>
+    </item>
+    
+    <item>
+      <title>NodeJS学习笔记</title>
+      <link>http://onlyhy.github.io/posts/2017-10-17-nodejs%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-10-17-nodejs%E7%AC%94%E8%AE%B0/</guid>
+      <description>1.Node中文文档 2.《我所认识的 Node —— Node 好在哪里？学习路径是怎样？》 3.《七天学会NodeJS》
+Node 简单可至使用命令交互模式调试JS代码片段，复杂可至编写工具提升工作效率。
+Node 并不是运营在服务器端的 JavaScript，而是在服务器端的 JavaScript runtime(运行环境)。
+Node 使用了事件驱动和非阻塞的 I/O 模型，使 Node 轻量高效，非常适合 I/O 密集的 Web 场景。
+基础    稍大的程序一般都会将代码模块化（大块拆小块），拆到不同JS文件中，每个文件是一个模块，模块名是文件路径。
+每个模块有三个预先定义好的变量：require,exports,module。
+模块    require    在当前模块中加载和使用别的模块，传入一个模块名，返回一个模块导出对象,模块名可使用相对路径（以./开头），或者是绝对路径（以/或C:之类的盘符开头），模块名中的.js扩展名可以省略，本方式也适用于JSON文件。
+var foo2 = require(&#39;./foo.js&#39;);  exports    当前模块的导出对象，用于导出模块公有方法和属性。
+ exports.hello = function () { console.log(&#39;Hello World!&#39;); };  module    访问到当前模块的一些相关信息，但最多的用途是替换当前模块的导出对象。
+module.exports = function () { console.log(&#39;Hello World!</description>
+    </item>
+    
+    <item>
+      <title>MUI上拉加载位置调整</title>
+      <link>http://onlyhy.github.io/posts/2017-09-27-mui%E4%B8%8A%E6%8B%89%E5%8A%A0%E8%BD%BD%E4%BD%8D%E7%BD%AE%E8%B0%83%E6%95%B4/</link>
+      <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-09-27-mui%E4%B8%8A%E6%8B%89%E5%8A%A0%E8%BD%BD%E4%BD%8D%E7%BD%AE%E8%B0%83%E6%95%B4/</guid>
+      <description>上拉加载文字与加载转圈的位置    因为底部的tab挡住了一点上拉加载的圈，想把字提高一点。
+坑啊，MUI文档的注释真的是一言难尽，为了把上拉加载的样式改一下，跳了很多坑，也是自己一开始没想对，
+把文字和加载的圈分开改样式了，其实是一个整体，只需要改一个样式就能改变位置。
+.mui-content .mui-pull-bottom-pocket  最好给样式加上*!important*
+我用的是webview加载每一个可左右拉动的选项卡，马上还会将底部的tab改为新出的native Tab (组长觉得好看就得加上 hhh) 中间会有一个突出的圆形类似按钮样式，因此还可以将每个子页面的mui-scroll高度调高一些，这样也不会挡住后面的内容。
+其实也没什么，只是想吐槽MUI的文档，嘻嘻嘻</description>
+    </item>
+    
+    <item>
+      <title>Echarts饼图标签</title>
+      <link>http://onlyhy.github.io/posts/2017-09-13-echarts%E9%A5%BC%E5%9B%BE%E6%A0%87%E7%AD%BE%E8%A7%86%E8%A7%89%E5%BC%95%E5%AF%BC%E7%BA%BF/</link>
+      <pubDate>Wed, 13 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-09-13-echarts%E9%A5%BC%E5%9B%BE%E6%A0%87%E7%AD%BE%E8%A7%86%E8%A7%89%E5%BC%95%E5%AF%BC%E7%BA%BF/</guid>
+      <description>饼图外部标签    做的APP里插入饼图后，外部的标签文字有些不能完全显示在屏幕中，看了官方文档没找到属性后差点放弃想要把标签放在图内，突然发现官方例子中有写到，真是开心。
+在series里面加上这个属性，控制标签的长度就好啦
+itemStyle : { normal : { label : { show : true }, labelLine : { show : true, length:5 } } }  </description>
+    </item>
+    
+    <item>
+      <title>PHP与AJAX</title>
+      <link>http://onlyhy.github.io/posts/2017-07-14-php%E4%B8%8Eajax/</link>
+      <pubDate>Fri, 14 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-07-14-php%E4%B8%8Eajax/</guid>
+      <description>AJAX    Asynchronous JavaScript and XML 无需重新加载整个网页的情况下，能够更新部分网页的技术
+技术     XMLHttpRequest 对象（与服务器异步交互数据） JavaScript/DOM（显示/取回信息） CSS（设置数据的样式） XML（常用作数据传输的格式）  AJAX 与 MySQL    实现一个网页通过 AJAX 从数据库读取信息
+HTML页面    &amp;lt;script&amp;gt; function showSite(str) { if (str==&amp;quot;&amp;quot;)//是否有网站被选择 { document.getElementById(&amp;quot;txtHint&amp;quot;).innerHTML=&amp;quot;&amp;quot;; return; } if (window.XMLHttpRequest)//创建XMLHttpRequest对象 { // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码 xmlhttp=new XMLHttpRequest(); } else { // IE6, IE5 浏览器执行代码 xmlhttp=new ActiveXObject(&amp;quot;Microsoft.XMLHTTP&amp;quot;); } xmlhttp.onreadystatechange=function()//服务器响应就绪时执行的函数 { if (xmlhttp.readyState==4 &amp;amp;&amp;amp; xmlhttp.</description>
+    </item>
+    
+    <item>
+      <title>PHP与MySQL</title>
+      <link>http://onlyhy.github.io/posts/2017-07-14-php%E4%B8%8Emysql/</link>
+      <pubDate>Fri, 14 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-07-14-php%E4%B8%8Emysql/</guid>
+      <description>连接MySQL     MySQLi extension 只针对MySQL数据库 PDO(PHP Data Objects) 能应用在12种不同数据库中  访问数据库前，先连接到数据库服务器
+如：（MySQLi-面向对象）
+&amp;lt;?php $servername = &amp;quot;localhost&amp;quot;; $username = &amp;quot;username&amp;quot;; $password = &amp;quot;password&amp;quot;; // 创建连接 $conn = new mysqli($servername, $username, $password); // 检测连接 if ($conn-&amp;gt;connect_error) { die(&amp;quot;连接失败: &amp;quot; . $conn-&amp;gt;connect_error); } echo &amp;quot;连接成功&amp;quot;; ?&amp;gt;  创建数据库    必须为 mysqli 对象指定三个参数 (servername, username 和 password)
+// 创建数据库 $sql = &amp;quot;CREATE DATABASE myDB&amp;quot;; if ($conn-&amp;gt;query($sql) === TRUE) { echo &amp;quot;数据库创建成功&amp;quot;; } else { echo &amp;quot;Error creating database: &amp;quot; .</description>
+    </item>
+    
+    <item>
+      <title>HTTP的GET与POST方法对比</title>
+      <link>http://onlyhy.github.io/posts/2017-07-13-get%E4%B8%8Epost%E5%AF%B9%E6%AF%94/</link>
+      <pubDate>Thu, 13 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-07-13-get%E4%B8%8Epost%E5%AF%B9%E6%AF%94/</guid>
+      <description>HTTP    超文本传输协议（HTTP）的设计目的是保证客户端与服务器之间的通信
+HTTP 的工作方式是客户端与服务器之间的请求-应答协议
+两种HTTP请求方法：GET和POST     GET - 从指定的资源请求数据 POST - 向指定的资源提交要被处理的数据  GET    查询字符串（名称/值对）是在 GET 请求的 URL 中发送的
+$.get(URL,callback);
+如：
+/test/demo_form.php?name1=value1&amp;amp;name2=value2
+ GET 请求可被缓存 GET 请求保留在浏览器历史记录中 GET 请求可被收藏为书签 GET 请求不应在处理敏感数据时使用如发送密码 GET 请求有长度限制 GET 请求只应当用于取回数据  POST    查询字符串（名称/值对）是在 POST 请求的 HTTP 消息主体中发送的
+$.post(URL,data,callback);
+如： POST /test/demo_form.php HTTP/1.1
+Host: w3cschool.cc
+name1=value1&amp;amp;name2=value2
+ POST 请求不会被缓存 POST 请求不会保留在浏览器历史记录中 POST 不能被收藏为书签 POST 请求对数据长度没有要求  </description>
+    </item>
+    
+    <item>
+      <title>BootStrap回顾随笔</title>
+      <link>http://onlyhy.github.io/posts/2017-07-12-bootstrap/</link>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-07-12-bootstrap/</guid>
+      <description>CDN    &amp;lt;&amp;ndash; 新 Bootstrap 核心 CSS 文件 &amp;ndash;&amp;gt; &amp;lt;link href=&amp;quot;https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
+&amp;lt;&amp;ndash; 可选的Bootstrap主题文件（一般不使用） &amp;ndash;&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;&amp;ndash; jQuery文件。务必在bootstrap.min.js 之前引入 &amp;ndash;&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;&amp;ndash; 最新的 Bootstrap 核心 JavaScript 文件 &amp;ndash;&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+container 与 container-fluid    /0-768px以上宽度container为100%/ .container { padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; } /768-992px以上宽度container为750px/ @media (min-width: 768px) { .container { width: 750px; } } /992-1200px以上宽度container为970px/ @media (min-width: 992px) { .container { width: 970px; } } /1200px以上宽度container为1170px/ @media (min-width: 1200px) { .</description>
+    </item>
+    
+    <item>
+      <title>jQuery回顾随笔</title>
+      <link>http://onlyhy.github.io/posts/2017-07-11-jquery/</link>
+      <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-07-11-jquery/</guid>
+      <description>叨叨    没用博客之前，看视频教程都是手写的笔记，嗨呀，虽然说好读书不如烂笔头，现在觉得写在博客上或者是一种更好的选择..回顾一下笔记就顺便写在博客上了
+百度CDN:https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js
+语法、样式、DOM、事件、动画    语法    选取 HTML 元素，并对选取的元素执行某些操作：$(selector).action()
+文档就绪后执行 jQuery 方法：
+$(document).ready(function(){ // 开始写 jQuery 代码... }); 简介版： $(function(){ // 开始写 jQuery 代码... });  jQuery方法包装后的对象，是一个类数组对象，与DOM对象完全不同，唯一相似是都能操作DOM，DOM对象是一个单独的DOM元素
+var $div = $(&#39;div&#39;);//jQuery对象 var div = $div[0];//转化为DOM对象，数组索引从0开始 var div = $div.get(0);//通过get()方法 div.style.color = &#39;red&#39;;操作DOM对象的属性  通过$(DOM)方法将DOM对象加工成为jQuery对象之后，调用jQuery方法
+样式篇    选择器    id选择器    $(&amp;quot;#id&amp;quot;) 唯一一个id
+类选择器    $(&amp;quot;.</description>
+    </item>
+    
+    <item>
+      <title>jQuery核心部分回顾随笔</title>
+      <link>http://onlyhy.github.io/posts/2017-07-11-jquery%E6%A0%B8%E5%BF%83/</link>
+      <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-07-11-jquery%E6%A0%B8%E5%BF%83/</guid>
+      <description>AJAX    load()    load() 方法从服务器加载数据，并把返回的数据放入被选元素中
+$(selector).load(URL,data,callback); 如：
+$(&amp;quot;#div1&amp;quot;).load(&amp;quot;demo_test.txt&amp;quot;);
+$(&amp;quot;#div1&amp;quot;).load(&amp;quot;demo_test.txt #p1&amp;quot;);
+callback规定了方法完成后要允许的回调函数，可设置不同的参数： responseTxt - 包含调用成功时的结果内容；statusTXT - 包含调用的状态；xhr - 包含 XMLHttpRequest 对象
+$(&amp;quot;button&amp;quot;).click(function(){ $(&amp;quot;#div1&amp;quot;).load(&amp;quot;demo_test.txt&amp;quot;,function(responseTxt,statusTxt,xhr){ if(statusTxt==&amp;quot;success&amp;quot;) alert(&amp;quot;外部内容加载成功!&amp;quot;); if(statusTxt==&amp;quot;error&amp;quot;) alert(&amp;quot;Error: &amp;quot;+xhr.status+&amp;quot;: &amp;quot;+xhr.statusText); }); });  get()/post()    用于通过 HTTP GET 或 POST 请求从服务器请求数据
+  GET ： 从指定的资源请求数据，基本上用于从服务器获得（取回）数据，可能返回缓存数据
+  POST ： 向指定的资源提交要处理的数据，也可用于从服务器获取数据，不会缓存数据，常用于连同请求一起发送数据。
+$.get(URL,callback);
+$(&amp;ldquo;button&amp;rdquo;).click(function(){ $.get(&amp;ldquo;demo_test.php&amp;rdquo;,function(data,status){ alert(&amp;ldquo;数据: &amp;quot; + data + &amp;ldquo;\n状态: &amp;quot; + status); }); });</description>
+    </item>
+    
+    <item>
+      <title>webpack手记</title>
+      <link>http://onlyhy.github.io/posts/2017-07-10-webpack/</link>
+      <pubDate>Mon, 10 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-07-10-webpack/</guid>
+      <description>一、常规    例：
+  index.html中有src链到bundle.js(最终打包生成的文件)
+  创建runoob1.js和runoob1.js
+  runoob1.js中require(./runoob2.js)
+  打包webpack runoob1.js bundle.js
+  最终index中先执行runoob1.js，其他模块在require时用到
+  二、LOADER:    Webpack 本身只能处理 JavaScript 模块，如果要处理其他类型的文件，就需要使用 loader 进行转换。
+要用css文件，需要使用css-loader和style-loader。
+css-loader:遍历css文件，找到url()表达式然后处理。
+style-loader：把原来的css代码插入到页面的一个style标签中。
+cnpm install css-loader style-loader -g 
+将会生成node_modules 目录，是 css-loader 和 style-loader 的安装目录。
+例：
+ 创建一个style.css文件 修改runoob1.js，添加语句：require(&amp;quot;!style-loader!css-loader!./style.css&amp;quot;); 打包 webpack runoob1.js bundle.js  *require CSS 文件的时候都要写 loader 前缀 !style-loader!css-loader!
+*可以根据模块类型（扩展名）来自动绑定需要的 loader：
+ 将runoob1.js中语句改为 require(&amp;quot;./style.css&amp;quot;) 打包</description>
+    </item>
+    
+    <item>
+      <title>关于MySQL（1）</title>
+      <link>http://onlyhy.github.io/posts/2017-06-20-mysql1/</link>
+      <pubDate>Tue, 20 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-20-mysql1/</guid>
+      <description>管理MySQL的命令 MySQL 连接 数据库 数据类型 数据表 数据 WHERE、UPDATE、DELETE、LIKE子句 UNION操作符 ORDER BY排序 Group by分组 JOIN连接的使用  NULL值处理 JSON  管理MySQL的命令    USE 数据库名    选择要操作的Mysql数据库
+mysql&amp;gt; use RUNOOB; Database changed  SHOW DATABASES    列出MySQL数据库管理系统的数据库列表
+SHOW TABLES    显示指定数据库的所有表，使用该命令前需要使用 use 命令来选择要操作的数据库
+SHOW COLUMNS FROM 数据表    显示数据表的属性，属性类型，主键信息 ，是否为 NULL，默认值等其他信息
+SHOW INDEX FROM 数据表    显示数据表的详细索引信息，包括PRIMARY KEY（主键）
+SHOW TABLE STATUS LIKE [FROM db_name] [LIKE &amp;lsquo;pattern&amp;rsquo;] \G    该命令将输出Mysql数据库管理系统的性能及统计信息</description>
+    </item>
+    
+    <item>
+      <title>关于MySQL（2）</title>
+      <link>http://onlyhy.github.io/posts/2017-06-20-mysql2/</link>
+      <pubDate>Tue, 20 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-20-mysql2/</guid>
+      <description>事务 ALTER命令 索引 临时表 复制表 元数据 序列使用 处理重复数据 SQL注入 导出导入数据  事务    用于处理操作量大，复杂度高的数据,只有使用了 Innodb 数据库引擎的数据库或表才支持事务,保证成批的 SQL 语句要么全部执行，要么全部不执行。 四个特性：
+ Atomicity（原子性）：一组事务，要么成功；要么撤回 Consistency（稳定性）：有非法数据（外键约束之类），事务撤回 Isolation（隔离性）：事务独立运行。一个事务处理后的结果，影响了其他事务，那么其他事务会撤回。事务的100%隔离，需要牺牲速度 Durability（可靠性）：软、硬件崩溃后，InnoDB数据表驱动会利用日志文件重构修改。可靠性和高速度不可兼得， innodb_flush_log_at_trx_commit 选项 决定什么时候把事务保存到日志里  事务控制语句     BEGIN或START TRANSACTION：显示地开启一个事务 COMMIT：也可以使用COMMIT WORK，二者等价，提交事务，并使已对数据库进行的所有修改称为永久性的 ROLLBACK：有可以使用ROLLBACK WORK，二者等价，回滚会结束用户的事务，并撤销正在进行的所有未提交的修改 SAVEPOINT identifier：SAVEPOINT允许在事务中创建一个保存点，一个事务中可以有多个SAVEPOINT RELEASE SAVEPOINT identifier：删除一个事务的保存点，当没有指定的保存点时，执行该语句会抛出一个异常 ROLLBACK TO identifier；把事务回滚到标记点 SET TRANSACTION：用来设置事务的隔离级别。InnoDB存储引擎提供事务的隔离级别有READ UNCOMMITTED、READ COMMITTED、REPEATABLE READ和SERIALIZABLE  事务处理    法一：用 BEGIN, ROLLBACK, COMMIT来实现 法二：直接用 SET 来改变 MySQL 的自动提交模式:SET AUTOCOMMIT=0 禁止自动提交，SET AUTOCOMMIT=1 开启自动提交。</description>
+    </item>
+    
+    <item>
+      <title>Sass回顾随笔</title>
+      <link>http://onlyhy.github.io/posts/2017-06-15-sass/</link>
+      <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-15-sass/</guid>
+      <description>叨叨    没用博客之前，看视频教程都是手写的笔记，嗨呀，虽然说好读书不如烂笔头，现在觉得写在博客上或者是一种更好的选择..回顾一下笔记就顺便写在博客上了
+Sass    sass -h 查看所有帮助    编译     单文件 sass input.scss output.css 单文件监听 sass --watch input.scss:output.css 监听整个目录 sass --watch app/sass:public/stylesheets  四种编译排版格式     嵌套输出：nested 展开输出：expanded 紧凑输出：compact 压缩输出：compressed  变量     $开头，如$width: 300px; 默认变量 加!default设置默认值，可在之前重新声明使用 局部变量：元素内部；全局变量：元素外部  嵌套    选择器嵌套    尽可能避免使用
+ nav{ a{ color:red; header &amp;amp;{ //&amp;amp;就代表 nav a color:green; } } }  属性嵌套    有些属性前缀相同，后缀不一样</description>
+    </item>
+    
+    <item>
+      <title>关于PHP(2)</title>
+      <link>http://onlyhy.github.io/posts/2017-06-13-php2/</link>
+      <pubDate>Tue, 13 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-13-php2/</guid>
+      <description>表单验证 多维数组 date()数组 包含文件 文件处理 文件上传 Cookie Session 邮件 安全邮件 错误处理 异常处理 过滤 JSON  表单验证     当处理 HTML 表单时，PHP 能把来自 HTML 页面中的表单元素自动变成可供 PHP 脚本使用。
+&amp;lt;form method=&amp;quot;post&amp;quot; action=&amp;quot;&amp;lt;?php echo htmlspecialchars($_SERVER[&amp;quot;PHP_SELF&amp;quot;]);?&amp;gt;&amp;quot;&amp;gt; //超级全局变量，返回当前正在执行脚本的文件名  htmlspecialchars()方法，htmlspecialchars() 函数把一些预定义的字符转换为 HTML 实体。能够避免$_SERVER[&amp;ldquo;PHP_SELF&amp;rdquo;] 被黑客利用，预定义的字符是：
+&amp;amp; （和号） 成为 &amp;amp;
+&amp;quot; （双引号） 成为 &amp;quot;
+&#39; （单引号） 成为 &#39;
+&amp;lt; （小于） 成为 &amp;lt; &amp;gt;（大于） 成为 &amp;gt;
+执行脚本时，可通过$_SERVER[&amp;ldquo;REQUEST_METHOD&amp;rdquo;]来检测表单是否被提交。
+必需字段    加入了一些新的变量: $nameErr, $emailErr, $genderErr, 和 $websiteErr.</description>
+    </item>
+    
+    <item>
+      <title>关于PHP(1)</title>
+      <link>http://onlyhy.github.io/posts/2017-06-12-php1/</link>
+      <pubDate>Mon, 12 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-12-php1/</guid>
+      <description>语法   变量   超级全局变量   echo和print语句    数据类型   常量   字符串变量   运算符   数组   数组排序   循环   函数   魔术变量   命名空间   面向对象   ### PHP(Hypertext Preprocessor)超文本预处理器 PHP文件包含文本、HTML、JS代码和PHP代码，在服务器上执行，以纯HTML形式返回给浏览器。 语法     PHP脚本可以放在文档中任何位置
+&amp;lt;?php // PHP 代码 ?&amp;gt;  每个代码行都必须以分号结束。
+两种在浏览器输出文本的基础指令：echo和print
+//单行注释 /**/多行注释
+变量     规则：</description>
+    </item>
+    
+    <item>
+      <title>关于AJAX</title>
+      <link>http://onlyhy.github.io/posts/2017-06-10-ajax/</link>
+      <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-10-ajax/</guid>
+      <description>AJAX （Asynchronous JavaScript and XML）异步的JavaScript和XML    无需重新加载整个网页的情况下，能够更新部分网页的技术。
+基于现有的Internet标准：
+ XMLHttpRequest 对象 (异步的与服务器交换数据) JavaScript/DOM (信息显示/交互) CSS (给数据定义样式) XML (作为转换数据的格式)  创建对象    创建XMLHttpRequest 对象，用于后台与服务器交换数据
+variable=new XMLHttpRequest(); //现代浏览器 variable=new ActiveXObject(&amp;quot;Microsoft.XMLHTTP&amp;quot;); //IE5、6  创建之前都要先检查
+var xmlhttp; if (window.XMLHttpRequest) { // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码 xmlhttp=new XMLHttpRequest(); } else { // IE6, IE5 浏览器执行代码 xmlhttp=new ActiveXObject(&amp;quot;Microsoft.XMLHTTP&amp;quot;); }  向服务器发送请求    使用 XMLHttpRequest 对象的 open() 和 send() 方法</description>
+    </item>
+    
+    <item>
+      <title>JavaScript一些点</title>
+      <link>http://onlyhy.github.io/posts/2017-06-08-js/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-08-js/</guid>
+      <description>输出    没有任何打印或者输出的函数
+显示数据     使用 window.alert() 弹出警告框。 使用 document.write() 方法将内容写到 HTML 文档中。 如果在文档加载完成后执行document.write，整个HTML页面会被覆盖 使用 innerHTML 写入到 HTML 元素。 使用 console.log() 写入到浏览器的控制台。浏览器F12启用调试模式，在调试窗口点击“Console”菜单  语法    字面量    一般固定值，数字字面量是整数、小数、科学技术（e），字符串字面量可用单引号或双引号，表达式字面量用于计算，数组字面量定义一个数组，对象字面量定义一个对象，函数字面量定义一个函数。
+变量    用于存储数据值，使用关键字var来定义变量，使用等号赋值。 重新声明变量，变量的值不会丢。 变量声明时如果不用var关键字，就是一个全局变量，即便在函数内定义。
+操作符    数字与字符串相加，返回字符串！！！
+  类型 实例  赋值，算数和位运算符 = + - * /  条件，比较及逻辑运算符 == != ===    === 绝对等于（值和类型均相等） #### 关键字 以字母、下划线（_）或美元符（$）开始，后续的字符可以是字母、数字、下划线或美元符 #### 注释 //双斜杠是单行注释 /**/是多行注释 #### 数据类型 5种数据类型：string,number,boolean,object,function 3种对象类型：Object,Date,Array 2个不包含任何值的数据类型：null,undefined 相同变量可做不同类型 var length = 16; // Number 通过数字字面量赋值 var points = x * 10; // Number 通过表达式字面量赋值 var lastName = &amp;quot;Johnson&amp;quot;; // String 通过字符串字面量赋值 var cars = [&amp;quot;Saab&amp;quot;, &amp;quot;Volvo&amp;quot;, &amp;quot;BMW&amp;quot;]; var cars=new Array(&amp;quot;Saab&amp;quot;, &amp;quot;Volvo&amp;quot;, &amp;quot;BMW&amp;quot;); var cars=new Array(); cars[0]=&amp;quot;Saab&amp;quot;; cars[1]=&amp;quot;Volvo&amp;quot;; cars[2]=&amp;quot;BMW&amp;quot;; // Array通过数组字面量赋值 var person = {firstName:&amp;quot;John&amp;quot;, lastName:&amp;quot;Doe&amp;quot;}; // Object 通过对象字面量赋值  大小写敏感    使用Unicode字符集    语句    用分号分隔，忽略多余的空格，在文本字符串中使用反斜杠对代码行进行换行</description>
+    </item>
+    
+    <item>
+      <title>菜鸟教程AngularJS2教程笔记（一）</title>
+      <link>http://onlyhy.github.io/posts/2017-06-06-angularjs21/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-06-angularjs21/</guid>
+      <description>前言    AngularJS2基于ES6开发，需要具备基础知识：HTML、CSS、JS、NPM、TypeScript
+God!!    AngularJS2.x和AngularJS1.x的区别类似Java和JavaScript的区别，惊不惊喜？意不意外？
+运行条件    ES5浏览器需要以下模块加载器：
+systemjs-通用模块加载器，es6-module-loader-ES6模块加载器，traceur-ES6转码器
+JS环境配置    创建配置文件    创建目录    $ mkdir angular-quickstart $ cd angular-quickstart  载入需要的库    推荐使用npm作为包管理工具，创建package.json,使用淘宝的npm镜像
+$ npm install -g cnpm --registry=https://registry.npm.taobao.org $ cnpm install  angular-quickstart目录下会生成一个node_modules目录，包含了需要的模块
+创建Angular组件    组件Component是应用的基础和核心，一个组件包装了一个特定的功能，组件之间协同工作以组装成一个完整的应用程序。
+一般，一个组件就是一个用于控制视图模板的JS类。 在angular-quickstart创建一个app的目录：
+$ mkdir app $ cd app  添加组件文件app.component.js
+(function(app) { app.AppComponent = ng.</description>
+    </item>
+    
+    <item>
+      <title>菜鸟教程AngularJS2教程笔记（三）</title>
+      <link>http://onlyhy.github.io/posts/2017-06-06-angularjs23/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-06-angularjs23/</guid>
+      <description>数据显示    将数据显示到用户界面，有三种方式：
+ 通过插值表达式显示组件的属性 通过 NgFor 显示数组型属性 通过 NgIf 实现按条件显示  一、通过插值表达式显示组件的属性    {{属性名}}
+import { Component } from &#39;@angular/core&#39;; @Component({ selector: &#39;my-app&#39;, template: ` &amp;lt;h1&amp;gt;{{title}}&amp;lt;/h1&amp;gt; &amp;lt;h2&amp;gt;我喜欢的网站: {{mySite}}&amp;lt;/h2&amp;gt; ` }) export class AppComponent { title = &#39;站点列表&#39;; mySite = &#39;菜鸟教程&#39;; }  模板是包在反引号（`）中的多行字符串，不是单引号！！！！！！
+二、通过 NgFor 显示数组型属性    @Component({ selector: &#39;my-app&#39;, template: ` &amp;lt;h1&amp;gt;{{title}}&amp;lt;/h1&amp;gt; &amp;lt;h2&amp;gt;我喜欢的网站: {{mySite}}&amp;lt;/h2&amp;gt; &amp;lt;p&amp;gt;网站列表:&amp;lt;/p&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li *ngFor=&amp;quot;let site of sites&amp;quot;&amp;gt;// ngFor 指令来显示 sites 列表中的每一个条目,不要忘记加*号！！ {{ site }} &amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; ` }) export class AppComponent { title = &#39;站点列表&#39;; sites = [&#39;菜鸟教程&#39;, &#39;Google&#39;, &#39;Taobao&#39;, &#39;Facebook&#39;]; mySite = this.</description>
+    </item>
+    
+    <item>
+      <title>菜鸟教程AngularJS2教程笔记（二）</title>
+      <link>http://onlyhy.github.io/posts/2017-06-06-angularjs22/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-06-angularjs22/</guid>
+      <description>架构
+8个部分：
+ 模块（Modules） 组件 (Components) 模板 (Templates) 元数据 (Metadata) 数据绑定 (Data Binding) 指令 (Directives) 服务 (Services) 依赖注入 (Dependency Injection)  一、模块 （MOdules）    模块用于执行一个简单的任务，Angular 应用是由模块化的，它有自己的模块系统：NgModules。每个 Angular 应该至少要有一个模块(根模块)，一般可以命名为：AppModule。
+Angular 模块是一个带有 @NgModule 装饰器的类，它接收一个用来描述模块属性的元数据对象。
+@NgModule的几个重要属性：
+ declarations：视图类属于这个模块，三种视图类：组件、指令、管道 exports：declaration的子集，可用于其它模块中的组件模板 imports：本模块组件模板中需要由其它导出类的模块 providers：服务的创建者 bootstrap：应用的主视图，根组件，只有根模块设置  引导根模块来启动应用，通常在main.ts 文件中来引导 AppModule
+import { platformBrowserDynamic } from &#39;@angular/platform-browser-dynamic&#39;;
+import { AppModule } from &#39;./app.module&#39;; platformBrowserDynamic().bootstrapModule(AppModule);
+二、组件 （Components）    组件是一个模板的控制类用于处理应用和逻辑页面的视图部分
+创建组件有三步：
+ 从 @angular/core 中引入 Component 修饰器 建立一个普通的类，并用 @Component 修饰它 在 @Component 中，设置 selector 自定义标签，以及 template 模板  三、模板（Templates）    模板的默认语言是HTML,通过模板定义组件的视图告诉Angualr怎么显示组件，简单讲就是用户能看到啥，默认使用双大括号作为插值语法，大括号中间的值通常是一个组件属性的变量名。 模板是包在反引号（`）中的多行字符串，不是单引号！！！！！！</description>
+    </item>
+    
+    <item>
+      <title>菜鸟教程AngularJS2教程笔记（四）</title>
+      <link>http://onlyhy.github.io/posts/2017-06-06-angularjs24/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-06-angularjs24/</guid>
+      <description>模板语法    模板简单讲就是用户能看到的东西。
+HTML    模板的语言，除了 script 元素是被禁用的外 ，其他 HTML 元素都是支持的。
+插值表达式    {{ &amp;hellip; }}，可以把计算的字符串插入HTML中，也可以作为属性值来使用。
+模板表达式    {{ &amp;hellip; }} 里头其实就是一个模板表达式，Angular 会对其进行求值并转化为字符串输出，可以使用getval()来获取这个表达式的值。
+模板表达式类似 JavaScript 的语言，但有些是禁止的
+ 赋值表达式（=，+=，-=&amp;hellip;） new操作符 带有;或者&amp;rsquo;的连接表达式 自增和自减操作（++和&amp;ndash;） 不支持位运算符（|和&amp;amp;） 模板表达式的操作符，如|和?.等，被赋予了新的含义  属性绑定    &amp;lt;img [src]=&amp;quot;imageUrl&amp;quot;&amp;gt;
+&amp;lt;button [disabled]=&amp;quot;isUnchanged&amp;quot;&amp;gt;按钮是禁用的&amp;lt;/button&amp;gt;
+&amp;lt;div [ngClass]=&amp;quot;classes&amp;quot;&amp;gt;[ngClass]绑定到classes 属性&amp;lt;/div&amp;gt; 
+user-detail [user]=&amp;quot;currentUser&amp;quot;&amp;gt;&amp;lt;/user-detail&amp;gt;&amp;lt;//自定义组件的属性（这是父子组件间通讯的重要途径）
+属性(Attribute)绑定    当元素没有属性可绑的时候，使用HTML标签属性(Attribute)绑定
+HTML标签特性绑定在语法上类似于属性绑定，但中括号中的部分不是一个元素的属性名，而是由一个attr.的前缀和HTML标签属性的名称组成.
+ &amp;lt;tr&amp;gt;&amp;lt;td [attr.colspan]=&amp;quot;1 + 1&amp;quot;&amp;gt;One-Two&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;  css类绑定    方括号中的部分不是一个元素的属性名，而是包括一个 class 前缀，紧跟着一个点 (.</description>
+    </item>
+    
+    <item>
+      <title>菜鸟教程AngularJS文档小结（1）</title>
+      <link>http://onlyhy.github.io/posts/2017-06-05-angularjs%E5%B0%8F%E7%BB%931/</link>
+      <pubDate>Mon, 05 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-05-angularjs%E5%B0%8F%E7%BB%931/</guid>
+      <description>叽里咕噜    哇，之前的笔记好写了多字哇 ，简单点，笔记的方式简单点
+参考手册    http://www.runoob.com/angularjs/angularjs-reference.html
+简介    扩展HTML    AngularJS 通过 ng-directives 扩展了 HTML。 ng-app 指令定义一个 AngularJS 应用程序。 ng-model 指令把元素值（比如输入域的值）绑定到应用程序。 ng-bind 指令把应用程序数据绑定到 HTML 视图。
+AngularJS是啥    AngularJS 把应用程序数据绑定到 HTML 元素。 AngularJS 可以克隆和重复 HTML 元素。 AngularJS 可以隐藏和显示 HTML 元素。 AngularJS 可以在 HTML 元素&amp;quot;背后&amp;quot;添加代码。 AngularJS 支持输入验证
+指令    是指以ng作为前缀的HTML属性。 H5允许扩展的属性以data-开头，AngularJS属性以ng-开头，ng-data-让网页对H5有效。
+表达式    使用表达式把数据绑定到HTML,与ng-bind有异曲同工之妙，写在双大括号内，很像JS表达式，可以包含文字、运算符、变量.
+应用    View(视图)，即HTML Model(模型)，当前视图中可用的数据 AngularJS 模块（Module） 定义了 AngularJS 应用。 一个网页可以包含多个运行在不同元素中的AngualrJS应用程序</description>
+    </item>
+    
+    <item>
+      <title>菜鸟教程AngularJS文档小结（2）</title>
+      <link>http://onlyhy.github.io/posts/2017-06-05-angularjs%E5%B0%8F%E7%BB%932/</link>
+      <pubDate>Mon, 05 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-05-angularjs%E5%B0%8F%E7%BB%932/</guid>
+      <description>参考手册    http://www.runoob.com/angularjs/angularjs-reference.html
+表单    是输入控件的集合，控件如input,select,button,textarea等。
+数据绑定    使用ng-model指令实现数据绑定
+&amp;lt;input type=&amp;quot;text&amp;quot; ng-model=&amp;quot;firstname&amp;quot;&amp;gt; var app = angular.module(&#39;myApp&#39;, []); app.controller(&#39;formCtrl&#39;, function($scope) { $scope.firstname = &amp;quot;John&amp;quot;; });  ng-model与复选框、单选框结合使用，
+输入验证    客户端和服务器端的验证都是必须的。
+表单属性novalidate用于禁用浏览器默认的验证
+&amp;lt;span style=&amp;quot;color:red&amp;quot; ng-show=&amp;quot;myForm.email.$dirty &amp;amp;&amp;amp; myForm.email.$invalid&amp;quot;&amp;gt; &amp;lt;span ng-show=&amp;quot;myForm.email.$error.required&amp;quot;&amp;gt;邮箱是必须的。&amp;lt;/span&amp;gt; &amp;lt;span ng-show=&amp;quot;myForm.email.$error.email&amp;quot;&amp;gt;非法的邮箱。&amp;lt;/span&amp;gt; &amp;lt;/span&amp;gt; &amp;lt;input type=&amp;quot;submit&amp;quot; ng-disabled=&amp;quot;myForm.user.$dirty &amp;amp;&amp;amp; myForm.user.$invalid || myForm.email.$dirty &amp;amp;&amp;amp; myForm.email.$invalid&amp;quot;&amp;gt;    属性 描述   $dirty 表单有填写记录   $valid 字段内容合法   $invalid 字段内容非法   $pristine 表单没有填写记录   API(Application Programming Interface应用程序编程接口)    常用于比较对象，迭代对象，转换对象</description>
+    </item>
+    
+    <item>
+      <title>AngularJS学习笔记（六）</title>
+      <link>http://onlyhy.github.io/posts/2017-06-04-angularjs6/</link>
+      <pubDate>Sun, 04 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-04-angularjs6/</guid>
+      <description>模板语法    模板中HTML    script元素被禁用，html,body,base元素无意义，剩下的元素基本一样用。
+插值表达式 （{{&amp;hellip;}}）    一般，括号间的素材是一个模板表达式，Angular先对它求值，再将其转换成字符串。
+模板表达式    产生一个值，将它赋给绑定目标的属性，如{{1+1}}的模板表达式就是1+1。
+所用语言看起来像JS，但有些是被禁止的，包括：
+ 赋值（=，+=，-=，&amp;hellip;） new运算符 使用;或,的链式表达式 自增或自减操作符 和JS语法显著不同： 不支持位运算 有新的模板表达式运算符  表达式上下文    典型的表达式上下文就是这个组件实例，是各种绑定值的来源。也可包括组件之外的对象，如模板输入量和模板引用变量。 表达式上下文变量是由模板变量、指令的上下文变量和组件的成员变量叠加而成。引用变量名时，模板变量最优先，其次是上下文变量，最后是组件的成员。
+模板表达式不能引用全局命名空间中的任何东西，只能引用表达式上下文中的成员。
+表达式指南     没有可见的副作用 执行迅速 非常简单 幂等性  没有可见的副作用    除了目标属性的值以外，不应该改变应用的任何状态。
+执行迅速    表达式应快速结束，计算代价较高时，应考虑缓存那些从其它值计算得出的值。
+非常简单    常规是属性名或方法调用，应在组件中实现应用和业务逻辑。
+幂等性    最好使用幂等的表达式，幂等表达式总是返回完全相同的东西，直到某个依赖值发生改变。
+模板语句    响应由绑定目标触发的事件，出现在=号右侧的引号中。 语言也像JS，但是它支持基本赋值（=）和表达式链（;和，）</description>
+    </item>
+    
+    <item>
+      <title>AngularJS学习笔记（五）</title>
+      <link>http://onlyhy.github.io/posts/2017-06-03-angularjs5/</link>
+      <pubDate>Sat, 03 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-03-angularjs5/</guid>
+      <description>依赖注入    依赖注入系统能够即时创建和交付所依赖的服务，是重要的程序设计模式，简称为DI(Dependency Injection)。 依赖注入是一种编程模式，让类从外部源中获得依赖，不必亲自创建它们。 Angular附带了自己的依赖注入框架，此框架也能被当做独立模块用于其它应用和框架中。
+配置注入器    自动创建了一个应用级注入器，必须通过注册提供商来配置注入器，提供商为应用创建所需服务。在NgModule中或者应用组件中注册提供商。
+在NgModule中注册提供商    在AppModule中的providers中注册，如：
+providers: [ UserService, { provide: APP_CONFIG, useValue: HERO_DI_CONFIG } ],  在组件中注册提供商    在HerosComponent中，注册到providers数组中。
+@Component({ selector: &#39;my-heroes&#39;, providers: [HeroService], template: ` &amp;lt;h2&amp;gt;Heroes&amp;lt;/h2&amp;gt; &amp;lt;hero-list&amp;gt;&amp;lt;/hero-list&amp;gt; ` })  不同位置注册的区别    在NgModule中时被注册到根注入器，可以被整个应用访问，而在应用组件中注册的只在该组件及其子组件中可用。
+为注入准备HeroListComponent    HeroListComponent 应该从注入的HeroService获取数据。组件必须在它的构造函数中请求这些服务。
+constructor(heroService: HeroService) { this.heroes = heroService.getHeroes(); }  隐式注入器的创建    单例服务    在一个注入器的范围内，依赖都是单例的。不过嵌套的注入器可以创建它们自己的服务实例。</description>
+    </item>
+    
+    <item>
+      <title>AngularJS学习笔记（四）</title>
+      <link>http://onlyhy.github.io/posts/2017-06-03-angularjs4/</link>
+      <pubDate>Sat, 03 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-03-angularjs4/</guid>
+      <description>###表单 表单协调一组数据绑定控件，跟踪变更，验证输入的有效性，显示错误信息。
+模板驱动的表单    本例必填字段在左侧有绿色的竖条用于分辨，醒目的红色样式显示验证错误等。
+ 创建Hero模型类 创建控制此表单的组件。 创建具有初始表单布局的模板。 使用ngModel双向数据绑定语法把数据属性绑定到每个表单输入控件。 往每个表单输入控件上添加name属性 (attribute)。 添加自定义 CSS 来提供视觉反馈。 显示和隐藏有效性验证的错误信息。 使用 ngSubmit 处理表单提交。 禁用此表单的提交按钮，直到表单变为有效。  搭建    创建Hero模型类    最简单的模型是个“属性包”，存放应用中一件事物的事实。
+export class Hero { constructor( public id: number, public name: string, public power: string, public alterEgo?: string //可选的属性 ) { } }  创建新英雄：
+let myHero = new Hero(42, &#39;SkyDog&#39;, &#39;Fetch any object at any distance&#39;, &#39;Leslie Rollover&#39;); console.</description>
+    </item>
+    
+    <item>
+      <title>AngularJS学习笔记（一）</title>
+      <link>http://onlyhy.github.io/posts/2017-06-02-angularjs1/</link>
+      <pubDate>Fri, 02 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-02-angularjs1/</guid>
+      <description>起步      设置开发环境
+安装node.js和npm，然后全局安装Angular CLI，执行npm install -g @angular/cli
+  创建新项目
+ng new my-app
+  启动开发服务器
+cd my-app
+ng serve --open
+  编辑组件
+CLI为我们创建了第一个Angular组件,它就是名叫app-root的根组件.在./src/app/app.component.ts目录下找到它。打开这个组件文件，可修改title属性，浏览器会自动刷新。
+打开 src/app/app.component.css 可以给这个组件设置一些样式.
+  开发环境    克隆或者下载《快速起步》种子
+架构    Angular 是一个用 HTML 和 JavaScript 或者一个可以编译成 JavaScript 的语言（例如 Dart 或者 TypeScript ），来构建客户端应用的框架。
+用 Angular 扩展语法编写 HTML 模板， 用组件类管理这些模板，用服务添加应用逻辑， 用模块打包发布组件与服务。
+然后，我们通过引导根模块来启动该应用。 Angular 在浏览器中接管、展现应用的内容，并根据我们提供的操作指令响应用户的交互。
+共8个主要构造块：模块 (module)，组件 (component)，模板 (template)，元数据 (metadata)，数据绑定 (data binding)，指令 (directive)，服务 (service)，依赖注入 (dependency injection)</description>
+    </item>
+    
+    <item>
+      <title>AngularJS学习笔记（三）</title>
+      <link>http://onlyhy.github.io/posts/2017-06-02-angularjs3/</link>
+      <pubDate>Fri, 02 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-02-angularjs3/</guid>
+      <description>用户输入    用户输入触发 DOM 事件。通过事件绑定来监听它们，把更新过的数据导入回我们的组件和 model。
+绑定到用户输入事件    要绑定 DOM 事件，只要把 DOM 事件的名字包裹在圆括号中，然后用放在引号中的模板语句对它赋值就可以。
+&amp;lt;button (click)=&amp;quot;onClickMe()&amp;quot;&amp;gt;Click me!&amp;lt;/button&amp;gt;  通过 $event 对象取得用户输入    $event对象的属性取决于 DOM 事件的类型,所有标准DOM事件对象都有一个target属性，引用触发该事件的元素。event.target.value返回该元素的当前内容。event.key可替代event.target.value，积累各个按键本身。
+$event是有类型的，如onkey(event:any){}或者onkey(event:keyboardEvent){}
+传入$event违反了模板（用户看到的）和组件（应用如何处理用户数据）之间的分离关注原则。
+从一个模板引用变量中获得用户输入    使用模板引用变量，这些变量提供了从模板中直接访问元素的能力，在标识符前加上井号（#）就能声明一个模板引用变量。
+@Component({ selector: &#39;loop-back&#39;, template: ` &amp;lt;input #box (keyup)=&amp;quot;0&amp;quot;&amp;gt; &amp;lt;p&amp;gt;{{box.value}}&amp;lt;/p&amp;gt; ` })  本例将keyup事件绑定到了数字0，只有在应用做了异步事件，Angular才更新绑定。
+按键事件过滤（key.enter）    可以检查每个$event.keyCode，更简单的是绑定到Angular的keyup.enter模拟事件，在用户按指定键时，才调用事件处理器。
+失去焦点事件（blur）    同时监听输入框的回车键和失去焦点事件。
+@Component({ selector: &#39;key-up4&#39;, template: ` &amp;lt;input #box (keyup.enter)=&amp;quot;update(box.value)&amp;quot; (blur)=&amp;quot;update(box.value)&amp;quot;&amp;gt; &amp;lt;p&amp;gt;{{value}}&amp;lt;/p&amp;gt; ` }) export class KeyUpComponent_v4 { value = &#39;&#39;; update(value: string) { this.</description>
+    </item>
+    
+    <item>
+      <title>AngularJS学习笔记（二）</title>
+      <link>http://onlyhy.github.io/posts/2017-06-02-angularjs2/</link>
+      <pubDate>Fri, 02 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-02-angularjs2/</guid>
+      <description>一、根模块    Angular 模块类描述应用的部件是如何组合在一起的。
+每个应用都至少有一个 Angular 模块，也就是根模块，用来引导并运行应用，常规名字为AppModule。
+@NgModule装饰器将AppModule标记为 Angular 模块类（也叫NgModule类）。 @NgModule接受一个元数据对象，告诉 Angular 如何编译和启动应用。
+import { NgModule } from &#39;@angular/core&#39;; import { BrowserModule } from &#39;@angular/platform-browser&#39;; import { AppComponent } from &#39;./app.component&#39;; @NgModule({ imports: [ BrowserModule ], declarations: [ AppComponent ], bootstrap: [ AppComponent ] }) export class AppModule { }  imports数组    当应用需要模块的特性时，将其添加到imports数组中，每个浏览器中运行的应用都需要@angular/platform-browser里的BrowserModule。 所以每个这样的应用都在其根AppModule的imports数组中包含BrowserModule。
+imports数组中应该只有NgModule类。不要放置其它类型的类。
+import语句与imports数组是完全不同的两个概念，import语句声明允许你访问在其他文件中导出的符号，imports数组是@NgModule元数据中独有的。
+declarations数组    告诉 Angular 哪个组件属于AppModule，必须在一个NgModule类声明每一个组件，否则报错。
+只有可以声明的 — 组件、指令和管道 — 属于declarations数组。 不要将其他类型的类添加到declarations中，例如NgModule类, 服务类，模型类。</description>
+    </item>
+    
+    <item>
+      <title>TypeScript基础知识</title>
+      <link>http://onlyhy.github.io/posts/2017-06-02-typescript/</link>
+      <pubDate>Fri, 02 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-02-typescript/</guid>
+      <description>简介    TypeScript是JS的一个超集（以下简称TS），扩展了JS的语法。因此现有的JS代码可与TS一起工作不用修改，TS通过类型注解提供编译时的静态类型检查。TS可处理已有的JS代码，并只对其中的TS代码进行编译。
+语法特性    类 Classes
+接口 Interfaces
+模块 Modules
+类型注解 Type annotations
+编译时类型检查 Compile time type checking
+Arrow 函数 (类似 C# 的 Lambda 表达式)
+安装    这里选用Node.js包管理器（npm）
+npm install -g typescript  安装完成后，可使用TS编译器，名称为tsc，可将编译结果生成js文件。
+编译TS文件，使用命令：
+tsc filename.ts  编译成功后，会在同意目录下生成一个同名js文件。
+类型批注    提供静态类型以在编译时启动类型检查，对于基本类型的批注是number,bool,string,弱或动态类型的结构是any类型。 类型批注可以被导出到一个单独的声明文件以让使用类型的已被编译为JavaScript的TypeScript脚本的类型信息可用。批注可以为一个现有的JavaScript库声明。
+当类型没有给出时，TypeScript编译器利用类型推断以推断类型。如果由于缺乏声明，没有类型可以被推断出，那么它就会默认为是动态的any类型。
+function area(shape: string, width: number, height: number) { var area = width * height; return &amp;quot;I&#39;m a &amp;quot; + shape + &amp;quot; with an area of &amp;quot; + area + &amp;quot; cm squared.</description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>http://onlyhy.github.io/posts/2017-06-01-git/</link>
+      <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-01-git/</guid>
+      <description>一、创建版本库    创建一个空目录
+$ mkdir learngit $ cd learngit $ pwd /Users/onlyhy/learngit  pwd用于显示当前目录
+通过 git init 初始化
+添加文件到Git仓库
+ git add &amp;lt;file&amp;gt; 可添加多个 git commit 完成  二、时光机穿梭    2.1版本回退    提交修改命令与提交新文件一样是两个步骤
+git status随时掌握工作区的状态
+git diff可查看文件修改的内容
+HEAD指向当前版本，HEAD^上一个版本，以此类推，简单化如HEAD~100
+使用命令git reset --hard commit_id在版本之中穿梭
+git log 查看提交历史，显示从最近到最远的提交日志，以确定要退回到哪个版本，加上--pretty=oneline参数后输出简洁点
+git reflog 查看命令历史，确定要回到未来的哪个版本
+2.2工作区和暂存区    git add 把要提交的所有修改放到暂存区（Stage）,git commit 一次性把暂存区的所有修改提交到分支。
+2.3管理修改    每次修改，如果不add到暂存区，那就不会加入到commit中
+2.4撤销修改    git checkout --file丢弃工作区中的修改 若不但改乱了文件还添加到了暂存区，想丢弃修改两个步骤</description>
+    </item>
+    
+    <item>
+      <title>NPM</title>
+      <link>http://onlyhy.github.io/posts/2017-06-01-npm/</link>
+      <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-01-npm/</guid>
+      <description>介绍    NPM是同NODEJS一起安装的包管理工具，常见场景：
+ 从NPM服务器下载别人编写的第三方包到本地使用 从NPM服务器下载并安装别人编写的命令行程序到本地使用 将自己编写的包或命令行程序上传到NPM服务器供别人使用  安装模块    npm安装Node.js模块
+npm install &amp;lt;Module Name&amp;gt;  如安装常用的web框架模块express
+npm install express //本地安装 npm install express -g //全局安装  安装后就在工程的node_modules目录中，只需要通过require(&#39;express&#39;)方式就好
+查看安装信息：
+npm list -g  查看某个模块的版本号：
+npm list grunt  使用package.json    位于模块的目录下，用于定义包的属性。 package.json属性说明：
+name - 包名。
+version - 包的版本号。
+description - 包的描述。
+homepage - 包的官网 url 。
+author - 包的作者姓名。
+contributors - 包的其他贡献者姓名。
+dependencies - 依赖包列表。如果依赖包没有安装，npm 会自动将依赖包安装在 node_module 目录下。</description>
     </item>
     
   </channel>

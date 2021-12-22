@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>React on oooonlyhy</title>
+    <link>http://onlyhy.github.io/categories/react/</link>
+    <description>Recent content in React on oooonlyhy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 12 Oct 2021 10:00:00 +0000</lastBuildDate><atom:link href="http://onlyhy.github.io/categories/react/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>React全家桶视频笔记</title>
+      <link>http://onlyhy.github.io/posts/2021-10-12-react%E5%85%A8%E5%AE%B6%E6%A1%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 12 Oct 2021 10:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-10-12-react%E5%85%A8%E5%AE%B6%E6%A1%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/</guid>
+      <description>视频
+基础     jsx的标签首字母：小写字母开头，转为html同名元素；大写字母开头，去渲染对应的组件 在jsx中写注释{/* */} 标签中是表达式时才用{}，表达式：会产生一个值，可放在任何需要值的地方 类继承的时候，在constructor()里必须要调用super()，且必须要放在最前面 类式组件必须继承React.Componet，必须要写render()，render必须要有返回值，render里的this是实例对象 state值是对象 state必须通过setState进行更新，且更新是合并，不是替换 类中直接写赋值语句，就是往类实例上添加属性并赋值 类简写：直接写赋值语句初始化状态，render()，自定义方法（用赋值语句+箭头函数） render中通过this.props拿到props static propTypes ={add:PropTypes.func.isRequired} 对标签传入的属性props进行类型、必要性的限制，注意propTypes的大小写 static defaultProps = {} 对标签传入的属性props指定默认值 如果要在constructor中使用this.props，就一定要接收props，并super(props) 函数式组件通过函数的参数接收props，但是propTypes和defaultProps得写在函数外面，Person.propTypes 字符串形式的ref(已经不推荐使用)，ref=“input1”，取ref的时候从this.refs上取，const {input1} = this.refs 回调函数形式的ref，ref={c =&amp;gt; this.input1 = c}，回调函数的参数就是ref所在的节点，这样取ref可以直接从this上取，不需要this.refs了 如果ref回调函数是内联的，则在更新时会执行两次：第一次传参是null，第二次是DOM元素；因为更新时创建新的实例会清空旧的ref建新的，将回调函数定义成class的绑定函数，即将回调写在实例上，照样能接受c参数，ref={this.showInfo}，这样可以避免，但是直接写内联也没啥影响，还是用内联 React.createRef()这种方式“专人专用”，myRef = React.createRef()，ref={this.myRef}，这时候会把节点直接存储在myRef里面，取的时候是this.myRef.current onXxx指定事件处理函数：React使用的是自定义（合成）事件，不是原生的，为了兼容性；事件使用了事件委托，为了高效 不要过度使用ref，事件处理函数里可以通过event.target里获取到对象 非受控组件：现用现取 受控组件：输入类的dom，值存在状态state里，等需要的时候再从state取，能够省略掉ref 高阶函数：A函数，接收的参数是一个函数；A函数，调用的返回值是一个函数；常见的：Promise、setTimeout、arr.map() 函数柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式 卸载组件：React.unmountComponentAtNode(document.getElementById(’test&#39;)) 生命周期（旧）：将要挂载componentWillMount(){}，挂载完毕componentDidMount(){}，控制组件是否更新，默认返回true：shouldComponentUpdate(){}，组件将要更新componentWillUpdate(){}，组件更新完毕componentDidUpdate(){}，将要卸载componentWillUnmount(){}，子组件将要接收props的钩子：componentWillReceiveProps(props){}第一次传的不会触发，后面再传props才会触发 生命周期（新）：名字带will的除了将要卸载的另外3个生命周期已经不推荐使用即将废弃（可在前面加UNSAFE_），提出了两个新的getDerivedStateFromProps和getSnapshotBeforeUpdate 不更改任何数据想要强制更新，调用this.forceUpdate()，会跳过shouldComponnetUpdate() getDerivedStateFromProps：入参是props，返回的值是给了state，只有在state的值在任何时候都取决于props时才用，了解即可，罕见 getSnapshotBeforeUpdate返回的值传给了componentDidUpdate(prevProps,prevState,snapshotValue)，使用概率也很低，用在滚动啥的 index作为key很危险，首先可能会产生没必要的真实DOM更新（逆序添加或删除等破坏顺序的操作）；如果结构中有输入类的DOM还会产生错误更新；（如果不是数据的逆序添加、删除等破坏顺序的行为，仅用于渲染列表展示，是可以用Index的，最好使用每条数据的唯一标识作为key） 在引入React的时候可以再引入一下{Component}，import React, {Componnet}from ‘react’，这样定义类组件的时候可以直接export default class App extends Component{} 样式模块化，样式文件命名为xxx.module.css，引入的时候可以import xxx from ‘./….’，使用样式的时候就xxx.title react脚手架配置代理：src下创建setupProxy.js文件，使用http-proxy-middleware包，进行代理配置 组件沟通：消息订阅与发布：使用pubsub-js包，PubSub.publish(‘xxx’, {数据})发布消息，通知订阅的组件；组件挂载后this.token = PubSub.</description>
+    </item>
+    
+  </channel>
+</rss>

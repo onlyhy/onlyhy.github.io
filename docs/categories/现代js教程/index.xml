@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>现代JS教程 on oooonlyhy</title>
+    <link>http://onlyhy.github.io/categories/%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B/</link>
+    <description>Recent content in 现代JS教程 on oooonlyhy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 22 Dec 2021 09:00:00 +0800</lastBuildDate><atom:link href="http://onlyhy.github.io/categories/%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>现代JS教程[第三部分（五）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-22-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%BA%94/</link>
+      <pubDate>Wed, 22 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-22-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%BA%94/</guid>
+      <description>Web components    从星球轨道的高度讲起    组件化架构 只有让复杂的事情简单化的架构才是好架构。 一个组件有：
+ 自己的 JavaScript 类。 DOM 结构，并且只由自己的类管理，无法被外部代码操作。（「封装」原则）。 CSS 样式，作用在这个组件上。 API：事件，类方法等等，让组件可以与其他组件交互。  浏览器已原生支持 Web Components：
+ Custom elements —— 用于自定义 HTML 元素. Shadow DOM —— 为组件创建内部 DOM，它对外部是不可见的。 CSS Scoping —— 申明仅应用于组件的 Shadow DOM 内的样式。 Event retargeting 以及更多的小东西，让自定义组件更适用于开发工作。  Custom elements    Custom elements 有两种：
+ Autonomous custom elements （自主自定义标签） —— “全新的” 元素, 继承自 HTMLElement 抽象类. Customized built-in elements （自定义内建元素） —— 继承内建的 HTML 元素，比如自定义 HTMLButtonElement 等，是已有元素的扩展。   Custom element 名称必须包括一个短横线 -，如 my-element 为了确保 custom element 和内建 HTML 元素之间不会发生命名冲突</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第三部分（四）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-21-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E5%9B%9B/</link>
+      <pubDate>Tue, 21 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-21-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E5%9B%9B/</guid>
+      <description>在浏览器中存储数据    Cookie，document.cookie    Cookie 通常是由 Web 服务器使用响应 Set-Cookie HTTP-header 设置的。然后浏览器使用 Cookie HTTP-header 将它们自动添加到（几乎）每个对相同域的请求中。
+document.cookie可以访问cookie：
+ 写入操作只会修改其中提到的 cookie，因为它是一个访问器（getter/setter） document.cookie 的值由 name=value 对组成，以 ; 分隔 name/value必须被 encodeURIComponent 编码 一个 cookie 最大为 4KB，每个网站最多有 20+ 个左右的 cookie（具体取决于浏览器）  Cookie选项，列在key=value后，以 ; 分割：
+ path=/，默认为当前路径，使 cookie 仅在该路径下可见。 domain=site.com，默认 cookie 仅在当前域下可见，如果显式设置了域，可以使 cookie 在子域下也可见。 expires 或 max-age 设置 cookie 过期时间，如果没有设置，则当浏览器关闭时 cookie 就失效了。  expires 必须完全采用 GMT 时区的格式，使用 date.toUTCString 来获取 max-age 指明 cookie 的过期时间距离当前时间的秒数   secure 使 cookie 仅在 HTTPS 下有效。 samesite，如果请求来自外部网站，禁止浏览器发送 cookie，这有助于防止 XSRF 攻击。  值为 strict (和没有值的samesite一样)，如果用户来自同一网站之外，则不会被发送。 值为 lax ，与strict相比增加了一个例外：满足两个条件即可发送：一是HTTP方法是“安全的”（如GET）；二是该操作执行顶级导航。    如果cookie 设置了 httpOnly，那么 document.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第三部分（三）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-20-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%B8%89/</link>
+      <pubDate>Mon, 20 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-20-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%B8%89/</guid>
+      <description>可恢复的文件上传    要恢复上传，需要 确切地 知道服务器接收的字节数。而且只有服务器能告诉我们，因此，要发出一个额外的请求。
+  创建一个文件id，标识要上传的文件： let fileId = file.name + &#39;-&#39; + file.size + &#39;-&#39; + +file.lastModifiedDate;
+  向服务器发送一个请求，询问该文件已经有了多少字节，将文件id放在X-File-Idheader中（假设服务器通过 X-File-Id header 跟踪文件上传，要在服务端实现）：
+  let response = await fetch(&amp;#39;status&amp;#39;, { headers: { &amp;#39;X-File-Id&amp;#39;: fileId } }); // 服务器已有的字节数(不存在该文件则服务器响应为0) let startByte = +await response.text(); 使用 Blob 和 slice 方法来发送从 startByte 开始的文件：  xhr.open(&amp;#34;POST&amp;#34;, &amp;#34;upload&amp;#34;, true); // 文件 id，以便服务器知道我们要恢复的是哪个文件 xhr.setRequestHeader(&amp;#39;X-File-Id&amp;#39;, fileId); // 发送我们要从哪个字节开始恢复，因此服务器知道我们正在恢复 xhr.setRequestHeader(&amp;#39;X-Start-Byte&amp;#39;, startByte); xhr.upload.onprogress = (e) =&amp;gt; { console.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第三部分（二）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-19-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%BA%8C/</link>
+      <pubDate>Sun, 19 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-19-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E4%BA%8C/</guid>
+      <description>网络请求    Fetch    典型的fetch请求：
+ let response = await fetch(url, [options]) // 解析 response header let result = await response.json(); // 将 body 读取为 json 或以Promise形式： fetch(url, options) .then(response =&amp;gt; response.json()) .then(result =&amp;gt; /* process result */)  响应的属性：
+  response.status —— response 的 HTTP 状态码， response.ok —— HTTP 状态码为 200-299，则为 true。 response.headers —— 类似于 Map 的带有 HTTP header 的对象。   获取response body：</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第三部分其他（一）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-17-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E5%85%B6%E4%BB%96%E4%B8%80/</link>
+      <pubDate>Fri, 17 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-17-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%E5%85%B6%E4%BB%96%E4%B8%80/</guid>
+      <description>Frame和window    弹窗和 window 的方法    阻止弹窗：如果弹窗是在用户触发的事件处理程序（如 onclick）之外调用的，大多数浏览器都会阻止此类弹窗。
+如果弹窗是从 onclick 打开的，但是在 setTimeout 之后，弹窗在 Chrome 中会被打开，但是在 Firefox 中会被阻止。（Firefox 可以接受 2000ms 或更短的延迟）。
+window.open(url, name, params)
+ open调用会返回对新窗口的引用，可以用来操纵属性，修改内容等。 弹窗也可以使用window.opener来访问opener窗口（打开弹窗的窗口）。 因此窗口之间的连接是双向的：主窗口和弹窗之间相互引用。  xxx.close()关闭一个弹窗 xxx.closed检查窗口是否被关闭
+focus/blur事件可以跟踪窗口的切换
+跨窗口通信    同源：协议、域、端口都相同 非同源：无法访问该窗口中的内容，唯一例外是可以修改location但是无法读取location
+iframe window：iframe.contentWindow document：iframe.contentDocument(iframe.contentWindow.document的简写)
+ 不要对尚未加载完成的 iframe 的文档进行处理，因为那是 错误的文档不同于加载到其中的文档。
+ 获取&amp;lt;iframe&amp;gt;的window对象：
+ 通过索引获取：window.frames[0] —— 文档中的第一个 iframe 的 window 对象。 通过名称获取：window.frames.iframeName —— 获取 name=&amp;ldquo;iframeName&amp;rdquo; 的 iframe 的 window 对象。  iframe可以嵌套，相应的window对象会形成一个层次结构</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第二部分（四）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-16-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E5%9B%9B/</link>
+      <pubDate>Thu, 16 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-16-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E5%9B%9B/</guid>
+      <description>表单，控件    文档中的表单是document.forms的成员，既可以使用名字，也可以使用在文档中的编号来获取表单。 document.forms.my- name=&amp;ldquo;my&amp;rdquo; 的表单 document.forms[0]- 文档中的第一个表单
+表单中的元素可以通过表单的elements属性获取，也可以通过form[index/name]来获取，如 form.elements.login 和 form.login。
+一个小问题：如果我们访问一个元素，然后修改它的 name，之后它仍然可以被通过旧的 name 访问到
+&amp;lt;fieldset&amp;gt;元素作为表单的”子表单“，它也有elements属性
+还可以反向引用：element.form访问元素对应的表单
+要使用textarea.value而不是textarea.innerHTML
+&amp;lt;select&amp;gt;：
+ select.options —— &amp;lt;option&amp;gt; 的子元素的集合 select.value —— 当前所选择的 &amp;lt;option&amp;gt; 的 value select.selectedIndex —— 当前所选择的 &amp;lt;option&amp;gt; 的编号  为&amp;lt;select&amp;gt;设置value的方式：
+ 找到对应的 &amp;lt;option&amp;gt; 元素，并将 option.selected 设置为 true。 将 select.value 设置为对应的 value。 将 select.selectedIndex 设置为对应 &amp;lt;option&amp;gt; 的编号  select具有multiple特性
+简短创建&amp;lt;option&amp;gt;元素：new Option(text, value, defaultSelected, selected)
+focus/blur事件    元素聚焦：focus，元素失焦：blur elem.onfocus = ()=&amp;gt;{}; elem.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第二部分（三）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-15-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E4%B8%89/</link>
+      <pubDate>Wed, 15 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-15-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E4%B8%89/</guid>
+      <description>事件简介    浏览器事件简介    3 种分配事件处理程序的方式：
+ HTML 特性（attribute）：onclick=&amp;quot;&amp;hellip;&amp;quot;。 DOM 属性（property）：elem.onclick = function。 方法（method）：elem.addEventListener(event, handler[, phase]) 用于添加，removeEventListener 用于移除。要移除处理程序需要存储对它的引用。  有些事件无法通过 DOM 属性进行分配。只能使用 addEventListener，比如DOMContentLoaded、transtionend element.addEventListener(event, handler[, options]); handler可以是函数或对象，如果是对象就会调用对象的handleEvent方法，这样可以在方法中根据event实现同一个对象处理多个事件等
+事件对象event：
+ event.type 事件类型 event.currentTarget 处理事件的元素 event.clientX / event.clientY 指针事件（pointer event）的指针的窗口相对坐标 &amp;hellip;  冒泡和捕获    冒泡：当一个事件发生在一个元素上，它会首先运行在该元素上的处理程序，然后运行其父元素上的处理程序，然后一直向上到其他祖先上的处理程序。（“几乎”所有事件都会冒泡）
+event.target与this(=event.currentTarget)的区别：
+ event.target —— 是引发事件的“目标”元素，它在冒泡过程中不会发生变化。 this —— 是“当前”元素，其中有一个当前正在运行的处理程序。  停止传播：
+ event.stopPropagation() 冒泡、捕获阶段都可以用 event.stopImmediatePropagation() 还能阻止当前元素上的处理程序运行  DOM事件标准描述了事件传播的3个阶段：
+ 捕获阶段 （Capturing phase）—— 事件（从 Window）向下走近元素。 目标阶段 （Target phase）—— 事件到达目标元素。 冒泡阶段 （Bubbling phase）—— 事件从元素上开始冒泡。  event.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第二部分（二）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-14-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E4%BA%8C/</link>
+      <pubDate>Tue, 14 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-14-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E4%BA%8C/</guid>
+      <description>修改文档（document）    document.createElement(tag) document.createTextNode(text) 作为文本插入：node.append/prepend/before/after/replaceWith 作为HTML代码插入：elem.insertAdjacentHTML(where, html) where：beforebegin、afterbegin、beforeend、afterend 作为文本插入：elem.insertAdjacentText(where, text) 插入元素：elem.insertAdjacentElement(where, elem) 移除节点：node.remove() 所有插入方法都会自动从旧位置删除该节点 elem.cloneNode(true/false) true：深克隆包括所有特性和子元素 false：不包括子元素 new DocumentFragment() 传递节点列表的包装器 document.write 调用只在页面加载时工作，如果加载完成后调用，那现有的文档内容会被擦除
+样式和类    className classList(add,remove,toggle,contains) style.cssText 完全重写样式 getComputedStyle(element,[pseudo伪元素]) 读取样式
+元素大小和滚动    offsetParent是最接近的祖先：
+ CSS 定位的（position 为 absolute，relative 或 fixed） 或 ，，， 或    offsetLeft/offsetTop 提供相对于 offsetParent 左上角的 x/y 坐标 offsetWidth/Height：完整大小（包括边框） 未显示的元素，offsetWidth/Height为0 clientTop/Left 内侧与外侧的相对坐标（如果滚动条在左边，clientLeft还包括滚动条的宽度） clientWidth/Height content+padding 不包括滚动条 scrollWidth/Height 类似clientWidth/Height但还包括滚动出（隐藏）的部分 scrollLeft/scrollTop 元素隐藏、滚动部分的width/height （就是已经滚动了多少）是可修改的，浏览器会滚动该元素  除了 scrollLeft/scrollTop 外，所有属性都是只读的</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第二部分浏览器（一）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-13-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%80/</link>
+      <pubDate>Mon, 13 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-13-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%80/</guid>
+      <description>浏览器
+Document     DOM 规范，描述文档的结构、操作和事件 CSSOM 规范，描述样式表和样式规则，对它们进行的操作，以及它们与文档的绑定 HTML 规范，描述 HTML 语言（例如标签）以及 BOM（浏览器对象模型）— 各种浏览器函数：setTimeout，alert，location 等。  DOM树     按照 DOM 规范，表格必须具有  ，但 HTML 文本却（官方的）忽略了它。然后浏览器在创建 DOM 时，自动地创建了  HTML 中的所有内容，甚至注释，都会成为 DOM 的一部分。 一共有 12 种节点类型，通常用到的是其中的 4 种：   document — DOM 的“入口点”。 元素节点 — HTML 标签，树构建块。 文本节点 — 包含文本。 注释 — 有时我们可以将一些信息放入其中，它不会显示，但 JS 可以从 DOM 中读取它。    控制台交互：   在元素(Elements)选项卡中选中一个元素，在控制台中通过 $0 对节点来进行操作，前一个选择的通过 $1 等 如果存在引用 DOM 节点的变量，可以在控制台中使用命令 inspect(node)，来在元素选项卡中查看它     遍历DOM       = document.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第一部分（五）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-08-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%BA%94/</link>
+      <pubDate>Wed, 08 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-08-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%BA%94/</guid>
+      <description>Promise,async/await    回调    Promise     new Promise(function(resolve, reject) {});，传递给 new Promise 的函数被称为 executor执行器。当 new Promise 被创建，executor 会自动运行。executor 应该执行一项工作（通常是需要花费一些时间的事儿），然后调用 resolve 或 reject 来改变对应的 promise 对象的状态 executor 只能调用一个 resolve 或一个 reject，其它的调用会被忽略 resolve/reject 只需要一个参数（或不包含任何参数），并且将忽略额外的参数 resolve/reject可以立即执行 建议以Error对象来reject .then 的第一个参数是一个函数，该函数将在 promise resolved 后运行并接收结果；.then 的第二个参数也是一个函数，该函数将在 promise rejected 后运行并接收 error。可以只提供一个参数表示只处理成功的情况 .catch(f) 调用是 .then(null, f) 的完全的模拟，只是简写形式 .finally(f) 总是在 promise 被 settled 时运行：即 promise 被 resolve 或 reject   finally 处理程序（handler）没有参数，不知道 promise 是否成功 finally 处理程序将 成功结果或 error 传递给下一个处理程序 Promise 的处理程序（handlers）.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第一部分（四）]</title>
+      <link>http://onlyhy.github.io/posts/2021-12-07-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E5%9B%9B/</link>
+      <pubDate>Tue, 07 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-12-07-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E5%9B%9B/</guid>
+      <description>类    class基本语法     new 会自动调用 constructor() 方法，因此我们可以在 constructor() 中初始化对象 类的方法之间没有逗号 在JS中，类是一种函数  class User { constructor(name) { this.name = name; } sayHi() { alert(this.name); } } // 佐证：User 是一个函数 alert(typeof User); // function  class User {&amp;hellip;} 构造实际上做了如下的事：
+ 创建一个名为 User 的函数，该函数成为类声明的结果。该函数的代码来自于 constructor 方法（如果我们不编写这种方法，那么它就被假定为空）。 存储类中的方法到prototype，例如 User.prototype 中的 sayHi。   class不仅是语法糖，与纯函数之间存在重大差异    通过 class 创建的函数具有特殊的内部属性标记 [[IsClassConstructor]]: true，与普通函数不同，class只能通过 new 来调用，大多数 JavaScript 引擎中的类构造器的字符串表示形式都以 “class…” 开头 类的方法不可枚举，类定义将 &amp;ldquo;prototype&amp;rdquo; 中的所有方法的 enumerable 标志设置为 false 类总是使用 use strict。 在类构造中的所有代码都将自动进入严格模式   类可以在表达式中被定义，类似于命名函数表达式，类表达式也可以有名字，该名字仅在类内部可见 类中可以包括getter/setter，计算属性名称[&amp;hellip;]等 class字段(field)：允许添加任何属性，会在每个独立对象上设置，而不是prototype上；类字段创建方法可以避免this的丢失问题click = () =&amp;gt; { alert(this.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第一部分（三）]</title>
+      <link>http://onlyhy.github.io/posts/2021-11-26-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%B8%89/</link>
+      <pubDate>Fri, 26 Nov 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-11-26-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%B8%89/</guid>
+      <description>函数进阶    递归和堆栈     递归表示从自身调用函数，即自调用 递归定义的数据结构是指可以使用自身来定义的数据结构，如链表 最大的嵌套调用次数（包括首次）被称为 递归深度，最大递归深度受限于 JavaScript 引擎。引擎在最大迭代深度为 10000 及以下时是可靠的  Rest参数和Spread语法    当在代码中看到 &amp;ldquo;&amp;hellip;&amp;rdquo; 时，要么是 Rest 参数，要么就是 Spread 语法   若 &amp;hellip; 出现在函数参数列表的最后，那么它就是 Rest 参数，它会把参数列表中剩余的参数收集到一个数组中 若 &amp;hellip; 出现在函数调用或类似的表达式中，那它就是 Spread 语法，它会把一个数组展开为列表
+ &amp;hellip;args将函数剩余参数收集到一个数组中，必须放在参数列表的末尾（旧式的arguments存储了函数所有参数，是一个类数组对象；箭头函数没有arguments对象，在箭头函数中访问到的arguments是属于箭头函数外部的普通函数的） Spread语法只适用于可迭代对象，不适用于类数组对象；Array.from 适用于类数组对象也适用于可迭代对象 Spread还可以用来浅拷贝let clone = { ...obj }，比Object.assign()写起来更简洁  变量作用域、闭包    JS中，每个运行的函数，代码块 {&amp;hellip;} 以及整个脚本，都有一个被称为 词法环境（Lexical Environment） 的内部（隐藏）的关联对象，词法环境包括：    环境记录（Environment Record） —— 一个存储所有局部变量作为其属性（包括一些其他信息，例如 this 的值）的对象。 对 外部词法环境 的引用，与外部代码相关联。   闭包 是指内部函数总是可以访问其所在的外部函数中声明的变量和参数，即使在其外部函数被返回（寿命终结）了之后。因为JavaScript 中的函数会自动通过隐藏的 [[Environment]] 属性记住创建它们的位置，所以它们都可以访问外部变量 词法环境仅在可达时会保留在内存中 实际开发中：如果从代码中可以明显看出有未使用的外部变量，那么就会将其删除，在V8（Chrome，Edge，Opera）中，此类变量在调试中将不可用；因此要注意，可能访问到的是外部的一个同名变量，而不是预期中的变量  var    var 声明的变量只有函数作用域和全局作用域，没有块级作用域 var允许重复声明 var声明会被提升（可以在声明语句前被调用），但是赋值不会（赋值始终在它出现的地方才起作用） IIFE(立即调用函数表达式)，可以模仿块级作用域  全局对象    浏览器：window；Node.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第一部分（二）]</title>
+      <link>http://onlyhy.github.io/posts/2021-11-25-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%BA%8C/</link>
+      <pubDate>Thu, 25 Nov 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-11-25-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%BA%8C/</guid>
+      <description>数据类型    原始类型     原始类型不是对象；不能存储数据；所有的属性/方法操作都是在临时对象的帮助下执行的。   如str.toUpperCase()
+ 字符串 str 是一个原始值。因此，在访问其属性时，会创建一个包含字符串字面值的特殊对象，并且具有有用的方法，例如 toUpperCase()。 该方法运行并返回一个新的字符串。 最终特殊对象被销毁，只留下原始值 str。   特殊的原始类型 null 和 undefined 是例外。它们没有对应的“对象包装器”，也没有提供任何方法。从某种意义上说，它们是“最原始的”。 num.toString(base) 返回在给定 base 进制数字系统中 num 的字符串表示形式  数字类型    直接在一个数字上调用方法时需要用两个点，如123456..toString(36)，或者(123456).toString(36)，因为 JavaScript 语法隐含了第一个点之后的部分为小数部分。如果我们再放一个点，那么 JavaScript 就知道小数部分为空，现在使用该方法 数字舍入:  Math.floor 向下舍入 Math.ceil 向上舍入 Math.round 向最近的整数舍入，0..4 会被舍去，而 5..9 会进一位 Math.trunc 移除小数点及其后所有内容没有舍入（ie不支持） 舍入到小数点后n位：   乘除法：比如乘以100调用舍入，再除回 toFixed(n)：舍入到最接近的值，若小数部分比较短则添加0以满足位数，注意返回的是一个字符串    6.35.toFixed(1)==6.3是因为6.35的小数部分是一个无限的二进制造成了精度损失，利用乘除法使6.35更接近整数   精度的缺失：0.1 + 0.</description>
+    </item>
+    
+    <item>
+      <title>现代JS教程[第一部分JS编程语言（一）]</title>
+      <link>http://onlyhy.github.io/posts/2021-11-22-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86js%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%80/</link>
+      <pubDate>Mon, 22 Nov 2021 14:47:25 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2021-11-22-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86js%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E4%B8%80/</guid>
+      <description>现代JS教程
+基础知识     Number(null) 结果为0；Number(undefined) 结果为NaN;Number(&#39;&#39;)结果为0;Number([])结果为0 Boolean(0)为false;而Boolean(&amp;ldquo;0&amp;rdquo;)和Boolean(&amp;quot; &amp;ldquo;)都是非空字符串都为true +号运算符 优先级表 一元运算符优先级高于二元运算符 一元运算符加号，如果运算元不是数字，加号会将其转化为数字,如+&amp;ldquo;&amp;ldquo;为0 +号也可用来连接字符串，如果任何一个操作数是一个字符串，那么另一个操作数也将被转换为字符串 &amp;quot; \t \n&amp;rdquo; - 2 = -2，字符串转为数字时，会忽略字符串首尾处的空格字符，这里包括\t,\n以及它们之间的空格 a**b 求幂运算 幂可以是非整数 如b为1/2就是求平方根 null == undefined，非严格模式下，它们仅仅等于对方而不等于其它任何的值 null&amp;gt;0为false,null==0为false,null&amp;gt;=0为true(相等性检查==和普通比较符&amp;gt; &amp;lt; &amp;gt;= &amp;lt;=逻辑相互独立；做普通比较时，null被转化为数字0，所以null&amp;gt;0为false,null&amp;gt;=0为true;而相等性检查，只存在null == undefined) 字符串的比较规则是逐个字符比较 对不同类型的值进行比较时，JavaScript 会首先将其转化为数字（number）再判定大小 一个或运算 || 的链，将返回第一个真值，如果不存在真值，就返回该链的最后一个值；如 undefined || null || 0 返回0 与运算&amp;amp;&amp;amp;返回第一个假值，如果没有假值就返回最后一个值 与运算 &amp;amp;&amp;amp; 的优先级比或运算 || 要高 两个非运算 !! 有时候用来将某个值转化为布尔类型 非运算符 ! 的优先级在所有逻辑运算符里面最高 空值合并运算符??，如果第一个参数不是 null/undefined，则 ?? 返回第一个参数。否则，返回第二个参数 ??和||的区别在于：|| 返回第一个 真 值，?? 返回第一个 已定义的 值。|| 无法区分 false、0、空字符串 &amp;quot;&amp;rdquo; 和 null/undefined，而?</description>
+    </item>
+    
+  </channel>
+</rss>

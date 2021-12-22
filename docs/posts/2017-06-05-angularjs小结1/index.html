@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="OnlyHy">
+    <meta name="description" content="叽里咕噜    哇，之前的笔记好写了多字哇 ，简单点，笔记的方式简单点
+参考手册    http://www.runoob.com/angularjs/angularjs-reference.html
+简介    扩展HTML    AngularJS 通过 ng-directives 扩展了 HTML。 ng-app 指令定义一个 AngularJS 应用程序。 ng-model 指令把元素值（比如输入域的值）绑定到应用程序。 ng-bind 指令把应用程序数据绑定到 HTML 视图。
+AngularJS是啥    AngularJS 把应用程序数据绑定到 HTML 元素。 AngularJS 可以克隆和重复 HTML 元素。 AngularJS 可以隐藏和显示 HTML 元素。 AngularJS 可以在 HTML 元素&quot;背后&quot;添加代码。 AngularJS 支持输入验证
+指令    是指以ng作为前缀的HTML属性。 H5允许扩展的属性以data-开头，AngularJS属性以ng-开头，ng-data-让网页对H5有效。
+表达式    使用表达式把数据绑定到HTML,与ng-bind有异曲同工之妙，写在双大括号内，很像JS表达式，可以包含文字、运算符、变量.
+应用    View(视图)，即HTML Model(模型)，当前视图中可用的数据 AngularJS 模块（Module） 定义了 AngularJS 应用。 一个网页可以包含多个运行在不同元素中的AngualrJS应用程序">
+    <meta name="keywords" content="onlyhy">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="菜鸟教程AngularJS文档小结（1）"/>
+<meta name="twitter:description" content="叽里咕噜    哇，之前的笔记好写了多字哇 ，简单点，笔记的方式简单点
+参考手册    http://www.runoob.com/angularjs/angularjs-reference.html
+简介    扩展HTML    AngularJS 通过 ng-directives 扩展了 HTML。 ng-app 指令定义一个 AngularJS 应用程序。 ng-model 指令把元素值（比如输入域的值）绑定到应用程序。 ng-bind 指令把应用程序数据绑定到 HTML 视图。
+AngularJS是啥    AngularJS 把应用程序数据绑定到 HTML 元素。 AngularJS 可以克隆和重复 HTML 元素。 AngularJS 可以隐藏和显示 HTML 元素。 AngularJS 可以在 HTML 元素&quot;背后&quot;添加代码。 AngularJS 支持输入验证
+指令    是指以ng作为前缀的HTML属性。 H5允许扩展的属性以data-开头，AngularJS属性以ng-开头，ng-data-让网页对H5有效。
+表达式    使用表达式把数据绑定到HTML,与ng-bind有异曲同工之妙，写在双大括号内，很像JS表达式，可以包含文字、运算符、变量.
+应用    View(视图)，即HTML Model(模型)，当前视图中可用的数据 AngularJS 模块（Module） 定义了 AngularJS 应用。 一个网页可以包含多个运行在不同元素中的AngualrJS应用程序"/>
+
+    <meta property="og:title" content="菜鸟教程AngularJS文档小结（1）" />
+<meta property="og:description" content="叽里咕噜    哇，之前的笔记好写了多字哇 ，简单点，笔记的方式简单点
+参考手册    http://www.runoob.com/angularjs/angularjs-reference.html
+简介    扩展HTML    AngularJS 通过 ng-directives 扩展了 HTML。 ng-app 指令定义一个 AngularJS 应用程序。 ng-model 指令把元素值（比如输入域的值）绑定到应用程序。 ng-bind 指令把应用程序数据绑定到 HTML 视图。
+AngularJS是啥    AngularJS 把应用程序数据绑定到 HTML 元素。 AngularJS 可以克隆和重复 HTML 元素。 AngularJS 可以隐藏和显示 HTML 元素。 AngularJS 可以在 HTML 元素&quot;背后&quot;添加代码。 AngularJS 支持输入验证
+指令    是指以ng作为前缀的HTML属性。 H5允许扩展的属性以data-开头，AngularJS属性以ng-开头，ng-data-让网页对H5有效。
+表达式    使用表达式把数据绑定到HTML,与ng-bind有异曲同工之妙，写在双大括号内，很像JS表达式，可以包含文字、运算符、变量.
+应用    View(视图)，即HTML Model(模型)，当前视图中可用的数据 AngularJS 模块（Module） 定义了 AngularJS 应用。 一个网页可以包含多个运行在不同元素中的AngualrJS应用程序" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://onlyhy.github.io/posts/2017-06-05-angularjs%E5%B0%8F%E7%BB%931/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-06-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-06-05T00:00:00+00:00" />
+
+
+
+    <title>
+  菜鸟教程AngularJS文档小结（1） · oooonlyhy
+</title>
+
+    
+      <link rel="canonical" href="http://onlyhy.github.io/posts/2017-06-05-angularjs%E5%B0%8F%E7%BB%931/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.91.0" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      oooonlyhy
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">首页</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">归档</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://onlyhy.github.io/posts/2017-06-05-angularjs%E5%B0%8F%E7%BB%931/">
+              菜鸟教程AngularJS文档小结（1）
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2017-06-05T00:00:00Z'>
+                June 5, 2017
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：4 分钟
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/onlyhy/">onlyhy</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/angularjs/">AngularJS</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <h4 id="叽里咕噜">
+  叽里咕噜
+  <a class="heading-link" href="#%e5%8f%bd%e9%87%8c%e5%92%95%e5%99%9c">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>哇，之前的笔记好写了多字哇 ，简单点，笔记的方式简单点</p>
+<h2 id="参考手册">
+  参考手册
+  <a class="heading-link" href="#%e5%8f%82%e8%80%83%e6%89%8b%e5%86%8c">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p><a><a href="http://www.runoob.com/angularjs/angularjs-reference.html">http://www.runoob.com/angularjs/angularjs-reference.html</a></a></p>
+<h3 id="简介">
+  简介
+  <a class="heading-link" href="#%e7%ae%80%e4%bb%8b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="扩展html">
+  扩展HTML
+  <a class="heading-link" href="#%e6%89%a9%e5%b1%95html">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>AngularJS 通过 ng-directives 扩展了 HTML。
+ng-app 指令定义一个 AngularJS 应用程序。
+ng-model 指令把元素值（比如输入域的值）绑定到应用程序。
+ng-bind 指令把应用程序数据绑定到 HTML 视图。</p>
+<h4 id="angularjs是啥">
+  AngularJS是啥
+  <a class="heading-link" href="#angularjs%e6%98%af%e5%95%a5">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>AngularJS 把应用程序数据绑定到 HTML 元素。
+AngularJS 可以克隆和重复 HTML 元素。
+AngularJS 可以隐藏和显示 HTML 元素。
+AngularJS 可以在 HTML 元素&quot;背后&quot;添加代码。
+AngularJS 支持输入验证</p>
+<h4 id="指令">
+  指令
+  <a class="heading-link" href="#%e6%8c%87%e4%bb%a4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>是指以ng作为前缀的HTML属性。
+H5允许扩展的属性以data-开头，AngularJS属性以ng-开头，ng-data-让网页对H5有效。</p>
+<h4 id="表达式">
+  表达式
+  <a class="heading-link" href="#%e8%a1%a8%e8%be%be%e5%bc%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>使用表达式把数据绑定到HTML,与ng-bind有异曲同工之妙，写在双大括号内，很像JS表达式，可以包含文字、运算符、变量.</p>
+<h4 id="应用">
+  应用
+  <a class="heading-link" href="#%e5%ba%94%e7%94%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>View(视图)，即HTML
+Model(模型)，当前视图中可用的数据
+AngularJS 模块（Module） 定义了 AngularJS 应用。
+一个网页可以包含多个运行在不同元素中的AngualrJS应用程序</p>
+<pre><code>var app = angular.module('myApp', []);
+</code></pre>
+<p>AngularJS 控制器（Controller） 用于控制 AngularJS 应用，可以添加或修改属性。</p>
+<pre><code>app.controller('myCtrl', function($scope) {
+$scope.firstName= &quot;John&quot;;
+$scope.lastName= &quot;Doe&quot;;
+});
+</code></pre>
+<p>ng-app指令定义了应用, ng-controller 定义了控制器。</p>
+<h3 id="表达式-1">
+  表达式
+  <a class="heading-link" href="#%e8%a1%a8%e8%be%be%e5%bc%8f-1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>AngularJS数字、字符串、对象、数组都与JS相似。<br>
+与JS表达式相比：</p>
+<ol>
+<li>可写在HTML中</li>
+<li>不支持条件判断，循环及异常</li>
+<li>支持过滤器</li>
+</ol>
+<h3 id="指令-1">
+  指令
+  <a class="heading-link" href="#%e6%8c%87%e4%bb%a4-1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>带有前缀ng-</p>
+<h4 id="ng-app-指令">
+  ng-app 指令
+  <a class="heading-link" href="#ng-app-%e6%8c%87%e4%bb%a4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>初始化一个 AngularJS 应用程序，定义了应用的根元素</p>
+<h4 id="ng-init-指令">
+  ng-init 指令
+  <a class="heading-link" href="#ng-init-%e6%8c%87%e4%bb%a4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>初始化应用程序数据</p>
+<h4 id="ng-model-指令">
+  ng-model 指令
+  <a class="heading-link" href="#ng-model-%e6%8c%87%e4%bb%a4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>用于表单元素，支持双向绑定，对普通元素无效</p>
+<pre><code>&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;myCtrl&quot;&gt;
+名字: &lt;input ng-model=&quot;name&quot;&gt;
+&lt;h1&gt;你输入了: {{name}}&lt;/h1&gt;
+&lt;/div&gt;  
+</code></pre>
+<p>把元素值（比如输入域的值）绑定到应用程序<br>
+为应用程序数据提供类型验证（number、email、required）。
+为应用程序数据提供状态（invalid、dirty、touched、error）。
+为 HTML 元素基于它们的状态提供 CSS 类。
+绑定 HTML 元素到 HTML 表单。
+可配合双大括号表达式进行数据绑定</p>
+<pre><code>&lt;div ng-app=&quot;&quot; ng-init=&quot;quantity=1;price=5&quot;&gt;
+&lt;h2&gt;价格计算器&lt;/h2&gt;
+数量： &lt;input type=&quot;number&quot;    ng-model=&quot;quantity&quot;&gt;
+价格： &lt;input type=&quot;number&quot; ng-model=&quot;price&quot;&gt;
+&lt;p&gt;&lt;b&gt;总价：&lt;/b&gt; {{ quantity * price }}&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="ng-bind-指令">
+  ng-bind 指令
+  <a class="heading-link" href="#ng-bind-%e6%8c%87%e4%bb%a4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>和双大括号同时使用时，ng-bind绑定的值覆盖该元素内容<br>
+用于普通元素，不能用于表单元素，应用单向地渲染数据到元素。</p>
+<h4 id="ng-repeat-指令">
+  ng-repeat 指令
+  <a class="heading-link" href="#ng-repeat-%e6%8c%87%e4%bb%a4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>ng-repeat指令，对于集合或数组中每个项克隆一次HTML元素</p>
+<pre><code>&lt;div ng-app=&quot;&quot; ng-init=&quot;names=['Jani','Hege','Kai']&quot;&gt;
+  &lt;p&gt;使用 ng-repeat 来循环数组&lt;/p&gt;
+  &lt;ul&gt;
+&lt;li ng-repeat=&quot;x in names&quot;&gt;
+  {{ x }}
+&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;  
+</code></pre>
+<h4 id="自定义指令">
+  自定义指令
+  <a class="heading-link" href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8c%87%e4%bb%a4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>用.directive函数添加自定义指令，在HTML元素上添加自定义指令名。
+使用驼峰法命名一个指令，但在使用它时需要以-分割。
+调用指令通过以下几种方式：元素，名，属性，类名，注释。</p>
+<pre><code>&lt;body ng-app=&quot;myApp&quot;&gt;
+&lt;runoob-directive&gt;&lt;/runoob-directive&gt;
+&lt;script&gt;
+var app = angular.module(&quot;myApp&quot;, []);
+app.directive(&quot;runoobDirective&quot;, function() {
+    return {
+        template : &quot;&lt;h1&gt;自定义指令!&lt;/h1&gt;&quot;
+    };
+});
+&lt;/script&gt;
+&lt;/body&gt;  
+</code></pre>
+<p>通过添加restrict属性，设置值，可限制指令调用的方式。
+E：元素，A：属性，C：类名，M：注释，默认是EA</p>
+<h3 id="作用域">
+  作用域
+  <a class="heading-link" href="#%e4%bd%9c%e7%94%a8%e5%9f%9f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>Scope是应用在HTML(视图)和JS(控制器)之间的纽带，是一个对象，有可用的方法和属性。</p>
+<h4 id="使用">
+  使用
+  <a class="heading-link" href="#%e4%bd%bf%e7%94%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>在创建控制器时，将$scope对象当做一个参数传递，这样HTML就可以获取属性。</p>
+<h4 id="作用范围">
+  作用范围
+  <a class="heading-link" href="#%e4%bd%9c%e7%94%a8%e8%8c%83%e5%9b%b4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>HTML DOM中会有多个作用域，需要知道scope对应的作用域。</p>
+<h4 id="根作用域">
+  根作用域
+  <a class="heading-link" href="#%e6%a0%b9%e4%bd%9c%e7%94%a8%e5%9f%9f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>所有应用都有一个$rootScope,可作用在ng-app指令包含的所有HTML元素中。
+用rootscope定义的值，可以在各个controller中使用。</p>
+<pre><code>&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;myCtrl&quot;&gt;
+&lt;h1&gt;{{lastname}} 家族成员:&lt;/h1&gt;
+&lt;ul&gt;
+    &lt;li ng-repeat=&quot;x in names&quot;&gt;{{x}} {{lastname}}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;script&gt;
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $rootScope) {
+    $scope.names = [&quot;Emil&quot;, &quot;Tobias&quot;, &quot;Linus&quot;];
+    $rootScope.lastname = &quot;Refsnes&quot;;
+});
+&lt;/script&gt;
+</code></pre>
+<h3 id="控制器">
+  控制器
+  <a class="heading-link" href="#%e6%8e%a7%e5%88%b6%e5%99%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>ng-controller指令定义了应用程序控制器，控制器是JS对象。</p>
+<pre><code>&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;personCtrl&quot;&gt;
+名: &lt;input type=&quot;text&quot; ng-model=&quot;firstName&quot;&gt;&lt;br&gt;
+姓: &lt;input type=&quot;text&quot; ng-model=&quot;lastName&quot;&gt;&lt;br&gt;
+&lt;br&gt;
+姓名: {{fullName()}}
+&lt;/div&gt;
+&lt;script&gt;
+var app = angular.module('myApp', []);
+app.controller('personCtrl', function($scope) {
+    $scope.firstName = &quot;John&quot;;
+    $scope.lastName = &quot;Doe&quot;;
+    $scope.fullName = function() {
+        return $scope.firstName + &quot; &quot; + $scope.lastName;
+    }
+});
+&lt;/script&gt;
+</code></pre>
+<h4 id="控制器方法">
+  控制器方法
+  <a class="heading-link" href="#%e6%8e%a7%e5%88%b6%e5%99%a8%e6%96%b9%e6%b3%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>控制器也可以有方法（变量和函数），见上例fullName()</p>
+<h4 id="外部文件中的控制器">
+  外部文件中的控制器
+  <a class="heading-link" href="#%e5%a4%96%e9%83%a8%e6%96%87%e4%bb%b6%e4%b8%ad%e7%9a%84%e6%8e%a7%e5%88%b6%e5%99%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>大型应用中，将控制器存储在外部文件中，将代码放在一个js外部文件中，用script标签链入。</p>
+<h3 id="过滤器">
+  过滤器
+  <a class="heading-link" href="#%e8%bf%87%e6%bb%a4%e5%99%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>使用管道字符添加到表达式和指令中。</p>
+   <table>
+   <tr>
+   <td>currency</td>
+   <td>格式化数字为货币格式</td>
+   </tr>
+   <tr>
+   <td>filter</td>
+   <td>从数组项中选择一个子集</td>
+   </tr>
+   <tr>
+   <td>number</td>
+   <td>格式化保留小数</td>
+   </tr>
+   <tr>
+   <td>orderBy</td>
+   <td>根据某个表达式排列数组</td>
+   </tr>
+   <tr>
+   <td>uppercase/lowercase</td>
+   <td>格式化字符串为大写/小写</td>
+   </tr>
+   <tr>
+   <td>date</td>
+   <td>格式化日期</td>
+   </tr>
+   <tr>
+   <td>limitTo</td>
+   <td>截取位数</td>
+   </tr>
+   </table>
+<h4 id="表达式中添加过滤器">
+  表达式中添加过滤器
+  <a class="heading-link" href="#%e8%a1%a8%e8%be%be%e5%bc%8f%e4%b8%ad%e6%b7%bb%e5%8a%a0%e8%bf%87%e6%bb%a4%e5%99%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;personCtrl&quot;&gt;
+&lt;p&gt;姓名为 {{ lastName | uppercase }}&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="向指令添加过滤器">
+  向指令添加过滤器
+  <a class="heading-link" href="#%e5%90%91%e6%8c%87%e4%bb%a4%e6%b7%bb%e5%8a%a0%e8%bf%87%e6%bb%a4%e5%99%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;namesCtrl&quot;&gt;
+&lt;ul&gt;
+  &lt;li ng-repeat=&quot;x in names | orderBy:'country'&quot;&gt;
+    {{ x.name + ', ' + x.country }}
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="过滤输入">
+  过滤输入
+  <a class="heading-link" href="#%e8%bf%87%e6%bb%a4%e8%be%93%e5%85%a5">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;namesCtrl&quot;&gt;
+&lt;p&gt;&lt;input type=&quot;text&quot; ng-model=&quot;test&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li ng-repeat=&quot;x in names | filter:test | orderBy:'country'&quot;&gt;
+    {{ (x.name | uppercase) + ', ' + x.country }}
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="自定义过滤器">
+  自定义过滤器
+  <a class="heading-link" href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e8%bf%87%e6%bb%a4%e5%99%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+$scope.msg = &quot;Runoob&quot;;
+});
+app.filter('reverse', function() { //可以注入依赖
+return function(text) {
+    return text.split(&quot;&quot;).reverse().join(&quot;&quot;);
+}
+});
+</code></pre>
+<h3 id="服务service">
+  服务（Service）
+  <a class="heading-link" href="#%e6%9c%8d%e5%8a%a1service">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>服务是一个函数或对象，AngularJS内建了30多个服务。<br>
+很多服务，在DOM中有对应的对象，使用服务的原因是，这些服务可以获取到应用声明周期的每一个阶段，并且和$watch整合，可以监控应用，处理事件变化。</p>
+<h4 id="location服务">
+  $location服务
+  <a class="heading-link" href="#location%e6%9c%8d%e5%8a%a1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>返回当前页面的URL地址</p>
+<h4 id="http服务">
+  $http服务
+  <a class="heading-link" href="#http%e6%9c%8d%e5%8a%a1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>向服务器发送请求，应用相应服务器传过来的数据。</p>
+<h4 id="timeout服务">
+  $timeout服务
+  <a class="heading-link" href="#timeout%e6%9c%8d%e5%8a%a1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>对应JS的window.setTimeout函数</p>
+<h4 id="interval服务">
+  interval服务
+  <a class="heading-link" href="#interval%e6%9c%8d%e5%8a%a1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>对应JS的window.setInterval函数</p>
+<h4 id="自定义服务">
+  自定义服务
+  <a class="heading-link" href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e6%9c%8d%e5%8a%a1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>要使用自定义服务，需要在定义控制器的时候独立添加，设置依赖关系</p>
+<pre><code>var app = angular.module('myApp', []);
+app.service('hexafy', function() {
+    this.myFunc = function (x) {
+        return x.toString(16);
+    }
+});
+app.controller('myCtrl', function($scope, hexafy) {
+  $scope.hex = hexafy.myFunc(255);
+});
+</code></pre>
+<h4 id="过滤器中使用服务">
+  过滤器中使用服务
+  <a class="heading-link" href="#%e8%bf%87%e6%bb%a4%e5%99%a8%e4%b8%ad%e4%bd%bf%e7%94%a8%e6%9c%8d%e5%8a%a1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>app.service('hexafy', function() {
+this.myFunc = function (x) {
+    return x.toString(16);
+}
+});
+app.filter('myFormat',['hexafy', function(hexafy) {
+    return function(x) {
+        return hexafy.myFunc(x);
+    };
+}]);
+</code></pre>
+<h3 id="xmlhttprequest">
+  XMLHttpRequest
+  <a class="heading-link" href="#xmlhttprequest">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>$http是一个核心服务，用于读取远程服务器的数据</p>
+<p>可读取JSON文件</p>
+<pre><code>app.controller('siteCtrl', function($scope, $http) {
+$http({
+    method: 'GET',
+    url: 'https://www.runoob.com/try/angularjs/data/sites.php'
+}).then(function successCallback(response) {
+        $scope.names = response.data.sites;
+    }, function errorCallback(response) {
+        // 请求失败执行代码
+});
+}) 
+</code></pre>
+<p>简写：</p>
+<pre><code>app.controller('siteCtrl', function($scope, $http) {
+ $http.get(&quot;http://www.runoob.com/try/angularjs/data/sites.php&quot;)
+.then(function (response) {$scope.names = response.data.sites;});
+});
+</code></pre>
+<p>简写方法：
+$http.get('/someUrl', config).then(successCallback, errorCallback);
+$http.post('/someUrl', data, config).then(successCallback, errorCallback);</p>
+<p>还有$http.head,$http.put,$http.delete,$http.jsonp,$http.patch</p>
+<h3 id="select选择框">
+  Select(选择框)
+  <a class="heading-link" href="#select%e9%80%89%e6%8b%a9%e6%a1%86">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>使用数组或对象创建一个下拉列表选项<br>
+使用ng-options创建一个下拉列表，列表项通过对象和数组循环输出。
+ng-repeat是通过数组来循环HTML代码来创建下拉列表，但ng-options更适合，ng-options选项是一个对象，可以获取更多信息，更灵活，ng-repeat是一个字符串，有局限性。</p>
+<h4 id="数组为数据源">
+  数组为数据源
+  <a class="heading-link" href="#%e6%95%b0%e7%bb%84%e4%b8%ba%e6%95%b0%e6%8d%ae%e6%ba%90">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>&lt;select ng-model=&quot;selectedSite&quot;&gt;
+&lt;option ng-repeat=&quot;x in sites&quot; value=&quot;{{x.url}}&quot;&gt;{{x.site}}&lt;/option&gt;
+&lt;/select&gt;
+&lt;h1&gt;你选择的是: {{selectedSite}}&lt;/h1&gt;
+
+&lt;select ng-model=&quot;selectedSite&quot; ng-options=&quot;x.site for x in sites&quot;&gt;
+&lt;/select&gt;
+h1&gt;你选择的是: {{selectedSite.site}}&lt;/h1&gt;
+&lt;p&gt;网址为: {{selectedSite.url}}&lt;/p&gt;
+</code></pre>
+<h4 id="数据对象为数据源">
+  数据对象为数据源
+  <a class="heading-link" href="#%e6%95%b0%e6%8d%ae%e5%af%b9%e8%b1%a1%e4%b8%ba%e6%95%b0%e6%8d%ae%e6%ba%90">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>$scope.sites = {
+site01 : &quot;Google&quot;,
+site02 : &quot;Runoob&quot;,
+site03 : &quot;Taobao&quot;
+};
+&lt;select ng-model=&quot;selectedSite&quot; ng-options=&quot;x for (x, y) in sites&quot;&gt;&lt;/select&gt; //x为键(key)，y为值(value)
+&lt;h1&gt;你选择的值是: {{selectedSite}}&lt;/h1&gt;  
+</code></pre>
+<h3 id="表格">
+  表格
+  <a class="heading-link" href="#%e8%a1%a8%e6%a0%bc">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>ng-repeat指令显示表格</p>
+<pre><code>div ng-app=&quot;myApp&quot; ng-controller=&quot;customersCtrl&quot;&gt; 
+&lt;table&gt;
+  &lt;tr ng-repeat=&quot;x in names&quot;&gt;
+    &lt;td&gt;{{ x.Name }}&lt;/td&gt;
+    &lt;td&gt;{{ x.Country }}&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;script&gt;
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $http) {
+    $http.get(&quot;/try/angularjs/data/Customers_JSON.php&quot;)
+    .then(function (result) {
+        $scope.names = result.data.records;
+    });
+});
+&lt;/script&gt; 
+</code></pre>
+<p>表格显示序号可以在td中添加$index</p>
+<pre><code>&lt;td&gt;{{ $index + 1 }}&lt;/td&gt;   
+</code></pre>
+<p>使用$even和$odd</p>
+<pre><code>&lt;table&gt;
+&lt;tr ng-repeat=&quot;x in names&quot;&gt;
+&lt;td ng-if=&quot;$odd&quot; style=&quot;background-color:#f1f1f1&quot;&gt;{{ x.Name }}&lt;/td&gt;
+&lt;td ng-if=&quot;$even&quot;&gt;{{ x.Name }}&lt;/td&gt;
+&lt;td ng-if=&quot;$odd&quot; style=&quot;background-color:#f1f1f1&quot;&gt;{{ x.Country }}&lt;/td&gt;
+&lt;td ng-if=&quot;$even&quot;&gt;{{ x.Country }}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<h3 id="跨域http请求">
+  跨域HTTP请求
+  <a class="heading-link" href="#%e8%b7%a8%e5%9f%9fhttp%e8%af%b7%e6%b1%82">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>如PHP代码运行使用的</p>
+<pre><code>header(&quot;Access-Control-Allow-Origin: *&quot;);
+</code></pre>
+<h3 id="html-dom">
+  HTML DOM
+  <a class="heading-link" href="#html-dom">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>为HTML DOM元素的属性提供了绑定应用数据的指令</p>
+<h4 id="ng-disabled指令">
+  ng-disabled指令
+  <a class="heading-link" href="#ng-disabled%e6%8c%87%e4%bb%a4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>直接绑定应用程序数据到HTML的disabled属性</p>
+<pre><code>&lt;div ng-app=&quot;&quot; ng-init=&quot;mySwitch=true&quot;&gt;
+&lt;p&gt;
+&lt;button ng-disabled=&quot;mySwitch&quot;&gt;点我!&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;input type=&quot;checkbox&quot; ng-model=&quot;mySwitch&quot;&gt;按钮  //mySwitch为true时按钮不可用
+&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="ng-showng-hide指令">
+  ng-show，ng-hide指令
+  <a class="heading-link" href="#ng-showng-hide%e6%8c%87%e4%bb%a4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>隐藏或显示一个HTML元素，根据value值</p>
+<h3 id="事件">
+  事件
+  <a class="heading-link" href="#%e4%ba%8b%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="ng-click指令">
+  ng-click指令
+  <a class="heading-link" href="#ng-click%e6%8c%87%e4%bb%a4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>&lt;div ng-app=&quot;&quot; ng-controller=&quot;myCtrl&quot;&gt;
+&lt;button ng-click=&quot;count = count + 1&quot;&gt;点我！&lt;/button&gt;
+&lt;p&gt;{{ count }}&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="模块">
+  模块
+  <a class="heading-link" href="#%e6%a8%a1%e5%9d%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="创建模块">
+  创建模块
+  <a class="heading-link" href="#%e5%88%9b%e5%bb%ba%e6%a8%a1%e5%9d%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>angular.module函数来创建模块<br>
+<div ng-app="myApp">&hellip;</div>
+<script>
+var app = angular.module(&ldquo;myApp&rdquo;, []);
+</script></p>
+<h4 id="添加控制器">
+  添加控制器
+  <a class="heading-link" href="#%e6%b7%bb%e5%8a%a0%e6%8e%a7%e5%88%b6%e5%99%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>ng-controller指令来添加应用的控制器</p>
+<pre><code>&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;myCtrl&quot;&gt;
+{{ firstName + &quot; &quot; + lastName }}
+&lt;/div&gt;
+&lt;script&gt;
+var app = angular.module(&quot;myApp&quot;, []);
+app.controller(&quot;myCtrl&quot;, function($scope) {
+    $scope.firstName = &quot;John&quot;;
+    $scope.lastName = &quot;Doe&quot;;
+});
+&lt;/script&gt;
+</code></pre>
+<h4 id="模块和控制器包含在js文件中">
+  模块和控制器包含在JS文件中
+  <a class="heading-link" href="#%e6%a8%a1%e5%9d%97%e5%92%8c%e6%8e%a7%e5%88%b6%e5%99%a8%e5%8c%85%e5%90%ab%e5%9c%a8js%e6%96%87%e4%bb%b6%e4%b8%ad">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>var app = angular.module(&quot;myApp&quot;, []);
+</code></pre>
+<p>模块定义中[]参数用于定义模块的依赖关系，有依赖的话在中括号中写上依赖的模块名字。</p>
+<h4 id="载入库">
+  载入库
+  <a class="heading-link" href="#%e8%bd%bd%e5%85%a5%e5%ba%93">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>所有AngularJS库都在HTML文档的头部载入，因为对module的调用只能在库加载完成后才能运行。若在body中加载库，一定要放在脚本前面。</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2017 -
+    
+    2021
+     OnlyHy 
+    ·
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

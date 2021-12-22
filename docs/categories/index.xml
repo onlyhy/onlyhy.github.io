@@ -5,6 +5,160 @@
     <link>http://onlyhy.github.io/categories/</link>
     <description>Recent content in Categories on oooonlyhy</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language><atom:link href="http://onlyhy.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 22 Dec 2021 09:00:00 +0800</lastBuildDate><atom:link href="http://onlyhy.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>现代JS教程</title>
+      <link>http://onlyhy.github.io/categories/%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Wed, 22 Dec 2021 09:00:00 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>React</title>
+      <link>http://onlyhy.github.io/categories/react/</link>
+      <pubDate>Tue, 12 Oct 2021 10:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/react/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BootStrap</title>
+      <link>http://onlyhy.github.io/categories/bootstrap/</link>
+      <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/bootstrap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vue</title>
+      <link>http://onlyhy.github.io/categories/vue/</link>
+      <pubDate>Tue, 17 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/vue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>http://onlyhy.github.io/categories/javascript/</link>
+      <pubDate>Wed, 11 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>http://onlyhy.github.io/categories/git/</link>
+      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NodeJS</title>
+      <link>http://onlyhy.github.io/categories/nodejs/</link>
+      <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/nodejs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>解决问题</title>
+      <link>http://onlyhy.github.io/categories/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 27 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PHP</title>
+      <link>http://onlyhy.github.io/categories/php/</link>
+      <pubDate>Fri, 14 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HTTP</title>
+      <link>http://onlyhy.github.io/categories/http/</link>
+      <pubDate>Thu, 13 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/http/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Webpack</title>
+      <link>http://onlyhy.github.io/categories/webpack/</link>
+      <pubDate>Mon, 10 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/webpack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MySQL</title>
+      <link>http://onlyhy.github.io/categories/mysql/</link>
+      <pubDate>Tue, 20 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CSS</title>
+      <link>http://onlyhy.github.io/categories/css/</link>
+      <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AJAX</title>
+      <link>http://onlyhy.github.io/categories/ajax/</link>
+      <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/ajax/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AngularJS</title>
+      <link>http://onlyhy.github.io/categories/angularjs/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/angularjs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TypeScript</title>
+      <link>http://onlyhy.github.io/categories/typescript/</link>
+      <pubDate>Fri, 02 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/typescript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>基础知识</title>
+      <link>http://onlyhy.github.io/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
