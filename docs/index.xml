@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>oooonlyhy</title>
+    <link>http://onlyhy.github.io/</link>
+    <description>Recent content on oooonlyhy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="http://onlyhy.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于我</title>
+      <link>http://onlyhy.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/about/</guid>
+      <description>嗨 👋 你好 ~
+我是一名95年的巨蟹座女生，来自江苏扬州 🌸。
+2017年在南京参加工作，2020年来到浙江杭州，目前定居杭州，从事前端开发的工作。
+为了35岁之前能养一条🐶而期待着未来。
+希望40岁能够开一家社区堂食温馨小店😊。
+欢迎随时通过首页的所有链接与我联系 🙋‍♀️。
+祝 身体健康，万事胜意。</description>
+    </item>
+    
+  </channel>
+</rss>
