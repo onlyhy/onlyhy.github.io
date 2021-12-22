@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="OnlyHy">
+    <meta name="description" content="叨叨    没用博客之前，看视频教程都是手写的笔记，嗨呀，虽然说好读书不如烂笔头，现在觉得写在博客上或者是一种更好的选择..回顾一下笔记就顺便写在博客上了
+Sass    sass -h 查看所有帮助    编译     单文件 sass input.scss output.css 单文件监听 sass --watch input.scss:output.css 监听整个目录 sass --watch app/sass:public/stylesheets  四种编译排版格式     嵌套输出：nested 展开输出：expanded 紧凑输出：compact 压缩输出：compressed  变量     $开头，如$width: 300px; 默认变量 加!default设置默认值，可在之前重新声明使用 局部变量：元素内部；全局变量：元素外部  嵌套    选择器嵌套    尽可能避免使用
+ nav{ a{ color:red; header &amp;{ //&amp;就代表 nav a color:green; } } }  属性嵌套    有些属性前缀相同，后缀不一样">
+    <meta name="keywords" content="onlyhy">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Sass回顾随笔"/>
+<meta name="twitter:description" content="叨叨    没用博客之前，看视频教程都是手写的笔记，嗨呀，虽然说好读书不如烂笔头，现在觉得写在博客上或者是一种更好的选择..回顾一下笔记就顺便写在博客上了
+Sass    sass -h 查看所有帮助    编译     单文件 sass input.scss output.css 单文件监听 sass --watch input.scss:output.css 监听整个目录 sass --watch app/sass:public/stylesheets  四种编译排版格式     嵌套输出：nested 展开输出：expanded 紧凑输出：compact 压缩输出：compressed  变量     $开头，如$width: 300px; 默认变量 加!default设置默认值，可在之前重新声明使用 局部变量：元素内部；全局变量：元素外部  嵌套    选择器嵌套    尽可能避免使用
+ nav{ a{ color:red; header &amp;{ //&amp;就代表 nav a color:green; } } }  属性嵌套    有些属性前缀相同，后缀不一样"/>
+
+    <meta property="og:title" content="Sass回顾随笔" />
+<meta property="og:description" content="叨叨    没用博客之前，看视频教程都是手写的笔记，嗨呀，虽然说好读书不如烂笔头，现在觉得写在博客上或者是一种更好的选择..回顾一下笔记就顺便写在博客上了
+Sass    sass -h 查看所有帮助    编译     单文件 sass input.scss output.css 单文件监听 sass --watch input.scss:output.css 监听整个目录 sass --watch app/sass:public/stylesheets  四种编译排版格式     嵌套输出：nested 展开输出：expanded 紧凑输出：compact 压缩输出：compressed  变量     $开头，如$width: 300px; 默认变量 加!default设置默认值，可在之前重新声明使用 局部变量：元素内部；全局变量：元素外部  嵌套    选择器嵌套    尽可能避免使用
+ nav{ a{ color:red; header &amp;{ //&amp;就代表 nav a color:green; } } }  属性嵌套    有些属性前缀相同，后缀不一样" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://onlyhy.github.io/posts/2017-06-15-sass/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-06-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-06-15T00:00:00+00:00" />
+
+
+
+    <title>
+  Sass回顾随笔 · oooonlyhy
+</title>
+
+    
+      <link rel="canonical" href="http://onlyhy.github.io/posts/2017-06-15-sass/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.91.0" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      oooonlyhy
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">首页</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">归档</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://onlyhy.github.io/posts/2017-06-15-sass/">
+              Sass回顾随笔
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2017-06-15T00:00:00Z'>
+                June 15, 2017
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：2 分钟
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/onlyhy/">onlyhy</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/css/">CSS</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="叨叨">
+  叨叨
+  <a class="heading-link" href="#%e5%8f%a8%e5%8f%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>没用博客之前，看视频教程都是手写的笔记，嗨呀，虽然说好读书不如烂笔头，现在觉得写在博客上或者是一种更好的选择..回顾一下笔记就顺便写在博客上了</p>
+<h3 id="sass">
+  Sass
+  <a class="heading-link" href="#sass">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h3 id="sass--h-查看所有帮助">
+  sass -h 查看所有帮助
+  <a class="heading-link" href="#sass--h-%e6%9f%a5%e7%9c%8b%e6%89%80%e6%9c%89%e5%b8%ae%e5%8a%a9">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h3 id="编译">
+  编译
+  <a class="heading-link" href="#%e7%bc%96%e8%af%91">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>单文件
+<code>sass input.scss output.css</code></li>
+<li>单文件监听
+<code>sass --watch input.scss:output.css</code></li>
+<li>监听整个目录
+<code>sass --watch app/sass:public/stylesheets</code></li>
+</ol>
+<h3 id="四种编译排版格式">
+  四种编译排版格式
+  <a class="heading-link" href="#%e5%9b%9b%e7%a7%8d%e7%bc%96%e8%af%91%e6%8e%92%e7%89%88%e6%a0%bc%e5%bc%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>嵌套输出：nested</li>
+<li>展开输出：expanded</li>
+<li>紧凑输出：compact</li>
+<li>压缩输出：compressed</li>
+</ol>
+<h3 id="变量">
+  变量
+  <a class="heading-link" href="#%e5%8f%98%e9%87%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li><code>$</code>开头，如<code>$width: 300px;</code></li>
+<li>默认变量 加<code>!default</code>设置默认值，可在之前重新声明使用</li>
+<li>局部变量：元素内部；全局变量：元素外部</li>
+</ol>
+<h3 id="嵌套">
+  嵌套
+  <a class="heading-link" href="#%e5%b5%8c%e5%a5%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="选择器嵌套">
+  选择器嵌套
+  <a class="heading-link" href="#%e9%80%89%e6%8b%a9%e5%99%a8%e5%b5%8c%e5%a5%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>尽可能避免使用</p>
+<pre><code>   nav{
+     a{
+       color:red;
+        header &amp;{  //&amp;就代表 nav a
+                 color:green;
+                 }
+       }
+   }
+</code></pre>
+<h4 id="属性嵌套">
+  属性嵌套
+  <a class="heading-link" href="#%e5%b1%9e%e6%80%a7%e5%b5%8c%e5%a5%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>有些属性前缀相同，后缀不一样</p>
+<pre><code>.box{
+    border:{
+            top: 1px solid red;
+            bottom: 1px solid green;
+}
+}// 相当于border-top，border-bottom  
+</code></pre>
+<h4 id="伪类嵌套">
+  伪类嵌套
+  <a class="heading-link" href="#%e4%bc%aa%e7%b1%bb%e5%b5%8c%e5%a5%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>借助<code>&amp;</code>符号</p>
+<pre><code>.clearfix{
+    &amp;:before,
+    &amp;:after{...}
+    &amp;:after{...}
+}
+</code></pre>
+<h3 id="混合宏">
+  混合宏
+  <a class="heading-link" href="#%e6%b7%b7%e5%90%88%e5%ae%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>需要重复使用大段样式</p>
+<ol>
+<li>
+<p>声明混合宏
+<code>@mixin</code> 声明<br>
+如不带参数<code>@mixin border-radius{...}</code>，带参数<code>@mixin border-radius{$radius:5px}</code> <br>
+复杂的混合宏，可在大括号中带逻辑关系</p>
+</li>
+<li>
+<p>调用混合宏
+<code>@include</code>调用一个声明好的混合宏</p>
+</li>
+<li>
+<p>混合宏参数
+不带值的参数、带值的参数、多个参数（当参数过多可用&hellip;来替代）</p>
+</li>
+<li>
+<p>不足
+冗余，相同样式代码不能合并在一起</p>
+</li>
+</ol>
+<h3 id="扩展继承">
+  扩展/继承
+  <a class="heading-link" href="#%e6%89%a9%e5%b1%95%e7%bb%a7%e6%89%bf">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>继承用<code>extend</code></p>
+<pre><code>.btn{...}
+.btn-primary{
+            ...
+            @extend .btn;
+}  
+</code></pre>
+<h3 id="占位符--placeholder">
+  占位符  %placeholder
+  <a class="heading-link" href="#%e5%8d%a0%e4%bd%8d%e7%ac%a6--placeholder">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>占位符声明的代码，不被@extend调用，不产生任何代码<br>
+被@extend调用的占位符，编译出来的代码会将相同的合并</p>
+<pre><code>%mt5{...}
+%pt5{...}
+.btn{
+    @extend %mt5;
+    @extend %pt5;
+}
+</code></pre>
+<h3 id="插值">
+  插值
+  <a class="heading-link" href="#%e6%8f%92%e5%80%bc">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<pre><code>$properties:(margin,padding);
+@mixin set-value($side,$value){
+    @each $prop in $properties{
+        #{$prop}-#{$side}: $value;
+    }
+}
+.login-box{
+    @include set-value(top,14px);
+}
+</code></pre>
+<h3 id="注释">
+  注释
+  <a class="heading-link" href="#%e6%b3%a8%e9%87%8a">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>//在CSS中不会显示</li>
+<li>/**/在CSS中显示</li>
+</ol>
+<h3 id="数据类型">
+  数据类型
+  <a class="heading-link" href="#%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>数值，字符串（有引号或无），颜色，布尔，空值，值列表（用空格或逗号隔开）<br>
+插值中有引号被编译为无引号，不清楚情况时都被编译为无引号。</p>
+<h3 id="运算">
+  运算
+  <a class="heading-link" href="#%e8%bf%90%e7%ae%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>加法
+变量或属性都可以做加法，不同类型时会报错</li>
+<li>减法
+同加法</li>
+<li>乘法
+单位相同时，提供一个单位就行</li>
+<li>除法
+不可以直接用<code>/</code> ，需要在表达式外面加<code>()</code>号</li>
+<li>颜色运算<br>
+分段运算，红、绿、蓝分段单独运算</li>
+<li>字符运算
+通过<code>+</code>对字符串或字符连接<br>
+有引号字符串被添加无引号的，结果还是有引号的；无引号的被添加有引号的结果没有引号</li>
+</ol>
+<h3 id="指令">
+  指令
+  <a class="heading-link" href="#%e6%8c%87%e4%bb%a4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>
+<p>@if</p>
+</li>
+<li>
+<p>@for 循环
+<code>@for $i from &lt;start&gt; through &lt;end&gt;</code><br>
+<code>@for $i from &lt;start&gt; to &lt;end&gt;</code><br>
+through包含end这个数，to不包含</p>
+</li>
+<li>
+<p>@while循环</p>
+</li>
+<li>
+<p>@each循环
+<code>@each $var in &lt;list&gt;</code></p>
+</li>
+<li>
+<p>@import<br>
+根据文件名引入，默认寻找sass文件并直接引入<br>
+如无以下情况：</p>
+</li>
+</ol>
+<ul>
+<li>文件扩展名是.css</li>
+<li>文件名以http://开头</li>
+<li>文件名是url()</li>
+<li>@import包含了任何媒体查询</li>
+</ul>
+<p>将文件名前加一个下划线，避免sass编译为css，同一个目录不能同时存在带和不带下划线的同名文件</p>
+<ol start="6">
+<li>@media
+可嵌套在css规则中，类似JS冒泡功能，样式中加入本指令，会冒泡到外面</li>
+<li>@at-root
+跳出根元素</li>
+<li>@debug
+用来调试，编译错误时，终端会输出设置的提示Bug</li>
+<li>@warn
+和@debug类似</li>
+<li>@error
+和@debug类似</li>
+</ol>
+<h3 id="函数">
+  函数
+  <a class="heading-link" href="#%e5%87%bd%e6%95%b0">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>字符串函数</li>
+</ol>
+<ul>
+<li>unquote()函数，quote()函数
+unquote()函数删除字符串中的引号，只删除最前和最后的引号<br>
+quote()函数给字符串添加引号，字符串自身带引号则统一为双引号，只能增加双引号，且必须将单引号、空格、特殊符号都要用双引号括起来</li>
+<li>To-upper-case()</li>
+<li>To-lower-case()</li>
+</ul>
+<ol start="2">
+<li>数字函数</li>
+</ol>
+<ul>
+<li>percentage() 将不带单位的数字转换成百分比形式</li>
+<li>round() 将一个数四舍五入为一个最接近的整数</li>
+<li>ceil() 转为整数，只入不舍</li>
+<li>floor()去除小数，值舍，不入</li>
+<li>abs()绝对值</li>
+<li>min()最小，不同单位会报错</li>
+<li>max()最大，不同单位会报错</li>
+<li>random()随机数</li>
+</ul>
+<ol start="3">
+<li>列表函数</li>
+</ol>
+<ul>
+<li>length() 返回列表中有几个值，参数之间用空格隔开，逗号会报错</li>
+<li>nth()  nth($list,$n)指定列表中某个位置的值 n是大于0的整数</li>
+<li>join() 两个列表合并为一个，多个列表合并用多个join(),参数$separator分隔符号，comma是逗号，space是空格</li>
+<li>append() 插入值到最末位</li>
+<li>zip() 将多个列表转成一个多维的列表 单一列表的个数值要相同</li>
+<li>index() 找某个值在列表中的位置 第一个为1</li>
+</ul>
+<ol start="4">
+<li>Introspection函数</li>
+</ol>
+<ul>
+<li>type-of() 判断值的类型</li>
+<li>unit() 获取一个值使用的单位</li>
+<li>unitless() 判断是否带单位，不带单位返回true</li>
+<li>comparable()</li>
+<li>Miscellaneous函数  三元条件函数
+如if($condition,$if-true,$if-false)，condition成立返回值为$if-true,否则返回$if-false</li>
+</ul>
+<ol start="5">
+<li>
+<p>Map函数
+数据地图或数组，以key:value成对出现，可嵌套，即一个key可当成map
+$map:(key1:value1,key2:value2)</p>
+</li>
+<li>
+<p>Sass Maps的函数</p>
+</li>
+</ol>
+<ul>
+<li>map-get($map,$key)根据 $key返回value值</li>
+<li>map-has-key($map,$key) 返回一个布尔值</li>
+<li>map-keys($map)返回所有key</li>
+<li>map-values($map)获取所有value值</li>
+<li>map-merge($map1,$map2)将两个map合并为一个新map，相同key名，用map2取代map1</li>
+<li>map-remove($map,$key)删除一个key</li>
+<li>keywords($args)动态创建map的函数，通过混合宏或函数参数创建map,$args变成key</li>
+</ul>
+<ol start="7">
+<li>RGB颜色函数</li>
+</ol>
+<ul>
+<li>rgb($red,$green,$blue)</li>
+<li>rgba()将一个颜色根据透明度转换成rgba颜色
+rgba($red,$green,$blue,$alpha)
+rgba($color,$alpha)知道实际颜色，增加透明度</li>
+<li>Red()获取一个颜色中的红色值，命令终端需要先输入sass -i命令
+Green()同上
+Blue()同上</li>
+<li>Mix()将两种颜色根据一定比例混合，生成另外一种颜色
+mix($color-1,$color-2,$weight)$weight默认50%各占一半，若为25%，则第一个25%，第二个75%</li>
+</ul>
+<ol start="8">
+<li>HSL函数</li>
+</ol>
+<ul>
+<li>lighten(),darken()调整亮度值，0-1之间</li>
+<li>saturate(),desaturate()改变颜色饱和度</li>
+<li>adjust-hue()调整色相 -360deg~360deg 可以是百分数</li>
+<li>grayscale()不同程度的灰色，会将颜色的饱和度直接调至0%</li>
+</ul>
+<ol start="9">
+<li>Opacity函数</li>
+</ol>
+<ul>
+<li>alpha(),opacity()获取颜色的透明度值</li>
+<li>rgba()接受两个参数，颜色，颜色透明值</li>
+<li>opacity(),fade-in()对已有的透明度做加法 运算，让颜色更不透明</li>
+<li>transparentize(),fade-out()做减法运算，让颜色更透明</li>
+</ul>
+<h3 id="less">
+  Less
+  <a class="heading-link" href="#less">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h3 id="lessc">
+  lessc
+  <a class="heading-link" href="#lessc">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>执行lessc不带任何参数，会在命令行输出所有可用选项的列表</p>
+<h3 id="注释同sass">
+  注释同Sass
+  <a class="heading-link" href="#%e6%b3%a8%e9%87%8a%e5%90%8csass">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h3 id="变量-1">
+  变量
+  <a class="heading-link" href="#%e5%8f%98%e9%87%8f-1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>用<code>@</code>定义</p>
+<h3 id="混合">
+  混合
+  <a class="heading-link" href="#%e6%b7%b7%e5%90%88">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>与Sass相似,为所有混合宏加上!important</p>
+<h3 id="匹配模式">
+  匹配模式
+  <a class="heading-link" href="#%e5%8c%b9%e9%85%8d%e6%a8%a1%e5%bc%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>相当于JS中if,但不完全是，满足条件后才能匹配<br>
+<code>.pos(r){position:relative;}</code>
+有属性不论匹配哪一个都需要:
+·.pos(@__){&hellip;}·</p>
+<h3 id="运算-1">
+  运算
+  <a class="heading-link" href="#%e8%bf%90%e7%ae%97-1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>数字，颜色，变量都可参加运算，运算被包裹在括号中</p>
+<h3 id="嵌套-1">
+  嵌套
+  <a class="heading-link" href="#%e5%b5%8c%e5%a5%97-1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="对类的使用">
+  &amp;对类的使用
+  <a class="heading-link" href="#%e5%af%b9%e7%b1%bb%e7%9a%84%e4%bd%bf%e7%94%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>a{
+    ...
+    &amp;:hover{...}
+}//&amp;代表上一层选择器
+</code></pre>
+<h4 id="对连接的使用">
+  对连接的使用
+  <a class="heading-link" href="#%e5%af%b9%e8%bf%9e%e6%8e%a5%e7%9a%84%e4%bd%bf%e7%94%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<h3 id="arguments变量">
+  @arguments变量
+  <a class="heading-link" href="#arguments%e5%8f%98%e9%87%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>包含了所有传递进来的参数</p>
+<h3 id="避免编译">
+  避免编译
+  <a class="heading-link" href="#%e9%81%bf%e5%85%8d%e7%bc%96%e8%af%91">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>在字符串前加一个<code>~</code>形如 ~'&hellip;';</p>
+<h3 id="引用">
+  引用
+  <a class="heading-link" href="#%e5%bc%95%e7%94%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>less中引less  ：  @import&quot;less名&quot;;
+less中引css   ：  @import(less) &ldquo;a.css&rdquo;;写在哪出现在哪</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2017 -
+    
+    2021
+     OnlyHy 
+    ·
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

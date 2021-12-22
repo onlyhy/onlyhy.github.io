@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="OnlyHy">
+    <meta name="description" content="黄黄说：“不会的就多看几遍”
+Vue官方教程基础部分    读Vue.js官方文档所记
+ 计算属性(computed)有缓存，方法(methods)无缓存 需要在数据变化时执行异步或开销较大的操作，自定义侦听器, watch css属性可用 驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用单引号括起来) 来命名 v-bind:style使用需要添加浏览器引擎前缀的CSS属性时，如transform，Vue.js会自动侦测并添加相应前缀 添加具有唯一值的key属性表达元素是完全独立的，不需要复用 v-show元素始终会被渲染并保留在DOM,只是简单切换元素的CSS属性display 如果要频繁的切换用v-show，很少改变用v-if v-for比v-if有更高优先级，意味着v-if将分别重复运行于每个v-for循环中 v-model双向数据绑定，监听用户的输入事件以更新数据 可以用&lt;style scoped&gt;&lt;/style&gt;来声明样式只在本模板中起作用  To Be Continued…">
+    <meta name="keywords" content="onlyhy">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vue学习小记"/>
+<meta name="twitter:description" content="黄黄说：“不会的就多看几遍”
+Vue官方教程基础部分    读Vue.js官方文档所记
+ 计算属性(computed)有缓存，方法(methods)无缓存 需要在数据变化时执行异步或开销较大的操作，自定义侦听器, watch css属性可用 驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用单引号括起来) 来命名 v-bind:style使用需要添加浏览器引擎前缀的CSS属性时，如transform，Vue.js会自动侦测并添加相应前缀 添加具有唯一值的key属性表达元素是完全独立的，不需要复用 v-show元素始终会被渲染并保留在DOM,只是简单切换元素的CSS属性display 如果要频繁的切换用v-show，很少改变用v-if v-for比v-if有更高优先级，意味着v-if将分别重复运行于每个v-for循环中 v-model双向数据绑定，监听用户的输入事件以更新数据 可以用&lt;style scoped&gt;&lt;/style&gt;来声明样式只在本模板中起作用  To Be Continued…"/>
+
+    <meta property="og:title" content="Vue学习小记" />
+<meta property="og:description" content="黄黄说：“不会的就多看几遍”
+Vue官方教程基础部分    读Vue.js官方文档所记
+ 计算属性(computed)有缓存，方法(methods)无缓存 需要在数据变化时执行异步或开销较大的操作，自定义侦听器, watch css属性可用 驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用单引号括起来) 来命名 v-bind:style使用需要添加浏览器引擎前缀的CSS属性时，如transform，Vue.js会自动侦测并添加相应前缀 添加具有唯一值的key属性表达元素是完全独立的，不需要复用 v-show元素始终会被渲染并保留在DOM,只是简单切换元素的CSS属性display 如果要频繁的切换用v-show，很少改变用v-if v-for比v-if有更高优先级，意味着v-if将分别重复运行于每个v-for循环中 v-model双向数据绑定，监听用户的输入事件以更新数据 可以用&lt;style scoped&gt;&lt;/style&gt;来声明样式只在本模板中起作用  To Be Continued…" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://onlyhy.github.io/posts/2018-04-17-vue.js%E5%B0%8F%E8%AE%B0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-04-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-04-17T00:00:00+00:00" />
+
+
+
+    <title>
+  Vue学习小记 · oooonlyhy
+</title>
+
+    
+      <link rel="canonical" href="http://onlyhy.github.io/posts/2018-04-17-vue.js%E5%B0%8F%E8%AE%B0/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.91.0" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      oooonlyhy
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">首页</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">归档</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://onlyhy.github.io/posts/2018-04-17-vue.js%E5%B0%8F%E8%AE%B0/">
+              Vue学习小记
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2018-04-17T00:00:00Z'>
+                April 17, 2018
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：1 分钟
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/onlyhy/">onlyhy</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/vue/">Vue</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <p>黄黄说：“不会的就多看几遍”</p>
+<h3 id="vue官方教程基础部分">
+  Vue官方教程基础部分
+  <a class="heading-link" href="#vue%e5%ae%98%e6%96%b9%e6%95%99%e7%a8%8b%e5%9f%ba%e7%a1%80%e9%83%a8%e5%88%86">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>读<a href="https://cn.vuejs.org/v2/guide/instance.html">Vue.js官方文档</a>所记</p>
+<ol>
+<li>计算属性(<code>computed</code>)有缓存，方法(<code>methods</code>)无缓存</li>
+<li>需要在数据变化时执行异步或开销较大的操作，自定义侦听器, <code>watch</code></li>
+<li>css属性可用 驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用单引号括起来) 来命名</li>
+<li><code>v-bind:style</code>使用需要添加浏览器引擎前缀的CSS属性时，如<code>transform</code>，Vue.js会自动侦测并添加相应前缀</li>
+<li>添加具有唯一值的<code>key</code>属性表达元素是完全独立的，不需要复用</li>
+<li><code>v-show</code>元素始终会被渲染并保留在DOM,只是简单切换元素的CSS属性<code>display</code></li>
+<li>如果要频繁的切换用<code>v-show</code>，很少改变用<code>v-if</code></li>
+<li><code>v-for</code>比<code>v-if</code>有更高优先级，意味着<code>v-if</code>将分别重复运行于每个<code>v-for</code>循环中</li>
+<li><code>v-model</code>双向数据绑定，监听用户的输入事件以更新数据</li>
+<li>可以用<code>&lt;style scoped&gt;&lt;/style&gt;</code>来声明样式只在本模板中起作用</li>
+</ol>
+<p>To Be Continued…</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2017 -
+    
+    2021
+     OnlyHy 
+    ·
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

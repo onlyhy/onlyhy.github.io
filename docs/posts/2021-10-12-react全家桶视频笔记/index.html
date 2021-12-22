@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="OnlyHy">
+    <meta name="description" content="视频
+基础     jsx的标签首字母：小写字母开头，转为html同名元素；大写字母开头，去渲染对应的组件 在jsx中写注释{/* */} 标签中是表达式时才用{}，表达式：会产生一个值，可放在任何需要值的地方 类继承的时候，在constructor()里必须要调用super()，且必须要放在最前面 类式组件必须继承React.Componet，必须要写render()，render必须要有返回值，render里的this是实例对象 state值是对象 state必须通过setState进行更新，且更新是合并，不是替换 类中直接写赋值语句，就是往类实例上添加属性并赋值 类简写：直接写赋值语句初始化状态，render()，自定义方法（用赋值语句&#43;箭头函数） render中通过this.props拿到props static propTypes ={add:PropTypes.func.isRequired} 对标签传入的属性props进行类型、必要性的限制，注意propTypes的大小写 static defaultProps = {} 对标签传入的属性props指定默认值 如果要在constructor中使用this.props，就一定要接收props，并super(props) 函数式组件通过函数的参数接收props，但是propTypes和defaultProps得写在函数外面，Person.propTypes 字符串形式的ref(已经不推荐使用)，ref=“input1”，取ref的时候从this.refs上取，const {input1} = this.refs 回调函数形式的ref，ref={c =&gt; this.input1 = c}，回调函数的参数就是ref所在的节点，这样取ref可以直接从this上取，不需要this.refs了 如果ref回调函数是内联的，则在更新时会执行两次：第一次传参是null，第二次是DOM元素；因为更新时创建新的实例会清空旧的ref建新的，将回调函数定义成class的绑定函数，即将回调写在实例上，照样能接受c参数，ref={this.showInfo}，这样可以避免，但是直接写内联也没啥影响，还是用内联 React.createRef()这种方式“专人专用”，myRef = React.createRef()，ref={this.myRef}，这时候会把节点直接存储在myRef里面，取的时候是this.myRef.current onXxx指定事件处理函数：React使用的是自定义（合成）事件，不是原生的，为了兼容性；事件使用了事件委托，为了高效 不要过度使用ref，事件处理函数里可以通过event.target里获取到对象 非受控组件：现用现取 受控组件：输入类的dom，值存在状态state里，等需要的时候再从state取，能够省略掉ref 高阶函数：A函数，接收的参数是一个函数；A函数，调用的返回值是一个函数；常见的：Promise、setTimeout、arr.map() 函数柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式 卸载组件：React.unmountComponentAtNode(document.getElementById(’test&#39;)) 生命周期（旧）：将要挂载componentWillMount(){}，挂载完毕componentDidMount(){}，控制组件是否更新，默认返回true：shouldComponentUpdate(){}，组件将要更新componentWillUpdate(){}，组件更新完毕componentDidUpdate(){}，将要卸载componentWillUnmount(){}，子组件将要接收props的钩子：componentWillReceiveProps(props){}第一次传的不会触发，后面再传props才会触发 生命周期（新）：名字带will的除了将要卸载的另外3个生命周期已经不推荐使用即将废弃（可在前面加UNSAFE_），提出了两个新的getDerivedStateFromProps和getSnapshotBeforeUpdate 不更改任何数据想要强制更新，调用this.forceUpdate()，会跳过shouldComponnetUpdate() getDerivedStateFromProps：入参是props，返回的值是给了state，只有在state的值在任何时候都取决于props时才用，了解即可，罕见 getSnapshotBeforeUpdate返回的值传给了componentDidUpdate(prevProps,prevState,snapshotValue)，使用概率也很低，用在滚动啥的 index作为key很危险，首先可能会产生没必要的真实DOM更新（逆序添加或删除等破坏顺序的操作）；如果结构中有输入类的DOM还会产生错误更新；（如果不是数据的逆序添加、删除等破坏顺序的行为，仅用于渲染列表展示，是可以用Index的，最好使用每条数据的唯一标识作为key） 在引入React的时候可以再引入一下{Component}，import React, {Componnet}from ‘react’，这样定义类组件的时候可以直接export default class App extends Component{} 样式模块化，样式文件命名为xxx.module.css，引入的时候可以import xxx from ‘./….’，使用样式的时候就xxx.title react脚手架配置代理：src下创建setupProxy.js文件，使用http-proxy-middleware包，进行代理配置 组件沟通：消息订阅与发布：使用pubsub-js包，PubSub.publish(‘xxx’, {数据})发布消息，通知订阅的组件；组件挂载后this.token = PubSub.">
+    <meta name="keywords" content="onlyhy">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="React全家桶视频笔记"/>
+<meta name="twitter:description" content="视频
+基础     jsx的标签首字母：小写字母开头，转为html同名元素；大写字母开头，去渲染对应的组件 在jsx中写注释{/* */} 标签中是表达式时才用{}，表达式：会产生一个值，可放在任何需要值的地方 类继承的时候，在constructor()里必须要调用super()，且必须要放在最前面 类式组件必须继承React.Componet，必须要写render()，render必须要有返回值，render里的this是实例对象 state值是对象 state必须通过setState进行更新，且更新是合并，不是替换 类中直接写赋值语句，就是往类实例上添加属性并赋值 类简写：直接写赋值语句初始化状态，render()，自定义方法（用赋值语句&#43;箭头函数） render中通过this.props拿到props static propTypes ={add:PropTypes.func.isRequired} 对标签传入的属性props进行类型、必要性的限制，注意propTypes的大小写 static defaultProps = {} 对标签传入的属性props指定默认值 如果要在constructor中使用this.props，就一定要接收props，并super(props) 函数式组件通过函数的参数接收props，但是propTypes和defaultProps得写在函数外面，Person.propTypes 字符串形式的ref(已经不推荐使用)，ref=“input1”，取ref的时候从this.refs上取，const {input1} = this.refs 回调函数形式的ref，ref={c =&gt; this.input1 = c}，回调函数的参数就是ref所在的节点，这样取ref可以直接从this上取，不需要this.refs了 如果ref回调函数是内联的，则在更新时会执行两次：第一次传参是null，第二次是DOM元素；因为更新时创建新的实例会清空旧的ref建新的，将回调函数定义成class的绑定函数，即将回调写在实例上，照样能接受c参数，ref={this.showInfo}，这样可以避免，但是直接写内联也没啥影响，还是用内联 React.createRef()这种方式“专人专用”，myRef = React.createRef()，ref={this.myRef}，这时候会把节点直接存储在myRef里面，取的时候是this.myRef.current onXxx指定事件处理函数：React使用的是自定义（合成）事件，不是原生的，为了兼容性；事件使用了事件委托，为了高效 不要过度使用ref，事件处理函数里可以通过event.target里获取到对象 非受控组件：现用现取 受控组件：输入类的dom，值存在状态state里，等需要的时候再从state取，能够省略掉ref 高阶函数：A函数，接收的参数是一个函数；A函数，调用的返回值是一个函数；常见的：Promise、setTimeout、arr.map() 函数柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式 卸载组件：React.unmountComponentAtNode(document.getElementById(’test&#39;)) 生命周期（旧）：将要挂载componentWillMount(){}，挂载完毕componentDidMount(){}，控制组件是否更新，默认返回true：shouldComponentUpdate(){}，组件将要更新componentWillUpdate(){}，组件更新完毕componentDidUpdate(){}，将要卸载componentWillUnmount(){}，子组件将要接收props的钩子：componentWillReceiveProps(props){}第一次传的不会触发，后面再传props才会触发 生命周期（新）：名字带will的除了将要卸载的另外3个生命周期已经不推荐使用即将废弃（可在前面加UNSAFE_），提出了两个新的getDerivedStateFromProps和getSnapshotBeforeUpdate 不更改任何数据想要强制更新，调用this.forceUpdate()，会跳过shouldComponnetUpdate() getDerivedStateFromProps：入参是props，返回的值是给了state，只有在state的值在任何时候都取决于props时才用，了解即可，罕见 getSnapshotBeforeUpdate返回的值传给了componentDidUpdate(prevProps,prevState,snapshotValue)，使用概率也很低，用在滚动啥的 index作为key很危险，首先可能会产生没必要的真实DOM更新（逆序添加或删除等破坏顺序的操作）；如果结构中有输入类的DOM还会产生错误更新；（如果不是数据的逆序添加、删除等破坏顺序的行为，仅用于渲染列表展示，是可以用Index的，最好使用每条数据的唯一标识作为key） 在引入React的时候可以再引入一下{Component}，import React, {Componnet}from ‘react’，这样定义类组件的时候可以直接export default class App extends Component{} 样式模块化，样式文件命名为xxx.module.css，引入的时候可以import xxx from ‘./….’，使用样式的时候就xxx.title react脚手架配置代理：src下创建setupProxy.js文件，使用http-proxy-middleware包，进行代理配置 组件沟通：消息订阅与发布：使用pubsub-js包，PubSub.publish(‘xxx’, {数据})发布消息，通知订阅的组件；组件挂载后this.token = PubSub."/>
+
+    <meta property="og:title" content="React全家桶视频笔记" />
+<meta property="og:description" content="视频
+基础     jsx的标签首字母：小写字母开头，转为html同名元素；大写字母开头，去渲染对应的组件 在jsx中写注释{/* */} 标签中是表达式时才用{}，表达式：会产生一个值，可放在任何需要值的地方 类继承的时候，在constructor()里必须要调用super()，且必须要放在最前面 类式组件必须继承React.Componet，必须要写render()，render必须要有返回值，render里的this是实例对象 state值是对象 state必须通过setState进行更新，且更新是合并，不是替换 类中直接写赋值语句，就是往类实例上添加属性并赋值 类简写：直接写赋值语句初始化状态，render()，自定义方法（用赋值语句&#43;箭头函数） render中通过this.props拿到props static propTypes ={add:PropTypes.func.isRequired} 对标签传入的属性props进行类型、必要性的限制，注意propTypes的大小写 static defaultProps = {} 对标签传入的属性props指定默认值 如果要在constructor中使用this.props，就一定要接收props，并super(props) 函数式组件通过函数的参数接收props，但是propTypes和defaultProps得写在函数外面，Person.propTypes 字符串形式的ref(已经不推荐使用)，ref=“input1”，取ref的时候从this.refs上取，const {input1} = this.refs 回调函数形式的ref，ref={c =&gt; this.input1 = c}，回调函数的参数就是ref所在的节点，这样取ref可以直接从this上取，不需要this.refs了 如果ref回调函数是内联的，则在更新时会执行两次：第一次传参是null，第二次是DOM元素；因为更新时创建新的实例会清空旧的ref建新的，将回调函数定义成class的绑定函数，即将回调写在实例上，照样能接受c参数，ref={this.showInfo}，这样可以避免，但是直接写内联也没啥影响，还是用内联 React.createRef()这种方式“专人专用”，myRef = React.createRef()，ref={this.myRef}，这时候会把节点直接存储在myRef里面，取的时候是this.myRef.current onXxx指定事件处理函数：React使用的是自定义（合成）事件，不是原生的，为了兼容性；事件使用了事件委托，为了高效 不要过度使用ref，事件处理函数里可以通过event.target里获取到对象 非受控组件：现用现取 受控组件：输入类的dom，值存在状态state里，等需要的时候再从state取，能够省略掉ref 高阶函数：A函数，接收的参数是一个函数；A函数，调用的返回值是一个函数；常见的：Promise、setTimeout、arr.map() 函数柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式 卸载组件：React.unmountComponentAtNode(document.getElementById(’test&#39;)) 生命周期（旧）：将要挂载componentWillMount(){}，挂载完毕componentDidMount(){}，控制组件是否更新，默认返回true：shouldComponentUpdate(){}，组件将要更新componentWillUpdate(){}，组件更新完毕componentDidUpdate(){}，将要卸载componentWillUnmount(){}，子组件将要接收props的钩子：componentWillReceiveProps(props){}第一次传的不会触发，后面再传props才会触发 生命周期（新）：名字带will的除了将要卸载的另外3个生命周期已经不推荐使用即将废弃（可在前面加UNSAFE_），提出了两个新的getDerivedStateFromProps和getSnapshotBeforeUpdate 不更改任何数据想要强制更新，调用this.forceUpdate()，会跳过shouldComponnetUpdate() getDerivedStateFromProps：入参是props，返回的值是给了state，只有在state的值在任何时候都取决于props时才用，了解即可，罕见 getSnapshotBeforeUpdate返回的值传给了componentDidUpdate(prevProps,prevState,snapshotValue)，使用概率也很低，用在滚动啥的 index作为key很危险，首先可能会产生没必要的真实DOM更新（逆序添加或删除等破坏顺序的操作）；如果结构中有输入类的DOM还会产生错误更新；（如果不是数据的逆序添加、删除等破坏顺序的行为，仅用于渲染列表展示，是可以用Index的，最好使用每条数据的唯一标识作为key） 在引入React的时候可以再引入一下{Component}，import React, {Componnet}from ‘react’，这样定义类组件的时候可以直接export default class App extends Component{} 样式模块化，样式文件命名为xxx.module.css，引入的时候可以import xxx from ‘./….’，使用样式的时候就xxx.title react脚手架配置代理：src下创建setupProxy.js文件，使用http-proxy-middleware包，进行代理配置 组件沟通：消息订阅与发布：使用pubsub-js包，PubSub.publish(‘xxx’, {数据})发布消息，通知订阅的组件；组件挂载后this.token = PubSub." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://onlyhy.github.io/posts/2021-10-12-react%E5%85%A8%E5%AE%B6%E6%A1%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-12T10:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-12T10:00:00+00:00" />
+
+
+
+    <title>
+  React全家桶视频笔记 · oooonlyhy
+</title>
+
+    
+      <link rel="canonical" href="http://onlyhy.github.io/posts/2021-10-12-react%E5%85%A8%E5%AE%B6%E6%A1%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.91.0" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      oooonlyhy
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">首页</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">归档</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://onlyhy.github.io/posts/2021-10-12-react%E5%85%A8%E5%AE%B6%E6%A1%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/">
+              React全家桶视频笔记
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-10-12T10:00:00Z'>
+                October 12, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：3 分钟
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/onlyhy/">onlyhy</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/react/">React</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <p><a href="https://www.bilibili.com/video/BV1wy4y1D7JT?p=1&amp;spm_id_from=pageDriver">视频</a></p>
+<h3 id="基础">
+  基础
+  <a class="heading-link" href="#%e5%9f%ba%e7%a1%80">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>jsx的标签首字母：小写字母开头，转为html同名元素；大写字母开头，去渲染对应的组件</li>
+<li>在jsx中写注释<code>{/* */}</code></li>
+<li>标签中是表达式时才用{}，表达式：会产生一个值，可放在任何需要值的地方</li>
+<li>类继承的时候，在constructor()里必须要调用<code>super()</code>，且必须要放在最前面</li>
+<li>类式组件必须继承React.Componet，必须要写<code>render()</code>，render必须要有返回值，render里的this是实例对象</li>
+<li>state值是对象</li>
+<li>state必须通过setState进行更新，且更新是合并，不是替换</li>
+<li>类中直接写赋值语句，就是往类实例上添加属性并赋值</li>
+<li>类简写：直接写赋值语句初始化状态，render()，自定义方法（用赋值语句+箭头函数）</li>
+<li>render中通过this.props拿到props</li>
+<li><code>static propTypes ={add:PropTypes.func.isRequired}</code> 对标签传入的属性props进行类型、必要性的限制，注意propTypes的大小写</li>
+<li><code>static defaultProps = {}</code> 对标签传入的属性props指定默认值</li>
+<li>如果要在constructor中使用this.props，就一定要接收props，并super(props)</li>
+<li>函数式组件通过函数的参数接收props，但是propTypes和defaultProps得写在函数外面，Person.propTypes</li>
+<li>字符串形式的ref(已经不推荐使用)，ref=“input1”，取ref的时候从this.refs上取，<code>const {input1} = this.refs</code></li>
+<li>回调函数形式的ref，<code>ref={c =&gt; this.input1 = c}</code>，回调函数的参数就是ref所在的节点，这样取ref可以直接从this上取，不需要this.refs了</li>
+<li>如果ref回调函数是内联的，则在更新时会执行两次：第一次传参是null，第二次是DOM元素；因为更新时创建新的实例会清空旧的ref建新的，将回调函数定义成class的绑定函数，即将回调写在实例上，照样能接受c参数，<code>ref={this.showInfo}</code>，这样可以避免，但是直接写内联也没啥影响，还是用内联</li>
+<li>React.createRef()这种方式“专人专用”，<code>myRef = React.createRef()</code>，<code>ref={this.myRef}</code>，这时候会把节点直接存储在myRef里面，取的时候是this.myRef.current</li>
+<li>onXxx指定事件处理函数：React使用的是自定义（合成）事件，不是原生的，为了兼容性；事件使用了事件委托，为了高效</li>
+<li>不要过度使用ref，事件处理函数里可以通过event.target里获取到对象</li>
+<li>非受控组件：现用现取</li>
+<li>受控组件：输入类的dom，值存在状态state里，等需要的时候再从state取，能够省略掉ref</li>
+<li>高阶函数：A函数，接收的参数是一个函数；A函数，调用的返回值是一个函数；常见的：Promise、setTimeout、arr.map()</li>
+<li>函数柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式</li>
+<li>卸载组件：<code>React.unmountComponentAtNode(document.getElementById(’test'))</code></li>
+<li>生命周期（旧）：将要挂载<code>componentWillMount(){}</code>，挂载完毕<code>componentDidMount(){}</code>，控制组件是否更新，默认返回true：<code>shouldComponentUpdate(){}</code>，组件将要更新<code>componentWillUpdate(){}</code>，组件更新完毕<code>componentDidUpdate(){}</code>，将要卸载<code>componentWillUnmount(){}</code>，子组件将要接收props的钩子：<code>componentWillReceiveProps(props){}</code>第一次传的不会触发，后面再传props才会触发</li>
+<li>生命周期（新）：名字带will的除了将要卸载的另外3个生命周期已经不推荐使用即将废弃（可在前面加UNSAFE_），提出了两个新的<code>getDerivedStateFromProps</code>和<code>getSnapshotBeforeUpdate</code></li>
+<li>不更改任何数据想要强制更新，调用<code>this.forceUpdate()</code>，会跳过<code>shouldComponnetUpdate()</code></li>
+<li><code>getDerivedStateFromProps</code>：入参是props，返回的值是给了state，只有在state的值在任何时候都取决于props时才用，了解即可，罕见</li>
+<li><code>getSnapshotBeforeUpdate</code>返回的值传给了<code>componentDidUpdate(prevProps,prevState,snapshotValue)</code>，使用概率也很低，用在滚动啥的</li>
+<li>index作为key很危险，首先可能会产生没必要的真实DOM更新（逆序添加或删除等破坏顺序的操作）；如果结构中有输入类的DOM还会产生错误更新；（如果不是数据的逆序添加、删除等破坏顺序的行为，仅用于渲染列表展示，是可以用Index的，最好使用每条数据的唯一标识作为key）</li>
+<li>在引入React的时候可以再引入一下{Component}，<code>import React, {Componnet}from ‘react’</code>，这样定义类组件的时候可以直接<code>export default class App extends Component{}</code></li>
+<li>样式模块化，样式文件命名为xxx.module.css，引入的时候可以<code>import xxx from ‘./….’</code>，使用样式的时候就xxx.title</li>
+<li>react脚手架配置代理：src下创建setupProxy.js文件，使用<code>http-proxy-middleware</code>包，进行代理配置</li>
+<li>组件沟通：消息订阅与发布：使用pubsub-js包，<code>PubSub.publish(‘xxx’, {数据})</code>发布消息，通知订阅的组件；组件挂载后<code>this.token = PubSub.subscribe(‘xxx’, (_,数据)=&gt;{...})</code>订阅消息，接收到数据；组件卸载前<code>PubSub.unsubscribe(this.token)</code>取消订阅</li>
+<li>fetch请求，原生函数，不需要使用xhr对象提交ajax请求，关注分离，使用率不高，可能不兼容老版本浏览器</li>
+<li>暴露webpack配置 <code>yarn eject</code></li>
+</ol>
+<h3 id="react-router-dom">
+  React-router-dom
+  <a class="heading-link" href="#react-router-dom">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>react-router-dom web使用的路由插件库，导入Link路由链接和Route路由（Route是路由，Router是路由器）</li>
+<li>路由导航<code>&lt;Link to=‘/about’&gt;About&lt;/Link&gt;</code>  注册路由<code>&lt;Route path=“/about” component={About}/&gt;</code></li>
+<li>整个项目应该是一个路由器，在Index.js里包在App组件外面，<code>&lt;BrowserRouter&gt;&lt;App/&gt;&lt;/BrowserRouter&gt;</code>或HashRouter</li>
+<li>组件分为路由组件和一般组件，路由组件放在pages文件夹，一般组件放components文件夹，规范点</li>
+<li>高亮效果的路由链接用<code>&lt;NavLink activeClassName=“自定义高亮样式&quot;&gt;&lt;/NavLink&gt;</code></li>
+<li>NavLink封装时，可以在标签上直接{…this.props}，会包括标签体即children的内容</li>
+<li>路由组件接收三个固定属性：history   location  match</li>
+<li>在所有的<code>&lt;Route&gt;&lt;/Route&gt;</code>最外层加一个<code>&lt;Switch&gt;&lt;/Switch&gt;</code>会单一匹配，一般情况下path和component是一一对应</li>
+<li>多级路径刷新，页面样式会丢失：
+<ol>
+<li>index.html中引入样式时不写<code>./</code>写<code>/</code></li>
+<li>index.html中引入样式时不写<code>./</code>写<code>%PUBLIC_URL%</code></li>
+<li>使用HashRouter</li>
+</ol>
+</li>
+<li>路由默认模糊匹配，即跳转的路径包含注册的路径，且顺序要一致</li>
+<li>路由注册添加exact属性是严格匹配，需要跳转的路径与注册路径完全匹配，不要随便开启，否则会影响二级路由匹配</li>
+<li>在所有路由最下面注册一个<code>&lt;Redirect to=“/xxx”/&gt;</code>，当所有路由都无法匹配时，会跳转到Redirect</li>
+<li>路由传参有三种：params，search(query)、state
+<ol>
+<li>params：链接：xxx/${id}  注册：xxx/:id  接收：this.props.match.params</li>
+<li>search：链接：xxx/?id=…&amp;name=…  注册：正常注册无需声明  接收：this.props.location.search，接收到的是urlencoded编码 字符串，需要借助querystring解析</li>
+<li>state：链接：<code>&lt;Link to={{pathname:’xxx’, state:{id:…, name:…}}&gt;详情&lt;/Link&gt;</code>  注册：正常注册无需声明 接收：this.props.location.state</li>
+</ol>
+</li>
+<li>路由默认是push模式压栈，添加replace属性是替换（如果全部使用替换，浏览器不可前进后退，因为没有记录）</li>
+<li>编程式路由导航：借助this.props.history对象上的API操作：push()、 replace()、  goBack()后退、  goForward()前进、 go()参数写数字比如2前进两位，-2后退两位</li>
+<li>BrowserRouter和HashRouter的区别
+<ol>
+<li>原理：BrowserRouter是H5的history的API，不兼容IE9及以下；HashRouter是URL的哈希值</li>
+<li>path表现形式：HashRouter的路径包含#</li>
+<li>刷新后对state参数的影响：BrowserRouter没有影响，因为保存在history中；</li>
+</ol>
+</li>
+<li>withRouter函数，导出一般组件（非路由组件）时，用withRouter包裹，这样一般组件就能用路由组件的API，withRouter的返回值是一个新组件，export default withRouter(Header)</li>
+</ol>
+<h3 id="antd按需引入">
+  antd按需引入
+  <a class="heading-link" href="#antd%e6%8c%89%e9%9c%80%e5%bc%95%e5%85%a5">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>对create-react-app的默认配置进行自定义
+3.x版本</p>
+<ol>
+<li>安装react-app-rewired和customize-cra</li>
+<li>修改package.json的命令，将react-scripts都改为react-app-rewired</li>
+<li>项目根目录创建一个config-overrides.js用于修改默认配置</li>
+<li>安装babel-plugin-import，用于按需加载组件代码和样式的babel插件</li>
+<li>修改config-overrides.js中代码，配置antd的按需引入</li>
+<li>不需要再单独引入样式 import ‘antd/dist/antd.css'</li>
+</ol>
+<p>3.x版本主题配置</p>
+<ol>
+<li>安装less、less-loader</li>
+<li>修改overrides配置文件</li>
+</ol>
+<p>4.x版本主题配置</p>
+<ol>
+<li>安装craco：@craco/craco</li>
+<li>修改package.json命令行</li>
+<li>项目根目录添加craco.config.js</li>
+<li>自定义主题：将引入的样式改为.less文件；安装craco-less；修改craco.config.js文件，利用modifyVars修改主题色</li>
+</ol>
+<p>以上配置如果不好使或报错，看一下是不是less-loader版本的问题</p>
+<h3 id="redux">
+  Redux
+  <a class="heading-link" href="#redux">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>src下创建redux文件夹</li>
+<li>创建store.js，从redux中引入createStore方法，引入reducer作为createStore的参数创建store对象，默认暴露store对象</li>
+<li>创建reducer如count_reducer.js，本质是一个函数，接收两个参数：preState，action(action里面包括type和data)；最后返回加工后的状态，主要负责初始化状态和加工状态</li>
+<li>对action的type进行switch判断，返回加工后的数据</li>
+<li>redux只负责管理状态，至于状态的改变驱动页面的展示需要我们自己写，比如在componentDidMount()中写store.subscribe(()=&gt;{this.setState()})，只要redux中状态改变就触发这个回调函数（但是这种方法不方便，多个组件得写很多个，可以在Index.js里把render APP放在subscribe的回调函数里）</li>
+<li><code>store.getState()，store.dispatch({type:’xxxx',data:xxx})</code></li>
+<li>创建action如count_action.js，导出多个返回action对象的方法，每个方法接收data，返回action对象{type:&lsquo;xxx&rsquo;, data}，在组件中引入方法，还是执行store.dispatch(方法名(data))</li>
+<li>创建一个constant.js，导出所有的type名，便于管理，防止将action的type拼错，用到type的地方，都从这个文件引入</li>
+<li>action可以是两种：对象类型，同步action；函数类型，异步action</li>
+<li>异步action中一般都会调用同步action，异步action不是必须的，也可以等异步任务结束了再去分发同步action</li>
+<li>store默认不允许action是非对象类型的，所以需要用到中间件redux-thunk，在store.js里引入<code>import thunk from 'redux-thunk’</code>，再从redux中引入一个applyMiddleware方法，最后创建createStore时添加第二个参数<code>applyMiddleware(thunk)</code></li>
+</ol>
+<h3 id="react-redux">
+  react-redux
+  <a class="heading-link" href="#react-redux">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>UI组件放components文件夹，UI组件不能使用任何redux的API，所以靠容器组件通过props传过来</li>
+<li>容器组件放containers文件夹，负责和redux通信，将redux的状态和操作状态的方法传给UI组件</li>
+<li>在App.jsx中引入容器组件并使用，不再使用对应的UI组件，因为那个容器组件已经包含了U组件</li>
+<li>在App.jsx中将store传给容器组件，容器组件的store不是自己主动引入的，而是靠props拿到的</li>
+<li>从react-redux中引入connect用于连接UI组件和redux：connect(参数一,参数二)(UI组件)，connect的结果是一个函数，然后这个函数的参数是UI组件</li>
+<li>connect第一个函数要传入两个参数，参数都必须是函数，都返回一个对象，key作为props的key,value作为props的value</li>
+<li>第一个函数接收state参数，返回值作为状态传给UI组件，函数最好命名为mapStateToProps</li>
+<li>第二个函数接收dispatch方法参数，返回值作为操作状态的方法传给UI组件，函数最好命名为mapDispatchToProps</li>
+</ol>
+<p>react-redux优化</p>
+<ol>
+<li>mapDispatchToProps简写可以直接写一个对象，value是action的方法，react-redux会帮我们自动分发dispatch这个action</li>
+<li>去掉index.js中包裹在render外面的store.subscribe()，不需要再去监测了，容器组件已经有了监测的能力</li>
+<li>不需要给容器组件传store，直接index.js中在<App/>外包裹一个从react-redux中引入的Provider，将store传给Provider，Provider会把store传给有需要的容器组件</li>
+<li>容器组件和UI组件容器整合成一个文件，定义好UI组件，然后导出一个connect处理的容器组件就好</li>
+</ol>
+<p>总结一个组件要和redux”打交道“，一共3步</p>
+<ol>
+<li>定义好UI组件，不用暴露</li>
+<li>从react-redux引入connect生成一个容器组件，并暴露出去，写法：<code>connect(state=&gt;({key:value}), {key:xxxAction})(UI组件)</code></li>
+<li>在UI组件中通过<code>this.props.xxx</code>读取状态或操作状态</li>
+</ol>
+<p>数据共享</p>
+<ol>
+<li>redux里新建actions文件夹和reducers文件夹，分别写各自组件的东西</li>
+<li>引入redux的combineReducers，将多个reducer汇总为一个整的reducer是一个对象，再传给createStore</li>
+<li>多个reducer时，组件中取state时，要取到位，比如state.a，这个a就是上面汇总reducers为一个对象时其中的一个key，对应一个reducer</li>
+</ol>
+<p>reducer是纯函数，且它返回状态时是浅比较，如果状态是数组，那么对数组做push等操作是不能被识别出来的，它会默认值没有变，可以用[data,…Prestate]这种方法返回一个新数组</p>
+<p>纯函数：</p>
+<p>开发者工具使用</p>
+<ol>
+<li>安装<code>redux-devtools-extension</code>库</li>
+<li>store.js中配置
+//引入redux-devtools-extension
+<code>import {composeWithDevTools} from 'redux-devtools-extension'</code></li>
+</ol>
+<p><code>export default createStore(allReducer,composeWithDevTools(applyMiddleware(thunk)))</code></p>
+<p>最后优化</p>
+<ol>
+<li>命名规范</li>
+<li>reducers文件夹中，编写index.js专门用于汇总并暴露所有的reducer即combineReducers</li>
+</ol>
+<h3 id="扩展">
+  扩展
+  <a class="heading-link" href="#%e6%89%a9%e5%b1%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>setState更新状态有2中写法</p>
+<ol>
+<li><code>setState(stateChange, [callback])</code>，第一个参数是改变状态的对象，新状态不依赖于原状态时使用，如<code>{count: 99}</code>，其实依赖原状态也可以使用，提前从state中拿一下状态，只是区分开比较好</li>
+<li><code>setState(updater, [callback])</code>，第一个参数是返回改变状态的对象的函数(接收state和props为参数)，新状态依赖于原状态时使用，如<code>(state,props)=&gt;({count: state.count + 1})</code></li>
+<li>callback是可选的回调函数，如果需要在<code>setState()</code>执行后获取最新的状态数据，就在回调中读取，它在状态更新后、界面更新后（render调用后）被调用</li>
+</ol>
+<h4 id="lazyload懒加载">
+  lazyLoad懒加载
+  <a class="heading-link" href="#lazyload%e6%87%92%e5%8a%a0%e8%bd%bd">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>路由懒加载</p>
+<ol>
+<li>引入react的lazy函数结合import()函数动态加载路由，路由组件代码会被分开打包
+<code>Const Login = lazy(()=&gt;import(‘@/pages/Login'))</code></li>
+<li>引入react的Suspense，包裹在注册路由的外面，给它的fallback指定在加载得到路由打包文件前显示的一个自定义的比如loading文字或组件（正常引入，不能懒加载）</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&lt;Suspense fallback<span style="color:#f92672">={</span>&lt;h1&gt;loading.....&lt;/h1&gt;<span style="color:#f92672">}</span>&gt; 或  &lt;Suspense fallback<span style="color:#f92672">={</span>&lt;Loading/&gt;<span style="color:#f92672">}</span>&gt;
+    &lt;Switch&gt;
+        &lt;Route path<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/xxx&#34;</span> component<span style="color:#f92672">={</span>Xxxx<span style="color:#f92672">}</span>/&gt;
+        &lt;Redirect to<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/login&#34;</span>/&gt;
+    &lt;/Switch&gt;
+&lt;/Suspense&gt;
+</code></pre></div><h4 id="hooks">
+  Hooks
+  <a class="heading-link" href="#hooks">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>三个常用hook
+State Hook：<code>React.useState()</code>
+Effect Hook：<code>React.useEffect()</code>
+Ref Hook：<code>React.useRef()</code></p>
+<p>State Hook
+(1). State Hook让函数组件也可以有state状态, 并进行状态数据的读写操作
+(2). 语法: <code>const [xxx, setXxx] = React.useState(initValue)</code>
+(3). useState()说明:
+参数: 第一次初始化指定的值在内部作缓存
+返回值: 包含2个元素的数组, 第1个为内部当前状态值, 第2个为更新状态值的函数
+(4). setXxx()2种写法:
+<code>setXxx(newValue)</code>: 参数为非函数值, 直接指定新的状态值, 内部用其覆盖原来的状态值
+<code>setXxx(value =&gt; newValue)</code>: 参数为函数, 接收原本的状态值, 返回新的状态值, 内部用其覆盖原来的状态值</p>
+<p>Effect Hook
+(1). Effect Hook 可以让你在函数组件中执行副作用操作(用于模拟类组件中的生命周期钩子)
+(2). React中的副作用操作:
+发ajax请求数据获取
+设置订阅 / 启动定时器
+手动更改真实DOM
+(3). 语法和说明:
+useEffect可以接收两个参数：</p>
+<ul>
+<li>第一个参数是一个函数执行副作用操作；这个函数可以写一个返回函数，这个返回函数相当于componentWillUnmount()</li>
+<li>第二个参数是指定监测谁，会在组件挂载和监听的值改变了这两种情况调用回调函数；如果是空数组，谁也不监测，则回调函数只在第一个render()后执行；如果直接不写，则监测所有，一旦有改变就调用回调函数
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">      useEffect<span style="color:#f92672">(()</span> <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span> 
+        // 函数体，在此可以执行任何带副作用操作
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">()</span> <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+           // 在组件卸载前执行
+          // 在此做一些收尾工作, 比如清除定时器/取消订阅等
+        <span style="color:#f92672">}</span>
+      <span style="color:#f92672">}</span>, <span style="color:#f92672">[</span>stateValue<span style="color:#f92672">])</span> // 如果指定的是<span style="color:#f92672">[]</span>, 回调函数只会在第一次render<span style="color:#f92672">()</span>后执行
+</code></pre></div></li>
+</ul>
+<p>(4). 可以把 useEffect Hook 看做如下三个函数的组合
+<code>componentDidMount()</code>
+<code>componentDidUpdate()</code>
+<code>componentWillUnmount()</code></p>
+<p>Ref Hook
+(1). Ref Hook可以在函数组件中存储/查找组件内的标签或任意其它数据
+(2). 语法: <code>const refContainer = React.useRef()</code>
+(3). 作用:保存标签对象,功能与<code>React.createRef()</code>一样</p>
+<h4 id="fragment">
+  Fragment
+  <a class="heading-link" href="#fragment">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>可以不用必须有一个真实的DOM根标签了
+<code>&lt;Fragment&gt;...&lt;Fragment&gt;</code> 可以接收一个key属性
+<code>&lt;&gt;...&lt;/&gt;</code>  啥属性都不接收</p>
+<h4 id="context">
+  Context
+  <a class="heading-link" href="#context">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<blockquote>
+<p>一种组件间通信方式, 常用于【祖组件】与【后代组件】间通信</p>
+</blockquote>
+<ol>
+<li>
+<p>创建Context容器对象：
+<code>const XxxContext = React.createContext()</code></p>
+</li>
+<li>
+<p>渲染子组时，外面包裹xxxContext.Provider, 通过value属性给后代组件传递数据：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&lt;xxxContext.Provider value<span style="color:#f92672">={</span>数据<span style="color:#f92672">}</span>&gt;
+    子组件
+&lt;/xxxContext.Provider&gt;
+</code></pre></div></li>
+<li>
+<p>后代组件读取数据：</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+    //第一种方式:仅适用于类组件 
+      static contextType <span style="color:#f92672">=</span> xxxContext  // 声明接收context
+      this.context // 读取context中的value数据
+      
+    //第二种方式: 函数组件与类组件都可以
+      &lt;xxxContext.Consumer&gt;
+        <span style="color:#f92672">{</span>
+          value <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">(</span> // value就是context中的value数据
+            要显示的内容
+          <span style="color:#f92672">)</span>
+        <span style="color:#f92672">}</span>
+      &lt;/xxxContext.Consumer&gt;
+</code></pre></div><h3 id="注意">
+  注意
+  <a class="heading-link" href="#%e6%b3%a8%e6%84%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<pre><code>在应用开发中一般不用context, 一般都它去封装react插件（比如react-redux里用到了Provider）
+</code></pre>
+<h3 id="reactcomponent-优化-purecomponent">
+  React.Component 优化 PureComponent
+  <a class="heading-link" href="#reactcomponent-%e4%bc%98%e5%8c%96-purecomponent">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>Component（React.Component）的2个问题</p>
+<ol>
+<li>只要执行setState(),即使不改变状态数据, 组件也会重新render()</li>
+<li>只当前组件重新render(), 就会自动重新render子组件，纵使子组件没有用到父组件的任何数据 ==&gt; 效率低</li>
+</ol>
+<p>效率高的做法</p>
+<blockquote>
+<p>只有当组件的state或props数据发生改变时才重新render()</p>
+</blockquote>
+<p>原因</p>
+<blockquote>
+<p>Component中的shouldComponentUpdate()总是返回true</p>
+</blockquote>
+<p>解决</p>
+<pre><code>办法1: 
+    重写shouldComponentUpdate(nextProps,nextState)方法
+    比较新旧state或props数据, 如果有变化才返回true, 如果没有返回false
+
+办法2:  
+    使用PureComponent
+</code></pre>
+<p><code>import React, { PureComponent } from 'react'</code></p>
+<p><code>export default class Parent extends PureComponent{}</code>
+PureComponent重写了shouldComponentUpdate(), 只有state或props数据有变化才返回true</p>
+<pre><code>    注意: 
+        只是进行state和props数据的浅比较, 如果只是数据对象内部数据变了, 返回false  
+        不要直接修改state数据, 而是要产生新数据
+</code></pre>
+<p>// 产生新数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">this.setState<span style="color:#f92672">({</span>carName:<span style="color:#e6db74">&#39;迈巴赫’})  // 新对象
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">const {stus} = this.state
+</span><span style="color:#e6db74">this.setState({stus:[&#39;</span>小刘<span style="color:#960050;background-color:#1e0010">&#39;</span>,...stus<span style="color:#f92672">]})</span>  // 新数组
+</code></pre></div><p>// 直接修改数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">const obj <span style="color:#f92672">=</span> this.state
+obj.carName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;迈巴赫&#39;</span>
+console.log<span style="color:#f92672">(</span>obj <span style="color:#f92672">===</span> this.state<span style="color:#f92672">)</span>; //true  还是以前的对象，检测不到变化
+this.setState<span style="color:#f92672">(</span>obj<span style="color:#f92672">)</span>
+
+const <span style="color:#f92672">{</span>stus<span style="color:#f92672">}</span> <span style="color:#f92672">=</span> this.state
+stus.unshift<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;小刘&#39;</span><span style="color:#f92672">)</span>
+this.setState<span style="color:#f92672">({</span>stus<span style="color:#f92672">})</span> // 还是以前的数组，检测不到变化
+</code></pre></div><p>项目中一般使用PureComponent来优化</p>
+<h5 id="renderprops">
+  renderProps
+  <a class="heading-link" href="#renderprops">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>向组件内部动态传入带内容的结构或标签（可以就理解为组件）
+<A><B></B></A> 虽然A能通过{this.props.children}渲染B，但是这种方法不能传A的值给B，即不能携带数据</p>
+<p>&lt;A render={name =&gt; <B name={name} />} /&gt;  //给A添加一个render属性（命名自定义都可以） 返回值是一个组件 可以携带数据即可以给这个组件传值比如name</p>
+<p>在组件A里写 this.props.render(name即A内部的state数据)
+组件A并不知道render具体传哪个组件，但是A可以提供属性比如name
+这样子组件B的props就能接收到name</p>
+<p>类似vue的插槽</p>
+<h4 id="错误边界error-boundary">
+  错误边界Error boundary
+  <a class="heading-link" href="#%e9%94%99%e8%af%af%e8%be%b9%e7%95%8cerror-boundary">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>错误边界：用来捕获后代组件错误，渲染出备用页面
+只能捕获后代组件生命周期产生的错误，不能捕获自己组件产生的错误和其他组件在合成事件、定时器中产生的错误
+<code>getDerivedStateFromError</code>配合<code>componentDidCatch</code>（非必需）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">    state <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+        hasError:<span style="color:#e6db74">&#39;&#39;</span> //用于标识子组件是否产生错误
+    <span style="color:#f92672">}</span>
+
+
+    //当Parent的子组件出现报错时候，会触发getDerivedStateFromError调用，并携带错误信息
+    static getDerivedStateFromError<span style="color:#f92672">(</span>error<span style="color:#f92672">){</span>
+        console.log<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;@@@&#39;</span>,error<span style="color:#f92672">)</span>;
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">{</span>hasError:error<span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+
+    componentDidCatch<span style="color:#f92672">(){</span>
+        console.log<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;此处统计错误，反馈给服务器，用于通知编码人员进行bug的解决&#39;</span><span style="color:#f92672">)</span>;
+    <span style="color:#f92672">}</span>
+
+    render<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>
+            &lt;div&gt;
+                &lt;h2&gt;我是Parent组件&lt;/h2&gt;
+                <span style="color:#f92672">{</span>this.state.hasError ? &lt;h2&gt;当前网络不稳定，稍后再试&lt;/h2&gt; : &lt;Child/&gt;<span style="color:#f92672">}</span>
+            &lt;/div&gt;
+        <span style="color:#f92672">)</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h4 id="组件间通信方式总结">
+  组件间通信方式总结
+  <a class="heading-link" href="#%e7%bb%84%e4%bb%b6%e9%97%b4%e9%80%9a%e4%bf%a1%e6%96%b9%e5%bc%8f%e6%80%bb%e7%bb%93">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>组件间的关系：</p>
+<ol>
+<li>父子组件</li>
+<li>兄弟组件（非嵌套组件）</li>
+<li>祖孙组件（跨级组件）</li>
+</ol>
+<p>通信方式：</p>
+<ol>
+<li>props：children props；render props</li>
+<li>消息订阅与发布： pub-sub</li>
+<li>集中式管理：redux、dva等</li>
+<li>conText：生产者-消费者模式</li>
+</ol>
+<p>比较好的搭配方式：</p>
+<ol>
+<li>父子组件：props</li>
+<li>兄弟组件：消息订阅-发布、集中式管理</li>
+<li>祖孙组件（跨级组件）：消息订阅-发布、集中式管理、conText(开发用的少，封装插件用的多)</li>
+</ol>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2017 -
+    
+    2021
+     OnlyHy 
+    ·
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

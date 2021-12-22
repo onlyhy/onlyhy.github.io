@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="OnlyHy">
+    <meta name="description" content="表单，控件    文档中的表单是document.forms的成员，既可以使用名字，也可以使用在文档中的编号来获取表单。 document.forms.my- name=&ldquo;my&rdquo; 的表单 document.forms[0]- 文档中的第一个表单
+表单中的元素可以通过表单的elements属性获取，也可以通过form[index/name]来获取，如 form.elements.login 和 form.login。
+一个小问题：如果我们访问一个元素，然后修改它的 name，之后它仍然可以被通过旧的 name 访问到
+&lt;fieldset&gt;元素作为表单的”子表单“，它也有elements属性
+还可以反向引用：element.form访问元素对应的表单
+要使用textarea.value而不是textarea.innerHTML
+&lt;select&gt;：
+ select.options —— &lt;option&gt; 的子元素的集合 select.value —— 当前所选择的 &lt;option&gt; 的 value select.selectedIndex —— 当前所选择的 &lt;option&gt; 的编号  为&lt;select&gt;设置value的方式：
+ 找到对应的 &lt;option&gt; 元素，并将 option.selected 设置为 true。 将 select.value 设置为对应的 value。 将 select.selectedIndex 设置为对应 &lt;option&gt; 的编号  select具有multiple特性
+简短创建&lt;option&gt;元素：new Option(text, value, defaultSelected, selected)
+focus/blur事件    元素聚焦：focus，元素失焦：blur elem.onfocus = ()=&gt;{}; elem.">
+    <meta name="keywords" content="onlyhy">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="现代JS教程[第二部分（四）]"/>
+<meta name="twitter:description" content="表单，控件    文档中的表单是document.forms的成员，既可以使用名字，也可以使用在文档中的编号来获取表单。 document.forms.my- name=&ldquo;my&rdquo; 的表单 document.forms[0]- 文档中的第一个表单
+表单中的元素可以通过表单的elements属性获取，也可以通过form[index/name]来获取，如 form.elements.login 和 form.login。
+一个小问题：如果我们访问一个元素，然后修改它的 name，之后它仍然可以被通过旧的 name 访问到
+&lt;fieldset&gt;元素作为表单的”子表单“，它也有elements属性
+还可以反向引用：element.form访问元素对应的表单
+要使用textarea.value而不是textarea.innerHTML
+&lt;select&gt;：
+ select.options —— &lt;option&gt; 的子元素的集合 select.value —— 当前所选择的 &lt;option&gt; 的 value select.selectedIndex —— 当前所选择的 &lt;option&gt; 的编号  为&lt;select&gt;设置value的方式：
+ 找到对应的 &lt;option&gt; 元素，并将 option.selected 设置为 true。 将 select.value 设置为对应的 value。 将 select.selectedIndex 设置为对应 &lt;option&gt; 的编号  select具有multiple特性
+简短创建&lt;option&gt;元素：new Option(text, value, defaultSelected, selected)
+focus/blur事件    元素聚焦：focus，元素失焦：blur elem.onfocus = ()=&gt;{}; elem."/>
+
+    <meta property="og:title" content="现代JS教程[第二部分（四）]" />
+<meta property="og:description" content="表单，控件    文档中的表单是document.forms的成员，既可以使用名字，也可以使用在文档中的编号来获取表单。 document.forms.my- name=&ldquo;my&rdquo; 的表单 document.forms[0]- 文档中的第一个表单
+表单中的元素可以通过表单的elements属性获取，也可以通过form[index/name]来获取，如 form.elements.login 和 form.login。
+一个小问题：如果我们访问一个元素，然后修改它的 name，之后它仍然可以被通过旧的 name 访问到
+&lt;fieldset&gt;元素作为表单的”子表单“，它也有elements属性
+还可以反向引用：element.form访问元素对应的表单
+要使用textarea.value而不是textarea.innerHTML
+&lt;select&gt;：
+ select.options —— &lt;option&gt; 的子元素的集合 select.value —— 当前所选择的 &lt;option&gt; 的 value select.selectedIndex —— 当前所选择的 &lt;option&gt; 的编号  为&lt;select&gt;设置value的方式：
+ 找到对应的 &lt;option&gt; 元素，并将 option.selected 设置为 true。 将 select.value 设置为对应的 value。 将 select.selectedIndex 设置为对应 &lt;option&gt; 的编号  select具有multiple特性
+简短创建&lt;option&gt;元素：new Option(text, value, defaultSelected, selected)
+focus/blur事件    元素聚焦：focus，元素失焦：blur elem.onfocus = ()=&gt;{}; elem." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://onlyhy.github.io/posts/2021-12-16-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E5%9B%9B/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-16T09:00:00+08:00" />
+<meta property="article:modified_time" content="2021-12-16T09:00:00+08:00" />
+
+
+
+    <title>
+  现代JS教程[第二部分（四）] · oooonlyhy
+</title>
+
+    
+      <link rel="canonical" href="http://onlyhy.github.io/posts/2021-12-16-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E5%9B%9B/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.91.0" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      oooonlyhy
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">首页</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">归档</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://onlyhy.github.io/posts/2021-12-16-%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%E5%9B%9B/">
+              现代JS教程[第二部分（四）]
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-12-16T09:00:00&#43;08:00'>
+                December 16, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：3 分钟
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/onlyhy/">onlyhy</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/%E7%8E%B0%E4%BB%A3js%E6%95%99%E7%A8%8B/">现代JS教程</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <h3 id="表单控件">
+  表单，控件
+  <a class="heading-link" href="#%e8%a1%a8%e5%8d%95%e6%8e%a7%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>文档中的表单是document.forms的成员，既可以使用名字，也可以使用在文档中的编号来获取表单。
+<code>document.forms.my</code>- name=&ldquo;my&rdquo; 的表单
+<code>document.forms[0]</code>- 文档中的第一个表单</p>
+<p>表单中的元素可以通过表单的<strong>elements</strong>属性获取，也可以通过<code>form[index/name]</code>来获取，如 form.elements.login 和 form.login。</p>
+<p>一个小问题：如果我们访问一个元素，然后修改它的 name，之后它仍然可以被通过旧的 name 访问到</p>
+<p><code>&lt;fieldset&gt;</code>元素作为表单的”子表单“，它也有elements属性</p>
+<p>还可以反向引用：element.form访问元素对应的表单</p>
+<p>要使用<code>textarea.value</code>而不是textarea.innerHTML</p>
+<p><code>&lt;select&gt;</code>：</p>
+<ol>
+<li>select.options —— <code>&lt;option&gt;</code> 的子元素的集合</li>
+<li>select.value  —— 当前所选择的 <code>&lt;option&gt;</code> 的 value</li>
+<li>select.selectedIndex —— 当前所选择的 <code>&lt;option&gt;</code> 的编号</li>
+</ol>
+<p>为<code>&lt;select&gt;</code>设置value的方式：</p>
+<ol>
+<li>找到对应的 <code>&lt;option&gt;</code> 元素，并将 option.selected 设置为 true。</li>
+<li>将 select.value 设置为对应的 value。</li>
+<li>将 select.selectedIndex 设置为对应 <code>&lt;option&gt;</code> 的编号</li>
+</ol>
+<p>select具有multiple特性</p>
+<p>简短创建<code>&lt;option&gt;</code>元素：<code>new Option(text, value, defaultSelected, selected)</code></p>
+<h5 id="focusblur事件">
+  focus/blur事件
+  <a class="heading-link" href="#focusblur%e4%ba%8b%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>元素聚焦：focus，元素失焦：blur
+elem.onfocus = ()=&gt;{}; elem.onblur=()=&gt;{}</p>
+<p>elem.focus()和elem.blur()可以设置和移除元素上的焦点</p>
+<p><strong>tabindex</strong>： 默认情况下，很多元素是不支持聚焦的，但是！使用HTML特性：<strong>tabindex</strong>可以使元素变成可聚焦的。tabindex的value是使用Tab等在元素之间切换时元素的顺序号。也可以使用elem.tabIndex来添加</p>
+<blockquote>
+<ol>
+<li>tabindex=&ldquo;0&rdquo; 会使该元素被与那些不具有 tabindex 的元素放在一起。也就是说，当我们切换元素时，具有 tabindex=&ldquo;0&rdquo; 的元素将排在那些具有 tabindex ≥ 1 的元素的后面。用于使元素具有焦点，但是保留默认的切换顺序</li>
+<li>tabindex=&quot;-1&quot; 只允许以编程的方式聚焦于元素。Tab 键会忽略这样的元素，但是 elem.focus() 有效。</li>
+</ol>
+</blockquote>
+<p>focus和blur事件<strong>不会向上冒泡</strong></p>
+<ol>
+<li>但是在捕获阶段会向下传播，可以通过给addEventListener的第二个参数设置为true，表示在捕获阶段处理</li>
+<li>可以使用focusin和focusout事件（和focus/blur完全一样，但是它们可以冒泡）</li>
+</ol>
+<p>可以通过 <code>document.activeElement</code> 来获取当前所聚焦的元素。</p>
+<h5 id="事件changeinputcutcopypaste">
+  事件：change，input，cut，copy，paste
+  <a class="heading-link" href="#%e4%ba%8b%e4%bb%b6changeinputcutcopypaste">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>change：元素更改完成时触发，比如input失去焦点时，select选择项改变时</p>
+<p>input：对输入值进行修改后会触发，无法使用event.preventDefault()</p>
+<p>cut/copy/paste：剪切/拷贝/粘贴，属于ClipboardEvent类，event.clipboardData 属性可以用于访问剪贴板。可以通过event.preventDefault()来阻止行为</p>
+<h5 id="表单事件和方法提交">
+  表单：事件和方法提交
+  <a class="heading-link" href="#%e8%a1%a8%e5%8d%95%e4%ba%8b%e4%bb%b6%e5%92%8c%e6%96%b9%e6%b3%95%e6%8f%90%e4%ba%a4">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>提交表单，这俩都会触发submit事件：</p>
+<ol>
+<li>点击<input type="submit"> 或 <input type="image"></li>
+<li>在input中按下Enter键（还会触发click事件，有趣）</li>
+</ol>
+<p>可以form.submit()手动提交</p>
+<h4 id="加载文档和其它资源">
+  加载文档和其它资源
+  <a class="heading-link" href="#%e5%8a%a0%e8%bd%bd%e6%96%87%e6%a1%a3%e5%92%8c%e5%85%b6%e5%ae%83%e8%b5%84%e6%ba%90">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<h5 id="页面生命周期domcontentloadedloadbeforeunloadunload">
+  页面生命周期：DOMContentLoaded,load,beforeunload,unload
+  <a class="heading-link" href="#%e9%a1%b5%e9%9d%a2%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9fdomcontentloadedloadbeforeunloadunload">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ul>
+<li>DOMContentLoaded —— 浏览器已完全加载 HTML，并构建了 DOM 树，但像 <code>&lt;img&gt;</code> 和样式表之类的外部资源可能尚未加载完成。可以查找DOM节点，初始化接口。</li>
+<li>load —— window.onload，浏览器不仅加载完成了 HTML，还加载完成了所有外部资源：图片，样式等。外部资源加载完成，样式已被应用，图片大小也已知。</li>
+<li>beforeunload —— window.onbeforeunload，用户正在离开：可以检查用户是否保存了更改，并询问他是否真的要离开</li>
+<li>unload —— window.onunload，用户几乎已经离开。仍然可以做一些操作，比如发送统计数据<code>navigator.sendBeacon(url, data)</code>（MDN不推荐了）</li>
+</ul>
+<p><strong>DOMContentLoaded</strong></p>
+<ol>
+<li>发生在document上，<strong>必须通过addEventListener</strong>，<code>document.addEventListener(&quot;DOMContentLoaded&quot;, ...);</code>来捕获。（不能用 document.onDOMContentLoaded = ..）</li>
+<li>文档遇到<code>&lt;script&gt;</code>时，会在继续构建DOM之前运行，所以DOMContentLoaded 必须等待脚本执行结束。有两个例外：
+<ol>
+<li>async特性不会阻塞DOMContentLoaded</li>
+<li>document.createElement(&lsquo;script&rsquo;) 动态生成并添加到网页的脚本也不会阻塞 DOMContentLoaded</li>
+</ol>
+</li>
+<li>虽然，DOMContentLoaded不会等待外部样式表，但是！！有个陷阱：如果在样式表后面有一个脚本，那么这个脚本会等待样式表加载完成</li>
+<li>浏览器会在DOMContentLoaded时自动填充表单（用户已允许），比如登录名/密码之类的</li>
+</ol>
+<p><strong>document.readyState</strong>
+提供当前加载状态的信息</p>
+<ul>
+<li>loading —— 文档正在被加载。</li>
+<li>interactive —— 文档被全部读取。与 DOMContentLoaded 几乎同时发生，但是在 DOMContentLoaded 之前发生。</li>
+<li>complete —— 文档被全部读取，并且所有资源（例如图片等）都已加载完成。与 window.onload 几乎同时发生，但是在 window.onload 之前发生。</li>
+</ul>
+<p><strong>readystatechange</strong>事件，会在状态发生改变时触发
+<code>document.addEventListener('readystatechange', () =&gt; console.log(document.readyState));</code></p>
+<h5 id="脚本async-defer">
+  脚本：async, defer
+  <a class="heading-link" href="#%e8%84%9a%e6%9c%acasync-defer">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p><strong>defer</strong></p>
+<ol>
+<li>具有 defer 特性的脚本不会阻塞页面。</li>
+<li>具有 defer 特性的脚本总是要等到 DOM 解析完毕，但在 DOMContentLoaded 事件之前执行。</li>
+<li>具有 defer 特性的脚本保持其相对顺序，就像常规脚本一样。</li>
+<li>defer特性仅适用于外部脚本，如果没有src，defer会被忽略</li>
+</ol>
+<p><strong>async</strong>
+<strong>async 脚本就是一个会在加载完成时执行的完全独立的脚本</strong></p>
+<ol>
+<li>不会阻塞页面</li>
+<li>其他脚本不会等待 async 脚本加载完成，同样，async 脚本也不会等待其他脚本</li>
+<li>DOMContentLoaded 和异步脚本不会彼此等待</li>
+</ol>
+<p><strong>动态脚本</strong>
+通过JS创建脚本附加到文档中，默认情况下，动态脚本的行为也是<strong>异步</strong>的。可以通过<code>script.async=false</code>改变规则</p>
+<h5 id="资源加载onload-onerror">
+  资源加载：onload, onerror
+  <a class="heading-link" href="#%e8%b5%84%e6%ba%90%e5%8a%a0%e8%bd%bdonload-onerror">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<ol>
+<li>
+<p>onload/onerror基本上适用于<strong>具有外部src</strong>的任何资源</p>
+</li>
+<li>
+<p>onload/onerror事件仅跟踪<strong>加载本身</strong>，在脚本处理和执行期间即使发生了error也仍然会触发onload</p>
+<blockquote>
+<p>如script.onload在加载并执行完成时触发，script.onerror在脚本加载期间的error会被跟踪到（只知道加载失败，没有详细的error信息）</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>大多数资源在被添加到文档中后，便开始加载。但是 <code>&lt;img&gt;</code> 是个例外。它要等到获得 src 后才开始加载。</li>
+<li>对于 <code>&lt;iframe&gt;</code> 来说，iframe 加载完成时会触发 iframe.onload 事件，无论是成功加载还是出现 error。</li>
+</ul>
+</blockquote>
+<p><strong>跨源策略：</strong>
+如果我们使用的是来自其他域的脚本，并且该脚本中存在 error，那么我们无法获取 error 的详细信息。</p>
+<p>要允许跨源访问，<code>&lt;script&gt;</code> 标签需要具有 crossorigin 特性（attribute），并且远程服务器必须提供特殊的 header。</p>
+<pre><code>1. 无 crossorigin 特性 —— 禁止访问。
+2. crossorigin=&quot;anonymous&quot; —— 如果服务器的响应带有包含 * 或我们的源（origin）的 header Access-Control-Allow-Origin，则允许访问。浏览器不会将授权信息和 cookie 发送到远程服务器。
+3. crossorigin=&quot;use-credentials&quot; —— 如果服务器发送回带有我们的源的 header Access-Control-Allow-Origin 和 Access-Control-Allow-Credentials: true，则允许访问。浏览器会将授权信息和 cookie 发送到远程服务器。
+</code></pre>
+<h3 id="杂">
+  杂
+  <a class="heading-link" href="#%e6%9d%82">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h5 id="dom变动观察器mutationobserver">
+  DOM变动观察器（MutationObserver）
+  <a class="heading-link" href="#dom%e5%8f%98%e5%8a%a8%e8%a7%82%e5%af%9f%e5%99%a8mutationobserver">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>MutationObserver 是一个内建对象，它观察 DOM 元素，并在检测到更改时触发回调。</p>
+<ol>
+<li>
+<p>创建观察器 <code>let observer = new MutationObserver(callback);</code></p>
+</li>
+<li>
+<p>附加到dom节点 <code>observer.observe(node, config);</code></p>
+<blockquote>
+<p>config：一个具有具有布尔选项的对象，表示“将对哪些更改做出反应”，避免不必要的回调以节省资源</p>
+<ul>
+<li>childList —— node 的直接子节点的更改，</li>
+<li>subtree —— node 的所有后代的更改，</li>
+<li>attributes —— node 的特性（attribute），</li>
+<li>attributeFilter —— 特性名称数组，只观察选定的特性。</li>
+<li>characterData —— 是否观察 node.data（文本内容）</li>
+<li>attributeOldValue —— 如果为 true，则将特性的旧值和新值都传递给回调（参见下文），否则只传新值（需要 attributes 选项），</li>
+<li>characterDataOldValue —— 如果为 true，则将 node.data 的旧值和新值都传递给回调（参见下文），否则只传新值（需要 characterData 选项）</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>发生更改后，执行回调，更改被作为一个 MutationRecord 对象列表传入第一个参数，而观察器自身作为第二个参数</p>
+<blockquote>
+<p>MutationRecord：</p>
+<ul>
+<li>type(变动类型)：
+&gt; 1. &ldquo;attributes&rdquo;：特性被修改了，
+&gt; 2. &ldquo;characterData&rdquo;：数据被修改了，用于文本节点，
+&gt; 3. &ldquo;childList&rdquo;：添加/删除了子元素。</li>
+<li>target(更改发生在何处)</li>
+<li>addedNodes/removedNodes(添加/删除的节点)</li>
+<li>previousSibling/nextSibling(添加/删除的节点的上一个/下一个兄弟节点)</li>
+<li>attributeName/attributeNamespace(被更改的特性的名称/命名空间（用于 XML）)</li>
+<li>oldValue()之前的值，仅适用于特性或文本更改，若设置了相应选项 attributeOldValue/characterDataOldValue</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<p><strong>用于集成</strong></p>
+<ol>
+<li>检测到不需要的元素出现并删除</li>
+<li>检测某些内容被添加到文档中，以调整页面
+&hellip;</li>
+</ol>
+<p><strong>用于架构</strong>
+比如Prism.js动态高亮语法等</p>
+<p><strong>其他</strong></p>
+<ol>
+<li><code>observer.disconnect()</code> —— 停止观察</li>
+<li><code>observer.takeRecords()</code> —— 获取尚未处理的变动记录列表，表中记录的是已经发生，但回调暂未处理的变动。<strong>返回的记录被从处理队列中移除！</strong></li>
+<li><strong>观察器在内部对节点使用弱引用！观察到 DOM 节点这一事实并不能阻止垃圾回收</strong></li>
+</ol>
+<h5 id="事件循环微任务和宏任务">
+  事件循环：微任务和宏任务
+  <a class="heading-link" href="#%e4%ba%8b%e4%bb%b6%e5%be%aa%e7%8e%af%e5%be%ae%e4%bb%bb%e5%8a%a1%e5%92%8c%e5%ae%8f%e4%bb%bb%e5%8a%a1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>事件循环：它是一个在 JavaScript 引擎等待任务，执行任务和进入休眠状态等待更多任务这几个状态之间转换的无限循环。</p>
+<ol>
+<li>引擎执行任务时永远不会进行渲染（render）。如果任务执行需要很长一段时间也没关系。仅在任务完成后才会绘制对 DOM 的更改。</li>
+<li>如果一项任务执行花费的时间过长，浏览器将无法执行其他任务，例如处理用户事件。因此，在一定时间后，浏览器会抛出一个如“页面未响应”之类的警报，建议你终止这个任务。这种情况常发生在有大量复杂的计算或导致死循环的程序错误时。</li>
+</ol>
+<p>应用：</p>
+<ol>
+<li>拆分CPU过载任务（如使用setTimeout延时为0）</li>
+<li>进度指示 （拆分CPU过载任务可以显示进度指示，变化会在setTimout之间绘制出来）</li>
+<li>在事件之后做一些事情</li>
+</ol>
+<p><strong>微任务</strong>通常是由 promise 创建的：对 .then/catch/finally 处理程序的执行会成为微任务。微任务也被用于 await 的“幕后”，因为它是 promise 处理的另一种形式。还有一个特殊的函数<code>queueMicrotask(func)</code>：想要异步执行（在当前代码之后）一个函数，但是要在更改被渲染或新事件被处理之前执行。</p>
+<blockquote>
+<p><strong>每个宏任务之后，引擎会立即执行微任务队列中的所有任务，然后再执行其他的宏任务，或渲染，或进行其他任何操作。</strong></p>
+</blockquote>
+<p>微任务会在执行任何其他事件处理，或渲染，或执行任何其他宏任务之前完成。
+<img src="evernotecid://AD55C2FF-DB70-4AF5-9F57-2A1073AF7668/appyinxiangcom/17648251/ENResource/p1069" alt="85b1de0cde653b343a345a2079941a55.png"></p>
+<p><strong>Web Workers</strong>
+对于不应该阻塞事件循环的耗时长的繁重计算任务，可以使用Web Workers，在另一个并行线程中运行代码的方式。</p>
+<blockquote>
+<p>1.Web Workers 可以与主线程交换消息，但是它们具有自己的变量和事件循环。
+2. Web Workers 没有访问 DOM 的权限，因此，它们对于同时使用多个 CPU 内核的计算非常有用。</p>
+</blockquote>
+<h5 id="选择selection和范围range">
+  选择（Selection）和范围（Range）
+  <a class="heading-link" href="#%e9%80%89%e6%8b%a9selection%e5%92%8c%e8%8c%83%e5%9b%b4range">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>(啊&hellip;..内容好多)
+选择的基本概念是Range，本质上是一对”边界点“：范围起点和范围终点。</p>
+<p><strong>Range</strong></p>
+<ol>
+<li>创建一个范围 <code>let range = new Range();</code></li>
+<li>设置选择边界 <code>range.setStart(node, offset)</code>和<code>range.setEnd(node, offset)</code>，终点一定要在起点后面。</li>
+<li>Range方法：</li>
+</ol>
+<blockquote>
+<p>设置范围的起点</p>
+</blockquote>
+<ul>
+<li>setStart(node, offset) 将起点设置在：node 中的位置 offset</li>
+<li>setStartBefore(node) 将起点设置在：node 前面</li>
+<li>setStartAfter(node) 将起点设置在：node 后面</li>
+</ul>
+<blockquote>
+<p>设置范围的终点</p>
+</blockquote>
+<ul>
+<li>setEnd(node, offset) 将终点设置为：node 中的位置 offset</li>
+<li>setEndBefore(node) 将终点设置为：node 前面</li>
+<li>setEndAfter(node) 将终点设置为：node 后面</li>
+</ul>
+<blockquote>
+<p>其他</p>
+</blockquote>
+<ul>
+<li>selectNode(node) 设置范围以选择整个 node</li>
+<li>selectNodeContents(node) 设置范围以选择整个 node 的内容</li>
+<li>collapse(toStart) 如果 toStart=true 则设置 end=start，否则设置 start=end，从而折叠范围</li>
+<li>cloneRange() 创建一个具有相同起点/终点的新范围</li>
+</ul>
+<blockquote>
+<p>操纵范围内的内容</p>
+</blockquote>
+<ul>
+<li>deleteContents() —— 从文档中删除范围内容</li>
+<li>extractContents() —— 从文档中删除范围内容，并将删除的内容作为 DocumentFragment 返回</li>
+<li>cloneContents() —— 复制范围内容，并将复制的内容作为 DocumentFragment 返回</li>
+<li>insertNode(node) —— 在范围的起始处将 node 插入文档</li>
+<li>surroundContents(node) —— 使用 node 将所选范围内容包裹起来。要使此操作有效，则该范围必须包含其中所有元素的开始和结束标签：不能像 <code>&lt;i&gt;</code>abc 这样的部分范围。</li>
+</ul>
+<p><strong>Selection</strong>
+文档的选择是由<strong>Selection</strong>对象表示的，通过window.getSelection()或document.getSelection()获取
+选择的起点称为“锚点（anchor）”，终点称为“焦点（focus）”</p>
+<blockquote>
+<p>Selection的属性：</p>
+</blockquote>
+<ul>
+<li>anchorNode —— 选择的起始节点(选择的终点可能在起点之前)</li>
+<li>anchorOffset —— 选择开始的 anchorNode 中的偏移量</li>
+<li>focusNode —— 选择的结束节点</li>
+<li>focusOffset —— 选择开始处 focusNode 的偏移量</li>
+<li>isCollapsed —— 如果未选择任何内容（空范围）或不存在，则为 true</li>
+<li>rangeCount —— 选择中的范围数，除 Firefox 外，其他浏览器最多为 1</li>
+</ul>
+<blockquote>
+<p>Selection的事件：</p>
+</blockquote>
+<ul>
+<li>elem.onselectstart —— 当选择从 elem 上开始时，例如，用户按下鼠标键并开始移动鼠标。（阻止默认行为会使选择无法开始）</li>
+<li>document.onselectionchange —— 当选择变动时。（只能在 document 上设置）</li>
+<li>&hellip;</li>
+</ul>
+<p><strong>表单控件中的选择</strong>
+有专用的选择API，没有Selection活Range对象</p>
+<blockquote>
+<p>属性：</p>
+</blockquote>
+<ul>
+<li>input.selectionStart —— 选择的起始位置（可写），</li>
+<li>input.selectionEnd —— 选择的结束位置（可写），</li>
+<li>input.selectionDirection —— 选择方向，其中之一：“forward”，“backward” 或 “none”（例如使用鼠标双击进行的选择）</li>
+</ul>
+<blockquote>
+<p>事件：</p>
+</blockquote>
+<ul>
+<li>input.onselect —— 当某个东西被选择时触发</li>
+</ul>
+<blockquote>
+<p>方法：</p>
+</blockquote>
+<ul>
+<li>input.select() —— 选择文本控件中的所有内容（可以是 textarea 而不是 input），</li>
+<li>input.setSelectionRange(start, end, [direction]) —— 在给定方向上（可选），从 start 一直选择到 end。</li>
+<li>input.setRangeText(replacement, [start], [end], [selectionMode]) —— 用新文本替换范围中的文本。
+&hellip;</li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2017 -
+    
+    2021
+     OnlyHy 
+    ·
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

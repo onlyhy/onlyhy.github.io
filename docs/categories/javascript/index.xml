@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JavaScript on oooonlyhy</title>
+    <link>http://onlyhy.github.io/categories/javascript/</link>
+    <description>Recent content in JavaScript on oooonlyhy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 11 Apr 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://onlyhy.github.io/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Truthy与True的不同</title>
+      <link>http://onlyhy.github.io/posts/2018-04-11-truthy%E4%B8%8Etrue/</link>
+      <pubDate>Wed, 11 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2018-04-11-truthy%E4%B8%8Etrue/</guid>
+      <description>黄黄说：“点点滴滴都是真”
+读Vue.js的官方文档，注意到了Truthy，记一下MDN的解释。
+Truthy（真值）    在JS中，Truthy指在Boolean（布尔型）上下文中转换后的值为真的值，布尔型是一种逻辑数据类型，只能有true或false值。
+除非被定义为falsy（false,0,&amp;quot;&amp;quot;,undefined,NaN）,否则所有值都为真值。
+JS中真值示例：
+if (true) if ({}) if ([]) if (42) if (&amp;quot;foo&amp;quot;) if (new Date()) if (-42) if (3.14) if (-3.14) if (Infinity) if (-Infinity)  To Be Continued…</description>
+    </item>
+    
+    <item>
+      <title>jQuery回顾随笔</title>
+      <link>http://onlyhy.github.io/posts/2017-07-11-jquery/</link>
+      <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-07-11-jquery/</guid>
+      <description>叨叨    没用博客之前，看视频教程都是手写的笔记，嗨呀，虽然说好读书不如烂笔头，现在觉得写在博客上或者是一种更好的选择..回顾一下笔记就顺便写在博客上了
+百度CDN:https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js
+语法、样式、DOM、事件、动画    语法    选取 HTML 元素，并对选取的元素执行某些操作：$(selector).action()
+文档就绪后执行 jQuery 方法：
+$(document).ready(function(){ // 开始写 jQuery 代码... }); 简介版： $(function(){ // 开始写 jQuery 代码... });  jQuery方法包装后的对象，是一个类数组对象，与DOM对象完全不同，唯一相似是都能操作DOM，DOM对象是一个单独的DOM元素
+var $div = $(&#39;div&#39;);//jQuery对象 var div = $div[0];//转化为DOM对象，数组索引从0开始 var div = $div.get(0);//通过get()方法 div.style.color = &#39;red&#39;;操作DOM对象的属性  通过$(DOM)方法将DOM对象加工成为jQuery对象之后，调用jQuery方法
+样式篇    选择器    id选择器    $(&amp;quot;#id&amp;quot;) 唯一一个id
+类选择器    $(&amp;quot;.</description>
+    </item>
+    
+    <item>
+      <title>jQuery核心部分回顾随笔</title>
+      <link>http://onlyhy.github.io/posts/2017-07-11-jquery%E6%A0%B8%E5%BF%83/</link>
+      <pubDate>Tue, 11 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-07-11-jquery%E6%A0%B8%E5%BF%83/</guid>
+      <description>AJAX    load()    load() 方法从服务器加载数据，并把返回的数据放入被选元素中
+$(selector).load(URL,data,callback); 如：
+$(&amp;quot;#div1&amp;quot;).load(&amp;quot;demo_test.txt&amp;quot;);
+$(&amp;quot;#div1&amp;quot;).load(&amp;quot;demo_test.txt #p1&amp;quot;);
+callback规定了方法完成后要允许的回调函数，可设置不同的参数： responseTxt - 包含调用成功时的结果内容；statusTXT - 包含调用的状态；xhr - 包含 XMLHttpRequest 对象
+$(&amp;quot;button&amp;quot;).click(function(){ $(&amp;quot;#div1&amp;quot;).load(&amp;quot;demo_test.txt&amp;quot;,function(responseTxt,statusTxt,xhr){ if(statusTxt==&amp;quot;success&amp;quot;) alert(&amp;quot;外部内容加载成功!&amp;quot;); if(statusTxt==&amp;quot;error&amp;quot;) alert(&amp;quot;Error: &amp;quot;+xhr.status+&amp;quot;: &amp;quot;+xhr.statusText); }); });  get()/post()    用于通过 HTTP GET 或 POST 请求从服务器请求数据
+  GET ： 从指定的资源请求数据，基本上用于从服务器获得（取回）数据，可能返回缓存数据
+  POST ： 向指定的资源提交要处理的数据，也可用于从服务器获取数据，不会缓存数据，常用于连同请求一起发送数据。
+$.get(URL,callback);
+$(&amp;ldquo;button&amp;rdquo;).click(function(){ $.get(&amp;ldquo;demo_test.php&amp;rdquo;,function(data,status){ alert(&amp;ldquo;数据: &amp;quot; + data + &amp;ldquo;\n状态: &amp;quot; + status); }); });</description>
+    </item>
+    
+    <item>
+      <title>JavaScript一些点</title>
+      <link>http://onlyhy.github.io/posts/2017-06-08-js/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-08-js/</guid>
+      <description>输出    没有任何打印或者输出的函数
+显示数据     使用 window.alert() 弹出警告框。 使用 document.write() 方法将内容写到 HTML 文档中。 如果在文档加载完成后执行document.write，整个HTML页面会被覆盖 使用 innerHTML 写入到 HTML 元素。 使用 console.log() 写入到浏览器的控制台。浏览器F12启用调试模式，在调试窗口点击“Console”菜单  语法    字面量    一般固定值，数字字面量是整数、小数、科学技术（e），字符串字面量可用单引号或双引号，表达式字面量用于计算，数组字面量定义一个数组，对象字面量定义一个对象，函数字面量定义一个函数。
+变量    用于存储数据值，使用关键字var来定义变量，使用等号赋值。 重新声明变量，变量的值不会丢。 变量声明时如果不用var关键字，就是一个全局变量，即便在函数内定义。
+操作符    数字与字符串相加，返回字符串！！！
+  类型 实例  赋值，算数和位运算符 = + - * /  条件，比较及逻辑运算符 == != ===    === 绝对等于（值和类型均相等） #### 关键字 以字母、下划线（_）或美元符（$）开始，后续的字符可以是字母、数字、下划线或美元符 #### 注释 //双斜杠是单行注释 /**/是多行注释 #### 数据类型 5种数据类型：string,number,boolean,object,function 3种对象类型：Object,Date,Array 2个不包含任何值的数据类型：null,undefined 相同变量可做不同类型 var length = 16; // Number 通过数字字面量赋值 var points = x * 10; // Number 通过表达式字面量赋值 var lastName = &amp;quot;Johnson&amp;quot;; // String 通过字符串字面量赋值 var cars = [&amp;quot;Saab&amp;quot;, &amp;quot;Volvo&amp;quot;, &amp;quot;BMW&amp;quot;]; var cars=new Array(&amp;quot;Saab&amp;quot;, &amp;quot;Volvo&amp;quot;, &amp;quot;BMW&amp;quot;); var cars=new Array(); cars[0]=&amp;quot;Saab&amp;quot;; cars[1]=&amp;quot;Volvo&amp;quot;; cars[2]=&amp;quot;BMW&amp;quot;; // Array通过数组字面量赋值 var person = {firstName:&amp;quot;John&amp;quot;, lastName:&amp;quot;Doe&amp;quot;}; // Object 通过对象字面量赋值  大小写敏感    使用Unicode字符集    语句    用分号分隔，忽略多余的空格，在文本字符串中使用反斜杠对代码行进行换行</description>
+    </item>
+    
+  </channel>
+</rss>

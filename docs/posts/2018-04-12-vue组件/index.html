@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="OnlyHy">
+    <meta name="description" content="读Vue.js官方文档组件部分所记
+组件（Component）     可以扩展HTML元素，封装可重用的代码。 有些情况下，也可表现为用is特性进行扩展的原生HTML元素。 Vue 组件同时也都是 Vue 的实例，所以可接受相同的选项对象 (除了一些根级特有的选项) 并提供相同的 生命周期钩子 （不懂含义，后期学习）  一、使用组件    1.1 全局注册    Vue.component(tagName,options)   tagName最优是遵循W3C规则（小写，包含一个短杠） 组件在实例模板中使用，要确保在初始化根实例之前注册组件  1.2 局部注册    可用某个Vue实例或组件的实例选项 components 注册仅在其作用域可用的组件
+var Child = { template: &#39;&lt;div&gt;A custom component!&lt;/div&gt;&#39; } new Vue({ // ... components: { // &lt;my-component&gt; 将只在父组件模板中可用 &#39;my-component&#39;: Child } })  1.3 DOM模板解析注意事项    DOM作为模板时，会受到HTML本身的限制，像&lt;ul&gt; &lt;ol&gt; &lt;table&gt;这种元素允许包含的内容有限制等，对于这些受限制的元素使用自定义组件有时会导致被当做无效内容等问题，可用is 特性解决。">
+    <meta name="keywords" content="onlyhy">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vue组件"/>
+<meta name="twitter:description" content="读Vue.js官方文档组件部分所记
+组件（Component）     可以扩展HTML元素，封装可重用的代码。 有些情况下，也可表现为用is特性进行扩展的原生HTML元素。 Vue 组件同时也都是 Vue 的实例，所以可接受相同的选项对象 (除了一些根级特有的选项) 并提供相同的 生命周期钩子 （不懂含义，后期学习）  一、使用组件    1.1 全局注册    Vue.component(tagName,options)   tagName最优是遵循W3C规则（小写，包含一个短杠） 组件在实例模板中使用，要确保在初始化根实例之前注册组件  1.2 局部注册    可用某个Vue实例或组件的实例选项 components 注册仅在其作用域可用的组件
+var Child = { template: &#39;&lt;div&gt;A custom component!&lt;/div&gt;&#39; } new Vue({ // ... components: { // &lt;my-component&gt; 将只在父组件模板中可用 &#39;my-component&#39;: Child } })  1.3 DOM模板解析注意事项    DOM作为模板时，会受到HTML本身的限制，像&lt;ul&gt; &lt;ol&gt; &lt;table&gt;这种元素允许包含的内容有限制等，对于这些受限制的元素使用自定义组件有时会导致被当做无效内容等问题，可用is 特性解决。"/>
+
+    <meta property="og:title" content="Vue组件" />
+<meta property="og:description" content="读Vue.js官方文档组件部分所记
+组件（Component）     可以扩展HTML元素，封装可重用的代码。 有些情况下，也可表现为用is特性进行扩展的原生HTML元素。 Vue 组件同时也都是 Vue 的实例，所以可接受相同的选项对象 (除了一些根级特有的选项) 并提供相同的 生命周期钩子 （不懂含义，后期学习）  一、使用组件    1.1 全局注册    Vue.component(tagName,options)   tagName最优是遵循W3C规则（小写，包含一个短杠） 组件在实例模板中使用，要确保在初始化根实例之前注册组件  1.2 局部注册    可用某个Vue实例或组件的实例选项 components 注册仅在其作用域可用的组件
+var Child = { template: &#39;&lt;div&gt;A custom component!&lt;/div&gt;&#39; } new Vue({ // ... components: { // &lt;my-component&gt; 将只在父组件模板中可用 &#39;my-component&#39;: Child } })  1.3 DOM模板解析注意事项    DOM作为模板时，会受到HTML本身的限制，像&lt;ul&gt; &lt;ol&gt; &lt;table&gt;这种元素允许包含的内容有限制等，对于这些受限制的元素使用自定义组件有时会导致被当做无效内容等问题，可用is 特性解决。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://onlyhy.github.io/posts/2018-04-12-vue%E7%BB%84%E4%BB%B6/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-04-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-04-12T00:00:00+00:00" />
+
+
+
+    <title>
+  Vue组件 · oooonlyhy
+</title>
+
+    
+      <link rel="canonical" href="http://onlyhy.github.io/posts/2018-04-12-vue%E7%BB%84%E4%BB%B6/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.91.0" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      oooonlyhy
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">首页</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">归档</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://onlyhy.github.io/posts/2018-04-12-vue%E7%BB%84%E4%BB%B6/">
+              Vue组件
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2018-04-12T00:00:00Z'>
+                April 12, 2018
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：3 分钟
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/onlyhy/">onlyhy</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/vue/">Vue</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <p>读<a href="https://cn.vuejs.org/v2/guide/components.html">Vue.js官方文档组件部分</a>所记</p>
+<h2 id="组件component">
+  组件（Component）
+  <a class="heading-link" href="#%e7%bb%84%e4%bb%b6component">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<ul>
+<li>可以扩展HTML元素，封装可重用的代码。</li>
+<li>有些情况下，也可表现为用is特性进行扩展的原生HTML元素。</li>
+<li>Vue 组件同时也都是 Vue 的实例，所以可接受相同的选项对象 (除了一些根级特有的选项) 并提供相同的 <em>生命周期钩子</em> （不懂含义，后期学习）</li>
+</ul>
+<h3 id="一使用组件">
+  一、使用组件
+  <a class="heading-link" href="#%e4%b8%80%e4%bd%bf%e7%94%a8%e7%bb%84%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="11-全局注册">
+  1.1 全局注册
+  <a class="heading-link" href="#11-%e5%85%a8%e5%b1%80%e6%b3%a8%e5%86%8c">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<pre><code>Vue.component(tagName,options)
+</code></pre>
+<ol>
+<li>tagName最优是遵循W3C规则（小写，包含一个短杠）</li>
+<li>组件在实例模板中使用，要确保在初始化根实例<strong>之前</strong>注册组件</li>
+</ol>
+<h4 id="12-局部注册">
+  1.2 局部注册
+  <a class="heading-link" href="#12-%e5%b1%80%e9%83%a8%e6%b3%a8%e5%86%8c">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>可用某个Vue实例或组件的实例选项 <em>components</em> 注册仅在其作用域可用的组件</p>
+<pre><code>var Child = {
+template: '&lt;div&gt;A custom component!&lt;/div&gt;'
+}
+new Vue({
+  // ...
+  components: {
+    // &lt;my-component&gt; 将只在父组件模板中可用
+    'my-component': Child
+}
+})
+</code></pre>
+<h4 id="13-dom模板解析注意事项">
+  1.3 DOM模板解析注意事项
+  <a class="heading-link" href="#13-dom%e6%a8%a1%e6%9d%bf%e8%a7%a3%e6%9e%90%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>DOM作为模板时，会受到HTML本身的限制，像<code>&lt;ul&gt;</code> <code>&lt;ol&gt;</code> <code>&lt;table&gt;</code>这种元素允许包含的内容有限制等，对于这些受限制的元素使用自定义组件有时会导致被当做无效内容等问题，<strong>可用<code>is</code> 特性解决</strong>。</p>
+<pre><code>&lt;table&gt;
+&lt;tr is=&quot;my-row&quot;&gt;&lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<p><em><strong>注：使用如下字符串模板，则无限制!</strong></em></p>
+<ol>
+<li><code>&lt;script type=&quot;text/x-template&quot;&gt;</code></li>
+<li>JavaScript 内联模板字符串</li>
+<li><code>.vue</code> 组件</li>
+</ol>
+<h4 id="14-data必须是函数">
+  1.4 data必须是函数
+  <a class="heading-link" href="#14-data%e5%bf%85%e9%a1%bb%e6%98%af%e5%87%bd%e6%95%b0">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>在组件实例中 <code>data</code> 必须是一个函数</p>
+<h4 id="15-组件组合">
+  1.5 组件组合
+  <a class="heading-link" href="#15-%e7%bb%84%e4%bb%b6%e7%bb%84%e5%90%88">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>常见的父子组件，之间相互通信，但需要一个接口将父子组件解耦，保证每个组件的相对隔离，提高维护性和复用性。
+Vue中，父子组件prop向下传递，事件向上传递。父组件通过prop给子组件下发数据，子组件通过事件给父组件发消息。</p>
+<h3 id="二prop">
+  二、Prop
+  <a class="heading-link" href="#%e4%ba%8cprop">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="21-prop传递数据">
+  2.1 Prop传递数据
+  <a class="heading-link" href="#21-prop%e4%bc%a0%e9%80%92%e6%95%b0%e6%8d%ae">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>子组件显式地用props选项声明它预期的数据</p>
+<pre><code>Vue.component('child', {
+// 声明 props
+props: ['message'],
+// 就像 data 一样，prop 也可以在模板中使用
+// 同样也可以在 vm 实例中通过 this.message 来使用
+template: '&lt;span&gt;{{ message }}&lt;/span&gt;'
+})
+</code></pre>
+<p>传入一个普通字符串：
+<child message="hello!"></child></p>
+<p>结果：
+<code>hello!</code></p>
+<h4 id="22-camelcase驼峰式命名-vs-kebab-case短横线分隔式命名">
+  2.2 camelCase(驼峰式命名) vs. kebab-case(短横线分隔式命名)
+  <a class="heading-link" href="#22-camelcase%e9%a9%bc%e5%b3%b0%e5%bc%8f%e5%91%bd%e5%90%8d-vs-kebab-case%e7%9f%ad%e6%a8%aa%e7%ba%bf%e5%88%86%e9%9a%94%e5%bc%8f%e5%91%bd%e5%90%8d">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>HTML特性不区分大小写，则当不是使用字符串模板（字符串模板，无限制）时，camelCase的prop需要转换为对应的kebab-case</p>
+<pre><code>Vue.component('child', {
+// 在 JavaScript 中使用 camelCase
+props: ['myMessage'],
+ template: '&lt;span&gt;{{ myMessage }}&lt;/span&gt;'
+})
+
+&lt;!-- 在 HTML 中使用 kebab-case --&gt;
+&lt;child my-message=&quot;hello!&quot;&gt;&lt;/child&gt; 
+</code></pre>
+<h4 id="23-动态prop">
+  2.3 动态Prop
+  <a class="heading-link" href="#23-%e5%8a%a8%e6%80%81prop">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>用<code>v-bind</code>动态的将prop绑定到父组件的数据，当父组件数据变化时，该变化也会传给子组件</p>
+<pre><code>&lt;div id=&quot;prop-example-2&quot;&gt;
+&lt;input v-model=&quot;parentMsg&quot;&gt;
+&lt;br&gt;
+&lt;child v-bind:my-message=&quot;parentMsg&quot;&gt;&lt;/child&gt;
+&lt;/div&gt;
+
+new Vue({
+el: '#prop-example-2',
+data: {
+parentMsg: 'Message from parent'
+}
+})
+</code></pre>
+<p>想把一个对象的所有属性作为<code>prop</code>传递，用不带任何参数的<code>v-bind</code></p>
+<pre><code>todo: {
+text: 'Learn Vue',
+isComplete: false
+}
+</code></pre>
+<p>直接v-bind:</p>
+<pre><code>&lt;todo-item v-bind=&quot;todo&quot;&gt;&lt;/todo-item&gt;
+</code></pre>
+<p>等价于：</p>
+<pre><code>&lt;todo-item
+v-bind:text=&quot;todo.text&quot;
+v-bind:is-complete=&quot;todo.isComplete&quot;
+&lt;/todo-item&gt;
+</code></pre>
+<h4 id="24-字面量语法vs动态语法">
+  2.4 字面量语法vs动态语法
+  <a class="heading-link" href="#24-%e5%ad%97%e9%9d%a2%e9%87%8f%e8%af%ad%e6%b3%95vs%e5%8a%a8%e6%80%81%e8%af%ad%e6%b3%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p><strong>常见错误</strong> ：使用字面量语法传递数值。</p>
+<pre><code>&lt;!-- 传递了一个字符串 &quot;1&quot; --&gt;
+&lt;comp some-prop=&quot;1&quot;&gt;&lt;/comp&gt;
+&lt;!-- 传递真正的数值 --&gt;
+&lt;comp v-bind:some-prop=&quot;1&quot;&gt;&lt;/comp&gt;
+</code></pre>
+<ol>
+<li>这是一个字面量prop，值是字符串&quot;1&quot;，而不是数值1。</li>
+<li>需要用<strong><code>v-bind</code></strong>传JS的数值</li>
+</ol>
+<h4 id="25-单向数据流">
+  2.5 单向数据流
+  <a class="heading-link" href="#25-%e5%8d%95%e5%90%91%e6%95%b0%e6%8d%ae%e6%b5%81">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>Prop是单向绑定，父组件属性&mdash;&gt;子组件，子组件&ndash;X&ndash;&gt;父组件。
+子组件随父组件的更新而更新，<strong>不该在子组件内部改prop</strong></p>
+<p>想要修改prop中数据：</p>
+<ol>
+<li>Prop 作为初始值传入后，子组件想把它当作局部数据来用；</li>
+<li>Prop 作为原始数据传入，由子组件处理成其它数据输出。</li>
+</ol>
+<p>则对应解决方法：</p>
+<ol>
+<li>定义一个局部变量，并用 prop 的值初始化它</li>
+<li>定义一个计算属性，处理 prop 的值并返回</li>
+</ol>
+<p><strong>注：JavaScript 中对象和数组是引用类型，指向同一个内存空间，如果 prop 是一个对象或数组，在子组件内部改变它会影响父组件的状态。</strong></p>
+<h4 id="26-prop验证">
+  2.6 Prop验证
+  <a class="heading-link" href="#26-prop%e9%aa%8c%e8%af%81">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>为组件的prop指定验证规则，若传入数据不符合要求则警告
+<strong>指定规则要用对象的形式定义prop,不能用字符串数组</strong></p>
+<p><code>type</code>可以是原生或自定义构造器
+<code>prop</code>验证在组件实例创建之前，则data、computed、methods等实例属性不可使用</p>
+<pre><code>Vue.component('example', {
+props: {
+// 基础类型检测 (`null` 指允许任何类型)
+propA: Number,
+// 可能是多种类型
+propB: [String, Number],
+// 必传且是字符串
+propC: {
+  type: String,
+  required: true
+},
+// 数值且有默认值
+propD: {
+  type: Number,
+  default: 100
+},
+// 数组/对象的默认值应当由一个工厂函数返回
+propE: {
+  type: Object,
+  default: function () {
+    return { message: 'hello' }
+  }
+},
+// 自定义验证函数
+propF: {
+  validator: function (value) {
+    return value &gt; 10
+  }
+}
+}
+})
+</code></pre>
+<h3 id="三非prop特性">
+  三、非Prop特性
+  <a class="heading-link" href="#%e4%b8%89%e9%9d%9eprop%e7%89%b9%e6%80%a7">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>可直接传入组件，不需要定义prop。组件可以接收任意传入的特性，这些特性都会被添加到组件的根元素上。</p>
+<h4 id="31-替换合并现有特性">
+  3.1 替换/合并现有特性
+  <a class="heading-link" href="#31-%e6%9b%bf%e6%8d%a2%e5%90%88%e5%b9%b6%e7%8e%b0%e6%9c%89%e7%89%b9%e6%80%a7">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>比如当定义了不同的class值，分别来自组件自身和父组件，Vue对<code>class</code>和<code>style</code>这两个特性的值会做合并（merge）操作</p>
+<h3 id="四自定义事件">
+  四、自定义事件
+  <a class="heading-link" href="#%e5%9b%9b%e8%87%aa%e5%ae%9a%e4%b9%89%e4%ba%8b%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>用于子组件跟父组件通信</p>
+<h4 id="41-用v-on绑定自定义事件">
+  4.1 用v-on绑定自定义事件
+  <a class="heading-link" href="#41-%e7%94%a8v-on%e7%bb%91%e5%ae%9a%e8%87%aa%e5%ae%9a%e4%b9%89%e4%ba%8b%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<ol>
+<li>使用<code>$on(eventName) </code>监听事件</li>
+<li>使用<code>$emit(eventName, optionalPayload)</code>触发事件</li>
+<li>父组件可以在使用子组件的地方用<code>v-on</code>来监听子组件触发的事件（<em>不能用<code>$on</code>监听子组件，必须在模板中用<code>v-on</code></em>）</li>
+</ol>
+<h4 id="42-给组件绑定原生事件">
+  4.2 给组件绑定原生事件
+  <a class="heading-link" href="#42-%e7%bb%99%e7%bb%84%e4%bb%b6%e7%bb%91%e5%ae%9a%e5%8e%9f%e7%94%9f%e4%ba%8b%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>在组件的根元素上监听一个原生事件，用<code>v-on</code>的修饰符<code>.native</code></p>
+<pre><code>&lt;my-component v-on:click.native=&quot;doTheThing&quot;&gt;&lt;/my-component&gt;
+</code></pre>
+<h4 id="43-sync修饰符">
+  4.3 .sync修饰符
+  <a class="heading-link" href="#43-sync%e4%bf%ae%e9%a5%b0%e7%ac%a6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>只作为一个编译时的语法糖，会被扩展为一个自动更新父组件属性的<code>v-on</code>监听器</p>
+<h4 id="44-使用自定义事件的表单输入组件">
+  4.4 使用自定义事件的表单输入组件
+  <a class="heading-link" href="#44-%e4%bd%bf%e7%94%a8%e8%87%aa%e5%ae%9a%e4%b9%89%e4%ba%8b%e4%bb%b6%e7%9a%84%e8%a1%a8%e5%8d%95%e8%be%93%e5%85%a5%e7%bb%84%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>自定义事件可用来创建自定义的表单输入组件，用<code>v-model</code>进行数据双向绑定</p>
+<p><code>v-model</code>生效：</p>
+<ol>
+<li>接受一个<code>value</code> prop</li>
+<li>有新值时触发<code>input</code>事件并将新值作为参数</li>
+</ol>
+<h4 id="45-自定义组件的v-model">
+  4.5 自定义组件的v-model
+  <a class="heading-link" href="#45-%e8%87%aa%e5%ae%9a%e4%b9%89%e7%bb%84%e4%bb%b6%e7%9a%84v-model">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>默认下，<code>v-model</code>使用<code>value</code> prop 和<code>input</code>事件，但单选框之类的将<code>value</code>用作其他。
+可用组件的<code>model</code> 选项可以修改而避免冲突</p>
+<h4 id="46-非父子组件的通信">
+  4.6 非父子组件的通信
+  <a class="heading-link" href="#46-%e9%9d%9e%e7%88%b6%e5%ad%90%e7%bb%84%e4%bb%b6%e7%9a%84%e9%80%9a%e4%bf%a1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<ol>
+<li>简单情况下：用一个空的Vue实例作为事件总线</li>
+<li>复杂情况：使用专门的 <em>状态管理模式</em>(详见官方文档<a href="https://cn.vuejs.org/v2/guide/state-management.html">状态管理</a>)</li>
+</ol>
+<h3 id="五使用插槽分发内容">
+  五、使用插槽分发内容
+  <a class="heading-link" href="#%e4%ba%94%e4%bd%bf%e7%94%a8%e6%8f%92%e6%a7%bd%e5%88%86%e5%8f%91%e5%86%85%e5%ae%b9">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p><strong>内容分发:</strong>让组件可以组合，混合父组件的内容与子组件自己的模板
+Vue实现了一个内容分发API，使用<code>&lt;slot&gt;</code>元素作为原始内容的插槽。</p>
+<p>简单来说：
+<strong>props可以将数据从父组件传入子组件</strong>
+<strong>slot可以把html从父组件传入子组件</strong></p>
+<p>可把<code>slot</code>理解成一个占位符，在子组件定义好一个<code>slot</code>标签，父组件传值时就替换该标签内容。</p>
+<h4 id="51-编译作用域">
+  5.1 编译作用域
+  <a class="heading-link" href="#51-%e7%bc%96%e8%af%91%e4%bd%9c%e7%94%a8%e5%9f%9f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>组件作用域：</p>
+<ol>
+<li>父组件模板的内容在父组件作用域内编译</li>
+<li>子组件模板的内容在子组件作用域内编译</li>
+</ol>
+<h4 id="52-单个插槽">
+  5.2 单个插槽
+  <a class="heading-link" href="#52-%e5%8d%95%e4%b8%aa%e6%8f%92%e6%a7%bd">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>子组件模板包含至少一个<code>&lt;slot&gt;</code>插口，否则父组件内容会被丢弃。
+最初<code>&lt;slot&gt;</code>中的任何内容都被视为 <em>备用内容</em>，只有在宿主元素为空，且没有要插入的内容才显示 <em>备用内容</em></p>
+<h4 id="53-具名插槽">
+  5.3 具名插槽
+  <a class="heading-link" href="#53-%e5%85%b7%e5%90%8d%e6%8f%92%e6%a7%bd">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>多个插槽可有不同的名字，用<code>name</code>来配置如何分发内容(子组件),具名插槽匹配内容片断中有对应<code>slot</code>特性的元素(父组件)</p>
+<p>仍然可以有一个 <em>匿名插槽</em>,是 <em>默认插槽</em>，作为备用插槽</p>
+<h4 id="54-作用域插槽">
+  5.4 作用域插槽
+  <a class="heading-link" href="#54-%e4%bd%9c%e7%94%a8%e5%9f%9f%e6%8f%92%e6%a7%bd">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>用作一个能被传递数据的可重用模板，来代替已渲染好的元素。</p>
+<ol>
+<li>子组件中，将数据传递给插槽。</li>
+<li>父组件中，必须存在具有<code>slot-scope</code>的<code>&lt;template&gt;</code>元素，是作用域的模板，<code>slot-scope</code>的值被用作一个临时变量名，用来接收从子组件传来的prop对象</li>
+</ol>
+<p><strong>注：</strong>
+<code>slot-scope</code>能被用在任意元素或组件中而不再局限于<code>&lt;template&gt;</code></p>
+<h3 id="六动态组件">
+  六、动态组件
+  <a class="heading-link" href="#%e5%85%ad%e5%8a%a8%e6%80%81%e7%bb%84%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>通过使用保留的<code>&lt;component&gt;</code>元素，对其<code>is</code>特性进行动态绑定，可在一个挂载点动态切换多个组件，也可直接绑定到组件对象上。</p>
+<h4 id="keep-alive">
+  <code>keep-alive</code>
+  <a class="heading-link" href="#keep-alive">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>把非活动的组件缓存（保留在内存中，保留它的状态或避免重新渲染）</p>
+<h3 id="七杂项">
+  七、杂项
+  <a class="heading-link" href="#%e4%b8%83%e6%9d%82%e9%a1%b9">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="71-编写可复用组件">
+  7.1 编写可复用组件
+  <a class="heading-link" href="#71-%e7%bc%96%e5%86%99%e5%8f%af%e5%a4%8d%e7%94%a8%e7%bb%84%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>可复用组件要定义一个清晰的公开接口，也不要对其使用的外层数据作任何假设</p>
+<p>Vue组件的API包括三部分：prop、事件、插槽</p>
+<ul>
+<li>Prop允许外部环境传递数据给组件</li>
+<li>时间允许组件内触发外部环境的副作用</li>
+<li>插槽允许外部环境将额外的内容组合在组件中</li>
+</ul>
+<p>使用<code>v-bind</code>和<code>v-on</code>的简写，模板会更清楚。</p>
+<h4 id="72-子组件引用">
+  7.2 子组件引用
+  <a class="heading-link" href="#72-%e5%ad%90%e7%bb%84%e4%bb%b6%e5%bc%95%e7%94%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>当需要在JS中直接访问子组件，使用<code>ref</code>为子组件指定一个引用ID</p>
+<h4 id="73-异步组件没懂">
+  7.3 异步组件（没懂）
+  <a class="heading-link" href="#73-%e5%bc%82%e6%ad%a5%e7%bb%84%e4%bb%b6%e6%b2%a1%e6%87%82">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<h4 id="74-高级异步组件没懂">
+  7.4 高级异步组件（没懂）
+  <a class="heading-link" href="#74-%e9%ab%98%e7%ba%a7%e5%bc%82%e6%ad%a5%e7%bb%84%e4%bb%b6%e6%b2%a1%e6%87%82">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<h4 id="75-组件命名规定">
+  7.5 组件命名规定
+  <a class="heading-link" href="#75-%e7%bb%84%e4%bb%b6%e5%91%bd%e5%90%8d%e8%a7%84%e5%ae%9a">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<ol>
+<li>
+<p>当注册组件 (或者 prop) 时，可以使用 kebab-case (短横线分隔命名)、camelCase (驼峰式命名) 或 PascalCase (单词首字母大写命名)。</p>
+</li>
+<li>
+<p>在HTML模板中，使用kebab-case (短横线分隔命名)</p>
+</li>
+<li>
+<p>在字符串模板中，不受HTML大小写的限制：</p>
+</li>
+</ol>
+<ul>
+<li>kebab-case</li>
+<li>camelCase 或 kebab-case (如果组件已经被定义为 camelCase)</li>
+<li>kebab-case、camelCase 或 PascalCase (如果组件已经被定义为 PascalCase)</li>
+</ul>
+<h4 id="76-递归组件">
+  7.6 递归组件
+  <a class="heading-link" href="#76-%e9%80%92%e5%bd%92%e7%bb%84%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>只有当组件有<code>name</code>选项时，才可以在模板内递归地调用自己
+要确保递归调用有终止条件否则会导致错误</p>
+<h4 id="77-组件间的循环利用">
+  7.7 组件间的循环利用
+  <a class="heading-link" href="#77-%e7%bb%84%e4%bb%b6%e9%97%b4%e7%9a%84%e5%be%aa%e7%8e%af%e5%88%a9%e7%94%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>当模块化管理工具不知先解析哪个模块，要在其中一个组件中告诉它顺序</p>
+<h4 id="78-内联模板">
+  7.8 内联模板
+  <a class="heading-link" href="#78-%e5%86%85%e8%81%94%e6%a8%a1%e6%9d%bf">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>如果子组件有 <code>inline-template</code> 特性，组件将把它的内容当作它的模板，而不是把它当作分发内容。这让模板编写起来更灵活。</p>
+<p>但是 <code>inline-template</code> 让模板的作用域难以理解。使用 <code>template</code> 选项在组件内定义模板或者在 .vue 文件中使用 <code>template</code> 元素才是最佳实践。</p>
+<h4 id="79-x-template">
+  7.9 X-Template
+  <a class="heading-link" href="#79-x-template">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>定义模板的方式：在 JavaScript 标签里使用 <code>text/x-template</code> 类型（type），并且指定一个 id。
+避免使用</p>
+<h4 id="710-对低开销的静态组件使用v-once">
+  7.10 对低开销的静态组件使用<code>v-once</code>
+  <a class="heading-link" href="#710-%e5%af%b9%e4%bd%8e%e5%bc%80%e9%94%80%e7%9a%84%e9%9d%99%e6%80%81%e7%bb%84%e4%bb%b6%e4%bd%bf%e7%94%a8v-once">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>尽管在 Vue 中渲染 HTML 很快，不过当组件中包含大量静态内容时，可以考虑使用 <code>v-once</code> 将渲染结果缓存起来.</p>
+<p>To Be Continued…</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2017 -
+    
+    2021
+     OnlyHy 
+    ·
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

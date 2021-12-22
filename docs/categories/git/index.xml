@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on oooonlyhy</title>
+    <link>http://onlyhy.github.io/categories/git/</link>
+    <description>Recent content in Git on oooonlyhy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 03 Apr 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://onlyhy.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git基础知识复习</title>
+      <link>http://onlyhy.github.io/posts/2018-04-03-gitreview/</link>
+      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2018-04-03-gitreview/</guid>
+      <description>黄黄说：“好记性不如烂笔头”
+复习廖雪峰老师的Git教程所记的笔记
+Git是分布式版本控制系统     git init 将当前目录变成Git可以管理的仓库，会多一个用来跟踪管理版本库的.git目录（默认隐藏，ls -ah可看） git add 将文件添加到仓库 git commit 将文件提交到仓库 commit可一次提交很多文件，即可多次add不同文件然后一起commit git status 掌握仓库动态 git diff 查看difference，查看修改内容，也可比较两个版本内容之间的不同 提交修改与提交新文件是相同的两个步骤 git log 查看历史记录（从最近到最远显示） git reflog 记录每一次命令，找到相对应的commit id 就能去相应的版本 git reset回退版本 HEAD 表示当前版本，HEAD^表示上一个版本，HEAD^^上上一个版本，依次类推往上100个则HEAD~100 也可通过版本号返回 git add其实就是把要commit的内容放到暂存区，每次修改内容，如果不add到暂存区，就不会加入到commit中 git checkout -- file 可以丢弃工作区的修改，让文件回到最近一次git commit 或 git add状态 改乱内容且添加到暂存区后，想丢弃修改则git reset HAED file 然后 git checkout -- file 改错东西且已提交到版本库则git reset 版本号，前提是未推送到远程 rm删除文件后， 若也要删版本库中文件则 git rm 文件 且 git commit， 而若是rm 文件后发现删错文件可git checkout -- 文件， 用版本库里的版本替换工作区版本（rm了之后并没有commit）。若版本库中也不包含这个文件了，则执行版本回退 git reset --head HEAD^ 或commit id  远程仓库    创建SSH Key ：</description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>http://onlyhy.github.io/posts/2017-06-01-git/</link>
+      <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-01-git/</guid>
+      <description>一、创建版本库    创建一个空目录
+$ mkdir learngit $ cd learngit $ pwd /Users/onlyhy/learngit  pwd用于显示当前目录
+通过 git init 初始化
+添加文件到Git仓库
+ git add &amp;lt;file&amp;gt; 可添加多个 git commit 完成  二、时光机穿梭    2.1版本回退    提交修改命令与提交新文件一样是两个步骤
+git status随时掌握工作区的状态
+git diff可查看文件修改的内容
+HEAD指向当前版本，HEAD^上一个版本，以此类推，简单化如HEAD~100
+使用命令git reset --hard commit_id在版本之中穿梭
+git log 查看提交历史，显示从最近到最远的提交日志，以确定要退回到哪个版本，加上--pretty=oneline参数后输出简洁点
+git reflog 查看命令历史，确定要回到未来的哪个版本
+2.2工作区和暂存区    git add 把要提交的所有修改放到暂存区（Stage）,git commit 一次性把暂存区的所有修改提交到分支。
+2.3管理修改    每次修改，如果不add到暂存区，那就不会加入到commit中
+2.4撤销修改    git checkout --file丢弃工作区中的修改 若不但改乱了文件还添加到了暂存区，想丢弃修改两个步骤</description>
+    </item>
+    
+  </channel>
+</rss>

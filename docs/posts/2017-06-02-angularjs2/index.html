@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="OnlyHy">
+    <meta name="description" content="一、根模块    Angular 模块类描述应用的部件是如何组合在一起的。
+每个应用都至少有一个 Angular 模块，也就是根模块，用来引导并运行应用，常规名字为AppModule。
+@NgModule装饰器将AppModule标记为 Angular 模块类（也叫NgModule类）。 @NgModule接受一个元数据对象，告诉 Angular 如何编译和启动应用。
+import { NgModule } from &#39;@angular/core&#39;; import { BrowserModule } from &#39;@angular/platform-browser&#39;; import { AppComponent } from &#39;./app.component&#39;; @NgModule({ imports: [ BrowserModule ], declarations: [ AppComponent ], bootstrap: [ AppComponent ] }) export class AppModule { }  imports数组    当应用需要模块的特性时，将其添加到imports数组中，每个浏览器中运行的应用都需要@angular/platform-browser里的BrowserModule。 所以每个这样的应用都在其根AppModule的imports数组中包含BrowserModule。
+imports数组中应该只有NgModule类。不要放置其它类型的类。
+import语句与imports数组是完全不同的两个概念，import语句声明允许你访问在其他文件中导出的符号，imports数组是@NgModule元数据中独有的。
+declarations数组    告诉 Angular 哪个组件属于AppModule，必须在一个NgModule类声明每一个组件，否则报错。
+只有可以声明的 — 组件、指令和管道 — 属于declarations数组。 不要将其他类型的类添加到declarations中，例如NgModule类, 服务类，模型类。">
+    <meta name="keywords" content="onlyhy">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AngularJS学习笔记（二）"/>
+<meta name="twitter:description" content="一、根模块    Angular 模块类描述应用的部件是如何组合在一起的。
+每个应用都至少有一个 Angular 模块，也就是根模块，用来引导并运行应用，常规名字为AppModule。
+@NgModule装饰器将AppModule标记为 Angular 模块类（也叫NgModule类）。 @NgModule接受一个元数据对象，告诉 Angular 如何编译和启动应用。
+import { NgModule } from &#39;@angular/core&#39;; import { BrowserModule } from &#39;@angular/platform-browser&#39;; import { AppComponent } from &#39;./app.component&#39;; @NgModule({ imports: [ BrowserModule ], declarations: [ AppComponent ], bootstrap: [ AppComponent ] }) export class AppModule { }  imports数组    当应用需要模块的特性时，将其添加到imports数组中，每个浏览器中运行的应用都需要@angular/platform-browser里的BrowserModule。 所以每个这样的应用都在其根AppModule的imports数组中包含BrowserModule。
+imports数组中应该只有NgModule类。不要放置其它类型的类。
+import语句与imports数组是完全不同的两个概念，import语句声明允许你访问在其他文件中导出的符号，imports数组是@NgModule元数据中独有的。
+declarations数组    告诉 Angular 哪个组件属于AppModule，必须在一个NgModule类声明每一个组件，否则报错。
+只有可以声明的 — 组件、指令和管道 — 属于declarations数组。 不要将其他类型的类添加到declarations中，例如NgModule类, 服务类，模型类。"/>
+
+    <meta property="og:title" content="AngularJS学习笔记（二）" />
+<meta property="og:description" content="一、根模块    Angular 模块类描述应用的部件是如何组合在一起的。
+每个应用都至少有一个 Angular 模块，也就是根模块，用来引导并运行应用，常规名字为AppModule。
+@NgModule装饰器将AppModule标记为 Angular 模块类（也叫NgModule类）。 @NgModule接受一个元数据对象，告诉 Angular 如何编译和启动应用。
+import { NgModule } from &#39;@angular/core&#39;; import { BrowserModule } from &#39;@angular/platform-browser&#39;; import { AppComponent } from &#39;./app.component&#39;; @NgModule({ imports: [ BrowserModule ], declarations: [ AppComponent ], bootstrap: [ AppComponent ] }) export class AppModule { }  imports数组    当应用需要模块的特性时，将其添加到imports数组中，每个浏览器中运行的应用都需要@angular/platform-browser里的BrowserModule。 所以每个这样的应用都在其根AppModule的imports数组中包含BrowserModule。
+imports数组中应该只有NgModule类。不要放置其它类型的类。
+import语句与imports数组是完全不同的两个概念，import语句声明允许你访问在其他文件中导出的符号，imports数组是@NgModule元数据中独有的。
+declarations数组    告诉 Angular 哪个组件属于AppModule，必须在一个NgModule类声明每一个组件，否则报错。
+只有可以声明的 — 组件、指令和管道 — 属于declarations数组。 不要将其他类型的类添加到declarations中，例如NgModule类, 服务类，模型类。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://onlyhy.github.io/posts/2017-06-02-angularjs2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-06-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-06-02T00:00:00+00:00" />
+
+
+
+    <title>
+  AngularJS学习笔记（二） · oooonlyhy
+</title>
+
+    
+      <link rel="canonical" href="http://onlyhy.github.io/posts/2017-06-02-angularjs2/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.91.0" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      oooonlyhy
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">首页</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">归档</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/">分类</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">关于我</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://onlyhy.github.io/posts/2017-06-02-angularjs2/">
+              AngularJS学习笔记（二）
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2017-06-02T00:00:00Z'>
+                June 2, 2017
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：1 分钟
+            </span>
+          </div>
+          <div class="authors">
+    <i class="fa fa-user" aria-hidden="true"></i>
+      <a href="/authors/onlyhy/">onlyhy</a></div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/angularjs/">AngularJS</a></div>
+
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <h3 id="一根模块">
+  一、根模块
+  <a class="heading-link" href="#%e4%b8%80%e6%a0%b9%e6%a8%a1%e5%9d%97">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>Angular 模块类描述应用的部件是如何组合在一起的。<br>
+每个应用都至少有一个 Angular 模块，也就是根模块，用来引导并运行应用，常规名字为AppModule。<br>
+@NgModule装饰器将AppModule标记为 Angular 模块类（也叫NgModule类）。 @NgModule接受一个元数据对象，告诉 Angular 如何编译和启动应用。</p>
+<pre><code>import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent }  from './app.component';
+@NgModule({
+imports:      [ BrowserModule ],
+ declarations: [ AppComponent ],
+bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+</code></pre>
+<h4 id="imports数组">
+  imports数组
+  <a class="heading-link" href="#imports%e6%95%b0%e7%bb%84">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>当应用需要模块的特性时，将其添加到imports数组中，每个浏览器中运行的应用都需要@angular/platform-browser里的BrowserModule。 所以每个这样的应用都在其根AppModule的imports数组中包含BrowserModule。<br>
+<em>imports数组中应该只有NgModule类。不要放置其它类型的类。</em><br>
+import语句与imports数组是完全不同的两个概念，import语句声明允许你访问在其他文件中导出的符号，imports数组是@NgModule元数据中独有的。</p>
+<h4 id="declarations数组">
+  declarations数组
+  <a class="heading-link" href="#declarations%e6%95%b0%e7%bb%84">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>告诉 Angular 哪个组件属于AppModule，必须在一个NgModule类声明每一个组件，否则报错。<br>
+<em>只有可以声明的 — 组件、指令和管道 — 属于declarations数组。 不要将其他类型的类添加到declarations中，例如NgModule类, 服务类，模型类。</em></p>
+<h4 id="bootstrap数组">
+  bootstrap数组
+  <a class="heading-link" href="#bootstrap%e6%95%b0%e7%bb%84">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>通过引导根AppModule来启动应用。 在启动过程中，其中一步是创建列在bootstrap数组的组件， 并将它们每一个都插入到浏览器的DOM中。</p>
+<h4 id="引导">
+  引导
+  <a class="heading-link" href="#%e5%bc%95%e5%af%bc">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>引导应用的方法取决于想要如何编译应用以及应用将在哪运行。<br>
+开始时，你将使用即时 (JiT) 编译器动态编译应用。然后在浏览器中运行它。<br>
+引导即时编译的浏览器应用的推荐地点是在src目录中一个名为src/main.ts的单独文件中。</p>
+<pre><code>import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule }              from './app/app.module';
+
+platformBrowserDynamic().bootstrapModule(AppModule);  
+</code></pre>
+<p>动态 (JiT) 编译创建浏览器平台，并引导AppModule。<br>
+引导过程搭建运行环境，从模块的bootstrap数组中提出根AppComponent， 创建该组件的实例，并将其插入到组件selector标识的元素标签中。<br>
+最初的应用只有一个单一的模块 —— 根模块。 当这个应用不断成长时，把它们拆分到多个 &ldquo;特性&rdquo; 模块中。 这些特性模块中的一部分可以稍后加载（即惰性加载），它们只会在用户访问到这些特性时才会加载。</p>
+<h3 id="二显示数据">
+  二、显示数据
+  <a class="heading-link" href="#%e4%ba%8c%e6%98%be%e7%a4%ba%e6%95%b0%e6%8d%ae">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>属性绑定机制把数据显示到用户界面上。<br>
+最典型的数据显示方式，就是把 HTML 模板中的控件绑定到 Angular 组件的属性</p>
+<p>创建一个英雄列表组件。 你将显示英雄名字的列表，并根据条件在列表下方显示一条消息</p>
+<h4 id="1-使用插值表达式显示组件属性">
+  1. 使用插值表达式显示组件属性
+  <a class="heading-link" href="#1-%e4%bd%bf%e7%94%a8%e6%8f%92%e5%80%bc%e8%a1%a8%e8%be%be%e5%bc%8f%e6%98%be%e7%a4%ba%e7%bb%84%e4%bb%b6%e5%b1%9e%e6%80%a7">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>创建一个新项目，然后在app.component.ts文件中修改组件的模板和代码。其中模板(template)是包在 ES5 反引号 (`) 中的一多行字符串。Angular自动从组件中提取用插值表达式显示的模板属性的值，将这些值插入浏览器中，当这些属性发生变化时，Angular 就会自动刷新显示。严格来说，“重新显示”是在某些与视图有关的异步事件之后发生的。
+@Component装饰器中指定的CSS选择器selector指定了一个元素，是html的body中的，当通过main.ts的AppComponent类启动时，Angular在html中找到这个元素，然后实例化一个AppComponent，并将其渲染到这个标签中。</p>
+<p>内联（inline）模板或者模板文件两种选择，template属性定义为内联的，或者把模板放在独立的HTML文件中，通过@Component装饰器的templateUrl属性链接。</p>
+<p>用变量赋值或者构造函数来声明和初始化属性。</p>
+<h4 id="2-使用ngfor显示数组属性">
+  2. 使用ngFor显示数组属性
+  <a class="heading-link" href="#2-%e4%bd%bf%e7%94%a8ngfor%e6%98%be%e7%a4%ba%e6%95%b0%e7%bb%84%e5%b1%9e%e6%80%a7">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>先向组件中添加一个数组，在末班中用ngFor指令来显示每一项。</p>
+<pre><code>&lt;li *ngFor=&quot;let hero of heroes&quot;&gt;
+{{ hero }}
+&lt;/li&gt;
+</code></pre>
+<h4 id="3-为数据创建一个类">
+  3. 为数据创建一个类
+  <a class="heading-link" href="#3-%e4%b8%ba%e6%95%b0%e6%8d%ae%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aa%e7%b1%bb">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>如在app目录下创建一个ts的新文件，定义类，类中可包含构造函数与属性，TypeScript 提供的简写形式 —— 用构造函数的参数直接定义属性。</p>
+<pre><code>export class Hero {
+constructor(
+public id: number,
+public name: string) { }
+}
+</code></pre>
+<p>声明了一个构造函数参数及其类型，声明了公共属性，当new出该类的一个实例时，把该属性初始化为相应的参数值。</p>
+<h4 id="4-使用类">
+  4. 使用类
+  <a class="heading-link" href="#4-%e4%bd%bf%e7%94%a8%e7%b1%bb">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>导入了类之后，组件的属性就可以返回一个类型化的数组对象了。</p>
+<h4 id="5-通过nglf进行条件显示">
+  5. 通过Nglf进行条件显示
+  <a class="heading-link" href="#5-%e9%80%9a%e8%bf%87nglf%e8%bf%9b%e8%a1%8c%e6%9d%a1%e4%bb%b6%e6%98%be%e7%a4%ba">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>Angular 的ngIf指令会根据一个布尔条件来显示或移除一个元素，而不是隐藏，这会提高性能。</p>
+<pre><code>&lt;p *ngIf=&quot;heroes.length &gt; 3&quot;&gt;There are many heroes!&lt;/p&gt;
+</code></pre>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2017 -
+    
+    2021
+     OnlyHy 
+    ·
+    技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

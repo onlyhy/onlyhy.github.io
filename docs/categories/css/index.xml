@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CSS on oooonlyhy</title>
+    <link>http://onlyhy.github.io/categories/css/</link>
+    <description>Recent content in CSS on oooonlyhy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 15 Jun 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://onlyhy.github.io/categories/css/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sass回顾随笔</title>
+      <link>http://onlyhy.github.io/posts/2017-06-15-sass/</link>
+      <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/2017-06-15-sass/</guid>
+      <description>叨叨    没用博客之前，看视频教程都是手写的笔记，嗨呀，虽然说好读书不如烂笔头，现在觉得写在博客上或者是一种更好的选择..回顾一下笔记就顺便写在博客上了
+Sass    sass -h 查看所有帮助    编译     单文件 sass input.scss output.css 单文件监听 sass --watch input.scss:output.css 监听整个目录 sass --watch app/sass:public/stylesheets  四种编译排版格式     嵌套输出：nested 展开输出：expanded 紧凑输出：compact 压缩输出：compressed  变量     $开头，如$width: 300px; 默认变量 加!default设置默认值，可在之前重新声明使用 局部变量：元素内部；全局变量：元素外部  嵌套    选择器嵌套    尽可能避免使用
+ nav{ a{ color:red; header &amp;amp;{ //&amp;amp;就代表 nav a color:green; } } }  属性嵌套    有些属性前缀相同，后缀不一样</description>
+    </item>
+    
+  </channel>
+</rss>
