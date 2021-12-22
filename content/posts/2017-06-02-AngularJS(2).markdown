@@ -1,0 +1,88 @@
++++
+draft = true
+title = "AngularJS学习笔记（二）"
+date = 2017-06-02T00:00:00+00:00
+categories = ["AngularJS"]
+authors = ["onlyhy"]
++++
+### 一、根模块
+   Angular 模块类描述应用的部件是如何组合在一起的。  
+   每个应用都至少有一个 Angular 模块，也就是根模块，用来引导并运行应用，常规名字为AppModule。  
+   @NgModule装饰器将AppModule标记为 Angular 模块类（也叫NgModule类）。 @NgModule接受一个元数据对象，告诉 Angular 如何编译和启动应用。  
+
+    import { NgModule }      from '@angular/core';
+    import { BrowserModule } from '@angular/platform-browser';
+    import { AppComponent }  from './app.component';
+    @NgModule({
+    imports:      [ BrowserModule ],
+     declarations: [ AppComponent ],
+    bootstrap:    [ AppComponent ]
+    })
+    export class AppModule { }
+
+#### imports数组  
+   当应用需要模块的特性时，将其添加到imports数组中，每个浏览器中运行的应用都需要@angular/platform-browser里的BrowserModule。 所以每个这样的应用都在其根AppModule的imports数组中包含BrowserModule。  
+  *imports数组中应该只有NgModule类。不要放置其它类型的类。*   
+  import语句与imports数组是完全不同的两个概念，import语句声明允许你访问在其他文件中导出的符号，imports数组是@NgModule元数据中独有的。  
+
+#### declarations数组  
+   告诉 Angular 哪个组件属于AppModule，必须在一个NgModule类声明每一个组件，否则报错。  
+   *只有可以声明的 — 组件、指令和管道 — 属于declarations数组。 不要将其他类型的类添加到declarations中，例如NgModule类, 服务类，模型类。*  
+
+#### bootstrap数组
+   通过引导根AppModule来启动应用。 在启动过程中，其中一步是创建列在bootstrap数组的组件， 并将它们每一个都插入到浏览器的DOM中。
+
+#### 引导
+   引导应用的方法取决于想要如何编译应用以及应用将在哪运行。  
+   开始时，你将使用即时 (JiT) 编译器动态编译应用。然后在浏览器中运行它。  
+   引导即时编译的浏览器应用的推荐地点是在src目录中一个名为src/main.ts的单独文件中。  
+
+    import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+    import { AppModule }              from './app/app.module';
+    
+    platformBrowserDynamic().bootstrapModule(AppModule);  
+
+   动态 (JiT) 编译创建浏览器平台，并引导AppModule。  
+   引导过程搭建运行环境，从模块的bootstrap数组中提出根AppComponent， 创建该组件的实例，并将其插入到组件selector标识的元素标签中。  
+   最初的应用只有一个单一的模块 —— 根模块。 当这个应用不断成长时，把它们拆分到多个 "特性" 模块中。 这些特性模块中的一部分可以稍后加载（即惰性加载），它们只会在用户访问到这些特性时才会加载。  
+
+
+### 二、显示数据  
+   属性绑定机制把数据显示到用户界面上。  
+   最典型的数据显示方式，就是把 HTML 模板中的控件绑定到 Angular 组件的属性  
+
+   创建一个英雄列表组件。 你将显示英雄名字的列表，并根据条件在列表下方显示一条消息 
+
+#### 1. 使用插值表达式显示组件属性 
+   创建一个新项目，然后在app.component.ts文件中修改组件的模板和代码。其中模板(template)是包在 ES5 反引号 (`) 中的一多行字符串。Angular自动从组件中提取用插值表达式显示的模板属性的值，将这些值插入浏览器中，当这些属性发生变化时，Angular 就会自动刷新显示。严格来说，“重新显示”是在某些与视图有关的异步事件之后发生的。
+   @Component装饰器中指定的CSS选择器selector指定了一个元素，是html的body中的，当通过main.ts的AppComponent类启动时，Angular在html中找到这个元素，然后实例化一个AppComponent，并将其渲染到这个标签中。  
+    
+   内联（inline）模板或者模板文件两种选择，template属性定义为内联的，或者把模板放在独立的HTML文件中，通过@Component装饰器的templateUrl属性链接。
+
+   用变量赋值或者构造函数来声明和初始化属性。
+
+#### 2. 使用ngFor显示数组属性 
+   先向组件中添加一个数组，在末班中用ngFor指令来显示每一项。
+
+    <li *ngFor="let hero of heroes">
+    {{ hero }}
+    </li>
+
+#### 3. 为数据创建一个类
+   如在app目录下创建一个ts的新文件，定义类，类中可包含构造函数与属性，TypeScript 提供的简写形式 —— 用构造函数的参数直接定义属性。  
+
+    export class Hero {
+    constructor(
+    public id: number,
+    public name: string) { }
+    }
+
+   声明了一个构造函数参数及其类型，声明了公共属性，当new出该类的一个实例时，把该属性初始化为相应的参数值。
+
+#### 4. 使用类  
+   导入了类之后，组件的属性就可以返回一个类型化的数组对象了。
+
+#### 5. 通过Nglf进行条件显示  
+   Angular 的ngIf指令会根据一个布尔条件来显示或移除一个元素，而不是隐藏，这会提高性能。
+
+    <p *ngIf="heroes.length > 3">There are many heroes!</p>

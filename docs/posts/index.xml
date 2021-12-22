@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on ONLYHY</title>
+    <link>http://onlyhy.github.io/posts/</link>
+    <description>Recent content in Posts on ONLYHY</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 22 Dec 2021 14:47:25 +0800</lastBuildDate><atom:link href="http://onlyhy.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://onlyhy.github.io/posts/my-first-post/</link>
+      <pubDate>Wed, 22 Dec 2021 14:47:25 +0800</pubDate>
+      
+      <guid>http://onlyhy.github.io/posts/my-first-post/</guid>
+      <description>test    testtesttest</description>
+    </item>
+    
+  </channel>
+</rss>

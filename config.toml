@@ -1,5 +1,5 @@
 baseURL = 'http://onlyhy.github.io/'
-title = 'ONLYHY'
+title = 'oooonlyhy'
 theme = "hugo-coder"
 languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
@@ -15,3 +15,51 @@ enableEmoji = true
         [markup.goldmark.renderer]
             unsafe = true
 
+[params]
+    author = "OnlyHy"
+    info = ""
+    description = ""
+    keywords = "onlyhy"
+
+    avatarURL = "/images/avatar.png"
+    favicon_16 = "/favicons/favicon-16x16.png"
+    favicon_32 = "/favicons/favicon-32x32.png"
+    touchicon = ""
+    since = 2017
+
+    colorScheme = "light"
+    hideColorSchemeToggle = true
+
+[[params.social]]
+    name = "GitHub"
+    icon = "fa fa-github fa-2x"
+    weight = 1
+    url = "https://github.com/onlyhy/"
+
+[[params.social]]
+    name = "WeChat"
+    icon = "fa fa-weixin fa-2x"
+    weight = 3
+    url = "/images/wechat.jpeg"
+[[params.social]]
+    name = "Instagram"
+    icon = "fa fa-instagram fa-2x"
+    weight = 4
+    url = "https://www.instagram.com/flylsss/"
+
+[[menu.main]]
+    name = "首页"
+    weight = 1
+    url = "/"
+[[menu.main]]
+    name = "归档"
+    weight = 2
+    url = "/posts/"
+[[menu.main]]
+    name = "分类"
+    weight = 3
+    url = "/categories/"
+[[menu.main]]
+    name = "关于我"
+    weight = 5
+    url = "/about/"

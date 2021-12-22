@@ -1,0 +1,122 @@
++++
+draft = true
+title = "菜鸟教程AngularJS2教程笔记（二）"
+date = 2017-06-06T00:00:00+00:00
+categories = ["AngularJS"]
+authors = ["onlyhy"]
++++
+
+架构  
+8个部分：
+1. 模块（Modules）
+2. 组件 (Components)
+3. 模板 (Templates)
+4. 元数据 (Metadata)
+5. 数据绑定 (Data Binding)
+6. 指令 (Directives)
+7. 服务 (Services)
+8. 依赖注入 (Dependency Injection)
+
+### 一、模块 （MOdules）
+模块用于执行一个简单的任务，Angular 应用是由模块化的，它有自己的模块系统：NgModules。每个 Angular 应该至少要有一个模块(根模块)，一般可以命名为：AppModule。  
+
+Angular 模块是一个带有 @NgModule 装饰器的类，它接收一个用来描述模块属性的元数据对象。
+
+@NgModule的几个重要属性：
+* declarations：视图类属于这个模块，三种视图类：组件、指令、管道
+* exports：declaration的子集，可用于其它模块中的组件模板
+* imports：本模块组件模板中需要由其它导出类的模块
+* providers：服务的创建者
+* bootstrap：应用的主视图，根组件，只有根模块设置  
+
+引导根模块来启动应用，通常在main.ts 文件中来引导 AppModule  
+`import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';`  
+`import { AppModule } from './app.module';`
+`platformBrowserDynamic().bootstrapModule(AppModule);`  
+
+
+### 二、组件 （Components）  
+组件是一个模板的控制类用于处理应用和逻辑页面的视图部分  
+创建组件有三步：
+1. 从 @angular/core 中引入 Component 修饰器
+2. 建立一个普通的类，并用 @Component 修饰它
+3. 在 @Component 中，设置 selector 自定义标签，以及 template 模板
+
+### 三、模板（Templates）
+模板的默认语言是HTML,通过模板定义组件的视图告诉Angualr怎么显示组件，简单讲就是用户能看到啥，默认使用双大括号作为插值语法，大括号中间的值通常是一个组件属性的变量名。 
+模板是包在反引号（`）中的多行字符串，不是单引号！！！！！！ 
+
+### 四、元数据（Metadata） 
+告诉Angular如何处理一个类  
+在TypeScript中，用 装饰器 (decorator) 来附加元数据
+   
+    @Component({
+       selector : 'mylist',
+       template : '<h2>菜鸟教程</h2>'
+       directives : [ComponentDetails]
+    })
+    export class ListComponent{...}  
+
+这是一个@Component装饰器，Angular根据这些信息创建和展示组件和视图  
+@Component的配置项：
+1. selector：在HTML中找到这个选择器，创建该组件
+2. templateUrl：组件HTML模板的地址
+3. directives：模板需要依赖的组件或指令
+4. providers：组件所依赖的服务需要的依赖注入提供者  
+
+### 五、数据绑定（Data  binding）  
+显示数据，数据交互。通过这种机制，可以从HTML里面取值和赋值。  
+语法绑定有4种，每种形式都有方向：从DOM来，到DOM去，双向。
+ 
+  插值：在HTML标签中显示组件值
+    
+    <h3>
+    {{title}}
+    <img src="{{ImageUrl}}">
+    </h3>
+  
+  属性绑定：把元素的属性设置为组件中属性的值
+    
+    <img [src]="userImageUrl">
+
+  事件绑定：在组件方法名被点击时触发。
+
+    <button (click)="onSave()">保存</button>  
+
+  双向绑：使用Angular里的NgModel指令可以更便捷的进行双向绑定  
+
+    <input [value]="currentUser.firstName"
+       (input)="currentUser.firstName=$event.target.value" >  
+
+### 六、指令 （Directives）  
+模板是动态的 。当 Angular 渲染它们时，它会根据指令对 DOM 进行修改。  
+指令是一个带有"指令元数据"的类，通过 @Directive 装饰器把元数据附加到类上。  
+三种类型指令：
+
+属性指令： 以元素的属性形式来使用的指令  
+结构指令： 改变DOM树结构  
+组件： 本质上看作是一个带有模板的指令  
+
+    <li *ngFor="let site of sites"></li>  
+
+*ngFor 告诉 Angular 为 sites 列表中的每个项生成一个 li 标签。  
+
+### 七、服务（Services）  
+封装了某一特定功能，并且可以通过注入的方式供他人使用的独立模块.  
+服务分为很多种：值、函数，以及应用所需的特性
+比如多个组件中出现了重复代码时，把重复代码提取到服务中实现代码的复用。  
+常见服务：日志服务、数据服务、消息总线、税款计算器、应用程序配置。  
+
+
+### 八、依赖注入  
+控制反转（Inversion of Control，缩写为IoC），是面向对象编程中的一种设计原则，可以用来减低计算机代码之间的耦合度。其中最常见的方式叫做依赖注入。
+模块间的耦合度是指模块之间的依赖关系，耦合性越强，同时表明其独立性越差，要追求高内聚低耦合。  
+当 Angular 创建组件时，会首先为组件所需的服务找一个注入器（ Injector ）。  
+注入器是一个维护服务实例的容器，存放着以前创建的实例。  
+如果容器中还没有所请求的服务实例，注入器就会创建一个服务实例，并且添加到容器中，然后把这个服务返回给 Angular 。  
+当所有的服务都被解析完并返回时， Angular 会以这些服务为参数去调用组件的构造函数。
+
+
+
+
+

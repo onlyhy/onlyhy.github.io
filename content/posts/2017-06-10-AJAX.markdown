@@ -1,0 +1,141 @@
++++
+draft = true
+title = "关于AJAX"
+date = 2017-06-10T00:00:00+00:00
+categories = ["AJAX"]
+authors = ["onlyhy"]
++++
+
+### AJAX （Asynchronous JavaScript and XML）异步的JavaScript和XML  
+   无需重新加载整个网页的情况下，能够更新部分网页的技术。  
+   基于现有的Internet标准：
+   1. XMLHttpRequest 对象 (异步的与服务器交换数据)
+   2. JavaScript/DOM (信息显示/交互)
+   3. CSS (给数据定义样式)
+   4. XML (作为转换数据的格式)  
+
+### 创建对象  
+   创建XMLHttpRequest 对象，用于后台与服务器交换数据
+
+    variable=new XMLHttpRequest();   //现代浏览器
+    variable=new ActiveXObject("Microsoft.XMLHTTP");  //IE5、6  
+
+   创建之前都要先检查  
+
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {
+        //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {
+        // IE6, IE5 浏览器执行代码
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }  
+
+### 向服务器发送请求  
+   使用 XMLHttpRequest 对象的 open() 和 send() 方法  
+
+    xmlhttp.open("GET","ajax_info.txt",true);
+    xmlhttp.send();  
+
+<table>
+<tr>
+    <td>方法</td>
+    <td>描述</td>
+</tr>
+<tr><td>open(method,url,async)</td>
+    <td>  
+    规定请求的类型、URL 以及是否异步处理请求。  
+    method：请求的类型；GET 或 POST  
+    url：文件在服务器上的位置  
+    async：true（异步）或 false（同步）  
+    </td>
+    </tr>
+<tr><td>send(string)</td>
+    <td>  
+    将请求发送到服务器。  
+    string：仅用于 POST 请求  
+    </td></tr>
+</table>
+
+#### GET和POST  
+   GET相对更简单更快，大部分情况都能用。  
+   POST：
+   1. 无法使用缓存文件（更新服务器上的文件或数据库）  
+   2. 向服务器发送大量数据（POST 没有数据量限制）  
+   3. 发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠
+   
+需要像表单那样POST数据，需要使用 setRequestHeader() 来添加 HTTP 头，然后在send()中写希望发送的数据。  
+
+    xmlhttp.open("POST","/try/ajax/demo_post2.php",true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded"); //setRequestHeader(header,value) 规定头的名称和值
+    xmlhttp.send("fname=Henry&lname=Ford");  
+
+
+#### Async  
+   为true时，规定在响应处于 onreadystatechange 事件中的就绪状态时执行的函数。  
+   为false时，不要编写 onreadystatechange 函数，把代码放到 send() 语句后面  
+
+### 服务器相应   
+   获得来自服务器的相应，使用 XMLHttpRequest 对象的 responseText 或 responseXML 属性。  
+
+#### responseText  
+   获得字符串形式的响应数据  
+
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+
+#### responseXML  
+   获得XML形式的响应数据，要作为XML对象解析  
+
+    xmlDoc=xmlhttp.responseXML;
+    txt="";
+    x=xmlDoc.getElementsByTagName("ARTIST");
+    for (i=0;i<x.length;i++)
+    {
+        txt=txt + x[i].childNodes[0].nodeValue + "<br>";
+    }
+    document.getElementById("myDiv").innerHTML=txt;
+
+
+### onreadystatechange事件  
+   当请求被发送到服务器时，要执行一些基于响应的任务，每当 readyState 改变时，就会触发 onreadystatechange 事件，readyState 属性存有 XMLHttpRequest 的状态信息。  
+   XMLHttpRequest 对象的三个重要的属性
+<table>
+    <tr>
+        <td>属性</td>
+        <td>描述</td>
+    </tr>
+    <tr>
+        <td>onreadystatechange</td>
+        <td>存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数</td>
+    </tr>
+    <tr>
+        <td>readyState</td>
+        <td>
+        存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。  
+        0: 请求未初始化  
+        1: 服务器连接已建立  
+        2: 请求已接收  
+        3: 请求处理中  
+        4: 请求已完成，且响应已就绪</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>
+        200: "OK"  
+        404: 未找到页面</td>
+    </tr>
+</table>  
+
+### 使用回调函数  
+   一种以参数形式传递给另一个函数的函数，当有多个AJAX任务时，为XMLHttpRequest对象写一个标准的函数，包含URL和发生readychange事件时执行的任务，为每个AJAX任务调用函数
+
+
+
+
+
+   
+
+

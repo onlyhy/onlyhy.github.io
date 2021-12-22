@@ -1,0 +1,437 @@
++++
+draft = true
+title = "关于MySQL（1）"
+date = 2017-06-20T00:00:00+00:00
+categories = ["MySQL"]
+authors = ["onlyhy"]
++++  
+
+<ul>
+    <li><a href="#gl">管理MySQL的命令</a></li>
+    <li><a href="#lj">MySQL 连接</a></li>
+    <li><a href="#sjk">数据库</a></li>
+    <li><a href="#sjl">数据类型</a></li>
+    <li><a href="#sjb">数据表<</a></li>
+    <li><a href="#sj">数据</a></li>
+    <li><a href="#zj">WHERE、UPDATE、DELETE、LIKE子句</a></li>
+    <li><a href="#UNION">UNION操作符</a></li>
+    <li><a href="#ORDER BY排序">ORDER BY排序</a></li>
+    <li><a href="#Group by">Group by分组</a></li>
+    <li><a href="#JOIN">JOIN连接的使用 </a></li>
+    <li><a href="#NULL">NULL值处理</a></li>
+    <li><a href="#JSON">JSON</a></li>
+</ul>
+
+### <span id="gl">管理MySQL的命令</span>  
+
+#### USE 数据库名
+ 选择要操作的Mysql数据库
+
+    mysql> use RUNOOB;
+    Database changed  
+
+#### SHOW DATABASES  
+ 列出MySQL数据库管理系统的数据库列表  
+
+#### SHOW TABLES  
+ 显示指定数据库的所有表，使用该命令前需要使用 use 命令来选择要操作的数据库  
+
+#### SHOW COLUMNS FROM 数据表  
+ 显示数据表的属性，属性类型，主键信息 ，是否为 NULL，默认值等其他信息  
+
+#### SHOW INDEX FROM 数据表  
+ 显示数据表的详细索引信息，包括PRIMARY KEY（主键）  
+
+#### SHOW TABLE STATUS LIKE [FROM db_name] [LIKE 'pattern'] \G
+ 该命令将输出Mysql数据库管理系统的性能及统计信息  
+
+    mysql> SHOW TABLE STATUS  FROM RUNOOB;   # 显示数据库 RUNOOB 中所有表的信息
+    mysql> SHOW TABLE STATUS from RUNOOB LIKE 'runoob%';   # 表名以runoob开头的表的信息
+    mysql> SHOW TABLE STATUS from RUNOOB LIKE 'runoob%'\G;   # 加上 \G，查询结果按列打印  
+
+
+### <span id="lj">MySQL 连接</span>  
+#### 使用MySQL二进制方式  
+ 使用MySQL二进制方式进入到mysql命令提示符下来连接MySQL数据库.
+
+    [root@host]# mysql -u root -p
+    Enter password:******  
+    mysql> exit
+    Bye  
+
+#### 使用 PHP 脚本连接 MySQL  
+ PHP 提供了 mysqli_connect() 函数来连接数据库,该函数有 6 个参数，在成功链接到 MySQL 后返回连接标识，失败返回 FALSE 。  
+ mysqli_close() 函数来断开与MySQL数据库的链接，只有一个参数为 mysqli_connect() 函数创建连接成功后返回的 MySQL 连接标识符。
+
+    mysqli_connect(host,username,password,dbname,port,socket);   
+    bool mysqli_close ( mysqli $link ) //通常不需要，非持久连接在脚本执行完毕后自动关闭  
+
+
+<table>
+    <tr>
+    <td>参数</td>
+    <td>描述</td>
+    </tr>
+    <tr> <td>host</td>
+    <td>可选。规定主机名或 IP 地址。</td></tr>
+    <tr> <td>username</td>
+    <td>可选。规定 MySQL 用户名。</td></tr>
+    <tr> <td>password</td>
+    <td>可选。规定 MySQL 密码。</td></tr>
+    <tr> <td>dbname</td>
+    <td>可选。规定默认使用的数据库。</td></tr>
+    <tr> <td>port</td>
+    <td>可选。规定尝试连接到 MySQL 服务器的端口号。</td></tr>
+    <tr> <td>socket</td>
+    <td>可选。规定 socket 或要使用的已命名 pipe。</td></tr>
+</table>
+
+    <?php
+    $dbhost = 'localhost:3306';  // mysql服务器主机地址
+    $dbuser = 'root';            // mysql用户名
+    $dbpass = '123456';          // mysql用户名密码
+    $conn = mysqli_connect($dbhost, $dbuser, $dbpass);
+    if(! $conn )
+    {
+        die('Could not connect: ' . mysqli_error());
+    }
+    echo '数据库连接成功！';
+    mysqli_close($conn);
+    ?>
+
+### <span id="sjk">数据库</span>
+#### 创建数据库  
+#### 使用 mysqladmin 创建数据库  
+ root用户拥有最高权限，可以使用 mysql mysqladmin 命令来创建数据库,普通用户可能需要特定的权限。  
+
+    [root@host]# mysqladmin -u root -p create RUNOOB
+    Enter password:******
+
+#### 使用 PHP脚本 创建数据库  
+ PHP 使用 mysqli_query 函数来创建或者删除 MySQL 数据库。  
+
+    mysqli_query(connection,query,resultmode);  
+   
+ connection：必需。规定要使用的 MySQL 连接；
+ query：必需，规定查询字符串；
+ resultmode：可选，一个常量，MYSQLI_USE_RESULT（需要检索大量数据),MYSQLI_STORE_RESULT（默认）
+
+    <?php
+    $dbhost = 'localhost300';
+    $dbuser = 'user';
+    $dbpass = '123456';
+    $conn = mysqli_connect($dbhost, $dbuser, $dbpass);
+    if(! $conn)
+    {
+        die('连接失败！'.mysqli_error($conn));
+    }
+    echo'连接成功<br />';
+    $sql ='CREATE DATABASE RUNOOB';
+    $retval =mysqli_query($conn,$sql);
+    if(! $retval)
+    {
+        die('创建数据库失败:'.mysqli_error($conn))
+    }
+    echo"创建 数据库成功\n";
+    mysqli_close($conn);
+    ?>
+
+#### 删除数据库
+
+#### 使用 mysqladmin 删除数据库   
+
+    [root@host]# mysqladmin -u root -p drop RUNOOB
+    Enter password:******  
+
+#### 使用 PHP脚本 删除数据库   
+
+    mysqli_query(connection,query,resultmode);
+
+    $sql = 'DROP DATABASE RUNOOB';
+    $retval = mysqli_query( $conn, $sql );  
+
+### <span id="xz">选择数据库</span> 
+#### 从命令提示窗口中选择MySQL数据库
+
+    [root@host]# mysql -u root -p
+    Enter password:******
+    mysql> use RUNOOB;
+    Database changed
+    mysql>  
+
+#### 使用PHP脚本选择MySQL数据库  
+
+    mysqli_select_db(connection,dbname);  
+
+    <?php
+    $dbhost = 'localhost:3306';  // mysql服务器主机地址
+    $dbuser = 'root';            // mysql用户名
+    $dbpass = '123456';          // mysql用户名密码
+    $conn = mysqli_connect($dbhost, $dbuser, $dbpass);
+    if(! $conn )
+    {
+        die('连接失败: ' . mysqli_error($conn));
+    }
+    echo '连接成功';
+    mysqli_select_db($conn, 'RUNOOB' );
+    mysqli_set_charset($con, "utf8");//设置编码，防止中文乱码
+    mysqli_close($conn);
+    ?>  
+
+### <span id="sjl">数据类型/<span>  
+ MySQL支持多种类型，大致可以分为三类：数值、日期/时间和字符串(字符)类型。  
+#### 数值类型  
+ 支持所有标准SQL数值数据类型，包括严格数值数据类型(INTEGER、SMALLINT、DECIMAL和NUMERIC)，以及近似数值数据类型(FLOAT、REAL和DOUBLE PRECISION)，关键字INT是INTEGER的同义词，关键字DEC是DECIMAL的同义词，BIT数据类型保存位字段值，并且支持MyISAM、MEMORY、InnoDB和BDB表，也支持整数类型TINYINT、MEDIUMINT和BIGINT。
+#### 日期和时间 类型  
+ DATETIME、DATE、TIMESTAMP、TIME和YEAR，每个时间类型有一个有效值范围和一个"零"值，当指定不合法的MySQL不能表示的值时使用"零"值。
+#### 字符串类型
+ CHAR、VARCHAR、BINARY、VARBINARY、BLOB、TEXT、ENUM和SET  
+
+### <span id="sjb">数据表</span>
+#### 创建数据
+需要表名，表字段名，定义每个字段  
+#### 通过命令提示符创建表
+
+    root@host# mysql -u root -p
+    Enter password:*******
+    mysql> use RUNOOB;
+    Database changed
+    mysql> CREATE TABLE runoob_tbl(
+       -> runoob_id INT NOT NULL AUTO_INCREMENT,
+       -> runoob_title VARCHAR(100) NOT NULL,
+       -> runoob_author VARCHAR(40) NOT NULL,
+       -> submission_date DATE,
+       -> PRIMARY KEY ( runoob_id )
+       -> )ENGINE=InnoDB DEFAULT CHARSET=utf8;//注意终止符为分号  
+    Query OK, 0 rows affected (0.16 sec)
+    mysql>  
+
+#### 使用PHP脚本创建数据表  
+ 使用 PHP 的 mysqli_query() 函数来创建
+
+    <?php
+    $dbhost = 'localhost:3306';  // mysql服务器主机地址
+    $dbuser = 'root';            // mysql用户名
+    $dbpass = '123456';          // mysql用户名密码
+    $conn = mysqli_connect($dbhost, $dbuser, $dbpass);
+    if(! $conn )
+    {
+        die('连接失败: ' . mysqli_error($conn));
+    }
+    echo '连接成功<br />';
+    $sql = "CREATE TABLE runoob_tbl( ".
+            "runoob_id INT NOT NULL AUTO_INCREMENT, ".
+            "runoob_title VARCHAR(100) NOT NULL, ".
+            "runoob_author VARCHAR(40) NOT NULL, ".
+            "submission_date DATE, ".
+            "PRIMARY KEY ( runoob_id ))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
+    mysqli_select_db( $conn, 'RUNOOB' );
+    $retval = mysqli_query( $conn, $sql );
+    if(! $retval )
+    {
+        die('数据表创建失败: ' . mysqli_error($conn));
+    }
+    echo "数据表创建成功\n";
+    mysqli_close($conn);
+    ?> 
+
+
+#### 删除数据表  
+
+    DROP TABLE table_name ;  
+
+#### 在命令提示窗口中删除数据表  
+
+    mysql> DROP TABLE runoob_tbl
+    Query OK, 0 rows affected (0.8 sec)
+    mysql>  
+
+#### 使用PHP脚本删除数据表  
+ 使用 mysqli_query 函数来删除 MySQL 数据表
+
+    mysqli_query(connection,query,resultmode);  
+
+### <span id="sj">数据</span>
+#### 插入数据  
+
+    INSERT INTO table_name ( field1, field2,...fieldN )
+                       VALUES
+                       ( value1, value2,...valueN );  
+
+#### 通过命令提示窗口插入数据  
+
+    mysql> INSERT INTO runoob_tbl 
+    -> (runoob_title, runoob_author, submission_date)
+    -> VALUES
+    -> ("学习 PHP", "菜鸟教程", NOW());
+    Query OK, 1 rows affected, 1 warnings (0.01 sec) 
+
+#### 使用PHP脚本插入数据  
+ 使用PHP 的 mysqli_query() 函数来执行INSERT INTO命令来插入数据
+
+    $runoob_title = '学习 Python';
+    $runoob_author = 'RUNOOB.COM';
+    $submission_date = '2016-03-06';
+     
+    $sql = "INSERT INTO runoob_tbl ".
+            "(runoob_title,runoob_author, submission_date) ".
+            "VALUES ".
+            "('$runoob_title','$runoob_author','$submission_date')";
+     
+     
+     
+    mysqli_select_db( $conn, 'RUNOOB' );
+    $retval = mysqli_query( $conn, $sql );  
+
+对于含有中文的数据插入，需要添加 mysqli_query($conn , "set names utf8"); 语句
+
+### 查询数据   
+
+    SELECT column_name,column_name
+    FROM table_name
+    [WHERE Clause]
+    [OFFSET M ][LIMIT N]  
+
+可使用多个表，用逗号分隔，select可读多条记录，OFFSET可指定SELECT语句开始查询的数据偏移量，默认为0，使用LIMIT属性设定返回的记录数。  
+
+#### 通过命令提示符获取数据  
+
+    select * from runoob_tbl;  
+
+#### 使用PHP脚本来获取数据  
+使用 PHP 函数的 mysqli_query() 及 SQL SELECT 命令来获取数据  
+通过 PHP 函数 mysqli_fetch_array() 来使用或输出所有查询的数据
+
+    $sql = 'SELECT runoob_id, runoob_title, 
+        runoob_author, submission_date
+        FROM runoob_tbl';
+    mysqli_select_db( $conn, 'RUNOOB' );
+    $retval = mysqli_query( $conn, $sql );
+    if(! $retval )
+    {
+        die('无法读取数据: ' . mysqli_error($conn));
+    }
+    echo '<h2>菜鸟教程 mysqli_fetch_array 测试<h2>';
+    echo '<table border="1"><tr><td>教程 ID</td><td>标题</td><td>作者</td><td>提交日期</td></tr>';
+    while($row = mysqli_fetch_array($retval, MYSQL_ASSOC))
+    {
+        echo "<tr><td> {$row['runoob_id']}</td> ".
+             "<td>{$row['runoob_title']} </td> ".
+             "<td>{$row['runoob_author']} </td> ".
+             "<td>{$row['submission_date']} </td> ".
+             "</tr>";
+    }
+    echo '</table>';
+
+#### 内存释放  
+ 执行完select后，释放游标是一个好习惯，利用 mysqli_free_result()来实现。  
+
+    $retval = mysqli_query( $conn, $sql ); 
+    ......
+    // 释放内存
+    mysqli_free_result($retval);  
+
+### <span id="zj">WHERE、UPDATE、DELETE、LIKE子句</span> 
+
+SELECT field1, field2,...fieldN FROM table_name1, table_name2...
+[WHERE condition1 [AND [OR]] condition2..... 
+
+UPDATE table_name SET field1=new-value1, field2=new-value2
+[WHERE Clause]
+
+DELETE FROM table_name [WHERE Clause]  
+
+SQL LIKE 子句中使用百分号 %字符来表示任意字符，如果没有使用百分号 %, LIKE 子句与等号 = 的效果是一样的。
+SELECT field1, field2,...fieldN 
+FROM table_name
+WHERE field1 LIKE condition1 [AND [OR]] filed2 = 'somevalue'
+
+#### 命令提示符中：
+ SELECT * from runoob_tbl WHERE runoob_author='菜鸟教程';  
+
+ mysql> UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;
+ Query OK, 1 rows affected (0.01 sec)
+
+ mysql> DELETE FROM runoob_tbl WHERE runoob_id=3;
+ Query OK, 1 row affected (0.23 sec)  
+
+ mysql> SELECT * from runoob_tbl  WHERE runoob_author LIKE '%COM';  
+
+#### PHP脚本:  
+  mysqli_query() 及相同的 SQL SELECT 带上 WHERE 子句的命令来获取数据, mysqli_fetch_array() 来输出所有查询的数据。 
+
+    $sql = 'SELECT runoob_id, runoob_title, 
+        runoob_author, submission_date
+        FROM runoob_tbl
+        WHERE runoob_author="RUNOOB.COM"';
+    mysqli_select_db( $conn, 'RUNOOB' );
+    $retval = mysqli_query( $conn, $sql );
+    if(! $retval )
+    {
+        die('无法读取数据: ' . mysqli_error($conn));
+    }
+    echo '<h2>菜鸟教程 MySQL WHERE 子句测试<h2>';
+    echo '<table border="1"><tr><td>教程 ID</td><td>标题</td><td>作者</td><td>提交日期</td></tr>';
+    while($row = mysqli_fetch_array($retval, MYSQL_ASSOC))
+    {
+        echo "<tr><td> {$row['runoob_id']}</td> ".
+             "<td>{$row['runoob_title']} </td> ".
+             "<td>{$row['runoob_author']} </td> ".
+             "<td>{$row['submission_date']} </td> ".
+             "</tr>";
+    }
+    echo '</table>';
+
+ 如果是 DELETE 或者 UPDATE 中使用 WHERE...LIKE 子句的S QL 语句，则无需使用 mysqli_fetch_array() 函数  
+
+### <span id="UNION">UNION操作符 </span> 
+ 用于连接两个以上的 SELECT 语句的结果组合到一个结果集合中  
+
+    SELECT expression1, expression2, ... expression_n
+    FROM tables
+    [WHERE conditions]
+    UNION [ALL | DISTINCT]  //ALL返回所有结果集，包含重复数据，DISTINCT删除重复数据，UNION默认已删除重复。
+    SELECT expression1, expression2, ... expression_n
+    FROM tables
+    [WHERE conditions];  
+
+
+### <span id="ORDER BY">ORDER BY排序  </span> 
+
+SELECT field1, field2,...fieldN table_name1, table_name2...
+ORDER BY field1, [field2...] `[ASC [DESC]]`  //ASC或DESC用来设置升序或降序
+
+### <span id="Group by">Group by分组 </span> 
+ 在分组的列上我们可以使用 COUNT, SUM, AVG,等函数。  
+
+    SELECT column_name, function(column_name)
+    FROM table_name
+    WHERE column_name operator value
+    GROUP BY column_name;  
+
+ WITH ROLLUP 可以实现在分组统计数据基础上再进行相同的统计（SUM,AVG,COUNT…）
+
+    SELECT name, SUM(singin) as singin_count FROM  employee_tbl GROUP BY name WITH ROLLUP;
+
+`select coalesce(a,b,c);`,如果a==null,则选择b；如果b==null,则选择c；如果a!=null,则选择a；如果a b c 都为null ，则返回为null（没意义）。
+
+### <span id="JOIN">JOIN连接的使用 </span>  
+
+* INNER JOIN（内连接,或等值连接）：获取两个表中字段匹配关系的记录,INNER可省，效果一样
+* LEFT JOIN（左连接）：获取左表所有记录，即使右表没有对应匹配的记录
+* RIGHT JOIN（右连接）： 与 LEFT JOIN 相反，用于获取右表所有记录，即使左表没有对应匹配的记录  
+
+### <span id="NULL">NULL值处理 </span>
+当提供的查询条件字段为NULL时，该命令可能就无法正常工作  
+
+* IS NULL: 当列的值是 NULL,此运算符返回 true
+* IS NOT NULL: 当列的值不为 NULL, 运算符返回 true
+* <=>: 比较操作符（不同于=运算符），当比较的的两个值为 NULL 时返回 true 
+ 
+SELECT * FROM runoob_test_tbl WHERE runoob_count IS NULL;
+SELECT * from runoob_test_tbl WHERE runoob_count IS NOT NULL;  
+
+
+
+
+
